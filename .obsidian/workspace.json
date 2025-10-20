@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/투자 게임 용돈 플랫폼.md",
+                "file": "Java/Project/우리아이 모의투자 서비스 기획안.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "투자 게임 용돈 플랫폼"
+              "title": "우리아이 모의투자 서비스 기획안"
             }
           }
         ],
@@ -198,6 +198,8 @@
   },
   "active": "c7b89f757f2f6f30",
   "lastOpenFiles": [
+    "Java/Project/투자 게임 용돈 플랫폼.md",
+    "Java/Project/우리아이 모의투자 서비스 기획안.md",
     "Java/Project/한국투자증권 API.md",
     "Java/Project/금융교육 플랫폼 서비스 아키텍처 가이드.md",
     "EDIFACT PAXLST 세그먼트 상세 형식.md",
@@ -231,8 +233,6 @@
     "Java/지식/Spring/ORM/2. JPA vs JDBC.md",
     "Java/지식/Spring/ORM/1. ORM (Object-Relational Mapping) 기본 개념.md",
     "Java/지식/Spring/Transaction/3. 트랜잭션 격리 수준 (Transaction Isolation Level).md",
-    "Java/지식/Spring/Transaction/2. 트랜잭션 전파 (Transaction Propagation).md",
-    "Java/지식/Spring/Transaction/1. 트랜잭션 기본 개념.md",
     "Java/지식/Spring/동시성",
     "git/Pasted image 20250611100724.png"
   ]
