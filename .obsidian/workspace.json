@@ -11,14 +11,14 @@
             "id": "fb865324c954fe99",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": ".obsidian/plugins/obsidian-git/data.json",
-                "bFile": ".obsidian/plugins/obsidian-git/data.json",
-                "aRef": ""
+                "file": "test.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: data.json"
+              "icon": "lucide-file",
+              "title": "test"
             }
           }
         ]
@@ -181,8 +181,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "577d816a622916d7",
+  "active": "fb865324c954fe99",
   "lastOpenFiles": [
+    "test.md",
     "test.md",
     "java/무제.md",
     "git.txt",
@@ -218,7 +219,6 @@
     "java/문제해결기록/spring/01. 트러블슈팅 작성요령.md",
     "java/문제해결기록/spring/Lazy Loading + JSON 직렬화 충돌.md",
     "Ansible/Ansible.md",
-    "java/Spring/0. 스프링 기본 흐름.md",
     "git/Pasted image 20250611100724.png"
   ]
 }
