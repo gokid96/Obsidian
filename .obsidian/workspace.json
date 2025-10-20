@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "java/Spring/border-api/1. DTO 패턴 데이터 흐름.md",
+                "file": "EDIFACT PAXLST 세그먼트 상세 형식.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. DTO 패턴 데이터 흐름"
+              "title": "EDIFACT PAXLST 세그먼트 상세 형식"
             }
           }
         ]
@@ -181,13 +181,21 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fb865324c954fe99",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
-    "java/Spring/border-api/0. Spring 실습.md",
-    "java/Spring/border-api/1. DTO 패턴 데이터 흐름.md",
-    "java/Spring/0. 스프링 기본 흐름.md",
-    "java/Spring/border-api",
-    "java/객체지향의 4대 원칙.md",
+    "Java/문제해결기록/Spring/2. Lazy Loading + JSON 직렬화 충돌.md",
+    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
+    "EDIFACT PAXLST 세그먼트 상세 형식.md",
+    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
+    "Java/Spring/border-api/1. DTO 패턴 데이터 흐름.md",
+    "Java/Spring/border-api/0. Spring 실습.md",
+    "Java/지식/JAVA/객체지향의 4대 원칙.md",
+    "Java/지식/JAVA",
+    "Java/지식/Spring",
+    "java/무제",
+    "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
+    "Java/지식/Spring/기본",
+    "Java/Spring/border-api",
     "AWS/MATIP 아키텍처/MATIP 시스템  AWS 아키텍처.md",
     "Ansible/Ansible PlayBook.md",
     "Ansible/Ansible.md",
@@ -196,29 +204,21 @@
     "test.md",
     "git.txt",
     "새 텍스트 문서.txt",
-    "java/project/한국투자증권 API.md",
-    "java/Spring/지식/Dirty Checking/1. Dirty Checking 개념.md",
+    "Java/Project/한국투자증권 API.md",
+    "Java/지식/Spring/Dirty Checking/1. Dirty Checking 개념.md",
     "무제 1.base",
     "무제.base",
-    "java/Spring/지식/동시성/2. 비관적 락 (Pessimistic Lock).md",
-    "java/Spring/지식/동시성/1. 낙관적 락 (Optimistic Lock).md",
-    "java/Spring/지식/동시성/3. 동시성 제어 전략.md",
-    "java/Spring/지식/ORM/3. JPA 기본 어노테이션.md",
-    "java/Spring/지식/ORM/2. JPA vs JDBC.md",
-    "java/Spring/지식/ORM/1. ORM (Object-Relational Mapping) 기본 개념.md",
-    "java/Spring/지식/Transaction/3. 트랜잭션 격리 수준 (Transaction Isolation Level).md",
-    "java/Spring/지식/Transaction/2. 트랜잭션 전파 (Transaction Propagation).md",
-    "java/Spring/지식/Transaction/1. 트랜잭션 기본 개념.md",
-    "java/Spring/지식/JPA 영속성 컨텍스트/1. 영속성 컨텍스트 개념.md",
-    "java/Spring/지식/JPA 영속성 컨텍스트/4. JPA 변경 감지 메커니즘.md",
-    "java/Spring/지식/JPA 영속성 컨텍스트/2. 엔티티 생명주기.md",
-    "java/Spring/지식/JPA 영속성 컨텍스트/3. JPA 1차 캐시.md",
-    "java/Spring/지식/Dirty Checking/2. Dirty Checking 사용 예시.md",
-    "java/Spring/지식/동시성",
-    "java/Spring/지식/JPA 영속성 컨텍스트",
-    "java/Spring/지식/Transaction",
-    "java/Spring/지식/ORM",
-    "java/Spring/지식/Dirty Checking",
+    "Java/지식/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
+    "Java/지식/Spring/동시성/1. 낙관적 락 (Optimistic Lock).md",
+    "Java/지식/Spring/동시성/3. 동시성 제어 전략.md",
+    "Java/지식/Spring/ORM/3. JPA 기본 어노테이션.md",
+    "Java/지식/Spring/ORM/2. JPA vs JDBC.md",
+    "Java/지식/Spring/ORM/1. ORM (Object-Relational Mapping) 기본 개념.md",
+    "Java/지식/Spring/Transaction/3. 트랜잭션 격리 수준 (Transaction Isolation Level).md",
+    "Java/지식/Spring/Transaction/2. 트랜잭션 전파 (Transaction Propagation).md",
+    "Java/지식/Spring/Transaction/1. 트랜잭션 기본 개념.md",
+    "Java/지식/Spring/JPA 영속성 컨텍스트/1. 영속성 컨텍스트 개념.md",
+    "Java/지식/Spring/동시성",
     "git/Pasted image 20250611100724.png"
   ]
 }
