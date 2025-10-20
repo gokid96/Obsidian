@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "test.md",
+                "file": "java/객체지향의 4대 원칙.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "test"
+              "title": "객체지향의 4대 원칙"
             }
           }
         ]
@@ -166,7 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 530.5
+    "width": 267.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -183,9 +183,13 @@
   },
   "active": "fb865324c954fe99",
   "lastOpenFiles": [
+    "AWS/MATIP 아키텍처/MATIP 시스템  AWS 아키텍처.md",
+    "Ansible/Ansible PlayBook.md",
+    "Ansible/Ansible.md",
+    "git/git.md",
     "test.md",
     "test.md",
-    "java/무제.md",
+    "java/객체지향의 4대 원칙.md",
     "git.txt",
     "새 텍스트 문서.txt",
     "java/project/한국투자증권 API.md",
@@ -215,10 +219,6 @@
     "java/Spring/지식/Dirty Checking",
     "java/Spring/Spring 실습.md",
     "EDIFACT PAXLST 세그먼트 상세 형식.md",
-    "java/문제해결기록/spring/JPA 순환 참조(Circular Reference).md",
-    "java/문제해결기록/spring/01. 트러블슈팅 작성요령.md",
-    "java/문제해결기록/spring/Lazy Loading + JSON 직렬화 충돌.md",
-    "Ansible/Ansible.md",
     "git/Pasted image 20250611100724.png"
   ]
 }
