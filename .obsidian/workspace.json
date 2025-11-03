@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Spring/border-api/1.  데이터 흐름.md",
+                "file": "Java/Spring/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1.  데이터 흐름"
+              "title": "무제"
             }
           }
         ]
@@ -183,14 +183,15 @@
   },
   "active": "a17ea7c06f49c5fb",
   "lastOpenFiles": [
+    "Java/Spring/JPA/JPA설명/1. 프로젝트_설정.md",
     "Java/Spring/border-api/0. Spring 실습.md",
+    "Java/Spring/border-api/1.  데이터 흐름.md",
     "Java/지식/Spring/면접 질문.md",
     "Java/Spring/JPA/JPA문법.md",
     "Java/지식/JAVA/객체지향의 4대 원칙.md",
     "Java/Spring/무제.md",
     "EC2 인스턴스 타입.md",
     "Monitoring/ELK.md",
-    "Java/Spring/border-api/1.  데이터 흐름.md",
     "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
     "Java/Spring/spring",
     "Java/Project/무제/주식왕 키즈 시스템 아키텍처.md",
@@ -214,7 +215,6 @@
     "Java/지식/Spring/WebFlux/SSE(Server-Sent Events).md",
     "Java/지식/Spring/WebFlux",
     "Java/Project/무제",
-    "Java/Project/금융교육 플랫폼 서비스 아키텍처 가이드.md",
     "Java/지식/JAVA",
     "Java/지식/Spring",
     "java/무제",
