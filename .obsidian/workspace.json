@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "547ed50d21c3b0ed",
+        "id": "cd4941c231bacc3e",
         "type": "tabs",
         "children": [
           {
-            "id": "a17ea7c06f49c5fb",
+            "id": "38340998fbd030c2",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Spring/무제.md",
+                "file": "Java/Project/숨고+당근(FitMate)/무제.md",
                 "mode": "source",
                 "source": false
               },
@@ -181,8 +181,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "a17ea7c06f49c5fb",
+  "active": "38340998fbd030c2",
   "lastOpenFiles": [
+    "Java/Project/숨고+당근(FitMate)/0. 서비스 플로우.md",
+    "Java/Project/숨고+당근(FitMate)/무제.md",
+    "Java/Project/만드는용/한국투자증권 API.md",
+    "Java/Project/숨고+당근(FitMate)",
+    "EDIFACT PAXLST 세그먼트 상세 형식.md",
+    "e-border-monitoring-web 프로젝트 분석 요약.md",
+    "Java/Spring/border-api/무제.md",
     "Java/Spring/border-api/0. Spring 실습.md",
     "Java/Spring/border-api/1.  데이터 흐름.md",
     "Java/Spring/JPA/JPA설명/0. JPA란.md",
@@ -190,7 +197,6 @@
     "Java/Spring/JPA/JPA설명/1. 프로젝트_설정.md",
     "Java/Spring/JPA/JPA설명/5. Spring_Data_JPA.md",
     "Java/Spring/JPA/JPA설명/6. 쿼리_메서드.md",
-    "Java/Spring/무제.md",
     "Java/지식/Spring/면접 질문.md",
     "Java/Spring/JPA/JPA문법.md",
     "Java/지식/JAVA/객체지향의 4대 원칙.md",
@@ -202,23 +208,17 @@
     "Java/Project/무제/우리아이 모의투자 서비스 기획안.md",
     "Java/Project/무제/주식왕 키즈 PRD (Product Requirements Document).md",
     "Java/Project/무제/투자 게임 용돈 플랫폼.md",
-    "Java/Project/무제/한국투자증권 API.md",
     "AWS/1. EC2 기초.md",
     "Devops/Ansible/Ansible.md",
     "무제",
     "Devops",
     "Devops/Ansible/Ansible PlayBook.md",
-    "AWS/MATIP 아키텍처/MATIP 시스템  AWS 아키텍처.md",
     "Monitoring",
-    "EDIFACT PAXLST 세그먼트 상세 형식.md",
-    "e-border-monitoring-web 프로젝트 분석 요약.md",
-    "AWS/2. 네트워킹 기초.md",
     "Java/지식/Spring/WebFlux",
-    "Java/Project/무제",
+    "Java/Project/만드는용",
     "Java/지식/JAVA",
     "Java/지식/Spring",
     "java/무제",
-    "Java/지식/Spring/기본",
     "git/Pasted image 20250611100724.png"
   ]
 }
