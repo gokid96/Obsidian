@@ -40,10 +40,10 @@
 ├─────────────────────────────────────────────────────────────┤
 │ PK  userId             BIGINT                                │
 │     email              VARCHAR(100)  UNIQUE, NOT NULL       │
-│     login_id           VARCHAR(50)   NOT NULL
+│     login_id           VARCHAR(50)   UNIQUE, NOT NULL
 	  password           VARCHAR(255)  NOT NULL               │
-│     username           VARCHAR(50)   UNIQUE, NOT NULL       │
-
+│     nickname           VARCHAR(50)   UNIQUE, NOT NULL       │
+	  created_at         TIMESTAMP     NOT NULL
 │     updated_at         TIMESTAMP     NOT NULL               │
 └─────────────────────────────────────────────────────────────┘
                               │
