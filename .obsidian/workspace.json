@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/숨고+당근(FitMate)/시작 전 준비.md",
+                "file": "Java/Project/무제/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "시작 전 준비"
+              "title": "무제"
             }
           }
         ]
@@ -183,10 +183,13 @@
   },
   "active": "38340998fbd030c2",
   "lastOpenFiles": [
-    "Java/Project/숨고+당근(FitMate)/0. 서비스 플로우.md",
-    "Java/Project/숨고+당근(FitMate)/시작 전 준비.md",
+    "Java/Project/모의투자/0. 서비스 플로우.md",
+    "Java/Project/무제/무제.md",
+    "무제.md",
+    "Java/Project/무제",
+    "Java/Project/모의투자/시작 전 준비.md",
     "Java/Project/만드는용/한국투자증권 API.md",
-    "Java/Project/숨고+당근(FitMate)",
+    "Java/Project/모의투자",
     "EDIFACT PAXLST 세그먼트 상세 형식.md",
     "e-border-monitoring-web 프로젝트 분석 요약.md",
     "Java/Spring/border-api/무제.md",
@@ -209,16 +212,13 @@
     "Java/Project/무제/주식왕 키즈 PRD (Product Requirements Document).md",
     "Java/Project/무제/투자 게임 용돈 플랫폼.md",
     "AWS/1. EC2 기초.md",
-    "Devops/Ansible/Ansible.md",
     "무제",
     "Devops",
-    "Devops/Ansible/Ansible PlayBook.md",
     "Monitoring",
     "Java/지식/Spring/WebFlux",
     "Java/Project/만드는용",
     "Java/지식/JAVA",
     "Java/지식/Spring",
-    "java/무제",
     "git/Pasted image 20250611100724.png"
   ]
 }
