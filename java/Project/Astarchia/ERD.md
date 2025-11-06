@@ -3321,9 +3321,49 @@
     "memoEntities": {}
 
   }
-
 }
-
 ```
 
 
+## 프로젝트 구조
+
+```
+astarchia/
+├── src/
+│   ├── main/
+│   │   ├── java/
+│   │   │   └── com/
+│   │   │       └── astarchia/
+│   │   │           ├── AstarchiaApplication.java
+│   │   │           ├── domain/
+│   │   │           │   ├── user/
+│   │   │           │   │   ├── entity/
+│   │   │           │   │   │   └── Users.java
+│   │   │           │   │   ├── repository/
+│   │   │           │   │   │   └── UserRepository.java
+│   │   │           │   │   ├── service/
+│   │   │           │   │   │   └── UserService.java
+│   │   │           │   │   └── controller/
+│   │   │           │   │       └── UserController.java
+│   │   │           │   ├── post/
+│   │   │           │   ├── category/
+│   │   │           │   ├── series/
+│   │   │           │   ├── tag/
+│   │   │           │   └── image/
+│   │   │           ├── global/
+│   │   │           │   ├── config/
+│   │   │           │   ├── security/
+│   │   │           │   └── exception/
+│   │   │           └── common/
+│   │   └── resources/
+│   │       ├── application.yml
+│   │       └── application-dev.yml
+│   └── test/
+└── build.gradle
+````
+
+- ✅ 프로젝트 생성
+- Entity 클래스 작성
+- Repository 작성
+- Service 작성
+- Controller 작성
