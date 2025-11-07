@@ -3328,42 +3328,57 @@
 ## 프로젝트 구조
 
 ```
-astarchia/
-├── src/
-│   ├── main/
-│   │   ├── java/
-│   │   │   └── com/
-│   │   │       └── astarchia/
-│   │   │           ├── AstarchiaApplication.java
-│   │   │           ├── domain/
-│   │   │           │   ├── user/
-│   │   │           │   │   ├── entity/
-│   │   │           │   │   │   └── Users.java
-│   │   │           │   │   ├── repository/
-│   │   │           │   │   │   └── UserRepository.java
-│   │   │           │   │   ├── service/
-│   │   │           │   │   │   └── UserService.java
-│   │   │           │   │   └── controller/
-│   │   │           │   │       └── UserController.java
-│   │   │           │   ├── post/
-│   │   │           │   ├── category/
-│   │   │           │   ├── series/
-│   │   │           │   ├── tag/
-│   │   │           │   └── image/
-│   │   │           ├── global/
-│   │   │           │   ├── config/
-│   │   │           │   ├── security/
-│   │   │           │   └── exception/
-│   │   │           └── common/
-│   │   └── resources/
-│   │       ├── application.yml
-│   │       └── application-dev.yml
-│   └── test/
-└── build.gradle
+src/main/java/com/example/astarchia/
+│
+├── domain/                    # 도메인별로 구분 (추천!)
+│   ├── user/
+│   │   ├── entity/
+│   │   │   └── User.java
+│   │   ├── dto/
+│   │   │   ├── request/
+│   │   │   │   ├── UserCreateRequestDTO.java
+│   │   │   │   ├── UserLoginRequestDTO.java
+│   │   │   │   └── UserUpdateRequestDTO.java
+│   │   │   └── response/
+│   │   │       └── UserResponseDTO.java
+│   │   ├── repository/
+│   │   │   └── UserRepository.java
+│   │   ├── service/
+│   │   │   └── UserService.java
+│   │   └── controller/
+│   │       └── UserController.java
+│   │
+│   ├── post/
+│   │   ├── entity/
+│   │   │   └── Post.java
+│   │   ├── dto/
+│   │   ├── repository/
+│   │   ├── service/
+│   │   └── controller/
+│   │
+│   ├── category/
+│   ├── tag/
+│   ├── series/
+│   └── comment/
+│
+├── global/                    # 공통 기능
+│   ├── config/               # 설정
+│   │   ├── SecurityConfig.java
+│   │   └── JpaConfig.java
+│   ├── exception/            # 예외 처리
+│   │   ├── CustomException.java
+│   │   └── GlobalExceptionHandler.java
+│   └── util/                 # 유틸리티
+│       └── JwtUtil.java
+│
+└── AstarchiaApplication.java
 ````
 
-- ✅ 프로젝트 생성
-- Entity 클래스 작성
-- Repository 작성
-- Service 작성
-- Controller 작성
+프로젝트 생성
+
+1. Entity 설계 
+2. Repository 생성 
+3. DTO 설계 (Request/Response 분리) 
+4. Service 구현 (비즈니스 로직) 
+5. Controller 구현 (API 엔드포인트) 
+6. 테스트
