@@ -176,3 +176,9 @@
 - 업로드한 이미지 메타데이터 관리
 - `stored_name`: 서버 저장용 고유 이름
 - `original_name`: 사용자가 올린 원본 파일명
+
+
+1. Entity 모두 생성 (7개)
+2. Repository 모두 생성 (7개)
+3. 앱 실행 → DDL 확인
+4. Service 만들면서 테스트
