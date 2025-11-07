@@ -11,10 +11,14 @@
             "id": "bfbbdce982d4695c",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "java/Project/Astarchia/Astarchia.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "Astarchia"
             }
           }
         ]
@@ -179,6 +183,7 @@
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
+    "git/git.md",
     "Java/Project/Astarchia/Astarchia.md",
     "Java/Project/Astarchia/ERD.md",
     "Pasted image 20251106154530.png",
