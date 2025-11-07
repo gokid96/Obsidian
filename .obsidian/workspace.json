@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/ERD.md",
+                "file": "Java/Project/Astarchia/Astarchia.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ERD"
+              "title": "Astarchia"
             }
           }
         ]
@@ -183,8 +183,8 @@
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
-    "Java/Project/Astarchia/Astarchia.md",
     "Java/Project/Astarchia/ERD.md",
+    "Java/Project/Astarchia/Astarchia.md",
     "Pasted image 20251106154530.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/images",
