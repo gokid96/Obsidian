@@ -11,14 +11,10 @@
             "id": "bfbbdce982d4695c",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/Project/Astarchia/ERD.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "ERD"
+              "title": "새 탭"
             }
           }
         ]
@@ -171,13 +167,13 @@
   "left-ribbon": {
     "hiddenItems": {
       "bases:새 베이스 생성하기": false,
-      "remotely-save:Remotely Save": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 일일 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
+      "remotely-save:Remotely Save": false,
       "obsidian-git:Open Git source control": false
     }
   },
