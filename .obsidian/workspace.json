@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/ERD.md",
+                "file": "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "ERD"
+              "title": "03.인프라 아키텍쳐"
             }
           }
         ]
@@ -183,6 +183,10 @@
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
+    "Java/Project/Astarchia/01.ERD.md",
+    "Java/Project/Astarchia/02.방향.md",
+    "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
+    "Java/Project/Astarchia/학습 내용 정리.md",
     "Java/Project/Astarchia/Astarchia.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/3. JPA 1차 캐시.md",
     "Java/지식/Spring/Dirty Checking/1. Dirty Checking 개념.md",
@@ -194,10 +198,7 @@
     "Java/Spring/JPA/JPA문법.md",
     "Java/Spring/JPA/엔티티의 생명주기.md",
     "Java/Spring/JPA/JPA설명/2. 엔티티_기본.md",
-    "Java/Project/Astarchia/학습 내용 정리.md",
-    "Java/Project/Astarchia/ERD.md",
     "Java/Project/모의투자/0. 서비스 플로우.md",
-    "Java/Project/Astarchia/무제.md",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/images",
     "NetWork/네트워크 접속이 안될때.md",
@@ -214,7 +215,6 @@
     "Java/Spring/JPA/JPA설명/0. JPA란.md",
     "Java/Spring/JPA/JPA설명/1. 프로젝트_설정.md",
     "Java/Spring/JPA/JPA설명/5. Spring_Data_JPA.md",
-    "Java/Spring/JPA/JPA설명/6. 쿼리_메서드.md",
     "Java/Spring/spring",
     "무제",
     "Devops",
