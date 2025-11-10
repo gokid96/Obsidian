@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/지식/Spring/Dirty Checking/1. Dirty Checking 개념.md",
+                "file": "Java/지식/Spring/JPA 영속성 컨텍스트/3. JPA 1차 캐시.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Dirty Checking 개념"
+              "title": "3. JPA 1차 캐시"
             }
           }
         ]
@@ -183,9 +183,9 @@
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
+    "Java/지식/Spring/Dirty Checking/1. Dirty Checking 개념.md",
     "Java/지식/Spring/Dirty Checking/3. Dirty Checking 주의사항.md",
     "Java/지식/Spring/Dirty Checking/2. Dirty Checking 사용 예시.md",
-    "Java/지식/Spring/Dirty Checking/1. Dirty Checking 개념.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/1. 영속성 컨텍스트 개념.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Pasted image 20251106154530.png",
