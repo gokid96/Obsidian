@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "java/Project/Astarchia/Astarchia.md",
+                "file": "Java/Project/Astarchia/학습 내용 정리.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Astarchia"
+              "title": "학습 내용 정리"
             }
           }
         ]
@@ -171,26 +171,27 @@
   "left-ribbon": {
     "hiddenItems": {
       "bases:새 베이스 생성하기": false,
+      "remotely-save:Remotely Save": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 일일 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
-      "remotely-save:Remotely Save": false,
       "obsidian-git:Open Git source control": false
     }
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
-    "git/git.md",
+    "Java/Project/모의투자/0. 서비스 플로우.md",
+    "Java/Project/Astarchia/학습 내용 정리.md",
+    "Java/Project/Astarchia/무제.md",
     "Java/Project/Astarchia/Astarchia.md",
     "Java/Project/Astarchia/ERD.md",
     "Pasted image 20251106154530.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/images",
     "NetWork/네트워크 접속이 안될때.md",
-    "Java/Project/모의투자/0. 서비스 플로우.md",
     "무제.md",
     "Java/Project/Astarchia",
     "Java/Project/모의투자/시작 전 준비.md",
@@ -214,7 +215,6 @@
     "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
     "Java/Spring/spring",
     "Java/Project/무제/주식왕 키즈 시스템 아키텍처.md",
-    "Java/Project/무제/우리아이 모의투자 서비스 기획안.md",
     "무제",
     "Devops",
     "Monitoring",
