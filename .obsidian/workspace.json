@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
+                "file": "Java/Project/Astarchia/01.ERD.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03.인프라 아키텍쳐"
+              "title": "01.ERD"
             }
           }
         ]
@@ -183,9 +183,9 @@
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
+    "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
     "Java/Project/Astarchia/01.ERD.md",
     "Java/Project/Astarchia/02.방향.md",
-    "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
     "Java/Project/Astarchia/학습 내용 정리.md",
     "Java/Project/Astarchia/Astarchia.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/3. JPA 1차 캐시.md",
