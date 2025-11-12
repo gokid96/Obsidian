@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "aaaa72eeb305e7af",
+        "id": "6c7c10bc516467a4",
         "type": "tabs",
         "children": [
           {
-            "id": "bfbbdce982d4695c",
+            "id": "36d47529d41180c8",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -181,13 +181,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "bfbbdce982d4695c",
+  "active": "36d47529d41180c8",
   "lastOpenFiles": [
+    "Java/지식/Spring/면접 질문.md",
+    "e-border-monitoring-web 프로젝트 분석 요약.md",
+    "EDIFACT PAXLST 세그먼트 상세 형식.md",
+    "Pasted image 20251106154530.png",
+    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
+    "Java/지식/Spring/ORM/3. JPA 기본 어노테이션.md",
+    "Java/지식/Spring/ORM/2. JPA vs JDBC.md",
+    "Java/지식/Spring/ORM/1. ORM (Object-Relational Mapping) 기본 개념.md",
+    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/문제해결기록/Spring/2. Lazy Loading + JSON 직렬화 충돌.md",
     "Java/지식/Spring/디자인패턴/싱글턴.md",
     "Java/지식/Spring/디자인패턴",
-    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
-    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/Project/Astarchia/01.ERD.md",
     "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
     "Java/Project/Astarchia/02.방향.md",
@@ -199,7 +206,6 @@
     "Java/지식/Spring/Dirty Checking/2. Dirty Checking 사용 예시.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/1. 영속성 컨텍스트 개념.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
-    "Pasted image 20251106154530.png",
     "Java/Spring/JPA/JPA문법.md",
     "Java/Spring/JPA/엔티티의 생명주기.md",
     "Java/Spring/JPA/JPA설명/2. 엔티티_기본.md",
@@ -209,13 +215,7 @@
     "NetWork/네트워크 접속이 안될때.md",
     "무제.md",
     "Java/Project/Astarchia",
-    "Java/Project/모의투자/시작 전 준비.md",
-    "Java/Project/만드는용/한국투자증권 API.md",
     "Java/Project/모의투자",
-    "EDIFACT PAXLST 세그먼트 상세 형식.md",
-    "e-border-monitoring-web 프로젝트 분석 요약.md",
-    "Java/Spring/border-api/무제.md",
-    "Java/Spring/border-api/0. Spring 실습.md",
     "Java/Spring/spring",
     "무제",
     "Devops",
