@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 288.5
+    "width": 208.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -181,7 +181,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "36d47529d41180c8",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
     "Java/지식/Spring/면접 질문.md",
     "e-border-monitoring-web 프로젝트 분석 요약.md",
