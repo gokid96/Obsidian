@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
+                "file": "Java/지식/Spring/디자인패턴/싱글턴.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. JPA 순환 참조(Circular Reference)"
+              "title": "싱글턴"
             }
           }
         ]
@@ -183,6 +183,11 @@
   },
   "active": "bfbbdce982d4695c",
   "lastOpenFiles": [
+    "Java/문제해결기록/Spring/2. Lazy Loading + JSON 직렬화 충돌.md",
+    "Java/지식/Spring/디자인패턴/싱글턴.md",
+    "Java/지식/Spring/디자인패턴",
+    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
+    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/Project/Astarchia/01.ERD.md",
     "Java/Project/Astarchia/03.인프라 아키텍쳐.md",
     "Java/Project/Astarchia/02.방향.md",
@@ -211,17 +216,12 @@
     "e-border-monitoring-web 프로젝트 분석 요약.md",
     "Java/Spring/border-api/무제.md",
     "Java/Spring/border-api/0. Spring 실습.md",
-    "Java/Spring/border-api/1.  데이터 흐름.md",
-    "Java/Spring/JPA/JPA설명/0. JPA란.md",
-    "Java/Spring/JPA/JPA설명/1. 프로젝트_설정.md",
-    "Java/Spring/JPA/JPA설명/5. Spring_Data_JPA.md",
     "Java/Spring/spring",
     "무제",
     "Devops",
     "Monitoring",
     "Java/지식/Spring/WebFlux",
     "Java/Project/만드는용",
-    "Java/지식/JAVA",
     "git/Pasted image 20250611100724.png"
   ]
 }
