@@ -13,29 +13,15 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
+                "file": "Java/지식/Spring/기본/01.DI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "0. 스프링 기본 흐름"
-            }
-          },
-          {
-            "id": "1cb37e3685a8efe1",
-            "type": "leaf",
-            "state": {
-              "type": "bases",
-              "state": {
-                "file": "무제 1.base",
-                "viewName": "표"
-              },
-              "icon": "lucide-table",
-              "title": "무제 1"
+              "title": "01.DI"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -92,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 280.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -195,12 +181,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "1cb37e3685a8efe1",
+  "active": "388284bcf2098858",
   "lastOpenFiles": [
-    "무제.base",
-    "무제 1.base",
-    "Java/지식/Spring/기본/01.DI.md",
     "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
+    "무제 1.base",
+    "무제.base",
+    "Java/지식/Spring/기본/01.DI.md",
     "Java/지식/Spring/디자인패턴/싱글턴.md",
     "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
     "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
@@ -235,7 +221,6 @@
     "무제",
     "Devops",
     "Monitoring",
-    "Java/지식/Spring/WebFlux",
     "git/Pasted image 20250611100724.png"
   ]
 }
