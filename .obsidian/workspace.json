@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/지식/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
+                "file": "NetWork/CIDR 표기법.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. 비관적 락 (Pessimistic Lock)"
+              "title": "CIDR 표기법"
             }
           }
         ],
@@ -56,7 +56,7 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": true
+                "autoReveal": false
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -93,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 280.5
+    "width": 561.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -196,11 +196,24 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6295e9d97d9f0aa7",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "Monitoring/무제",
+    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
+    "NetWork/무제",
+    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제",
+    "Java/지식/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제",
+    "Java/문제해결기록/Spring/무제/무제/무제/무제",
     "Java/지식/Spring/동시성/1. 낙관적 락 (Optimistic Lock).md",
     "NetWork/네트워크 접속이 안될때.md",
-    "HA/무제",
     "ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ.md",
     "무제.md",
     "무제 2.md",
@@ -211,32 +224,19 @@
     "Monitoring/ELK.md",
     "ss.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
-    "무제 1",
-    "업무/메시지 테스트",
-    "업무",
-    "무제",
     "Java/문제해결기록/Spring/무제.md",
     "Java/지식/Spring/기본/02. JPQL.md",
-    "무제.base",
-    "무제 1.base",
     "Java/지식/Spring/기본/01.DI.md",
     "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
     "Java/지식/Spring/디자인패턴/싱글턴.md",
-    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
-    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "2025-11-12.md",
     "Java/Spring/JPA/JPA설명/7. 실전_예제.md",
     "Java/지식/Spring/면접 질문.md",
     "e-border-monitoring-web 프로젝트 분석 요약.md",
     "EDIFACT PAXLST 세그먼트 상세 형식.md",
     "Pasted image 20251106154530.png",
-    "Java/지식/Spring/ORM/3. JPA 기본 어노테이션.md",
-    "Java/지식/Spring/ORM/2. JPA vs JDBC.md",
-    "Java/지식/Spring/디자인패턴",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
-    "Java/Project/Astarchia/images",
-    "Java/Project/Astarchia",
     "git/Pasted image 20250611100724.png"
   ]
 }
