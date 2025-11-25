@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/서비스 아키텍쳐.md",
+                "file": "Java/Project/Astarchia/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "서비스 아키텍쳐"
+              "title": "무제"
             }
           }
         ],
@@ -212,8 +212,12 @@
   },
   "active": "b9c447b5c134903c",
   "lastOpenFiles": [
-    "업무/무제 1.md",
+    "Java/Project/Astarchia/Astarchia.md",
+    "Java/Project/Astarchia/무제.md",
+    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
+    "Java/문제해결기록/Spring/무제.md",
     "업무/서비스 아키텍쳐.md",
+    "업무/무제 1.md",
     "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/service_monitor_alert-notifier/무제.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
@@ -224,7 +228,6 @@
     "Monitoring/무제",
     "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
     "NetWork/무제",
-    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
@@ -242,12 +245,9 @@
     "NetWork/서브넷 마스크 계산.md",
     "Monitoring/ELK.md",
     "ss.md",
-    "Java/문제해결기록/Spring/무제.md",
     "Java/지식/Spring/기본/02. JPQL.md",
     "Java/지식/Spring/기본/01.DI.md",
     "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
-    "Java/지식/Spring/디자인패턴/싱글턴.md",
-    "2025-11-12.md",
     "Pasted image 20251106154530.png",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
