@@ -34,9 +34,23 @@
               "icon": "lucide-file",
               "title": "무제 1"
             }
+          },
+          {
+            "id": "b9c447b5c134903c",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "업무/서비스 아키텍쳐.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "서비스 아키텍쳐"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -196,10 +210,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9097926d03b9d3c5",
+  "active": "b9c447b5c134903c",
   "lastOpenFiles": [
-    "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/무제 1.md",
+    "업무/서비스 아키텍쳐.md",
+    "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/service_monitor_alert-notifier/무제.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "무제.md",
@@ -233,7 +248,6 @@
     "Java/지식/Spring/기본/0. 스프링 기본 흐름.md",
     "Java/지식/Spring/디자인패턴/싱글턴.md",
     "2025-11-12.md",
-    "Java/Spring/JPA/JPA설명/7. 실전_예제.md",
     "Pasted image 20251106154530.png",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
