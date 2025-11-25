@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/service_monitor_alert-notifier/무제.md",
+                "file": "업무/service_monitor_alert-notifier/무제 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "무제 1"
             }
           }
         ]
@@ -183,8 +183,8 @@
   },
   "active": "508f313b649fb1dc",
   "lastOpenFiles": [
-    "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/service_monitor_alert-notifier/무제.md",
+    "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "무제.md",
     "업무/service_monitor_alert-notifier",
