@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/폴더 이동 시 순환 참조 방지.md",
+                "file": "Java/지식/Spring/기본/01.DI.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "폴더 이동 시 순환 참조 방지"
+              "title": "01.DI"
             }
           }
         ],
@@ -107,7 +107,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 299.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -210,10 +211,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "b9c447b5c134903c",
   "lastOpenFiles": [
-    "Java/Project/Astarchia/Astarchia.md",
     "Java/Project/Astarchia/폴더 이동 시 순환 참조 방지.md",
+    "Java/Project/Astarchia/Astarchia.md",
     "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/문제해결기록/Spring/무제.md",
     "업무/서비스 아키텍쳐.md",
