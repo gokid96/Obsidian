@@ -34,9 +34,37 @@
               "icon": "lucide-file",
               "title": "무제 1"
             }
+          },
+          {
+            "id": "ca067ffeaf5c79eb",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "LLM/01. LLM학습.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01. LLM학습"
+            }
+          },
+          {
+            "id": "ca5fad8e3b709ff7",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "LLM/01. LLM학습.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01. LLM학습"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -93,8 +121,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -197,8 +224,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9097926d03b9d3c5",
+  "active": "ca5fad8e3b709ff7",
   "lastOpenFiles": [
+    "LLM/02. 파인튜닝 기법.md",
+    "LLM/01. LLM학습.md",
+    "업무/무제 1.md",
+    "LLM/무제",
+    "LLM",
     "무제 1.base",
     "무제.base",
     "Java/지식/Spring/기본/01.DI.md",
@@ -207,7 +239,6 @@
     "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/문제해결기록/Spring/무제.md",
     "업무/서비스 아키텍쳐.md",
-    "업무/무제 1.md",
     "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/service_monitor_alert-notifier/무제.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
@@ -221,9 +252,6 @@
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
-    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제",
-    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제",
-    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제",
     "Java/지식/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
     "Java/지식/Spring/동시성/1. 낙관적 락 (Optimistic Lock).md",
     "NetWork/네트워크 접속이 안될때.md",
@@ -234,7 +262,6 @@
     "NetWork/서브넷 마스크 계산.md",
     "Monitoring/ELK.md",
     "ss.md",
-    "Java/지식/Spring/기본/02. JPQL.md",
     "Pasted image 20251106154530.png",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
