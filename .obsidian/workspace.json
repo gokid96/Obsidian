@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/03_Fine-tuning.md",
+                "file": "LLM/05_RAG vs Fine-tuning 선택 가이드.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03_Fine-tuning"
+              "title": "05_RAG vs Fine-tuning 선택 가이드"
             }
           }
         ],
@@ -226,8 +226,10 @@
   },
   "active": "ca5fad8e3b709ff7",
   "lastOpenFiles": [
-    "LLM/01_LLM 개요.md",
+    "LLM/04_RAG.md",
+    "LLM/05_RAG vs Fine-tuning 선택 가이드.md",
     "LLM/03_Fine-tuning.md",
+    "LLM/01_LLM 개요.md",
     "LLM/02_Pre-training.md",
     "업무/무제 1.md",
     "LLM/무제",
@@ -260,8 +262,6 @@
     "무제 2.md",
     "ddd.md",
     "NetWork/허브, 스위치, 라우터 차이.md",
-    "NetWork/서브넷 마스크 계산.md",
-    "Monitoring/ELK.md",
     "Pasted image 20251106154530.png",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
