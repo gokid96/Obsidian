@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/조합 방법.md",
+                "file": "git/git.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "조합 방법"
+              "title": "git"
             }
           }
         ],
@@ -226,8 +226,8 @@
   },
   "active": "ca5fad8e3b709ff7",
   "lastOpenFiles": [
-    "LLM/05_RAG vs Fine-tuning 선택 가이드.md",
     "LLM/조합 방법.md",
+    "LLM/05_RAG vs Fine-tuning 선택 가이드.md",
     "LLM/04_RAG.md",
     "LLM/03_Fine-tuning.md",
     "LLM/01_LLM 개요.md",
