@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "git/git.md",
+                "file": "HA/Keepalived.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "git"
+              "title": "Keepalived"
             }
           }
         ],
@@ -226,6 +226,15 @@
   },
   "active": "ca5fad8e3b709ff7",
   "lastOpenFiles": [
+    "무제/2025-11-12.md",
+    "무제",
+    "HA/Keepalived.md",
+    "ss.md",
+    "Pasted image 20251106154530.png",
+    "EDIFACT PAXLST 세그먼트 상세 형식.md",
+    "e-border-monitoring-web 프로젝트 분석 요약.md",
+    "git/git.md",
+    "무제.base",
     "LLM/조합 방법.md",
     "LLM/05_RAG vs Fine-tuning 선택 가이드.md",
     "LLM/04_RAG.md",
@@ -236,7 +245,6 @@
     "LLM/무제",
     "LLM",
     "무제 1.base",
-    "무제.base",
     "Java/지식/Spring/기본/01.DI.md",
     "Java/Project/Astarchia/폴더 이동 시 순환 참조 방지.md",
     "Java/Project/Astarchia/Astarchia.md",
@@ -255,14 +263,6 @@
     "NetWork/무제",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
     "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
-    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
-    "Java/지식/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
-    "Java/지식/Spring/동시성/1. 낙관적 락 (Optimistic Lock).md",
-    "NetWork/네트워크 접속이 안될때.md",
-    "ㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㄴㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅈㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅁㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇㅇ.md",
-    "무제 2.md",
-    "ddd.md",
-    "Pasted image 20251106154530.png",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "git/Pasted image 20250611100724.png"
