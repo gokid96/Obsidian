@@ -148,3 +148,7 @@ ip addr show enp1s0
 ```
 
 → 가상 IP가 백업 서버로 이동했는지 확인
+dasdasd
+asdasdasd
+asdasdasd
+asdads
