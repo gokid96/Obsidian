@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/Eborder/E-border 시스템.md",
+                "file": "업무/Eborder/API/프로토콜 (MATIP, MQ).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "E-border 시스템"
+              "title": "프로토콜 (MATIP, MQ)"
             }
           }
         ]
@@ -181,10 +181,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "aeb3684e9018b552",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
-    "업무/service_monitor_alert-notifier/무제 1.md",
+    "업무/Eborder/API/무제",
+    "업무/Eborder/API/AirlineMessageHandler.md",
+    "업무/Eborder/API/프로토콜 (MATIP, MQ).md",
+    "업무/Eborder/API/IAPI 개요.md",
+    "업무/Eborder/PNR/pull/Pull 방식.md",
+    "업무/Eborder/PNR/PNR 개요.md",
+    "업무/Eborder/PNR/push/Push 방식.md",
+    "업무/Eborder/PNR/push/무제",
     "업무/Eborder/E-border 시스템.md",
+    "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/Eborder/API",
     "업무/Eborder",
     "업무/service_monitor_alert-notifier/무제.md",
@@ -210,16 +218,8 @@
     "업무/무제 1.md",
     "LLM/무제",
     "LLM",
-    "무제 1.base",
     "Java/지식/Spring/기본/01.DI.md",
     "Java/Project/Astarchia/폴더 이동 시 순환 참조 방지.md",
-    "Java/Project/Astarchia/Astarchia.md",
-    "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
-    "Java/문제해결기록/Spring/무제.md",
-    "업무/서비스 아키텍쳐.md",
-    "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
-    "무제.md",
-    "AWS/무제.md",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "git/Pasted image 20250611100724.png"
