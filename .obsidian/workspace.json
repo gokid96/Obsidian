@@ -11,10 +11,14 @@
             "id": "aeb3684e9018b552",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "업무/Eborder/E-border 시스템.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "E-border 시스템"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 274.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -179,6 +183,15 @@
   },
   "active": "aeb3684e9018b552",
   "lastOpenFiles": [
+    "업무/service_monitor_alert-notifier/무제 1.md",
+    "업무/Eborder/E-border 시스템.md",
+    "업무/Eborder/API",
+    "업무/Eborder",
+    "업무/service_monitor_alert-notifier/무제.md",
+    "업무/pnr/무제.md",
+    "업무/Eborder/PNR/pull",
+    "업무/Eborder/PNR/push",
+    "업무/Eborder/PNR",
     "HA/Keepalived.md",
     "무제/2025-11-12.md",
     "무제",
@@ -204,18 +217,9 @@
     "Java/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/문제해결기록/Spring/무제.md",
     "업무/서비스 아키텍쳐.md",
-    "업무/service_monitor_alert-notifier/무제 1.md",
-    "업무/service_monitor_alert-notifier/무제.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "무제.md",
-    "업무/service_monitor_alert-notifier",
     "AWS/무제.md",
-    "NetWork/CIDR 표기법.md",
-    "Monitoring/무제",
-    "Java/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
-    "NetWork/무제",
-    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
-    "Java/문제해결기록/Spring/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제/무제",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "git/Pasted image 20250611100724.png"
