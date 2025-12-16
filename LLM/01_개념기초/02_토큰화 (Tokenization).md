@@ -1,5 +1,3 @@
-
-
 ## 정의
 텍스트를 모델이 처리할 수 있는 숫자(토큰 ID)로 변환하는 과정
 
@@ -19,7 +17,6 @@
 | BPE (Byte Pair Encoding) | GPT, Llama |
 | WordPiece | BERT |
 | SentencePiece | T5, 다국어 모델 |
-
 ## BPE 원리
 1. 모든 글자를 개별 토큰으로 시작
 2. 가장 자주 붙어있는 쌍을 하나로 합침
