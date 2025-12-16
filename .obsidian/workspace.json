@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/00_요약.md",
+                "file": "LLM/강의 순서.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00_요약"
+              "title": "강의 순서"
             }
           }
         ]
@@ -183,11 +183,12 @@
   },
   "active": "aeb3684e9018b552",
   "lastOpenFiles": [
+    "LLM/00_요약.md",
+    "LLM/강의 순서.md",
     "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
     "LLM/01_개념기초/04_Temperature.md",
     "LLM/01_개념기초/03_In-context Learning.md",
     "LLM/01_개념기초/02_토큰화 (Tokenization).md",
-    "LLM/00_요약.md",
     "LLM/01_개념기초/01_LLM이란.md",
     "LLM/02_Pre-training.md",
     "LLM/03_Fine-tuning.md",
@@ -214,7 +215,6 @@
     "LLM/01_LLM 개요.md",
     "토큰화.md",
     "LLM/01_개념기초",
-    "업무/Eborder/PNR/PNR - CIQ 수신 확인방법.md",
     "Pasted image 20251215114222.png",
     "Pasted image 20251215114031.png",
     "Pasted image 20251215114008.png",
