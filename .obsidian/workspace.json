@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/강의 순서.md",
+                "file": "LLM/02-파인튜닝/02_LoRA (Low-Rank Adaptation).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "강의 순서"
+              "title": "02_LoRA (Low-Rank Adaptation)"
             }
           }
         ]
@@ -183,9 +183,9 @@
   },
   "active": "aeb3684e9018b552",
   "lastOpenFiles": [
-    "LLM/00_요약.md",
-    "LLM/강의 순서.md",
     "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
+    "LLM/강의 순서.md",
+    "LLM/00_요약.md",
     "LLM/01_개념기초/04_Temperature.md",
     "LLM/01_개념기초/03_In-context Learning.md",
     "LLM/01_개념기초/02_토큰화 (Tokenization).md",
