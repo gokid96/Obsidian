@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/01_개념기초/02_토큰화 (Tokenization).md",
+                "file": "LLM/05-실무/03_Moderation API.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02_토큰화 (Tokenization)"
+              "title": "03_Moderation API"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 213.5
+    "width": 369.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -183,9 +183,27 @@
   },
   "active": "aeb3684e9018b552",
   "lastOpenFiles": [
-    "LLM/01_개념기초/01_LLM이란.md",
-    "LLM/01_개념기초/02_토큰화 (Tokenization).md",
+    "LLM/05-실무/02_Chain-of-Thought (CoT).md",
+    "LLM/05-실무/03_Moderation API.md",
+    "LLM/05-실무/01_LLM 최적화 판단 기준.md",
+    "LLM/04-에이전트/무제.md",
+    "LLM/04-에이전트/01_Function Calling.md",
+    "LLM/03-RAG/03_OpenAI Assistants API.md",
+    "LLM/03-RAG/02_RAG (Retrieval-Augmented Generation).md",
+    "LLM/03-RAG/01_임베딩 (Embedding).md",
+    "LLM/02-파인튜닝/03_QLoRA (Quantized LoRA).md",
+    "LLM/02-파인튜닝/02_LoRA (Low-Rank Adaptation).md",
+    "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
     "LLM/00_LLM.md",
+    "LLM/무제 3",
+    "LLM/05-실무",
+    "LLM/04-에이전트",
+    "LLM/03-RAG",
+    "LLM/01_개념기초/04_Temperature.md",
+    "LLM/02-파인튜닝",
+    "LLM/01_개념기초/03_In-context Learning.md",
+    "LLM/01_개념기초/02_토큰화 (Tokenization).md",
+    "LLM/01_개념기초/01_LLM이란.md",
     "LLM/06_조합 방법.md",
     "LLM/04_RAG.md",
     "LLM/02_토큰화.md",
@@ -200,29 +218,11 @@
     "Pasted image 20251215114031.png",
     "Pasted image 20251215114008.png",
     "업무/Eborder/PNR/push/Push 방식.md",
-    "업무/Eborder/PNR/pull/Pull 방식.md",
-    "업무/Eborder/E-border 시스템.md",
-    "업무/Eborder/API/03.메시지 타입.md",
-    "업무/Eborder/API/02.AirlineMessageHandler.md",
-    "업무/Eborder/API/01.IAPI 개요.md",
-    "업무/Eborder/API/MATIP,MQ/MQ (Message Queue).md",
-    "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
     "업무/Eborder/API/MATIP,MQ",
-    "업무/Eborder/PNR/PNR 개요.md",
     "업무/Eborder/PNR/push/무제",
-    "업무/service_monitor_alert-notifier/무제 1.md",
     "업무/Eborder/API",
     "업무/Eborder",
-    "업무/service_monitor_alert-notifier/무제.md",
-    "업무/pnr/무제.md",
-    "업무/Eborder/PNR/pull",
-    "업무/Eborder/PNR/push",
-    "업무/Eborder/PNR",
-    "HA/Keepalived.md",
-    "무제/2025-11-12.md",
-    "무제",
     "Pasted image 20251106154530.png",
-    "무제.base",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "git/Pasted image 20250611100724.png"
