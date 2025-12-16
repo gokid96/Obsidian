@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/01_개념기초/04_Temperature.md",
+                "file": "LLM/00_요약.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04_Temperature"
+              "title": "00_요약"
             }
           }
         ]
@@ -183,8 +183,9 @@
   },
   "active": "aeb3684e9018b552",
   "lastOpenFiles": [
-    "LLM/01_개념기초/03_In-context Learning.md",
+    "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
     "LLM/01_개념기초/04_Temperature.md",
+    "LLM/01_개념기초/03_In-context Learning.md",
     "LLM/01_개념기초/02_토큰화 (Tokenization).md",
     "LLM/00_요약.md",
     "LLM/01_개념기초/01_LLM이란.md",
@@ -202,7 +203,6 @@
     "LLM/03-RAG/01_임베딩 (Embedding).md",
     "LLM/02-파인튜닝/03_QLoRA (Quantized LoRA).md",
     "LLM/02-파인튜닝/02_LoRA (Low-Rank Adaptation).md",
-    "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
     "LLM/00_LLM.md",
     "LLM/무제 3",
     "LLM/05-실무",
