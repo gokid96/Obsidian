@@ -49,12 +49,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "NetWork/02.OSI 7계층 TCP_IP 4계층/데이터 캡슐화 (Encapsulation).md",
+                "file": "NetWork/02.OSI 7계층 TCP_IP 4계층/트러블슈팅 시 계층별 확인.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "데이터 캡슐화 (Encapsulation)"
+              "title": "트러블슈팅 시 계층별 확인"
             }
           }
         ],
@@ -220,8 +220,13 @@
   },
   "active": "8f0c63e4ea2cd5db",
   "lastOpenFiles": [
-    "NetWork/02.OSI 7계층 TCP_IP 4계층/OSI 7계층  TCP IP 4계층.md",
     "NetWork/02.OSI 7계층 TCP_IP 4계층/데이터 캡슐화 (Encapsulation).md",
+    "NetWork/02.OSI 7계층 TCP_IP 4계층/트러블슈팅 시 계층별 확인.md",
+    "NetWork/02.OSI 7계층 TCP_IP 4계층/OSI 7계층  TCP IP 4계층.md",
+    "NetWork/03.로드밸런싱/실무 구성 예시.md",
+    "NetWork/03.로드밸런싱/헬스체크 (Health Check).md",
+    "NetWork/03.로드밸런싱/세션 유지 (Session Persistence  Sticky Session).md",
+    "NetWork/03.로드밸런싱/로드밸런싱.md",
     "NetWork/01.네트워크 기초/LAN, WAN, VLAN, VPN.md",
     "LLM/5080TestServer/fine-tuning/02_unsloth_llama2_korquad.md",
     "LLM/5080TestServer/fine-tuning/현재 모델 확인방법.md",
@@ -248,11 +253,6 @@
     "NetWork/CIDR 표기법.md",
     "NetWork/허브, 스위치, 라우터 차이.md",
     "NetWork/서브넷 마스크 계산.md",
-    "NetWork/방화벽, NAT 개념.md",
-    "NetWork/네트워크 접속이 안될때.md",
-    "NetWork/TCP, UDP 차이.md",
-    "Monitoring/EFK.md",
-    "LLM/03_Fine-tuning.md",
     "git/Pasted image 20250611100724.png",
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
