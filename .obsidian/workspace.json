@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
+                "file": "업무/Eborder/API/00.서비스 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EDIFACT PAXLST 세그먼트 상세 형식"
+              "title": "00.서비스 아키텍쳐"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 283.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -183,6 +183,12 @@
   },
   "active": "05a7ce45ae3043e2",
   "lastOpenFiles": [
+    "업무/Eborder/API/01.IAPI 개요.md",
+    "업무/Eborder/API/02.AirlineMessageHandler.md",
+    "업무/Eborder/API/03.메시지 타입.md",
+    "업무/Eborder/API/MATIP,MQ/MQ (Message Queue).md",
+    "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
+    "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
     "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
     "업무/Eborder/E-border 시스템.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
@@ -205,12 +211,6 @@
     "NetWork/07.IP와 서브넷/04.MAC 주소와 IP 주소 차이.md",
     "NetWork/07.IP와 서브넷/03.CIDR 표기법.md",
     "NetWork/07.IP와 서브넷/02.서브넷 마스크 계산.md",
-    "NetWork/07.IP와 서브넷/01.IP 주소 구조 (IPv4, IPv6).md",
-    "NetWork/06.NAT와 방화벽/03.VPN 터널링.md",
-    "NetWork/06.NAT와 방화벽/02.방화벽 기본 원리.md",
-    "NetWork/06.NAT와 방화벽/01.NAT 개념과 종류.md",
-    "NetWork/05.주요 프로토콜/03.DNS 동작 원리.md",
-    "NetWork/04.TCP UDP/01.TCP vs UDP 차이.md",
     "NetWork/03.로드밸런싱",
     "NetWork/06.NAT와 방화벽",
     "NetWork/05.주요 프로토콜",
