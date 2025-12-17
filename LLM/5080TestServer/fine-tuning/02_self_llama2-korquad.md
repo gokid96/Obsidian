@@ -92,26 +92,17 @@ print(f"생성: {len(samples)}개")
 """
 Llama-2 QLoRA Fine-tuning - Self 버전 (직접 양자화)
 """
+
 import torch
 from datasets import load_dataset
-from transformers import (
-    AutoModelForCausalLM,
-    AutoTokenizer,
-    BitsAndBytesConfig,
-)
+from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
 from peft import LoraConfig, get_peft_model, prepare_model_for_kbit_training
 from trl import SFTTrainer, SFTConfig
 
-# ============================================
-# 설정
-# ============================================
 MODEL_NAME = "TinyPixel/Llama-2-7B-bf16-sharded"
-OUTPUT_DIR = "./llama2-korquad-qlora"
+OUTPUT_DIR = "./llama2_7B_slef_tain_qlora"
 
-# ============================================
-# 4bit 양자화 설정
-# ============================================
-print("⚙️  4bit 양자화 설정...")
+print("설정")
 bnb_config = BitsAndBytesConfig(
     load_in_4bit=True,
     bnb_4bit_quant_type="nf4",
@@ -119,92 +110,55 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_use_double_quant=True,
 )
 
-# ============================================
-# 모델 로드
-# ============================================
-print("🤖 모델 로딩 (4bit 양자화)...")
+print("모델 로딩")
 model = AutoModelForCausalLM.from_pretrained(
-    MODEL_NAME,
-    quantization_config=bnb_config,
-    device_map="auto",
-    trust_remote_code=True,
+    MODEL_NAME, quantization_config=bnb_config, device_map="auto"
 )
-
 model.gradient_checkpointing_enable()
 model = prepare_model_for_kbit_training(model)
 
-# ============================================
-# 토크나이저
-# ============================================
-print("🔤 토크나이저 로딩...")
-tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME, trust_remote_code=True)
+tokenizer = AutoTokenizer.from_pretrained(MODEL_NAME)
 tokenizer.pad_token = tokenizer.eos_token
-tokenizer.padding_side = "right"
 
-# ============================================
-# LoRA 설정
-# ============================================
-print("🔧 LoRA 설정...")
+print("LoRA 설정")
 lora_config = LoraConfig(
-    r=16,
-    lora_alpha=32,
-    lora_dropout=0.05,
-    bias="none",
-    task_type="CAUSAL_LM",
+    r=16, lora_alpha=32, lora_dropout=0.05,
+    bias="none", task_type="CAUSAL_LM",
     target_modules=["q_proj", "k_proj", "v_proj", "o_proj"],
 )
-
 model = get_peft_model(model, lora_config)
-print("📊 학습 파라미터:")
 model.print_trainable_parameters()
 
-# ============================================
-# 데이터셋 로드
-# ============================================
-print("📦 데이터셋 로딩...")
-dataset = load_dataset("json", data_files="korquad_tutorial.json", split="train")
-print(f"  데이터 수: {len(dataset)}")
+print("데이터 로딩")
+dataset = load_dataset("json", data_files="korquad_train.json", split="train")
 
-# ============================================
-# SFTConfig
-# ============================================
 sft_config = SFTConfig(
     output_dir=OUTPUT_DIR,
-    num_train_epochs=100,
+    num_train_epochs=100,  # 튜토리얼과 동일
     per_device_train_batch_size=4,
-    gradient_accumulation_steps=4,
+    gradient_accumulation_steps=1,
     learning_rate=2e-4,
     fp16=True,
-    logging_steps=10,
+    logging_steps=50,
     save_strategy="epoch",
+    save_total_limit=2,
     optim="paged_adamw_8bit",
-    warmup_ratio=0.03,
-    lr_scheduler_type="cosine",
-    report_to="none",
-    max_seq_length=512,
+    max_length=256,
     dataset_text_field="text",
+    report_to="none",
 )
 
-# ============================================
-# SFTTrainer
-# ============================================
-print("🚀 학습 시작!")
+print("학습 시작")
 trainer = SFTTrainer(
-    model=model,
-    args=sft_config,
-    train_dataset=dataset,
-    processing_class=tokenizer,
+    model=model, args=sft_config,
+    train_dataset=dataset, processing_class=tokenizer,
 )
-
 trainer.train()
 
-# ============================================
-# 저장
-# ============================================
-print("💾 모델 저장...")
+print("저장")
 trainer.save_model(f"{OUTPUT_DIR}/final")
 tokenizer.save_pretrained(f"{OUTPUT_DIR}/final")
-print(f"✅ 완료! 저장 위치: {OUTPUT_DIR}/final")
+print("완료")
 ```
 
 ---
@@ -221,13 +175,13 @@ bnb_config = BitsAndBytesConfig(
     bnb_4bit_compute_dtype=torch.float16,
 )
 
-print("🤖 모델 로딩...")
+print("모델 로딩")
 base_model = AutoModelForCausalLM.from_pretrained(
     "TinyPixel/Llama-2-7B-bf16-sharded",
     quantization_config=bnb_config,
     device_map="auto",
 )
-model = PeftModel.from_pretrained(base_model, "./llama2-korquad-qlora/final")
+model = PeftModel.from_pretrained(base_model, "./llama2_7B_slef_tain_qlora/final")
 tokenizer = AutoTokenizer.from_pretrained("TinyPixel/Llama-2-7B-bf16-sharded")
 
 prompt_template = "Below is an instruction that describes a task. Write a response that appropriately completes the request. ### Instruction: %s ### Response: "
@@ -238,6 +192,7 @@ def gen(question):
     outputs = model.generate(**inputs, max_new_tokens=128, do_sample=False)
     return tokenizer.decode(outputs[0], skip_special_tokens=True).replace(prompt, "")
 
+# 튜토리얼과 동일한 20개 테스트
 questions = [
     ("임종석이 여의도 농민 폭력 시위를 주도한 혐의로 지명수배 된 날은?", "1989년 2월 15일"),
     ("1989년 6월 30일 평양축전에 대표로 파견 된 인물은?", "임수경"),
@@ -247,7 +202,7 @@ questions = [
 ]
 
 print("\n" + "="*60)
-print("📝 테스트 (5개 샘플)")
+print("튜토리얼 방식 테스트 (5개 샘플)")
 print("="*60)
 
 correct = 0

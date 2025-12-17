@@ -66,7 +66,7 @@ OUTPUT_DIR = "./llama3-korquad-qlora"
 # ============================================
 # 모델 + 토크나이저 로드 (Unsloth)
 # ============================================
-print("🤖 모델 로딩...")
+print("모델 로딩")
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=MODEL_NAME,
     max_length=2048,
@@ -76,7 +76,7 @@ model, tokenizer = FastLanguageModel.from_pretrained(
 # ============================================
 # LoRA 설정 (Unsloth)
 # ============================================
-print("🔧 LoRA 설정...")
+print("LoRA 설정")
 model = FastLanguageModel.get_peft_model(
     model,
     r=16,
@@ -88,13 +88,13 @@ model = FastLanguageModel.get_peft_model(
     use_gradient_checkpointing="unsloth",
 )
 
-print("📊 학습 파라미터:")
+print("학습 파라미터:")
 model.print_trainable_parameters()
 
 # ============================================
 # 데이터셋 로드
 # ============================================
-print("📦 데이터셋 로딩...")
+print("데이터셋 로딩")
 dataset = load_dataset("json", data_files="korquad_tutorial.json", split="train")
 print(f"  데이터 수: {len(dataset)}")
 
@@ -121,7 +121,7 @@ sft_config = SFTConfig(
 # ============================================
 # SFTTrainer
 # ============================================
-print("🚀 학습 시작!")
+print("학습 시작")
 trainer = SFTTrainer(
     model=model,
     args=sft_config,
@@ -134,10 +134,10 @@ trainer.train()
 # ============================================
 # 저장
 # ============================================
-print("💾 모델 저장...")
+print("모델 저장")
 trainer.save_model(f"{OUTPUT_DIR}/final")
 tokenizer.save_pretrained(f"{OUTPUT_DIR}/final")
-print(f"✅ 완료! 저장 위치: {OUTPUT_DIR}/final")
+print(f"완료 저장 위치: {OUTPUT_DIR}/final")
 ```
 
 ---
@@ -146,7 +146,7 @@ print(f"✅ 완료! 저장 위치: {OUTPUT_DIR}/final")
 ```python
 from unsloth import FastLanguageModel
 
-print("🤖 모델 로딩...")
+print("모델 로딩")
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name="./llama3-korquad-qlora/final",
     max_length=2048,
@@ -171,7 +171,7 @@ questions = [
 ]
 
 print("\n" + "="*60)
-print("📝 테스트 (5개 샘플)")
+print("테스트 (5개 샘플)")
 print("="*60)
 
 correct = 0
