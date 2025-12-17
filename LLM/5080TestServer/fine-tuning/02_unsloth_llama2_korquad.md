@@ -69,7 +69,7 @@ OUTPUT_DIR = "./llama3-korquad-qlora"
 print("🤖 모델 로딩...")
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name=MODEL_NAME,
-    max_seq_length=2048,
+    max_length=2048,
     load_in_4bit=True,
 )
 
@@ -114,7 +114,7 @@ sft_config = SFTConfig(
     warmup_ratio=0.03,
     lr_scheduler_type="cosine",
     report_to="none",
-    max_seq_length=2048,
+    max_length=2048,
     dataset_text_field="text",
 )
 
@@ -149,7 +149,7 @@ from unsloth import FastLanguageModel
 print("🤖 모델 로딩...")
 model, tokenizer = FastLanguageModel.from_pretrained(
     model_name="./llama3-korquad-qlora/final",
-    max_seq_length=2048,
+    max_length=2048,
     load_in_4bit=True,
 )
 FastLanguageModel.for_inference(model)
