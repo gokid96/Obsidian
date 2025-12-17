@@ -49,12 +49,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "e-border-monitoring-web 프로젝트 분석 요약.md",
+                "file": "NetWork/01.네트워크 기초/네트워크 접속이 안될때 (트러블슈팅).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "e-border-monitoring-web 프로젝트 분석 요약"
+              "title": "네트워크 접속이 안될때 (트러블슈팅)"
             }
           }
         ],
@@ -218,12 +218,18 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "8f0c63e4ea2cd5db",
   "lastOpenFiles": [
-    "NetWork/OSI 7계층_TCP IP 4계층",
-    "NetWork/네트워크 기초",
-    "NetWork/subnet.md",
     "e-border-monitoring-web 프로젝트 분석 요약.md",
+    "NetWork/01.네트워크 기초/네트워크 접속이 안될때 (트러블슈팅).md",
+    "NetWork/03.로드밸런싱",
+    "NetWork/06.NAT와 방화벽",
+    "NetWork/05.주요 프로토콜",
+    "NetWork/04.TCP UDP",
+    "NetWork/07.IP와 서브넷",
+    "NetWork/02.OSI 7계층 TCP_IP 4계층",
+    "NetWork/01.네트워크 기초",
+    "NetWork/subnet.md",
     "NetWork/MAC 주소와 IP 주소 차이.md",
     "NetWork/OSI 7계층, TCP,IP 4계층.md",
     "NetWork/LAN, WAN, VLAN, VPN.md",
@@ -255,12 +261,6 @@
     "LLM/5080Test/fine-tuning/무제",
     "LLM/5080TestServer/fine-tuning",
     "LLM/5080TestServer",
-    "LLM/무제 3",
-    "LLM/05-실무",
-    "LLM/04-에이전트",
-    "LLM/03-RAG",
-    "LLM/02-파인튜닝",
-    "LLM/01_개념기초",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png"
   ]
