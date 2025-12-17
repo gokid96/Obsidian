@@ -11,17 +11,64 @@
             "id": "aeb3684e9018b552",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "LLM/5080Test/fine-tuning/02_self_llama2-korquad.md",
-                "mode": "source",
-                "source": false
+                "file": "업무/Eborder/PNR/Pasted image 20251215114222.png"
               },
-              "icon": "lucide-file",
-              "title": "02_self_llama2-korquad"
+              "icon": "lucide-image",
+              "title": "Pasted image 20251215114222"
+            }
+          },
+          {
+            "id": "50ccbf6a069c3f6b",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "업무/Eborder/PNR/Pasted image 20251215114008.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20251215114008"
+            }
+          },
+          {
+            "id": "0f39b98825441068",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "업무/Eborder/PNR/Pasted image 20251215114222.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20251215114222"
+            }
+          },
+          {
+            "id": "8f0c63e4ea2cd5db",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "업무/Eborder/PNR/Pasted image 20251215114031.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20251215114031"
+            }
+          },
+          {
+            "id": "9a24eaa99a6d486f",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "git/Pasted image 20250611100724.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20250611100724"
             }
           }
-        ]
+        ],
+        "currentTab": 4
       }
     ],
     "direction": "vertical"
@@ -181,8 +228,27 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "aeb3684e9018b552",
+  "active": "9a24eaa99a6d486f",
   "lastOpenFiles": [
+    "git/git.md",
+    "AWS/1. EC2 기초.md",
+    "AWS/2. 네트워킹 기초.md",
+    "AWS/3. 세부 설정.md",
+    "업무/service_monitor_alert-notifier/alertmanager설정.md",
+    "AWS/무제.md",
+    "업무/service_monitor_alert-notifier/무제 1.md",
+    "업무/service_monitor_alert-notifier/구조.md",
+    "업무/Eborder/API/03.메시지 타입.md",
+    "업무/Eborder/API/02.AirlineMessageHandler.md",
+    "업무/Eborder/API/01.IAPI 개요.md",
+    "업무/Eborder/API/00.서비스 아키텍쳐.md",
+    "업무/Eborder/E-border 시스템.md",
+    "업무/Eborder/PNR/PNR 개요.md",
+    "업무/Eborder/PNR/PNR - CIQ 수신 확인방법.md",
+    "업무/Eborder/PNR/Pasted image 20251215114222.png",
+    "업무/Eborder/PNR/Pasted image 20251215114031.png",
+    "업무/Eborder/PNR/Pasted image 20251215114008.png",
+    "Pasted image 20251106154530.png",
     "LLM/5080Test/fine-tuning/02_unsloth_llama2_korquad.md",
     "LLM/5080Test/fine-tuning/02_self_llama2-korquad.md",
     "LLM/5080Test/fine-tuning/현재 모델 확인방법.md",
@@ -197,32 +263,13 @@
     "LLM/02-파인튜닝/02_LoRA (Low-Rank Adaptation).md",
     "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
     "LLM/00_요약.md",
-    "LLM/01_개념기초/03_In-context Learning.md",
-    "LLM/01_개념기초/02_토큰화 (Tokenization).md",
-    "LLM/01_개념기초/01_LLM이란.md",
-    "LLM/02_Pre-training.md",
-    "LLM/05_RAG vs Fine-tuning 선택 가이드.md",
-    "LLM/06_조합 방법.md",
-    "LLM/05-실무/03_Moderation API.md",
-    "LLM/05-실무/02_Chain-of-Thought (CoT).md",
-    "LLM/05-실무/01_LLM 최적화 판단 기준.md",
-    "LLM/04-에이전트/무제.md",
-    "LLM/04-에이전트/01_Function Calling.md",
-    "LLM/03-RAG/03_OpenAI Assistants API.md",
-    "LLM/03-RAG/02_RAG (Retrieval-Augmented Generation).md",
-    "LLM/03-RAG/01_임베딩 (Embedding).md",
-    "LLM/00_LLM.md",
     "LLM/무제 3",
     "LLM/05-실무",
     "LLM/04-에이전트",
     "LLM/03-RAG",
     "LLM/02-파인튜닝",
     "LLM/01_개념기초",
-    "Pasted image 20251215114222.png",
-    "Pasted image 20251215114031.png",
-    "Pasted image 20251215114008.png",
     "업무/Eborder/API/MATIP,MQ",
-    "Pasted image 20251106154530.png",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "git/Pasted image 20250611100724.png"
