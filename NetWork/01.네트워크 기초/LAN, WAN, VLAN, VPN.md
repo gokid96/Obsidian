@@ -1,16 +1,16 @@
-### LAN (Local Area Network)
+## LAN (Local Area Network)
 
 - 같은 건물/사무실 내 네트워크
 - 이더넷 케이블, 스위치로 연결
 - 빠른 속도 (1Gbps~)
 
-### WAN (Wide Area Network)
+## WAN (Wide Area Network)
 
 - 지역 간 네트워크 (인터넷, 전용선)
 - ISP를 통해 연결
 - LAN보다 느림, 비용 발생
 
-### VLAN (Virtual LAN)
+## VLAN (Virtual LAN)
 
 - 물리적 연결과 무관하게 논리적으로 네트워크 분리
 - 스위치에서 설정
@@ -23,7 +23,7 @@
 → 서로 직접 통신 불가, 라우터 필요
 ```
 
-### VPN (Virtual Private Network)
+## VPN (Virtual Private Network)
 
 - 공용 네트워크에서 암호화된 터널로 사설 네트워크 구성
 - 종류:
@@ -31,7 +31,7 @@
     - **Remote Access**: 재택근무자 → 회사망
 - 프로토콜: IPSec, OpenVPN, WireGuard
 
-### 실무 예시
+## 구성 예시
 
 ```
 [재택 PC] ---(인터넷/VPN)---> [회사 방화벽] ---> [내부 서버]
