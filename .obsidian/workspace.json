@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/5080TestServer/fine-tuning/02_unsloth_llama2_korquad.md",
+                "file": "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02_unsloth_llama2_korquad"
+              "title": "EDIFACT PAXLST 세그먼트 상세 형식"
             }
           }
         ]
@@ -183,8 +183,13 @@
   },
   "active": "05a7ce45ae3043e2",
   "lastOpenFiles": [
-    "LLM/5080TestServer/fine-tuning/02_self_llama2-korquad.md",
+    "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
+    "업무/Eborder/E-border 시스템.md",
+    "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
+    "LLM/LLM 서비스 예시.md",
     "LLM/5080TestServer/fine-tuning/02_unsloth_llama2_korquad.md",
+    "LLM/5080TestServer/무제.md",
+    "LLM/5080TestServer/fine-tuning/02_self_llama2-korquad.md",
     "LLM/5080TestServer/fine-tuning/현재 모델 확인방법.md",
     "LLM/5080TestServer/fine-tuning/01_폴더 구조.md",
     "LLM/00_요약.md",
@@ -206,11 +211,6 @@
     "NetWork/06.NAT와 방화벽/01.NAT 개념과 종류.md",
     "NetWork/05.주요 프로토콜/03.DNS 동작 원리.md",
     "NetWork/04.TCP UDP/01.TCP vs UDP 차이.md",
-    "NetWork/03.로드밸런싱/03.헬스체크 (Health Check).md",
-    "NetWork/03.로드밸런싱/02.로드밸런싱 알고리즘.md",
-    "NetWork/03.로드밸런싱/세션 유지 (Session Persistence  Sticky Session).md",
-    "NetWork/03.로드밸런싱/01.L4 vs L7 로드밸런서.md",
-    "NetWork/02.OSI 7계층 TCP_IP 4계층/03.계층별 장비와 데이터 단위 (PDU).md",
     "NetWork/03.로드밸런싱",
     "NetWork/06.NAT와 방화벽",
     "NetWork/05.주요 프로토콜",
