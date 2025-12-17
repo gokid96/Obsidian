@@ -61,7 +61,7 @@ from trl import SFTTrainer, SFTConfig
 # 설정
 # ============================================
 MODEL_NAME = "unsloth/Meta-Llama-3.1-8B-bnb-4bit"
-OUTPUT_DIR = "./llama3-korquad-qlora"
+OUTPUT_DIR = "./llama3_8B_4bit_unsloth_train_qlora"
 
 # ============================================
 # 모델 + 토크나이저 로드 (Unsloth)
@@ -95,7 +95,7 @@ model.print_trainable_parameters()
 # 데이터셋 로드
 # ============================================
 print("데이터셋 로딩")
-dataset = load_dataset("json", data_files="korquad_tutorial.json", split="train")
+dataset = load_dataset("json", data_files="korquad_train.json", split="train")
 print(f"  데이터 수: {len(dataset)}")
 
 # ============================================
@@ -107,7 +107,7 @@ sft_config = SFTConfig(
     per_device_train_batch_size=4,
     gradient_accumulation_steps=4,
     learning_rate=2e-4,
-    fp16=True,
+    bf16=True,
     logging_steps=10,
     save_strategy="epoch",
     optim="adamw_8bit",
@@ -148,7 +148,7 @@ from unsloth import FastLanguageModel
 
 print("모델 로딩")
 model, tokenizer = FastLanguageModel.from_pretrained(
-    model_name="./llama3-korquad-qlora/final",
+    model_name="./llama3_8B_4bit_unsloth_train_qlora/final",
     max_length=2048,
     load_in_4bit=True,
 )
@@ -198,6 +198,9 @@ source ~/ai-projects/venv/bin/activate
 python prepare_tutorial_data.py      # 데이터 준비 (이미 했으면 생략)
 python unsloth_train_qlora.py        # 학습
 python unsloth_train_qlora_test.py   # 테스트
+
+
+watch -n 1 nvidia-smi # 
 ```
 
 ---
