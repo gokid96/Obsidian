@@ -181,8 +181,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "aeb3684e9018b552",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "LLM/무제",
     "LLM/02-파인튜닝/03_QLoRA (Quantized LoRA).md",
     "LLM/강의 순서.md",
     "LLM/01_개념기초/04_Temperature.md",
@@ -213,7 +214,6 @@
     "LLM/04_RAG.md",
     "LLM/02_토큰화.md",
     "LLM/01_LLM 개요.md",
-    "토큰화.md",
     "LLM/01_개념기초",
     "Pasted image 20251215114222.png",
     "Pasted image 20251215114031.png",
