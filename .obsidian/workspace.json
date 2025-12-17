@@ -181,11 +181,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "aeb3684e9018b552",
   "lastOpenFiles": [
     "LLM/5080Test/fine-tuning/02_unsloth_llama2_korquad.md",
-    "LLM/5080Test/fine-tuning/현재 모델 확인방법.md",
     "LLM/5080Test/fine-tuning/02_self_llama2-korquad.md",
+    "LLM/5080Test/fine-tuning/현재 모델 확인방법.md",
     "LLM/5080Test/fine-tuning/01_폴더 구조.md",
     "LLM/03_Fine-tuning.md",
     "LLM/5080Test/fine-tuning/무제",
