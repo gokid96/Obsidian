@@ -135,7 +135,7 @@ Below is an instruction that describes a task. Write a response that appropriate
 
 ---
 
-## 2. 학습 (train_tutorial.py) ⭐ 핵심
+## 2. 학습 (train_tutorial.py) 핵심
 
 ```python
 import torch
