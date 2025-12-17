@@ -1,7 +1,15 @@
 
-````markdown
-# ELK Stack 설치 가이드 (WSL/Linux)
+# EFK Stack 설치 가이드 (WSL/Linux)
 
+
+## Logstash vs Filebeat 기술 선택
+
+|         | **Filebeat** | **Logstash**     |
+| ------- | ------------ | ---------------- |
+| **언어**  | Go           | Java (JVM)       |
+| **메모리** | ~50MB        | ~1GB+            |
+| **역할**  | 수집 + 전송      | 수집 + **변환** + 전송 |
+| **설정**  | YAML (단순)    | DSL (강력)         |
 ## 목차
 1. [사전 준비](#1-사전-준비)
 2. [Elasticsearch 설치](#2-elasticsearch-설치)
@@ -856,9 +864,7 @@ ps aux | grep elasticsearch | awk '{print $6/1024 "MB"}'
 
 ---
 
-**설치 완료!** 🎉
+**설치 완료** 
 
-이제 SSH 없이 웹 브라우저에서 모든 로그를 검색할 수 있습니다.
-````
-
+이제 SSH 없이 웹 브라우저에서 모든 로그를 검색
  

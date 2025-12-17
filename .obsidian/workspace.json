@@ -47,28 +47,18 @@
             "id": "8f0c63e4ea2cd5db",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "업무/Eborder/PNR/Pasted image 20251215114031.png"
+                "file": "e-border-monitoring-web 프로젝트 분석 요약.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251215114031"
-            }
-          },
-          {
-            "id": "9a24eaa99a6d486f",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "git/Pasted image 20250611100724.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20250611100724"
+              "icon": "lucide-file",
+              "title": "e-border-monitoring-web 프로젝트 분석 요약"
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -228,50 +218,50 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9a24eaa99a6d486f",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "NetWork/OSI 7계층_TCP IP 4계층",
+    "NetWork/네트워크 기초",
+    "NetWork/subnet.md",
+    "e-border-monitoring-web 프로젝트 분석 요약.md",
+    "NetWork/MAC 주소와 IP 주소 차이.md",
+    "NetWork/OSI 7계층, TCP,IP 4계층.md",
+    "NetWork/LAN, WAN, VLAN, VPN.md",
+    "NetWork/IPv4 IPv6 구조.md",
+    "NetWork/IP 주소와 서브넷.md",
+    "NetWork/IP.md",
+    "NetWork/HTTP HTTPS, FTP, SSH, DNS 등 주요 프로토콜.md",
+    "NetWork/CIDR 표기법.md",
+    "NetWork/허브, 스위치, 라우터 차이.md",
+    "NetWork/서브넷 마스크 계산.md",
+    "NetWork/방화벽, NAT 개념.md",
+    "NetWork/네트워크 접속이 안될때.md",
+    "NetWork/TCP, UDP 차이.md",
+    "Monitoring/EFK.md",
+    "LLM/학습 순서.md",
+    "LLM/03_Fine-tuning.md",
+    "Devops/HA/Keepalived.md",
+    "git/Pasted image 20250611100724.png",
     "git/git.md",
     "AWS/1. EC2 기초.md",
     "AWS/2. 네트워킹 기초.md",
     "AWS/3. 세부 설정.md",
     "업무/service_monitor_alert-notifier/alertmanager설정.md",
     "AWS/무제.md",
-    "업무/service_monitor_alert-notifier/무제 1.md",
-    "업무/service_monitor_alert-notifier/구조.md",
-    "업무/Eborder/API/03.메시지 타입.md",
-    "업무/Eborder/API/02.AirlineMessageHandler.md",
-    "업무/Eborder/API/01.IAPI 개요.md",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
-    "업무/Eborder/E-border 시스템.md",
-    "업무/Eborder/PNR/PNR 개요.md",
-    "업무/Eborder/PNR/PNR - CIQ 수신 확인방법.md",
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
     "업무/Eborder/PNR/Pasted image 20251215114008.png",
     "Pasted image 20251106154530.png",
-    "LLM/5080Test/fine-tuning/02_unsloth_llama2_korquad.md",
-    "LLM/5080Test/fine-tuning/02_self_llama2-korquad.md",
-    "LLM/5080Test/fine-tuning/현재 모델 확인방법.md",
-    "LLM/5080Test/fine-tuning/01_폴더 구조.md",
-    "LLM/03_Fine-tuning.md",
     "LLM/5080Test/fine-tuning/무제",
-    "LLM/5080Test/fine-tuning",
-    "LLM/강의 순서.md",
-    "LLM/5080Test",
-    "LLM/02-파인튜닝/03_QLoRA (Quantized LoRA).md",
-    "LLM/01_개념기초/04_Temperature.md",
-    "LLM/02-파인튜닝/02_LoRA (Low-Rank Adaptation).md",
-    "LLM/02-파인튜닝/01_PEFT (Parameter-Efficient Fine-Tuning).md",
-    "LLM/00_요약.md",
+    "LLM/5080TestServer/fine-tuning",
+    "LLM/5080TestServer",
     "LLM/무제 3",
     "LLM/05-실무",
     "LLM/04-에이전트",
     "LLM/03-RAG",
     "LLM/02-파인튜닝",
     "LLM/01_개념기초",
-    "업무/Eborder/API/MATIP,MQ",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
-    "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
-    "git/Pasted image 20250611100724.png"
+    "Java/Project/Astarchia/images/Pasted image 20251106154231.png"
   ]
 }
