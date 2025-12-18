@@ -181,8 +181,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "05a7ce45ae3043e2",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "codingtest/backjoon",
+    "codingtest",
     "LLM/5080TestServer/RAG/01.임베딩 & 시맨틱 검색.md",
     "LLM/03-RAG/02_RAG (Retrieval-Augmented Generation).md",
     "LLM/03-RAG/01_임베딩 (Embedding).md",
@@ -210,7 +212,6 @@
     "NetWork/05.주요 프로토콜/02.FTP SSH.md",
     "NetWork/05.주요 프로토콜/04.이메일 프로토콜 (SMTP, POP3, IMAP).md",
     "NetWork/04.TCP UDP/03.연결 상태와 트러블슈팅.md",
-    "NetWork/04.TCP UDP/02.TCP 3-Way Handshake 4-Way Termination.md",
     "NetWork/03.로드밸런싱",
     "NetWork/06.NAT와 방화벽",
     "NetWork/05.주요 프로토콜",
@@ -223,7 +224,6 @@
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
     "업무/Eborder/PNR/Pasted image 20251215114008.png",
     "LLM/5080Test/fine-tuning/무제",
-    "LLM/5080TestServer/fine-tuning",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png"
   ]
