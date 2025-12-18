@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "LLM/LLM 서비스 예시.md",
+                "file": "Algorithm/codingtest/baekjoon/2775 부녀회장이 될테야.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "LLM 서비스 예시"
+              "title": "2775 부녀회장이 될테야"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 283.5
+    "width": 200
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -183,8 +183,11 @@
   },
   "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
-    "codingtest/backjoon",
-    "codingtest",
+    "Algorithm",
+    "LLM/LLM 서비스 예시.md",
+    "Algorithm/codingtest/baekjoon/2775 부녀회장이 될테야.md",
+    "Algorithm/codingtest/baekjoon",
+    "Algorithm/codingtest",
     "LLM/5080TestServer/RAG/01.임베딩 & 시맨틱 검색.md",
     "LLM/03-RAG/02_RAG (Retrieval-Augmented Generation).md",
     "LLM/03-RAG/01_임베딩 (Embedding).md",
@@ -201,7 +204,6 @@
     "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
     "업무/Eborder/E-border 시스템.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
-    "LLM/LLM 서비스 예시.md",
     "LLM/5080TestServer/무제.md",
     "LLM/5080TestServer/fine-tuning/현재 모델 확인방법.md",
     "LLM/00_요약.md",
@@ -211,7 +213,6 @@
     "NetWork/05.주요 프로토콜/01.HTTP HTTPS.md",
     "NetWork/05.주요 프로토콜/02.FTP SSH.md",
     "NetWork/05.주요 프로토콜/04.이메일 프로토콜 (SMTP, POP3, IMAP).md",
-    "NetWork/04.TCP UDP/03.연결 상태와 트러블슈팅.md",
     "NetWork/03.로드밸런싱",
     "NetWork/06.NAT와 방화벽",
     "NetWork/05.주요 프로토콜",
@@ -223,7 +224,6 @@
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
     "업무/Eborder/PNR/Pasted image 20251215114008.png",
-    "LLM/5080Test/fine-tuning/무제",
     "Java/지식/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png"
   ]
