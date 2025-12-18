@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algorithm/04_누적합/예제/2775_부녀회장이 될테야.md",
+                "file": "Algorithm/04_누적합/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2775_부녀회장이 될테야"
+              "title": "무제"
             }
           },
           {
@@ -195,8 +195,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "243b9c4804f05dbe",
   "lastOpenFiles": [
+    "Algorithm/03_정렬/무제.md",
+    "Algorithm/04_누적합/무제.md",
+    "Algorithm/02_완전탐색/README.md.md",
+    "Algorithm/01_시간복잡도/README.md.md",
+    "Algorithm/04_누적합/예제/2775_부녀회장이 될테야.md",
+    "Algorithm/11_자료구조/큐/예제",
+    "Algorithm/11_자료구조/스택/예제",
     "Algorithm/11_자료구조/예제",
     "Algorithm/10_그리디/예제",
     "Algorithm/09_DP/예제",
@@ -205,12 +212,8 @@
     "Algorithm/06_이분탐색/예제",
     "Algorithm/05_투포인터/예제",
     "Algorithm/03_정렬/예제",
-    "Algorithm/02_완전탐색/예제",
     "Algorithm/codingtest/baekjoon/2775.md",
-    "Algorithm/04_누적합/예제/2775_부녀회장이 될테야.md",
     "04_누적합/예제/2775_부녀회장.md",
-    "04_누적합/예제",
-    "04_누적합",
     "LLM/LLM 서비스 예시.md",
     "LLM/5080TestServer/RAG/01.임베딩 & 시맨틱 검색.md",
     "LLM/03-RAG/02_RAG (Retrieval-Augmented Generation).md",
@@ -230,10 +233,7 @@
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "LLM/5080TestServer/무제.md",
     "LLM/5080TestServer/fine-tuning/현재 모델 확인방법.md",
-    "LLM/00_요약.md",
-    "LLM/학습 순서.md",
     "Java/Pasted image 20251106154530.png",
-    "NetWork/05.주요 프로토콜/01.HTTP HTTPS.md",
     "git/Pasted image 20250611100724.png",
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
