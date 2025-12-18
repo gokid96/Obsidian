@@ -4,35 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "33572a47269e16b5",
+        "id": "dd4f7e2722c5d451",
         "type": "tabs",
         "children": [
           {
-            "id": "243b9c4804f05dbe",
+            "id": "7a436a006895e0cd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algorithm/01_시간복잡도/README.md.md",
+                "file": "Algorithm/02_완전탐색/README.md.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "README.md"
-            }
-          },
-          {
-            "id": "a58819198ab8e767",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Algorithm/codingtest/baekjoon/2775.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "2775"
             }
           }
         ]
@@ -195,12 +181,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "243b9c4804f05dbe",
+  "active": "7a436a006895e0cd",
   "lastOpenFiles": [
     "Algorithm/11_자료구조/큐/README.md.md",
     "Algorithm/11_자료구조/스택/README.md.md",
     "Algorithm/04_누적합/README.md.md",
     "Algorithm/03_정렬/README.md.md",
+    "Algorithm/codingtest/baekjoon/2775.md",
     "Algorithm/01_시간복잡도/README.md.md",
     "Algorithm/02_완전탐색/README.md.md",
     "Algorithm/04_누적합/예제/2775_부녀회장이 될테야.md",
@@ -214,7 +201,6 @@
     "Algorithm/06_이분탐색/예제",
     "Algorithm/05_투포인터/예제",
     "Algorithm/03_정렬/예제",
-    "Algorithm/codingtest/baekjoon/2775.md",
     "04_누적합/예제/2775_부녀회장.md",
     "LLM/LLM 서비스 예시.md",
     "LLM/5080TestServer/RAG/01.임베딩 & 시맨틱 검색.md",
