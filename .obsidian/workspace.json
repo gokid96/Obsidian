@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algorithm/04_누적합/무제.md",
+                "file": "Algorithm/02_완전탐색/README.md.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "README.md"
             }
           },
           {
@@ -197,10 +197,12 @@
   },
   "active": "243b9c4804f05dbe",
   "lastOpenFiles": [
-    "Algorithm/03_정렬/무제.md",
-    "Algorithm/04_누적합/무제.md",
-    "Algorithm/02_완전탐색/README.md.md",
     "Algorithm/01_시간복잡도/README.md.md",
+    "Algorithm/11_자료구조/큐/README.md.md",
+    "Algorithm/11_자료구조/스택/README.md.md",
+    "Algorithm/03_정렬/README.md.md",
+    "Algorithm/04_누적합/README.md.md",
+    "Algorithm/02_완전탐색/README.md.md",
     "Algorithm/04_누적합/예제/2775_부녀회장이 될테야.md",
     "Algorithm/11_자료구조/큐/예제",
     "Algorithm/11_자료구조/스택/예제",
@@ -231,8 +233,6 @@
     "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
     "업무/Eborder/E-border 시스템.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
-    "LLM/5080TestServer/무제.md",
-    "LLM/5080TestServer/fine-tuning/현재 모델 확인방법.md",
     "Java/Pasted image 20251106154530.png",
     "git/Pasted image 20250611100724.png",
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
