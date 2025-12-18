@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Algorithm/02_완전탐색/README.md.md",
+                "file": "Algorithm/01_시간복잡도/README.md.md",
                 "mode": "source",
                 "source": false
               },
@@ -183,13 +183,13 @@
   },
   "active": "7a436a006895e0cd",
   "lastOpenFiles": [
+    "Algorithm/02_완전탐색/README.md.md",
     "Algorithm/11_자료구조/큐/README.md.md",
     "Algorithm/11_자료구조/스택/README.md.md",
     "Algorithm/04_누적합/README.md.md",
     "Algorithm/03_정렬/README.md.md",
     "Algorithm/codingtest/baekjoon/2775.md",
     "Algorithm/01_시간복잡도/README.md.md",
-    "Algorithm/02_완전탐색/README.md.md",
     "Algorithm/04_누적합/예제/2775_부녀회장이 될테야.md",
     "Algorithm/11_자료구조/큐/예제",
     "Algorithm/11_자료구조/스택/예제",
