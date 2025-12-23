@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/기본/01-기초문법/01.변수와타입/03.참조 타입 (Reference Type).md",
+                "file": "Java/기본/01-기초문법/03.제어문/분기문 - break, continue, return.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03.참조 타입 (Reference Type)"
+              "title": "분기문 - break, continue, return"
             }
           }
         ]
@@ -183,8 +183,21 @@
   },
   "active": "b3bcbfae02795053",
   "lastOpenFiles": [
-    "Java/기본/01-기초문법/01.변수와타입/04.타입 변환 (Type Conversion).md",
+    "Java/기본/01-기초문법/03.제어문/반복문 - while,do-while.md",
+    "Java/기본/01-기초문법/03.제어문/반복문 - for.md",
+    "Java/기본/01-기초문법/03.제어문/조건문 - switch.md",
+    "Java/기본/01-기초문법/03.제어문/조건문 - if.md",
+    "Java/기본/01-기초문법/03.제어문/분기문 - break, continue, return.md",
+    "Java/기본/01-기초문법/02.연산자/03.논리 연산자 (Logical Operators).md",
+    "Java/기본/01-기초문법/02.연산자/02.비교 연산자 (Comparison Operators).md",
+    "Java/기본/01-기초문법/02.연산자/01.산술 연산자 (Arithmetic Operators).md",
+    "Java/기본/01-기초문법/02.연산자/07.연산자 우선순위 (Operator Precedence).md",
+    "Java/기본/01-기초문법/02.연산자/무제.md",
+    "Java/기본/01-기초문법/02.연산자/06.삼항 연산자 (Ternary Operator).md",
+    "Java/기본/01-기초문법/02.연산자/05.비트 연산자 (Bitwise Operators).md",
+    "Java/기본/01-기초문법/02.연산자/04.대입 연산자 (Assignment Operators).md",
     "Java/기본/01-기초문법/01.변수와타입/03.참조 타입 (Reference Type).md",
+    "Java/기본/01-기초문법/01.변수와타입/04.타입 변환 (Type Conversion).md",
     "Java/기본/01-기초문법/01.변수와타입/02.기본 타입 (Primitive Type).md",
     "Java/기본/01-기초문법/01.변수와타입/01.변수 (Variable).md",
     "Java/기본/01-기초문법/01.변수와타입/README.md.md",
@@ -207,19 +220,6 @@
     "Java/Project/Pasted image 20251106154530.png",
     "Java/Spring/Spring/기본/02. JPQL.md",
     "Java/Spring/Spring/기본/01.DI.md",
-    "Java/Spring/Spring/기본/0. 스프링 기본 흐름.md",
-    "동시성/무제 1.md",
-    "동시성/무제.md",
-    "Devops/HA/PostgreSQL HA 구성.md",
-    "Devops/HA/Keepalived.md",
-    "Devops/Ansible/Ansible.md",
-    "Devops/Ansible/Ansible PlayBook.md",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
-    "업무/Eborder/E-border 시스템.md",
-    "Algorithm/15_수학/예제/2869_달팽이는 올라가고 싶다.md",
-    "Java/Spring/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
-    "Java/Spring/Spring/동시성/1. 낙관적 락 (Optimistic Lock).md",
-    "Algorithm/03_정렬/README.md.md",
     "git/Pasted image 20250611100724.png",
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
