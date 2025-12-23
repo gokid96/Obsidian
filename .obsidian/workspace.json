@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f6cde0f38321ed19",
+        "id": "12077e9f1ca39f3c",
         "type": "tabs",
         "children": [
           {
-            "id": "2f366f37125ab6da",
+            "id": "640b70a7c2819168",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "03.옵셔널-01.Optional"
+              "title": "새 탭"
             }
           }
         ]
@@ -113,12 +109,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
+                "file": "Java/기본/06-동시성/04.동시성컬렉션/동시성 컬렉션 (Concurrent Collections).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "03.옵셔널-01.Optional 의 나가는 링크"
+              "title": "동시성 컬렉션 (Concurrent Collections) 의 나가는 링크"
             }
           },
           {
@@ -181,12 +177,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f366f37125ab6da",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "Java/기본/06-동시성/03.락/Lock 인터페이스.md",
+    "Java/기본/06-동시성/04.동시성컬렉션/동시성 컬렉션 (Concurrent Collections).md",
+    "Java/기본/06-동시성/02.동기화/동기화 (Synchronization).md",
+    "Java/기본/06-동시성/05.실행자/실행자 프레임워크 (Executor Framework).md",
+    "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
+    "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
     "Java/기본/05-함수형/01.람다/01.람다-01.람다표현식.md",
     "Java/기본/05-함수형/02.스트림/02.스트림-01.스트림API.md",
     "Java/기본/04-컬렉션/02.셋/01.HashSet.md",
-    "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
     "Java/기본/05-함수형/03옵셔널-01.Optional.md",
     "Java/기본/05-함수형/02스트림-01.스트림API.md",
     "Java/기본/05-함수형/01람다-01.람다표현식.md",
@@ -204,11 +205,6 @@
     "Java/기본/04-컬렉션/03.LinkedList.md",
     "Java/기본/04-컬렉션/02.ArrayList.md",
     "Java/기본/04-컬렉션/01.컬렉션 개요.md",
-    "Java/기본/04-컬렉션/01.HashSet.md",
-    "Java/기본/04-컬렉션/01.HashMap.md",
-    "Java/기본/03-자바핵심/03.제네릭/01.제네릭.md",
-    "Java/기본/03-자바핵심/01.문자열/02.StringBuilder.md",
-    "Java/기본/03-자바핵심/01.문자열/01.String 클래스.md",
     "Java/기본/09-실습/02.디자인패턴",
     "Java/기본/09-실습/03.미니프로젝트",
     "Java/기본/09-실습/01.알고리즘",
