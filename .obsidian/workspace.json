@@ -11,14 +11,10 @@
             "id": "b3bcbfae02795053",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/기본/01-기초문법/01.변수와타입/무제.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "새 탭"
             }
           }
         ]
@@ -181,7 +177,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b3bcbfae02795053",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
     "Java/기본/01-기초문법/01.변수와타입/README.md.md",
     "Java/기본/01-기초문법/01.변수와타입/무제.md",
