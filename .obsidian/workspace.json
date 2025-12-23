@@ -11,14 +11,14 @@
             "id": "01ca037b9d54fa3f",
             "type": "leaf",
             "state": {
-              "type": "split-diff-view",
+              "type": "markdown",
               "state": {
-                "aFile": "java/기본/05-함수형/03.옵셔널/01.Optional.md",
-                "bFile": "java/기본/05-함수형/03.옵셔널/01.Optional.md",
-                "aRef": ""
+                "file": "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "diff",
-              "title": "Diff: 01.Optional"
+              "icon": "lucide-file",
+              "title": "스레드 기초 (Thread)"
             }
           }
         ]
@@ -113,11 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "나가는 링크"
+              "title": "스레드 기초 (Thread) 의 나가는 링크"
             }
           },
           {
