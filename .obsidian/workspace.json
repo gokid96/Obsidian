@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/기본/03-자바핵심/04.열거형/01.열거형.md",
+                "file": "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.열거형"
+              "title": "03.옵셔널-01.Optional"
             }
           }
         ]
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "환영합니다!.md",
+                "file": "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "환영합니다! 의 나가는 링크"
+              "title": "03.옵셔널-01.Optional 의 나가는 링크"
             }
           },
           {
@@ -181,34 +181,34 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "2f366f37125ab6da",
   "lastOpenFiles": [
+    "Java/기본/05-함수형/01.람다/01.람다-01.람다표현식.md",
+    "Java/기본/05-함수형/02.스트림/02.스트림-01.스트림API.md",
+    "Java/기본/04-컬렉션/02.셋/01.HashSet.md",
+    "Java/기본/05-함수형/03.옵셔널/03.옵셔널-01.Optional.md",
+    "Java/기본/05-함수형/03옵셔널-01.Optional.md",
+    "Java/기본/05-함수형/02스트림-01.스트림API.md",
+    "Java/기본/05-함수형/01람다-01.람다표현식.md",
+    "Java/기본/04-컬렉션/04.큐/01.Queue & Deque.md",
+    "Java/기본/04-컬렉션/03.맵/02.TreeMap.md",
+    "Java/기본/04-컬렉션/03.맵/01.HashMap.md",
+    "Java/기본/04-컬렉션/02.셋/02.TreeSet.md",
     "Java/기본/04-컬렉션/01.리스트/03.LinkedList.md",
     "Java/기본/04-컬렉션/01.리스트/02.ArrayList.md",
     "Java/기본/04-컬렉션/01.리스트/01.컬렉션 개요.md",
-    "Java/기본/04-컬렉션/03.LinkedList.md",
-    "Java/기본/04-컬렉션/02.TreeSet.md",
+    "Java/기본/04-컬렉션/04.큐/01.Queue와 Deque.md",
     "Java/기본/04-컬렉션/02.TreeMap.md",
+    "Java/기본/04-컬렉션/02.TreeSet.md",
+    "Java/기본/03-자바핵심/04.열거형/01.열거형.md",
+    "Java/기본/04-컬렉션/03.LinkedList.md",
     "Java/기본/04-컬렉션/02.ArrayList.md",
     "Java/기본/04-컬렉션/01.컬렉션 개요.md",
-    "Java/기본/04-컬렉션/01.Queue와 Deque.md",
     "Java/기본/04-컬렉션/01.HashSet.md",
     "Java/기본/04-컬렉션/01.HashMap.md",
     "Java/기본/03-자바핵심/03.제네릭/01.제네릭.md",
     "Java/기본/03-자바핵심/01.문자열/02.StringBuilder.md",
     "Java/기본/03-자바핵심/01.문자열/01.String 클래스.md",
-    "Java/기본/03-자바핵심/02.예외처리/01.예외 처리.md",
-    "Java/기본/02-객체지향/05.캡슐화/01.캡슐화 (Encapsulation).md",
-    "Java/기본/03-자바핵심/05.내부클래스/01.내부 클래스.md",
-    "Java/기본/03-자바핵심/04.열거형/01.열거형.md",
-    "Java/기본/02-객체지향/01.클래스와객체/05.접근 제한자 (Access Modifier).md",
-    "Java/기본/02-객체지향/01.클래스와객체/01.클래스와 객체 (Class & Object).md",
-    "Java/기본/02-객체지향/01.클래스와객체/03.생성자 (Constructor).md",
-    "Java/기본/02-객체지향/01.클래스와객체/02.필드 (Field).md",
-    "Java/기본/02-객체지향/04.추상화/02.추상화 - 인터페이스 (Interface).md",
-    "Java/기본/02-객체지향/04.추상화/01.추상화 - 추상 클래스 (Abstract Class).md",
-    "Java/기본/02-객체지향/03.다형성/01.다형성 (Polymorphism).md",
-    "Java/기본/02-객체지향/02.상속/01.상속 (Inheritance).md",
     "Java/기본/09-실습/02.디자인패턴",
     "Java/기본/09-실습/03.미니프로젝트",
     "Java/기본/09-실습/01.알고리즘",
