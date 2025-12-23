@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "12077e9f1ca39f3c",
+        "id": "92b9928d714710df",
         "type": "tabs",
         "children": [
           {
-            "id": "640b70a7c2819168",
+            "id": "01ca037b9d54fa3f",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
-                "mode": "source",
-                "source": false
+                "aFile": "java/기본/05-함수형/03.옵셔널/01.Optional.md",
+                "bFile": "java/기본/05-함수형/03.옵셔널/01.Optional.md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "스레드 기초 (Thread)"
+              "icon": "diff",
+              "title": "Diff: 01.Optional"
             }
           }
         ]
@@ -113,12 +113,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "스레드 기초 (Thread) 의 나가는 링크"
+              "title": "나가는 링크"
             }
           },
           {
@@ -181,8 +180,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "640b70a7c2819168",
+  "active": "01ca037b9d54fa3f",
   "lastOpenFiles": [
+    "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
+    "Java/기본/05-함수형/03.옵셔널/01.Optional.md",
+    "Java/기본/05-함수형/02.스트림/01.스트림API.md",
+    "Java/기본/05-함수형/01.람다/01.람다표현식.md",
     "Java/기본/04-컬렉션/02.셋/02.TreeSet.md",
     "Java/기본/08-JVM/03.리플렉션/리플렉션.md",
     "Java/기본/08-JVM/02.클래스로더/클래스로더란.md",
@@ -192,13 +195,9 @@
     "Java/기본/07-입출력/01.파일입출력/스트림 (Stream).md",
     "Java/기본/06-동시성/03.락/Lock 인터페이스.md",
     "Java/기본/06-동시성/02.동기화/동기화 (Synchronization).md",
-    "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
     "Java/기본/06-동시성/05.실행자/실행자 프레임워크 (Executor Framework).md",
     "Java/기본/06-동시성/04.동시성컬렉션/동시성 컬렉션 (Concurrent Collections).md",
     "Pasted image 20251223172305.png",
-    "Java/기본/05-함수형/01.람다/01.람다표현식.md",
-    "Java/기본/05-함수형/02.스트림/01.스트림API.md",
-    "Java/기본/05-함수형/03.옵셔널/01.Optional.md",
     "Java/기본/04-컬렉션/02.셋/01.HashSet.md",
     "Java/기본/05-함수형/03옵셔널-01.Optional.md",
     "Java/기본/05-함수형/02스트림-01.스트림API.md",
