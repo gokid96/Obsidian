@@ -11,10 +11,14 @@
             "id": "b3bcbfae02795053",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "Java/기본/01-기초문법/01.변수와타입/03.참조 타입 (Reference Type).md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "새 탭"
+              "title": "03.참조 타입 (Reference Type)"
             }
           }
         ]
@@ -74,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 307.5
+    "width": 363.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -177,10 +181,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "b3bcbfae02795053",
   "lastOpenFiles": [
+    "Java/기본/01-기초문법/01.변수와타입/04.타입 변환 (Type Conversion).md",
+    "Java/기본/01-기초문법/01.변수와타입/03.참조 타입 (Reference Type).md",
+    "Java/기본/01-기초문법/01.변수와타입/02.기본 타입 (Primitive Type).md",
+    "Java/기본/01-기초문법/01.변수와타입/01.변수 (Variable).md",
     "Java/기본/01-기초문법/01.변수와타입/README.md.md",
-    "Java/기본/01-기초문법/01.변수와타입/무제.md",
     "Algorithm/codingtest/baekjoon/2869.md",
     "Java/기본/09-실습/02.디자인패턴",
     "Java/기본/09-실습/03.미니프로젝트",
@@ -213,9 +220,6 @@
     "Java/Spring/Spring/동시성/2. 비관적 락 (Pessimistic Lock).md",
     "Java/Spring/Spring/동시성/1. 낙관적 락 (Optimistic Lock).md",
     "Algorithm/03_정렬/README.md.md",
-    "Algorithm/02_완전탐색/README.md.md",
-    "Algorithm/01_시간복잡도/README.md.md",
-    "Algorithm/codingtest/baekjoon/2775.md",
     "git/Pasted image 20250611100724.png",
     "업무/Eborder/PNR/Pasted image 20251215114222.png",
     "업무/Eborder/PNR/Pasted image 20251215114031.png",
