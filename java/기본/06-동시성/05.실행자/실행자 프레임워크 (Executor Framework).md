@@ -1,118 +1,87 @@
-## 실행자란?
+## Executor란?
 
-- **스레드 풀 기반 작업 실행**
-- 스레드 생성/관리 추상화
-- 효율적인 스레드 재사용
-- `java.util.concurrent` 패키지
+- **스레드 풀** 관리
+- 스레드 생성/소멸 비용 절감
+- java.util.concurrent 패키지
 
 ---
 
-## 직접 스레드 vs 실행자
-
-### 직접 스레드 생성 (비효율)
-
+## 직접 생성 vs Executor
 ```java
-// 매번 새 스레드 생성
+// ❌ 직접 생성 - 비효율, 관리 어려움
 for (int i = 0; i < 1000; i++) {
     new Thread(() -> doTask()).start();
 }
-// 문제: 스레드 생성 비용, 자원 낭비
-```
 
-### 실행자 사용 (효율)
-
-```java
+// ✅ Executor - 재사용, 효율적
 ExecutorService executor = Executors.newFixedThreadPool(10);
-
 for (int i = 0; i < 1000; i++) {
     executor.submit(() -> doTask());
 }
-// 10개 스레드로 1000개 작업 처리
-
 executor.shutdown();
 ```
 
 ---
 
-## Executors 팩토리
-
-### newFixedThreadPool
-
-```java
-// 고정 크기 스레드 풀
-ExecutorService executor = Executors.newFixedThreadPool(4);
+## Executor 계층
 ```
-
-### newCachedThreadPool
-
-```java
-// 필요시 스레드 생성, 60초 미사용 시 제거
-ExecutorService executor = Executors.newCachedThreadPool();
-```
-
-### newSingleThreadExecutor
-
-```java
-// 단일 스레드 (순차 실행)
-ExecutorService executor = Executors.newSingleThreadExecutor();
-```
-
-### newScheduledThreadPool
-
-```java
-// 예약/주기적 실행
-ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
-```
-
-### newWorkStealingPool (Java 8+)
-
-```java
-// ForkJoinPool 기반, CPU 코어 수만큼
-ExecutorService executor = Executors.newWorkStealingPool();
+Executor (execute)
+    ↓
+ExecutorService (submit, shutdown)
+    ↓
+ScheduledExecutorService (schedule)
 ```
 
 ---
 
-## ExecutorService 사용
-
-### submit() - 작업 제출
-
+## ExecutorService 생성
 ```java
-ExecutorService executor = Executors.newFixedThreadPool(4);
+// 고정 크기 (CPU 바운드 작업)
+ExecutorService fixed = Executors.newFixedThreadPool(10);
 
-// Runnable (반환값 없음)
-executor.submit(() -> System.out.println("Hello"));
+// 캐시 (IO 바운드, 짧은 작업)
+// 필요시 생성, 60초 유휴시 제거
+ExecutorService cached = Executors.newCachedThreadPool();
 
-// Callable (반환값 있음)
-Future<Integer> future = executor.submit(() -> {
-    return 42;
+// 단일 스레드 (순차 실행)
+ExecutorService single = Executors.newSingleThreadExecutor();
+
+// Work Stealing (Java 8+, CPU 코어 활용)
+ExecutorService workStealing = Executors.newWorkStealingPool();
+```
+
+---
+
+## execute vs submit
+```java
+// execute - 반환값 없음
+executor.execute(() -> {
+    System.out.println("실행");
 });
 
-int result = future.get();  // 결과 대기
+// submit - Future 반환
+Future<?> future = executor.submit(() -> {
+    System.out.println("실행");
+});
+
+Future<String> future = executor.submit(() -> {
+    return "결과";
+});
 ```
 
-### execute() vs submit()
+---
 
+## Runnable vs Callable
 ```java
-// execute: 반환값 없음
-executor.execute(() -> System.out.println("execute"));
+// Runnable - 반환값 X, 예외 X
+Runnable task = () -> {
+    System.out.println("작업");
+};
 
-// submit: Future 반환
-Future<?> future = executor.submit(() -> System.out.println("submit"));
-```
-
-### 종료
-
-```java
-executor.shutdown();  // 새 작업 거부, 기존 작업 완료 후 종료
-
-// 즉시 종료 시도
-List<Runnable> pending = executor.shutdownNow();
-
-// 종료 대기
-if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
-    executor.shutdownNow();
-}
+// Callable - 반환값 O, 예외 O
+Callable<Integer> task = () -> {
+    return 42;
+};
 ```
 
 ---
@@ -120,249 +89,264 @@ if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
 ## Future
 
 ### 비동기 결과
-
 ```java
-ExecutorService executor = Executors.newFixedThreadPool(4);
+ExecutorService executor = Executors.newFixedThreadPool(2);
 
 Future<String> future = executor.submit(() -> {
     Thread.sleep(2000);
-    return "결과";
+    return "완료!";
 });
 
-// 완료 여부 확인
-boolean done = future.isDone();
+// 다른 작업 수행 가능
+System.out.println("다른 작업...");
 
-// 결과 대기 (블로킹)
-String result = future.get();
-
-// 타임아웃
-String result2 = future.get(1, TimeUnit.SECONDS);
-
-// 취소
-boolean cancelled = future.cancel(true);
+// 결과 대기
+String result = future.get();  // 블로킹
+System.out.println(result);
 ```
 
-### 여러 Future
-
+### 주요 메서드
 ```java
-List<Future<Integer>> futures = new ArrayList<>();
-
-for (int i = 0; i < 10; i++) {
-    final int num = i;
-    Future<Integer> future = executor.submit(() -> num * num);
-    futures.add(future);
-}
-
-// 모든 결과 수집
-for (Future<Integer> future : futures) {
-    System.out.println(future.get());
-}
+future.get();                         // 결과 대기 (블로킹)
+future.get(5, TimeUnit.SECONDS);      // 타임아웃
+future.isDone();                      // 완료 여부
+future.isCancelled();                 // 취소 여부
+future.cancel(true);                  // 취소 (true: 인터럽트)
 ```
 
 ---
 
-## invokeAll / invokeAny
-
-### invokeAll - 모두 실행
-
+## 종료
 ```java
-List<Callable<String>> tasks = Arrays.asList(
-    () -> { Thread.sleep(1000); return "Task 1"; },
-    () -> { Thread.sleep(2000); return "Task 2"; },
-    () -> { Thread.sleep(500); return "Task 3"; }
-);
+executor.shutdown();      // 새 작업 거부, 기존 완료
+executor.shutdownNow();   // 즉시 종료 시도
 
-List<Future<String>> results = executor.invokeAll(tasks);
-
-for (Future<String> future : results) {
-    System.out.println(future.get());
+// 권장 패턴
+executor.shutdown();
+try {
+    if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
+        executor.shutdownNow();
+        if (!executor.awaitTermination(60, TimeUnit.SECONDS)) {
+            System.err.println("종료 실패!");
+        }
+    }
+} catch (InterruptedException e) {
+    executor.shutdownNow();
+    Thread.currentThread().interrupt();
 }
 ```
 
-### invokeAny - 하나만 (가장 빠른 것)
-
-```java
-String fastest = executor.invokeAny(tasks);
-System.out.println("가장 빠른 결과: " + fastest);
-```
+> [!warning] shutdown() 호출 필수!
+> 안 하면 JVM이 종료되지 않음
 
 ---
 
 ## ScheduledExecutorService
 
-### 지연 실행
-
+### 예약 실행
 ```java
 ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(2);
 
-// 3초 후 실행
-scheduler.schedule(() -> System.out.println("3초 후 실행"), 
-    3, TimeUnit.SECONDS);
+// 5초 후 실행
+scheduler.schedule(() -> {
+    System.out.println("5초 후 실행");
+}, 5, TimeUnit.SECONDS);
+
+// 주기적 실행 (시작 기준)
+// 0초 후 시작, 이후 1초마다
+scheduler.scheduleAtFixedRate(() -> {
+    System.out.println("주기 작업");
+}, 0, 1, TimeUnit.SECONDS);
+
+// 주기적 실행 (종료 기준)
+// 이전 작업 끝난 후 1초 뒤
+scheduler.scheduleWithFixedDelay(() -> {
+    System.out.println("딜레이 작업");
+}, 0, 1, TimeUnit.SECONDS);
 ```
 
-### 주기적 실행
-
-```java
-// 1초 후 시작, 2초마다 실행
-scheduler.scheduleAtFixedRate(
-    () -> System.out.println("주기 실행"),
-    1, 2, TimeUnit.SECONDS
-);
-
-// 이전 작업 종료 후 2초 뒤 실행
-scheduler.scheduleWithFixedDelay(
-    () -> System.out.println("딜레이 실행"),
-    1, 2, TimeUnit.SECONDS
-);
-```
-
-### FixedRate vs FixedDelay
-
-```java
-// scheduleAtFixedRate: 시작 시간 기준
-// 작업: 0초, 2초, 4초, 6초...
-
-// scheduleWithFixedDelay: 종료 시간 기준
-// 작업 1초 걸리면: 0초, 3초, 6초, 9초...
-```
-
----
-
-## CompletableFuture (Java 8+)
-
-### 비동기 실행
-
-```java
-CompletableFuture<String> future = CompletableFuture.supplyAsync(() -> {
-    // 비동기 작업
-    return "결과";
-});
-
-String result = future.get();
-```
-
-### 체이닝
-
-```java
-CompletableFuture.supplyAsync(() -> "Hello")
-    .thenApply(s -> s + " World")      // 변환
-    .thenApply(String::toUpperCase)
-    .thenAccept(System.out::println);  // 소비
-// 출력: HELLO WORLD
-```
-
-### 조합
-
-```java
-CompletableFuture<String> future1 = CompletableFuture.supplyAsync(() -> "Hello");
-CompletableFuture<String> future2 = CompletableFuture.supplyAsync(() -> "World");
-
-// 둘 다 완료 후
-CompletableFuture<String> combined = future1.thenCombine(future2, 
-    (s1, s2) -> s1 + " " + s2);
-
-// 둘 중 하나 완료 시
-CompletableFuture<Object> any = CompletableFuture.anyOf(future1, future2);
-
-// 모두 완료 대기
-CompletableFuture<Void> all = CompletableFuture.allOf(future1, future2);
-```
-
-### 예외 처리
-
-```java
-CompletableFuture.supplyAsync(() -> {
-    if (true) throw new RuntimeException("에러");
-    return "결과";
-})
-.exceptionally(ex -> "기본값")  // 예외 시 대체값
-.thenAccept(System.out::println);
-
-// handle: 성공/실패 모두 처리
-.handle((result, ex) -> {
-    if (ex != null) return "에러 처리";
-    return result;
-});
-```
+|메서드|설명|
+|---|---|
+|schedule|지연 후 1회 실행|
+|scheduleAtFixedRate|시작 시간 기준 주기|
+|scheduleWithFixedDelay|종료 후 딜레이|
 
 ---
 
 ## ThreadPoolExecutor
 
-### 세밀한 제어
-
+### 세밀한 설정
 ```java
 ThreadPoolExecutor executor = new ThreadPoolExecutor(
-    2,                      // corePoolSize
-    4,                      // maximumPoolSize
-    60, TimeUnit.SECONDS,   // keepAliveTime
-    new ArrayBlockingQueue<>(100),  // workQueue
+    5,                      // corePoolSize (기본 스레드)
+    10,                     // maximumPoolSize (최대 스레드)
+    60L,                    // keepAliveTime (유휴 시간)
+    TimeUnit.SECONDS,
+    new LinkedBlockingQueue<>(100),  // 작업 큐
     new ThreadPoolExecutor.CallerRunsPolicy()  // 거부 정책
 );
 ```
 
 ### 거부 정책
 
+|정책|동작|
+|---|---|
+|AbortPolicy|RejectedExecutionException (기본)|
+|CallerRunsPolicy|호출 스레드가 직접 실행|
+|DiscardPolicy|조용히 버림|
+|DiscardOldestPolicy|가장 오래된 작업 버리고 재시도|
 ```java
-// AbortPolicy (기본): RejectedExecutionException 발생
-// CallerRunsPolicy: 호출 스레드에서 실행
-// DiscardPolicy: 조용히 버림
-// DiscardOldestPolicy: 가장 오래된 작업 버리고 새 작업 추가
+// 거부 정책 예시
+executor.setRejectedExecutionHandler(
+    new ThreadPoolExecutor.CallerRunsPolicy()
+);
+```
+
+---
+
+## CompletableFuture (Java 8+)
+
+### 비동기 체이닝
+```java
+CompletableFuture<String> cf = CompletableFuture
+    .supplyAsync(() -> {
+        return "Hello";
+    })
+    .thenApply(s -> s + " World")    // 변환
+    .thenApply(String::toUpperCase); // 변환
+
+String result = cf.join();  // "HELLO WORLD"
+```
+
+### 주요 메서드
+```java
+// 생성
+CompletableFuture.supplyAsync(() -> "결과");     // 반환값 O
+CompletableFuture.runAsync(() -> doSomething()); // 반환값 X
+
+// 변환
+cf.thenApply(s -> s.toUpperCase());    // Function
+cf.thenAccept(s -> System.out.println(s));  // Consumer
+cf.thenRun(() -> System.out.println("완료")); // Runnable
+
+// 조합
+cf1.thenCombine(cf2, (r1, r2) -> r1 + r2);  // 둘 다 완료 후
+CompletableFuture.allOf(cf1, cf2, cf3);      // 모두 완료
+CompletableFuture.anyOf(cf1, cf2, cf3);      // 하나만 완료
+
+// 예외 처리
+cf.exceptionally(ex -> "기본값");
+cf.handle((result, ex) -> {
+    if (ex != null) return "에러";
+    return result;
+});
+```
+
+### 실행 스레드
+```java
+cf.thenApply(...)       // 이전과 같은 스레드
+cf.thenApplyAsync(...)  // ForkJoinPool
+cf.thenApplyAsync(..., executor)  // 지정 Executor
+```
+
+### 예제: 여러 API 호출
+```java
+CompletableFuture<String> user = CompletableFuture.supplyAsync(() -> 
+    fetchUser(userId)
+);
+CompletableFuture<String> orders = CompletableFuture.supplyAsync(() -> 
+    fetchOrders(userId)
+);
+
+// 둘 다 완료 후 합치기
+CompletableFuture<String> result = user.thenCombine(orders, (u, o) -> 
+    "User: " + u + ", Orders: " + o
+);
+
+System.out.println(result.join());
 ```
 
 ---
 
 ## 실전 예제
 
-### 병렬 다운로드
-
+### 웹 크롤러
 ```java
-ExecutorService executor = Executors.newFixedThreadPool(5);
+ExecutorService executor = Executors.newFixedThreadPool(10);
 
-List<String> urls = Arrays.asList("url1", "url2", "url3", "url4", "url5");
+List<String> urls = Arrays.asList(
+    "https://example1.com",
+    "https://example2.com",
+    "https://example3.com"
+);
 
-List<Future<byte[]>> futures = urls.stream()
-    .map(url -> executor.submit(() -> download(url)))
-    .collect(Collectors.toList());
+List<Future<String>> futures = new ArrayList<>();
+for (String url : urls) {
+    Future<String> future = executor.submit(() -> fetchPage(url));
+    futures.add(future);
+}
 
-for (Future<byte[]> future : futures) {
-    byte[] data = future.get();
-    // 처리
+// 결과 수집
+for (Future<String> future : futures) {
+    String content = future.get();
+    System.out.println(content.length() + " bytes");
 }
 
 executor.shutdown();
 ```
 
-### 타임아웃 처리
+### 배치 작업
+```java
+ScheduledExecutorService scheduler = Executors.newScheduledThreadPool(1);
 
+// 매일 자정 실행
+scheduler.scheduleAtFixedRate(() -> {
+    System.out.println("배치 작업 실행: " + LocalDateTime.now());
+    // 일일 정산, 리포트 생성 등
+}, 0, 24, TimeUnit.HOURS);
+```
+
+### 타임아웃 처리
 ```java
 ExecutorService executor = Executors.newSingleThreadExecutor();
 
 Future<String> future = executor.submit(() -> {
-    Thread.sleep(5000);
-    return "결과";
+    Thread.sleep(10000);  // 오래 걸리는 작업
+    return "완료";
 });
 
 try {
-    String result = future.get(2, TimeUnit.SECONDS);
+    String result = future.get(3, TimeUnit.SECONDS);
 } catch (TimeoutException e) {
-    future.cancel(true);
     System.out.println("타임아웃!");
+    future.cancel(true);
 }
+
+executor.shutdown();
 ```
+
+---
+
+## 선택 가이드
+
+|상황|선택|
+|---|---|
+|CPU 바운드|FixedThreadPool (코어 수)|
+|IO 바운드|CachedThreadPool|
+|순차 실행|SingleThreadExecutor|
+|예약/주기 작업|ScheduledThreadPool|
+|비동기 체이닝|CompletableFuture|
 
 ---
 
 > [!tip] 핵심 정리
 > 
 > - **ExecutorService**: 스레드 풀 관리
-> - **newFixedThreadPool**: 고정 크기
-> - **newCachedThreadPool**: 탄력적 크기
-> - **Future**: 비동기 결과
-> - **CompletableFuture**: 체이닝, 조합
-> - **ScheduledExecutorService**: 예약/주기 실행
-> - **반드시 shutdown() 호출**
+> - **submit()**: Future로 결과 받기
+> - **shutdown()**: 반드시 호출!
+> - **ScheduledExecutorService**: 예약/주기 작업
+> - **CompletableFuture**: 비동기 체이닝
 
 ---
 
-#Java #Executor #스레드풀 #CompletableFuture #동시성
+#Java #Executor #ThreadPool #CompletableFuture #동시성

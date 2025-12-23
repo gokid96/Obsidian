@@ -1,94 +1,67 @@
 ## Lock이란?
 
-- **synchronized보다 유연한 동기화**
-- 명시적 락 획득/해제
-- 타임아웃, 인터럽트 지원
-- `java.util.concurrent.locks` 패키지
+- `synchronized`보다 **유연한** 동기화
+- java.util.concurrent.locks 패키지
 
 ---
 
 ## synchronized vs Lock
 
-|synchronized|Lock|
-|---|---|
-|암시적|명시적|
-|블록 벗어나면 자동 해제|수동 해제 필요|
-|타임아웃 X|타임아웃 O|
-|인터럽트 X|인터럽트 O|
-|공정성 설정 X|공정성 설정 O|
+|구분|synchronized|Lock|
+|---|---|---|
+|락 해제|자동 (블록 종료)|수동 (unlock)|
+|타임아웃|X|O (tryLock)|
+|인터럽트|X|O (lockInterruptibly)|
+|공정성|X|O (fair lock)|
+|조건 변수|1개 (wait/notify)|여러 개 (Condition)|
 
 ---
 
 ## ReentrantLock
 
 ### 기본 사용
-
 ```java
-import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 
 class Counter {
     private int count = 0;
-    private final Lock lock = new ReentrantLock();
+    private final ReentrantLock lock = new ReentrantLock();
     
     public void increment() {
-        lock.lock();  // 락 획득
+        lock.lock();
         try {
             count++;
         } finally {
-            lock.unlock();  // 반드시 해제!
-        }
-    }
-    
-    public int getCount() {
-        lock.lock();
-        try {
-            return count;
-        } finally {
-            lock.unlock();
+            lock.unlock();  // 반드시 finally에서!
         }
     }
 }
 ```
 
-### 공정 락 (Fair Lock)
-
-```java
-// 먼저 대기한 스레드가 먼저 획득
-Lock fairLock = new ReentrantLock(true);
-
-// 기본: 불공정 락 (성능 우선)
-Lock unfairLock = new ReentrantLock(false);
-```
+> [!danger] unlock()은 반드시 finally에서!
+> 예외 발생 시에도 락 해제 보장
 
 ---
 
-## tryLock() - 시도 후 포기
-
-### 즉시 시도
-
+### tryLock() - 시도 후 포기
 ```java
-Lock lock = new ReentrantLock();
-
 if (lock.tryLock()) {
     try {
-        // 작업 수행
+        // 작업
     } finally {
         lock.unlock();
     }
 } else {
-    // 락 획득 실패 시 대체 작업
-    System.out.println("락 획득 실패");
+    System.out.println("락 획득 실패, 다른 작업 수행");
 }
 ```
 
-### 타임아웃
-
+### tryLock(timeout) - 시간 제한
 ```java
 try {
     if (lock.tryLock(1, TimeUnit.SECONDS)) {
         try {
-            // 작업 수행
+            // 작업
         } finally {
             lock.unlock();
         }
@@ -100,30 +73,52 @@ try {
 }
 ```
 
+### lockInterruptibly() - 인터럽트 가능
+```java
+try {
+    lock.lockInterruptibly();  // 대기 중 인터럽트 가능
+    try {
+        // 작업
+    } finally {
+        lock.unlock();
+    }
+} catch (InterruptedException e) {
+    System.out.println("대기 중 인터럽트됨");
+}
+```
+
 ---
 
-## lockInterruptibly() - 인터럽트 가능
-
+## 공정성 (Fairness)
 ```java
-Lock lock = new ReentrantLock();
+// 비공정 락 (기본) - 성능 좋음
+ReentrantLock unfairLock = new ReentrantLock();
+ReentrantLock unfairLock = new ReentrantLock(false);
 
-Thread t = new Thread(() -> {
-    try {
-        lock.lockInterruptibly();  // 인터럽트 가능
-        try {
-            // 작업
-        } finally {
-            lock.unlock();
-        }
-    } catch (InterruptedException e) {
-        System.out.println("락 대기 중 인터럽트됨");
-    }
-});
-
-t.start();
-Thread.sleep(100);
-t.interrupt();  // 락 대기 중 인터럽트
+// 공정 락 - 대기 순서대로 획득
+ReentrantLock fairLock = new ReentrantLock(true);
 ```
+
+|구분|비공정|공정|
+|---|---|---|
+|순서|보장 X|FIFO|
+|성능|빠름|느림|
+|기아|발생 가능|방지|
+
+---
+
+## 주요 메서드
+
+|메서드|설명|
+|---|---|
+|lock()|락 획득 (블로킹)|
+|unlock()|락 해제|
+|tryLock()|즉시 시도, 실패시 false|
+|tryLock(time, unit)|시간 내 시도|
+|lockInterruptibly()|인터럽트 가능한 락|
+|isLocked()|락 상태|
+|isHeldByCurrentThread()|현재 스레드가 보유?|
+|getHoldCount()|재진입 횟수|
 
 ---
 
@@ -132,8 +127,7 @@ t.interrupt();  // 락 대기 중 인터럽트
 ### 읽기/쓰기 분리
 
 - **읽기**: 여러 스레드 동시 가능
-- **쓰기**: 한 스레드만 독점
-
+- **쓰기**: 하나의 스레드만
 ```java
 import java.util.concurrent.locks.ReadWriteLock;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
@@ -141,85 +135,119 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 class Cache {
     private final Map<String, String> map = new HashMap<>();
     private final ReadWriteLock rwLock = new ReentrantReadWriteLock();
-    private final Lock readLock = rwLock.readLock();
-    private final Lock writeLock = rwLock.writeLock();
     
+    // 읽기 - 동시 접근 가능
     public String get(String key) {
-        readLock.lock();  // 읽기 락
+        rwLock.readLock().lock();
         try {
             return map.get(key);
         } finally {
-            readLock.unlock();
+            rwLock.readLock().unlock();
         }
     }
     
+    // 쓰기 - 독점
     public void put(String key, String value) {
-        writeLock.lock();  // 쓰기 락
+        rwLock.writeLock().lock();
         try {
             map.put(key, value);
         } finally {
-            writeLock.unlock();
-        }
-    }
-    
-    public void remove(String key) {
-        writeLock.lock();
-        try {
-            map.remove(key);
-        } finally {
-            writeLock.unlock();
+            rwLock.writeLock().unlock();
         }
     }
 }
 ```
 
+> [!tip] 읽기 많고 쓰기 적을 때 성능 향상
+
+---
+
+## StampedLock (Java 8+)
+
+### 낙관적 읽기
+```java
+import java.util.concurrent.locks.StampedLock;
+
+class Point {
+    private double x, y;
+    private final StampedLock sl = new StampedLock();
+    
+    // 쓰기
+    public void move(double deltaX, double deltaY) {
+        long stamp = sl.writeLock();
+        try {
+            x += deltaX;
+            y += deltaY;
+        } finally {
+            sl.unlockWrite(stamp);
+        }
+    }
+    
+    // 낙관적 읽기 (락 없이!)
+    public double distanceFromOrigin() {
+        long stamp = sl.tryOptimisticRead();  // 락 X
+        double currentX = x, currentY = y;
+        
+        if (!sl.validate(stamp)) {  // 그 사이 쓰기 발생?
+            stamp = sl.readLock();  // 실패 시 진짜 락
+            try {
+                currentX = x;
+                currentY = y;
+            } finally {
+                sl.unlockRead(stamp);
+            }
+        }
+        return Math.sqrt(currentX * currentX + currentY * currentY);
+    }
+}
+```
+
+|모드|설명|
+|---|---|
+|tryOptimisticRead()|락 없이 읽기 시도|
+|validate(stamp)|쓰기 발생 여부 확인|
+|readLock()|일반 읽기 락|
+|writeLock()|쓰기 락|
+
 ---
 
 ## Condition
 
-### wait/notify 대체
-
+### wait/notify의 Lock 버전
 ```java
-import java.util.concurrent.locks.Condition;
-
 class BoundedBuffer<T> {
-    private final Object[] items;
-    private int putIndex, takeIndex, count;
+    private final Queue<T> queue = new LinkedList<>();
+    private final int capacity;
     
     private final Lock lock = new ReentrantLock();
     private final Condition notFull = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
     
     public BoundedBuffer(int capacity) {
-        items = new Object[capacity];
+        this.capacity = capacity;
     }
     
     public void put(T item) throws InterruptedException {
         lock.lock();
         try {
-            while (count == items.length) {
-                notFull.await();  // 가득 차면 대기
+            while (queue.size() == capacity) {
+                notFull.await();  // wait()
             }
-            items[putIndex] = item;
-            putIndex = (putIndex + 1) % items.length;
-            count++;
-            notEmpty.signal();  // 소비자 깨우기
+            queue.add(item);
+            notEmpty.signal();    // notify()
         } finally {
             lock.unlock();
         }
     }
     
-    @SuppressWarnings("unchecked")
     public T take() throws InterruptedException {
         lock.lock();
         try {
-            while (count == 0) {
-                notEmpty.await();  // 비어있으면 대기
+            while (queue.isEmpty()) {
+                notEmpty.await();
             }
-            T item = (T) items[takeIndex];
-            takeIndex = (takeIndex + 1) % items.length;
-            count--;
-            notFull.signal();  // 생산자 깨우기
+            T item = queue.poll();
+            notFull.signal();
             return item;
         } finally {
             lock.unlock();
@@ -228,102 +256,22 @@ class BoundedBuffer<T> {
 }
 ```
 
-### Condition 메서드
+### Object vs Condition
 
 |Object|Condition|
 |---|---|
 |wait()|await()|
-|wait(timeout)|await(time, unit)|
+|wait(ms)|await(time, unit)|
 |notify()|signal()|
 |notifyAll()|signalAll()|
 
----
-
-## StampedLock (Java 8+)
-
-### 낙관적 읽기
-
-```java
-import java.util.concurrent.locks.StampedLock;
-
-class Point {
-    private double x, y;
-    private final StampedLock lock = new StampedLock();
-    
-    // 쓰기
-    public void move(double deltaX, double deltaY) {
-        long stamp = lock.writeLock();
-        try {
-            x += deltaX;
-            y += deltaY;
-        } finally {
-            lock.unlockWrite(stamp);
-        }
-    }
-    
-    // 낙관적 읽기
-    public double distanceFromOrigin() {
-        long stamp = lock.tryOptimisticRead();  // 락 없이 읽기 시도
-        double currentX = x;
-        double currentY = y;
-        
-        if (!lock.validate(stamp)) {  // 검증 실패 시
-            stamp = lock.readLock();   // 읽기 락으로 전환
-            try {
-                currentX = x;
-                currentY = y;
-            } finally {
-                lock.unlockRead(stamp);
-            }
-        }
-        return Math.sqrt(currentX * currentX + currentY * currentY);
-    }
-}
-```
-
----
-
-## 데드락 방지
-
-### tryLock 활용
-
-```java
-Lock lock1 = new ReentrantLock();
-Lock lock2 = new ReentrantLock();
-
-void transferMoney() {
-    boolean acquired = false;
-    while (!acquired) {
-        if (lock1.tryLock()) {
-            try {
-                if (lock2.tryLock()) {
-                    try {
-                        // 송금 처리
-                        acquired = true;
-                    } finally {
-                        lock2.unlock();
-                    }
-                }
-            } finally {
-                if (!acquired) {
-                    lock1.unlock();
-                }
-            }
-        }
-        
-        if (!acquired) {
-            Thread.sleep(10);  // 잠시 대기 후 재시도
-        }
-    }
-}
-```
+> [!tip] Condition은 여러 개 생성 가능 → 세밀한 제어
 
 ---
 
 ## 실전 예제
 
-### 스레드 안전 캐시
-
+### 캐시 with ReadWriteLock
 ```java
 class SimpleCache<K, V> {
     private final Map<K, V> cache = new HashMap<>();
@@ -347,24 +295,23 @@ class SimpleCache<K, V> {
         }
     }
     
-    public V computeIfAbsent(K key, Function<K, V> mappingFunction) {
-        // 먼저 읽기 락으로 확인
+    public V computeIfAbsent(K key, Function<K, V> loader) {
+        // 먼저 읽기 시도
         lock.readLock().lock();
         try {
             V value = cache.get(key);
-            if (value != null) {
-                return value;
-            }
+            if (value != null) return value;
         } finally {
             lock.readLock().unlock();
         }
         
-        // 없으면 쓰기 락으로 생성
+        // 없으면 쓰기
         lock.writeLock().lock();
         try {
+            // 다시 확인 (다른 스레드가 넣었을 수 있음)
             V value = cache.get(key);
             if (value == null) {
-                value = mappingFunction.apply(key);
+                value = loader.apply(key);
                 cache.put(key, value);
             }
             return value;
@@ -380,12 +327,11 @@ class SimpleCache<K, V> {
 > [!tip] 핵심 정리
 > 
 > - **ReentrantLock**: synchronized 대체, 더 유연
-> - **tryLock()**: 타임아웃, 데드락 방지
+> - **tryLock**: 락 획득 시도 (타임아웃)
 > - **ReadWriteLock**: 읽기/쓰기 분리
-> - **Condition**: wait/notify 대체
-> - **반드시 finally에서 unlock()**
-> - 읽기 많으면 ReadWriteLock 고려
+> - **StampedLock**: 낙관적 읽기 (고성능)
+> - **Condition**: 여러 조건 변수
 
 ---
 
-#Java #Lock #ReentrantLock #동시성 #멀티스레딩
+#Java #Lock #ReentrantLock #ReadWriteLock #동시성

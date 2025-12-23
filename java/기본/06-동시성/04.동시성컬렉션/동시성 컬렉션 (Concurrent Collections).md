@@ -1,330 +1,297 @@
 ## 동시성 컬렉션이란?
 
-- **스레드 안전한 컬렉션**
-- synchronized 컬렉션보다 성능 우수
-- `java.util.concurrent` 패키지
+- 멀티스레드 환경에서 **안전하게** 사용 가능
+- java.util.concurrent 패키지
 
 ---
 
 ## 기존 방식의 문제
-
-### synchronized 래퍼
-
 ```java
-// Collections.synchronizedXxx() - 전체 락
-List<String> syncList = Collections.synchronizedList(new ArrayList<>());
-Map<String, Integer> syncMap = Collections.synchronizedMap(new HashMap<>());
+// ❌ 일반 컬렉션 - 스레드 안전 X
+Map<String, Integer> map = new HashMap<>();
 
-// 문제: 전체 컬렉션 락 → 성능 저하
-```
+// ❌ synchronizedMap - 성능 저하
+Map<String, Integer> map = Collections.synchronizedMap(new HashMap<>());
 
-### Vector, Hashtable
-
-```java
-// 레거시 - 모든 메서드 synchronized
-Vector<String> vector = new Vector<>();
-Hashtable<String, Integer> hashtable = new Hashtable<>();
-
-// 문제: 불필요한 동기화, 성능 저하
+// ✅ ConcurrentHashMap - 효율적
+Map<String, Integer> map = new ConcurrentHashMap<>();
 ```
 
 ---
 
 ## ConcurrentHashMap
 
-### 특징
-
-- **세그먼트 단위 락** (세밀한 동기화)
-- null 키/값 불허
-- 높은 동시성
-
+### 기본 사용
 ```java
-import java.util.concurrent.ConcurrentHashMap;
-
 ConcurrentHashMap<String, Integer> map = new ConcurrentHashMap<>();
 
 // 기본 연산
-map.put("A", 1);
-map.get("A");
-map.remove("A");
+map.put("a", 1);
+map.get("a");
+map.remove("a");
 ```
 
 ### 원자적 연산
-
 ```java
-// putIfAbsent - 없을 때만 추가
-map.putIfAbsent("A", 1);
+// putIfAbsent - 없으면 추가
+map.putIfAbsent("a", 1);
 
-// computeIfAbsent - 없을 때만 계산 후 추가
-map.computeIfAbsent("B", key -> expensiveComputation(key));
+// computeIfAbsent - 없으면 계산 후 추가
+map.computeIfAbsent("a", key -> expensiveCalculation(key));
 
-// computeIfPresent - 있을 때만 계산
-map.computeIfPresent("A", (key, value) -> value + 1);
-
-// compute - 항상 계산
-map.compute("A", (key, value) -> value == null ? 1 : value + 1);
+// computeIfPresent - 있으면 업데이트
+map.computeIfPresent("a", (key, val) -> val + 1);
 
 // merge - 병합
-map.merge("A", 1, Integer::sum);  // 없으면 1, 있으면 기존값 + 1
+map.merge("a", 1, Integer::sum);  // 있으면 더하고, 없으면 1
 ```
 
-### 대량 연산 (Java 8+)
+### 복합 연산 주의
+```java
+// ❌ 위험! (원자적 X)
+if (!map.containsKey("a")) {
+    map.put("a", 1);
+}
 
+// ✅ 안전
+map.putIfAbsent("a", 1);
+
+// ❌ 위험!
+Integer val = map.get("a");
+if (val != null) {
+    map.put("a", val + 1);
+}
+
+// ✅ 안전
+map.merge("a", 1, Integer::sum);
+```
+
+### 벌크 연산 (Java 8+)
 ```java
 // forEach
-map.forEach((key, value) -> System.out.println(key + "=" + value));
+map.forEach((k, v) -> System.out.println(k + "=" + v));
 
-// search - 조건 만족하는 값 찾기
-String result = map.search(1, (key, value) -> value > 100 ? key : null);
+// search - 조건 만족하는 첫 번째 값
+String found = map.search(1, (k, v) -> v > 100 ? k : null);
 
-// reduce - 축소
-int sum = map.reduce(1, (key, value) -> value, Integer::sum);
+// reduce - 집계
+int sum = map.reduce(1, (k, v) -> v, Integer::sum);
 ```
 
 ---
 
 ## CopyOnWriteArrayList
 
-### 특징
-
-- **쓰기 시 복사** (읽기 최적화)
-- 읽기 락 없음
-- 쓰기 느림, 읽기 빠름
-- 이벤트 리스너 목록 등에 적합
-
+### 쓰기 시 복사
 ```java
-import java.util.concurrent.CopyOnWriteArrayList;
-
 CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
 
-list.add("A");
-list.add("B");
+list.add("a");
+list.get(0);
+list.remove("a");
+```
 
-// 순회 중 수정 가능 (ConcurrentModificationException X)
-for (String item : list) {
-    list.add("C");  // 복사본에 추가
+### 순회 중 수정 안전
+```java
+CopyOnWriteArrayList<String> list = new CopyOnWriteArrayList<>();
+list.add("a");
+list.add("b");
+
+// 순회 중 수정해도 ConcurrentModificationException 없음!
+for (String s : list) {
+    System.out.println(s);
+    list.add("c");  // 현재 순회에 영향 X (스냅샷)
 }
 ```
 
-### 사용 시점
-
-```java
-// 적합: 읽기 많고, 쓰기 적음
-CopyOnWriteArrayList<EventListener> listeners = new CopyOnWriteArrayList<>();
-
-// 부적합: 쓰기 많음 → 일반 List + 동기화
-```
+> [!warning] 쓰기 비용 높음
+> 읽기 >>> 쓰기 일 때만 사용
 
 ---
 
 ## CopyOnWriteArraySet
-
-### 특징
-
-- CopyOnWriteArrayList 기반
-- 중복 불허
-
 ```java
-import java.util.concurrent.CopyOnWriteArraySet;
-
 CopyOnWriteArraySet<String> set = new CopyOnWriteArraySet<>();
-set.add("A");
-set.add("A");  // 무시됨
-```
-
----
-
-## ConcurrentSkipListMap
-
-### 특징
-
-- **정렬된** 동시성 Map
-- TreeMap의 동시성 버전
-- O(log n) 연산
-
-```java
-import java.util.concurrent.ConcurrentSkipListMap;
-
-ConcurrentSkipListMap<String, Integer> map = new ConcurrentSkipListMap<>();
-map.put("B", 2);
-map.put("A", 1);
-map.put("C", 3);
-
-System.out.println(map);  // {A=1, B=2, C=3} - 정렬됨
-
-// NavigableMap 메서드
-map.firstKey();           // A
-map.lastKey();            // C
-map.headMap("B");         // {A=1}
-map.tailMap("B");         // {B=2, C=3}
-```
-
----
-
-## ConcurrentSkipListSet
-
-```java
-import java.util.concurrent.ConcurrentSkipListSet;
-
-ConcurrentSkipListSet<Integer> set = new ConcurrentSkipListSet<>();
-set.add(3);
-set.add(1);
-set.add(2);
-
-System.out.println(set);  // [1, 2, 3] - 정렬됨
+set.add("a");
+set.contains("a");
 ```
 
 ---
 
 ## BlockingQueue
 
-### 특징
-
-- **블로킹 연산** 지원
-- 생산자-소비자 패턴에 최적
+### 스레드 간 데이터 전달
+```
+생산자 → [BlockingQueue] → 소비자
+```
 
 ### 주요 메서드
 
-|연산|예외 발생|특수 값|블로킹|타임아웃|
+|동작|예외 발생|특수값 반환|블로킹|타임아웃|
 |---|---|---|---|---|
-|삽입|add(e)|offer(e)|put(e)|offer(e, time, unit)|
-|삭제|remove()|poll()|take()|poll(time, unit)|
+|삽입|add(e)|offer(e)|**put(e)**|offer(e, time, unit)|
+|제거|remove()|poll()|**take()**|poll(time, unit)|
 |조회|element()|peek()|-|-|
 
+---
+
 ### ArrayBlockingQueue
-
 ```java
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.BlockingQueue;
-
 // 고정 크기
-BlockingQueue<String> queue = new ArrayBlockingQueue<>(10);
+BlockingQueue<String> queue = new ArrayBlockingQueue<>(100);
 
 // 생산자
-queue.put("item");  // 가득 차면 대기
+new Thread(() -> {
+    for (int i = 0; i < 10; i++) {
+        queue.put("item-" + i);  // 가득 차면 대기
+        System.out.println("생산: item-" + i);
+    }
+}).start();
 
 // 소비자
-String item = queue.take();  // 비어있으면 대기
+new Thread(() -> {
+    for (int i = 0; i < 10; i++) {
+        String item = queue.take();  // 비면 대기
+        System.out.println("소비: " + item);
+    }
+}).start();
 ```
 
 ### LinkedBlockingQueue
-
 ```java
-import java.util.concurrent.LinkedBlockingQueue;
-
-// 무제한 (또는 크기 지정)
+// 무제한 (주의: 메모리)
 BlockingQueue<String> queue = new LinkedBlockingQueue<>();
-BlockingQueue<String> bounded = new LinkedBlockingQueue<>(100);
+
+// 제한
+BlockingQueue<String> queue = new LinkedBlockingQueue<>(100);
 ```
 
-### 생산자-소비자 패턴
-
+### PriorityBlockingQueue
 ```java
-BlockingQueue<Integer> queue = new ArrayBlockingQueue<>(10);
+// 우선순위 큐
+BlockingQueue<Integer> queue = new PriorityBlockingQueue<>();
+queue.put(3);
+queue.put(1);
+queue.put(2);
 
-// 생산자
-Thread producer = new Thread(() -> {
-    for (int i = 0; i < 100; i++) {
-        queue.put(i);
-        System.out.println("생산: " + i);
-    }
-});
-
-// 소비자
-Thread consumer = new Thread(() -> {
-    while (true) {
-        Integer item = queue.take();
-        System.out.println("소비: " + item);
-    }
-});
-
-producer.start();
-consumer.start();
+queue.take();  // 1
+queue.take();  // 2
+queue.take();  // 3
 ```
 
----
-
-## PriorityBlockingQueue
-
-### 우선순위 + 블로킹
-
+### DelayQueue
 ```java
-import java.util.concurrent.PriorityBlockingQueue;
-
-PriorityBlockingQueue<Integer> pq = new PriorityBlockingQueue<>();
-
-pq.put(3);
-pq.put(1);
-pq.put(2);
-
-pq.take();  // 1 (최소값 먼저)
-pq.take();  // 2
-pq.take();  // 3
-```
-
----
-
-## DelayQueue
-
-### 지연된 요소 처리
-
-```java
-import java.util.concurrent.Delayed;
-import java.util.concurrent.DelayQueue;
-import java.util.concurrent.TimeUnit;
-
 class DelayedTask implements Delayed {
-    private String name;
-    private long startTime;
+    private final String name;
+    private final long executeTime;
     
-    public DelayedTask(String name, long delayMillis) {
+    public DelayedTask(String name, long delayMs) {
         this.name = name;
-        this.startTime = System.currentTimeMillis() + delayMillis;
+        this.executeTime = System.currentTimeMillis() + delayMs;
     }
     
     @Override
     public long getDelay(TimeUnit unit) {
-        long diff = startTime - System.currentTimeMillis();
-        return unit.convert(diff, TimeUnit.MILLISECONDS);
+        long remaining = executeTime - System.currentTimeMillis();
+        return unit.convert(remaining, TimeUnit.MILLISECONDS);
     }
     
     @Override
     public int compareTo(Delayed o) {
-        return Long.compare(this.startTime, ((DelayedTask) o).startTime);
+        return Long.compare(this.getDelay(TimeUnit.MILLISECONDS),
+                           o.getDelay(TimeUnit.MILLISECONDS));
     }
 }
 
+// 사용
 DelayQueue<DelayedTask> queue = new DelayQueue<>();
-queue.put(new DelayedTask("Task1", 3000));  // 3초 후 처리 가능
-queue.put(new DelayedTask("Task2", 1000));  // 1초 후 처리 가능
+queue.put(new DelayedTask("작업1", 3000));  // 3초 후
+queue.put(new DelayedTask("작업2", 1000));  // 1초 후
 
-queue.take();  // Task2 (1초 대기 후)
-queue.take();  // Task1 (추가 2초 대기 후)
+DelayedTask task = queue.take();  // 1초 후 "작업2"
+```
+
+### SynchronousQueue
+```java
+// 버퍼 없음, 직접 전달
+SynchronousQueue<String> queue = new SynchronousQueue<>();
+
+// put()은 take() 호출될 때까지 블로킹
+new Thread(() -> queue.put("data")).start();
+new Thread(() -> System.out.println(queue.take())).start();
 ```
 
 ---
 
-## 선택 가이드
+## ConcurrentLinkedQueue
 
-|상황|컬렉션|
-|---|---|
-|일반 Map|ConcurrentHashMap|
-|정렬된 Map|ConcurrentSkipListMap|
-|읽기 많은 List|CopyOnWriteArrayList|
-|생산자-소비자|BlockingQueue|
-|우선순위 큐|PriorityBlockingQueue|
-|지연 처리|DelayQueue|
+### 논블로킹 큐
+```java
+ConcurrentLinkedQueue<String> queue = new ConcurrentLinkedQueue<>();
+
+queue.offer("a");  // 추가
+queue.poll();      // 제거 (없으면 null)
+queue.peek();      // 조회 (제거 X)
+```
+
+---
+
+## 비교 정리
+
+|컬렉션|특징|용도|
+|---|---|---|
+|ConcurrentHashMap|세그먼트 락|범용 맵|
+|CopyOnWriteArrayList|쓰기 시 복사|읽기 많은 리스트|
+|ArrayBlockingQueue|고정 크기, 블로킹|생산자-소비자|
+|LinkedBlockingQueue|가변 크기, 블로킹|생산자-소비자|
+|ConcurrentLinkedQueue|논블로킹|고성능 큐|
+|PriorityBlockingQueue|우선순위|스케줄링|
+|DelayQueue|지연|예약 작업|
+
+---
+
+## 실전 예제
+
+### 단어 빈도수
+```java
+ConcurrentHashMap<String, Integer> wordCount = new ConcurrentHashMap<>();
+
+// 여러 스레드에서 안전하게 카운트
+void countWord(String word) {
+    wordCount.merge(word, 1, Integer::sum);
+}
+```
+
+### 로그 수집기
+```java
+class LogCollector {
+    private final BlockingQueue<String> queue = new LinkedBlockingQueue<>();
+    
+    // 여러 스레드에서 로그 추가
+    public void log(String message) {
+        queue.offer(message);
+    }
+    
+    // 단일 스레드에서 처리
+    public void startProcessor() {
+        new Thread(() -> {
+            while (true) {
+                String log = queue.take();
+                writeToFile(log);
+            }
+        }).start();
+    }
+}
+```
 
 ---
 
 > [!tip] 핵심 정리
 > 
-> - **ConcurrentHashMap**: 고성능 동시성 Map
-> - **CopyOnWriteArrayList**: 읽기 최적화 List
+> - **ConcurrentHashMap**: 원자적 메서드 사용 (putIfAbsent, merge)
+> - **CopyOnWriteArrayList**: 읽기 많을 때
 > - **BlockingQueue**: 생산자-소비자 패턴
-> - **put/take**: 블로킹, **offer/poll**: 논블로킹
-> - synchronized 래퍼보다 성능 우수
-> - null 보통 불허
+> - **ConcurrentLinkedQueue**: 논블로킹 필요 시
 
 ---
 
