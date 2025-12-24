@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/문제해결/백엔드 ssl없이 cloudflare 에서 프록시하기.md",
+                "file": "Java/Project/Astarchia/문제해결/Cloudflare 프록시로 SSL 적용하기 (+ 속도 이슈).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "백엔드 ssl없이 cloudflare 에서 프록시하기"
+              "title": "Cloudflare 프록시로 SSL 적용하기 (+ 속도 이슈)"
             }
           }
         ]
@@ -187,7 +187,7 @@
     "Pasted image 20251224153232.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224114003.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224114844.png",
-    "Java/Project/Astarchia/문제해결/백엔드 ssl없이 cloudflare 에서 프록시하기.md",
+    "Java/Project/Astarchia/문제해결/Cloudflare 프록시로 SSL 적용하기 (+ 속도 이슈).md",
     "Java/Project/Astarchia/문제해결/폴더 이동 시 순환 참조 방지.md",
     "Pasted image 20251223172305.png",
     "Java/Project/Astarchia/01.ERD.md",
