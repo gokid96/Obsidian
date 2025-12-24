@@ -1,17 +1,35 @@
 ## 1. 이유
+
 - EC2에서 SSL 인증서 발급/갱신 관리 안 해도 됨
 - Cloudflare가 무료로 SSL 처리
 - 백엔드 IP 숨김 + DDoS 방어 등 보안 기능
+
+> [!참고: 일반적인 SSL 구성 방법]
+> 소규모 서비스 (보편적)
+> - Certbot + Nginx 조합
+> - Let's Encrypt 무료 인증서 자동 갱신
+> - 설정 간단하고 자료 많음
+> 
+> 대규모 서비스
+> - AWS: ALB/ELB + ACM (AWS Certificate Manager)
+> - 로드밸런서에서 SSL 종료, 인증서 자동 갱신
+> - Cloudflare Enterprise + Full (Strict) 모드
+> - 전 구간 암호화 + 성능 최적화
+> - Kubernetes: Ingress + cert-manager
+> - 자동 인증서 발급/갱신
+> 
 
 ---
 
 ## 2. 구성 및 연결 과정
 
 ### 구성
+
 - **astarchia.com** → 프록시 OFF (Vercel 자체 SSL)
 - **api.astarchia.com** → 프록시 ON (Cloudflare SSL)
 
 ![[Pasted image 20251224154912.png]]
+
 ### 요청 흐름
 
 ```
@@ -29,7 +47,7 @@
 │   Cloudflare    │  ← 프록시 ON, SSL 종료
 └─────────────────┘
     │
-    │ HTTP (비암호화) <- 백본으로 암호화 없이도 탈취 가능성 적음
+    │ HTTP (비암호화) ← 백본 경유, 탈취 가능성 적음
     ▼
 ┌─────────────────┐
 │   EC2           │  ← 백엔드 (SSL 없음)
@@ -58,7 +76,6 @@
 ![[Pasted image 20251224153232.png]]
 
 ### 원인 분석
-
 ```bash
 curl -I https://api.astarchia.com
 ```
@@ -76,11 +93,9 @@ Cloudflare 무료 플랜에서 한국 → 홍콩으로 라우팅되어 불필요
 
 ## 4. 해결 방안
 
-| 방안                   | 장점                           | 단점                           |
-| -------------------- | ---------------------------- | ---------------------------- |
-| 프록시 OFF + EC2 자체 SSL | 빠름, 무료                       | IP 노출, DDoS 방어 없음, SSL 직접 관리 |
-| Argo Smart Routing   | 최적 경로 보장, 프록시 유지             | 유료 (월 $5 + 트래픽)              |
-| AWS CloudFront       | 서울 엣지 확실, AWS 통합             | 설정 복잡, 비용 발생                 |
-| 현 상태 유지              | 무료, 설정 변경 없음, IP 숨김, DDoS 방어 | 500ms 지연 감수                  |
-
-해당 해결 방안 중 프록시 OFF + EC2 자체 SSL
+|방안|장점|단점|
+|---|---|---|
+|프록시 OFF + EC2 자체 SSL|빠름, 무료|IP 노출, DDoS 방어 없음, SSL 직접 관리|
+|Argo Smart Routing|최적 경로 보장, 프록시 유지|유료 (월 $5 + 트래픽)|
+|AWS CloudFront|서울 엣지 확실, AWS 통합|설정 복잡, 비용 발생|
+|현 상태 유지|무료, 설정 변경 없음, IP 숨김, DDoS 방어|500ms 지연 감수|
