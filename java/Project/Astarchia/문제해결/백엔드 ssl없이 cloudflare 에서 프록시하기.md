@@ -115,5 +115,5 @@
 
 
 ```
-프론트 (Vercel HTTPS) ─암호화─▶ Cloudflare(DNS) ──HTTP(암호화X)──▶ EC2:8080 (Docker App)
+프론트 (Vercel HTTPS) ─암호화─▶ Cloudflare(DNS) ──HTTP(암호화X 백본)──▶ EC2:8080 (Docker App)
 ```
