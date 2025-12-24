@@ -117,3 +117,33 @@
 ```
 프론트 (Vercel HTTPS) ─암호화─▶ Cloudflare(DNS) ──HTTP(암호화X 백본)──▶ EC2:8080 (Docker App)
 ```
+
+![[Pasted image 20251224153232.png]]
+
+
+
+```
+C:\Users\eborder>curl -I https://api.astarchia.com
+HTTP/1.1 401 Unauthorized
+Date: Wed, 24 Dec 2025 06:30:59 GMT
+Content-Type: application/json;charset=UTF-8
+Content-Length: 172
+Connection: keep-alive
+Vary: Origin
+Vary: Access-Control-Request-Method
+Vary: Access-Control-Request-Headers
+Set-Cookie: JSESSIONID=F1088C5029124DBEC530CBF7C230C11D; Path=/; HttpOnly
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Cache-Control: no-cache, no-store, max-age=0, must-revalidate
+Pragma: no-cache
+Expires: 0
+X-Frame-Options: DENY
+Nel: {"report_to":"cf-nel","success_fraction":0.0,"max_age":604800}
+cf-cache-status: DYNAMIC
+Report-To: {"group":"cf-nel","max_age":604800,"endpoints":[{"url":"https://a.nel.cloudflare.com/report/v4?s=UT6T80U0HEveb4dv5bZwR7P8W8aOdl23yL1QPSf9lDZoM%2F%2BzgGjzzblYSbu8CyFuEDwRXpNmKqOF9xjQfMegJJAqsUXcYGJg%2BUz6128EyA4c"}]}
+Server: cloudflare
+CF-RAY: 9b2e0d9b4d6ec8a7-HKG
+alt-svc: h3=":443"; ma=86400
+
+```
