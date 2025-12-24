@@ -77,12 +77,14 @@
             "id": "fb49998a65b1c5aa",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/images/Pasted image 20251106154231.png"
+                "file": "Java/Project/Astarchia/docs/02.ARCHITECTURE 구조.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251106154231"
+              "icon": "lucide-file",
+              "title": "02.ARCHITECTURE 구조"
             }
           }
         ],
@@ -249,9 +251,14 @@
   },
   "active": "fb49998a65b1c5aa",
   "lastOpenFiles": [
+    "Java/Project/Astarchia/docs/03.FEATURES 구조.md",
+    "Java/Project/Astarchia/docs/01.README.md",
+    "Java/Project/Astarchia/docs/02.ARCHITECTURE 구조.md",
+    "Java/Project/Astarchia/docs/무제.md",
+    "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
+    "Java/Project/Astarchia/docs",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224153232.png",
-    "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224154912.png",
     "Java/Project/Astarchia/문제해결/images",
     "Java/Project/Astarchia/문제해결/EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기.md",
@@ -283,16 +290,12 @@
     "Java/기본/05-함수형/03.옵셔널/01.Optional.md",
     "Java/기본/05-함수형/02.스트림/01.스트림API.md",
     "Java/기본/05-함수형/01.람다/01.람다표현식.md",
-    "Java/기본/04-컬렉션/02.셋/02.TreeSet.md",
-    "Java/기본/08-JVM/03.리플렉션/리플렉션.md",
-    "Java/기본/08-JVM/02.클래스로더/클래스로더란.md",
     "Java/기본/09-실습/02.디자인패턴",
     "Java/기본/09-실습/03.미니프로젝트",
     "Java/기본/09-실습/01.알고리즘",
     "Java/기본/08-JVM/03.리플렉션",
     "Java/기본/08-JVM/02.클래스로더",
     "Java/기본/08-JVM/01.메모리구조",
-    "Java/기본/07-입출력/02.직렬화",
     "git/Pasted image 20250611100724.png"
   ]
 }
