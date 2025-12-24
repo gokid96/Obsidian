@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/문제해결/EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기.md",
+                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기"
+              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
             }
           },
           {
@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/문제해결/EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기.md",
+                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기"
+              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
             }
           },
           {
@@ -65,12 +65,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/문제해결/EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기.md",
+                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기"
+              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
             }
           },
           {
@@ -79,12 +79,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/docs/02.ARCHITECTURE 구조.md",
+                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02.ARCHITECTURE 구조"
+              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
             }
           }
         ],
@@ -251,9 +251,9 @@
   },
   "active": "fb49998a65b1c5aa",
   "lastOpenFiles": [
+    "Java/Project/Astarchia/docs/02.ARCHITECTURE 구조.md",
     "Java/Project/Astarchia/docs/03.FEATURES 구조.md",
     "Java/Project/Astarchia/docs/01.README.md",
-    "Java/Project/Astarchia/docs/02.ARCHITECTURE 구조.md",
     "Java/Project/Astarchia/docs/무제.md",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/docs",
@@ -261,7 +261,7 @@
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224153232.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224154912.png",
     "Java/Project/Astarchia/문제해결/images",
-    "Java/Project/Astarchia/문제해결/EC2 SSL 없이 Cloudflare 프록시로 SSL 적용하기.md",
+    "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
     "Java/Project/Astarchia/문제해결/폴더 이동 시 순환 참조 방지.md",
     "Java/Project/Astarchia/문제해결/인프라",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224114844.png",
