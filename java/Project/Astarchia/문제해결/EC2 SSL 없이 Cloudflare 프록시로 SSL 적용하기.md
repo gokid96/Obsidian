@@ -9,11 +9,9 @@
 > **참고: 일반적인 SSL 구성 방법**
 > 
 > **소규모 서비스**
-> 
 > - Certbot + Nginx 조합으로 Let's Encrypt 무료 인증서 자동 갱신
 > 
 > **대규모 서비스**
-> 
 > - AWS: ALB/ELB + ACM으로 로드밸런서에서 SSL 종료
 > - Cloudflare Enterprise + Full (Strict) 모드로 전 구간 암호화
 > - Kubernetes: Ingress + cert-manager로 자동 인증서 관리
@@ -24,11 +22,11 @@
 
 ### 도메인 구성
 
-|도메인|프록시|SSL 처리|
-|---|---|---|
-|astarchia.com|OFF|Vercel 자체 SSL|
-|api.astarchia.com|ON|Cloudflare SSL|
-
+| 도메인               | 프록시 | SSL 처리         |
+| ----------------- | --- | -------------- |
+| api.astarchia.com | ON  | Cloudflare SSL |
+| astarchia.com     | OFF | Vercel 자체 SSL  |
+![[Pasted image 20251224154912.png]]
 ### 요청 흐름
 
 ```
@@ -59,6 +57,9 @@ EC2 (백엔드, SSL 없음)
 
 ### 증상
 클라이언트 대기시간 **521ms**
+![[Pasted image 20251224153232.png]]
+
+
 
 ### 원인
 
@@ -76,14 +77,15 @@ Cloudflare 무료 플랜에서 한국 트래픽이 홍콩으로 라우팅되어 
 
 ## 4. 해결 방안
 
-|방안|장점|단점|
-|---|---|---|
-|프록시 OFF + EC2 자체 SSL|빠름, 무료|IP 노출, DDoS 방어 없음|
-|Argo Smart Routing|최적 경로, 프록시 유지|유료 (월 $5+)|
-|AWS CloudFront|서울 엣지 보장|설정 복잡, 비용 발생|
-|현 상태 유지|무료, IP 숨김, DDoS 방어|~500ms 지연|
+| 방안                   | 장점                 | 단점                |
+| -------------------- | ------------------ | ----------------- |
+| 프록시 OFF + EC2 자체 SSL | 빠름, 무료             | IP 노출, DDoS 방어 없음 |
+| Argo Smart Routing   | 최적 경로, 프록시 유지      | 유료 (월 $5+)        |
+| AWS CloudFront       | 서울 엣지 보장           | 설정 복잡, 비용 발생      |
+| 현 상태 유지              | 무료, IP 숨김, DDoS 방어 | ~500ms 지연         |
 
-프록시 OFF 설정 시 응답 속도: **~50ms**
+프록시 OFF 설정 시 응답 속도: **~70ms**
+![[Pasted image 20251224162727.png]]
 
 ---
 
@@ -95,7 +97,6 @@ Cloudflare 무료 플랜에서 한국 트래픽이 홍콩으로 라우팅되어 
 | 보안  | ❌ IP 노출           | ✅ IP 숨김, DDoS 방어 |
 | 관리  | ❌ SSL 직접 관리       | ✅ 자동             |
 | 비용  | ✅ 무료              | ✅ 무료             |
-|     |                   |                  |
 
 ---
 
