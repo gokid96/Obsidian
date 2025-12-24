@@ -40,6 +40,15 @@
     ▼
   (역순으로 돌아감)
 ```
+## 프록시 ON일 때  흐름
+
+```
+1. 브라우저 → DNS 질의: "api.astarchia.com?"
+2. Cloudflare DNS → 응답: "104.21.xx.xx" (Cloudflare 프록시 서버 IP)
+3. 브라우저 → 104.21.xx.xx로 HTTPS 요청
+4. Cloudflare 프록시 → 내부적으로 3.37.191.88 (EC2)로 전달
+```
+
 
 ## 단계별 상세 설명
 
