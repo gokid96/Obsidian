@@ -101,6 +101,6 @@ Cloudflare 무료 플랜에서 한국 → 홍콩으로 라우팅되어 불필요
 | 현 상태 유지              | 무료, 설정 변경 없음, IP 숨김, DDoS 방어 | 500ms 지연 감수                  |
 
 
-프록시 OFF + nginx SSL
+프록시 OFF + EC2자체 SSL 설정시 응답 속도 확인
 
 ![[Pasted image 20251224162727.png]]
