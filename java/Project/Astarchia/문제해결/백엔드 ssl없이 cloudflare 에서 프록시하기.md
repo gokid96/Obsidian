@@ -111,3 +111,9 @@
 
 **4단계: 응답**
 - EC2 → Cloudflare → 브라우저 (역순)
+
+
+
+```
+프론트 (Vercel HTTPS) ─암호화─▶ Cloudflare(DNS) ──HTTP(암호화X)──▶ EC2:8080 (Docker App)
+```
