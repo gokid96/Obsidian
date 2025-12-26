@@ -4,91 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "92b9928d714710df",
+        "id": "27a04334f7d1a662",
         "type": "tabs",
         "children": [
           {
-            "id": "01ca037b9d54fa3f",
+            "id": "ea0add6f8bd1ce4f",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
+                "file": "Java/Project/Astarchia/docs/TROUBLESHOOTING.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
-            }
-          },
-          {
-            "id": "9f301ddebb5917f2",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
-            }
-          },
-          {
-            "id": "c7f55916409b333e",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Java/Project/Astarchia/문제해결/images/Pasted image 20251224153232.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251224153232"
-            }
-          },
-          {
-            "id": "fa11c2c2d05473d1",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Java/Project/Astarchia/문제해결/Pasted image 20251224154912.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20251224154912"
-            }
-          },
-          {
-            "id": "908227f65cb38ffd",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시)"
-            }
-          },
-          {
-            "id": "fb49998a65b1c5aa",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "업무/Eborder/API/00.서비스 아키텍쳐.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "00.서비스 아키텍쳐"
+              "title": "TROUBLESHOOTING"
             }
           }
-        ],
-        "currentTab": 5
+        ]
       }
     ],
     "direction": "vertical"
@@ -249,16 +182,23 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fb49998a65b1c5aa",
+  "active": "ea0add6f8bd1ce4f",
   "lastOpenFiles": [
+    "Java/Project/Astarchia/docs/README.md",
+    "Java/Project/Astarchia/docs/astarchiaERD.png",
+    "Java/Project/Astarchia/docs/ARCHITECTURE.md",
+    "무제.base",
+    "Java/Project/Astarchia/docs/TROUBLESHOOTING.md",
+    "Java/Project/Astarchia/docs/FEATURES.md",
+    "Java/Project/Astarchia/docs/무제.md",
+    "Java/Project/Astarchia/docs/03.FEATURES 구조.md",
+    "Java/Project/Astarchia/docs/01.README.md",
+    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/API/03.메시지 타입.md",
     "업무/Eborder/E-border 시스템.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "Java/Project/Astarchia/문제해결/트러블슈팅 API 응답 속도 지연 (Cloudflare 프록시).md",
     "Java/Project/Astarchia/docs/02.ARCHITECTURE 구조.md",
-    "Java/Project/Astarchia/docs/03.FEATURES 구조.md",
-    "Java/Project/Astarchia/docs/01.README.md",
-    "Java/Project/Astarchia/docs/무제.md",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/docs",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
@@ -284,18 +224,10 @@
     "Java/Spring/border-api/무제.md",
     "Java/Spring/border-api/1.  데이터 흐름.md",
     "Java/Spring/border-api/0. Spring 실습.md",
-    "Java/Spring/문제해결기록/Spring/무제.md",
-    "Java/Spring/문제해결기록/Spring/2. Lazy Loading + JSON 직렬화 충돌.md",
-    "Java/Spring/문제해결기록/Spring/1. JPA 순환 참조(Circular Reference).md",
-    "Java/Spring/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
-    "Java/기본/06-동시성/02.동기화/동기화 (Synchronization).md",
-    "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
     "Java/기본/09-실습/02.디자인패턴",
     "Java/기본/09-실습/03.미니프로젝트",
     "Java/기본/09-실습/01.알고리즘",
     "Java/기본/08-JVM/03.리플렉션",
-    "Java/기본/08-JVM/02.클래스로더",
-    "Java/기본/08-JVM/01.메모리구조",
-    "git/Pasted image 20250611100724.png"
+    "Java/기본/08-JVM/02.클래스로더"
   ]
 }
