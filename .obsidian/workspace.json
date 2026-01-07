@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Devops/Ansible/Ansible.md",
+                "file": "업무/Eborder/API/00.서비스 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Ansible"
+              "title": "00.서비스 아키텍쳐"
             }
           }
         ]
@@ -181,8 +181,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ea0add6f8bd1ce4f",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "업무/Eborder/E-border 시스템.md",
+    "Devops/Ansible/Ansible.md",
     "Monitoring/EFK.md",
     "Java/Spring/Spring/WebFlux/SSE(Server-Sent Events).md",
     "Java/Spring/Spring/면접 질문.md",
@@ -199,7 +201,6 @@
     "무제.base",
     "Pasted image 20251224170502.png",
     "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
-    "업무/Eborder/E-border 시스템.md",
     "업무/무제/모니터링 웹 검색 쿼리 개선.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "업무/service_monitor_alert-notifier/무제 1.md",
@@ -213,7 +214,6 @@
     "Java/Project/Astarchia/docs/README.md",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/docs/ARCHITECTURE.md",
-    "Java/Project/Astarchia/docs/FEATURES.md",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/docs",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
