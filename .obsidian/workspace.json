@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Monitoring/EFK.md",
+                "file": "Devops/Ansible/Ansible.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "EFK"
+              "title": "Ansible"
             }
           }
         ]
@@ -183,6 +183,7 @@
   },
   "active": "ea0add6f8bd1ce4f",
   "lastOpenFiles": [
+    "Monitoring/EFK.md",
     "Java/Spring/Spring/WebFlux/SSE(Server-Sent Events).md",
     "Java/Spring/Spring/면접 질문.md",
     "Java/Spring/문제해결기록/Spring/2. Lazy Loading + JSON 직렬화 충돌.md",
@@ -213,7 +214,6 @@
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/docs/ARCHITECTURE.md",
     "Java/Project/Astarchia/docs/FEATURES.md",
-    "Java/Project/Astarchia/docs/무제.md",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/docs",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
