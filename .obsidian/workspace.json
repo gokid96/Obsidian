@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/monitoring/성능개선.md",
+                "file": "무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "성능개선"
+              "title": "무제"
             }
           }
         ]
@@ -183,8 +183,9 @@
   },
   "active": "ea0add6f8bd1ce4f",
   "lastOpenFiles": [
-    "Monitoring/EFK.md",
     "업무/monitoring/성능개선.md",
+    "무제.md",
+    "Monitoring/EFK.md",
     "업무/monitoring",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/E-border 시스템.md",
@@ -213,7 +214,6 @@
     "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
     "업무/service_monitor_alert-notifier/alertmanager설정.md",
     "Java/Project/Astarchia/docs/TROUBLESHOOTING.md",
-    "Java/Project/Astarchia/docs/README.md",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/docs",
