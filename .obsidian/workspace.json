@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "27a04334f7d1a662",
+        "id": "36d260aa1eb20595",
         "type": "tabs",
         "children": [
           {
-            "id": "ea0add6f8bd1ce4f",
+            "id": "e045b1797d7aec94",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/monitoring/무제.md",
+                "file": "Java/동시성 제어.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "동시성 제어"
             }
           }
         ]
@@ -78,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -182,10 +181,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ea0add6f8bd1ce4f",
+  "active": "e045b1797d7aec94",
   "lastOpenFiles": [
-    "업무/monitoring/성능개선.md",
+    "무제 1.base",
+    "Java/동시성 제어.md",
+    "무제.base",
     "업무/monitoring/무제.md",
+    "업무/monitoring/성능개선.md",
     "Monitoring/EFK.md",
     "업무/monitoring",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
@@ -202,7 +204,6 @@
     "Java/Project/모의투자/0. 서비스 플로우.md",
     "Java/Project/만드는용/한국투자증권 API.md",
     "Java/Project/모의투자/시작 전 준비.md",
-    "무제.base",
     "Pasted image 20251224170502.png",
     "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
     "업무/무제/모니터링 웹 검색 쿼리 개선.md",
@@ -213,8 +214,6 @@
     "업무/Eborder/API/MATIP,MQ/MQ (Message Queue).md",
     "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
     "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
-    "업무/service_monitor_alert-notifier/alertmanager설정.md",
-    "Java/Project/Astarchia/docs/TROUBLESHOOTING.md",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
     "Java/Project/Astarchia/docs",
@@ -228,7 +227,6 @@
     "Pasted image 20251223172305.png",
     "Java/Project/Astarchia/문제해결",
     "Java/기본/09-실습/02.디자인패턴",
-    "Java/기본/09-실습/03.미니프로젝트",
-    "Java/기본/09-실습/01.알고리즘"
+    "Java/기본/09-실습/03.미니프로젝트"
   ]
 }
