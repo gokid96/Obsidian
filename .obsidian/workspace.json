@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "무제.md",
+                "file": "업무/monitoring/무제.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 383.5
+    "width": 200
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -181,10 +181,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "ea0add6f8bd1ce4f",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
     "업무/monitoring/성능개선.md",
-    "무제.md",
+    "업무/monitoring/무제.md",
     "Monitoring/EFK.md",
     "업무/monitoring",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
