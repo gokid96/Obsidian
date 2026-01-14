@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "ES 연동"
             }
+          },
+          {
+            "id": "0dbc213334d4f312",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.4"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.11.4"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -181,7 +194,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e045b1797d7aec94",
+  "active": "0dbc213334d4f312",
   "lastOpenFiles": [
     "업무/Eborder/API/monitoring/무제.md",
     "업무/Eborder/API/monitoring/ES 연동.md",
