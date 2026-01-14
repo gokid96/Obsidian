@@ -174,11 +174,12 @@ curl "http://192.168.14.31:9200/_cat/indices?v&s=store.size:desc"
 
 ### ILM 관련
 ```bash
-# ILM 정책 목록
+# ILM 정책 목록 (어떤 정책들이 있는지 파일 로테이션 기간 등)
 curl "http://192.168.14.31:9200/_ilm/policy?pretty"
 
-# 인덱스별 ILM 상태 (며칠 남았는지)
+# 인덱스별 ILM 상태 (인덱스에 정책이 적용됐는지 + 몇일남았는지)
 curl "http://192.168.14.31:9200/handler-logs-*/_ilm/explain?pretty"
+
 ```
 
 ### 클러스터 상태
