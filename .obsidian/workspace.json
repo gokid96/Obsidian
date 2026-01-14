@@ -25,12 +25,14 @@
             "id": "0dbc213334d4f312",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.11.4"
+                "file": "업무/Eborder/API/monitoring/Nomad 클러스터링 구조.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.11.4"
+              "icon": "lucide-file",
+              "title": "Nomad 클러스터링 구조"
             }
           }
         ],
@@ -91,7 +93,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 340.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -196,6 +198,7 @@
   },
   "active": "0dbc213334d4f312",
   "lastOpenFiles": [
+    "업무/Eborder/API/monitoring/Nomad 클러스터링 구조.md",
     "업무/Eborder/API/monitoring/무제.md",
     "업무/Eborder/API/monitoring/ES 연동.md",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
@@ -226,7 +229,6 @@
     "Java/Project/만드는용/한국투자증권 API.md",
     "Java/Project/모의투자/시작 전 준비.md",
     "Pasted image 20251224170502.png",
-    "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
     "업무/무제",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
