@@ -218,12 +218,12 @@ class SearchOrdersQuery {
 
 ### 동기화 도구
 
-|도구|설명|
-|---|---|
-|DB Replication|MySQL/PostgreSQL 기본 복제|
-|Kafka|이벤트 스트리밍|
-|Debezium|DB 변경 감지 (CDC)|
-|Redis Pub/Sub|간단한 이벤트 전파|
+| 도구             | 설명                     |
+| -------------- | ---------------------- |
+| DB Replication | MySQL/PostgreSQL 기본 복제 |
+| Kafka          | 이벤트 스트리밍               |
+| Debezium       | DB 변경 감지 (CDC)         |
+| Redis Pub/Sub  | 간단한 이벤트 전파             |
 
 ---
 
