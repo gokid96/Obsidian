@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
+                "file": "시스템 설계/성능 최적화/읽기,쓰기 비율에 따른 전략.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "읽기,쓰기 성능 최적화"
+              "title": "읽기,쓰기 비율에 따른 전략"
             }
           }
         ]
@@ -184,6 +184,8 @@
   },
   "active": "e045b1797d7aec94",
   "lastOpenFiles": [
+    "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
+    "시스템 설계/성능 최적화/읽기,쓰기 비율에 따른 전략.md",
     "Java/Project/Astarchia/문제해결/CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
     "Java/Project/Astarchia/문제해결/폴더 이동 시 순환 참조 방지.md",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
@@ -193,7 +195,6 @@
     "Java/Spring/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/Spring/문제해결기록/Spring/무제.md",
     "Java/Spring/문제해결기록/Spring/2. Lazy Loading + JSON 직렬화 충돌.md",
-    "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
     "시스템 설계/성능 최적화/쓰기 성능 최적화.md",
     "업무/Eborder/API/monitoring/ES 연동.md",
     "시스템 설계/성능 최적화/쓰기 성능",
@@ -222,7 +223,6 @@
     "Devops/Ansible/Ansible.md",
     "Java/Spring/Spring/WebFlux/SSE(Server-Sent Events).md",
     "Java/Spring/Spring/면접 질문.md",
-    "Java/Spring/border-api/0. Spring 실습.md",
     "Java/Project/Pasted image 20251106154530.png",
     "Pasted image 20251224170502.png",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
