@@ -1,0 +1,154 @@
+## 1. 인프라 구성
+
+### 전체 구조
+
+```
+브라우저
+    │ HTTPS
+    ▼
+Vercel (프론트엔드, 자체 SSL)
+    │ fetch('https://api.example.com/...')
+    ▼
+Cloudflare (프록시 ON, SSL 종료)
+    │ HTTP
+    ▼
+EC2 (백엔드, SSL 없음)
+    │
+    ▼
+DB
+```
+
+### 도메인 구성
+
+| 도메인             | 프록시 | SSL 처리         |
+| --------------- | --- | -------------- |
+| example.com     | OFF | Vercel 자체 SSL  |
+| api.example.com | ON  | Cloudflare SSL |
+![[Pasted image 20251224154912.png]]
+### Cloudflare 프록시 ON을 선택한 이유
+
+- EC2에서 SSL 인증서 발급/갱신 관리 불필요
+- Cloudflare가 무료로 SSL 처리
+- 백엔드 IP 숨김 및 DDoS 방어
+
+---
+
+## 2. 문제 상황
+![[Pasted image 20251224154912.png]]
+[[CDN 프록시로 인한 네트워크 지연 트러블슈팅]]
+
+API 응답 시간이 **521ms**로 비정상적으로 느림
+
+```bash
+curl -I https://api.example.com
+# CF-RAY: xxxxx-HKG ← 홍콩 서버로 라우팅됨
+```
+
+---
+
+## 3. 원인 분석
+
+### 예상 vs 실제
+
+```
+[예상]
+브라우저(한국) → Cloudflare(한국) → EC2(서울)  ✅ 빠름
+
+[실제]
+브라우저(한국) → Cloudflare(홍콩) → EC2(서울)  ❌ 느림
+```
+
+### 실제 요청 경로
+
+```
+브라우저(한국)
+    │ 
+    │ ← 홍콩 경유 (불필요한 왕복)
+    ▼
+Cloudflare(홍콩)
+    │
+    │ ← 홍콩 → 서울
+    ▼
+EC2(서울) → DB 쓰기 완료 (~10ms, 빠름)
+    │
+    │ ← 서울 → 홍콩
+    ▼
+Cloudflare(홍콩)
+    │
+    │ ← 홍콩 → 한국
+    ▼
+브라우저 → 응답 수신 (총 ~500ms)
+```
+
+### 핵심 원인
+
+**Cloudflare 무료 플랜은 한국 엣지 서버가 없음**
+
+→ 한국 트래픽이 홍콩으로 라우팅되어 불필요한 왕복 발생
+
+> 백엔드 처리는 빠른데(~10ms), 네트워크 경로 때문에 응답이 느렸던 것
+
+---
+
+## 4. 해결
+
+### 해결 방안 비교
+
+|방안|장점|단점|
+|---|---|---|
+|프록시 OFF + EC2 자체 SSL|빠름, 무료|IP 노출, DDoS 방어 없음|
+|Argo Smart Routing|최적 경로, 프록시 유지|유료 (월 $5+)|
+|AWS CloudFront|서울 엣지 보장|설정 복잡, 비용 발생|
+|현 상태 유지|무료, IP 숨김, DDoS 방어|~500ms 지연|
+
+### 적용 결과
+
+**프록시 OFF 설정**: 521ms → **~70ms** 개선
+
+### 트레이드오프
+
+|항목|프록시 OFF + EC2 SSL|프록시 ON|
+|---|---|---|
+|속도|✅ ~50ms|❌ ~500ms|
+|보안|❌ IP 노출|✅ IP 숨김, DDoS 방어|
+|관리|❌ SSL 직접 관리|✅ 자동|
+|비용|✅ 무료|✅ 무료|
+
+### 결론
+
+- **소규모 프로젝트**: 속도 우선 → **프록시 OFF**
+- **서비스 확장 시**: 프록시 ON + **Argo** 또는 **AWS CloudFront**
+
+---
+
+## 참고
+
+### 상황별 권장 구성
+
+|상황|권장 구성|
+|---|---|
+|비용 최소화|Cloudflare 프록시 OFF + Certbot|
+|속도 + 관리 편의|AWS CloudFront + ALB + ACM|
+|보안 중요|Cloudflare Pro/Argo ($20+/월)|
+|대규모 트래픽|CloudFront + 멀티 AZ + Auto Scaling|
+
+### 일반적인 SSL 구성 방법
+
+**소규모 서비스**
+
+- Certbot + Nginx로 Let's Encrypt 무료 인증서 자동 갱신
+
+**대규모 서비스**
+
+- AWS: ALB/ELB + ACM으로 로드밸런서에서 SSL 종료
+- Cloudflare Enterprise + Full (Strict) 모드
+- Kubernetes: Ingress + cert-manager
+
+### Cloudflare 프록시 ON vs OFF
+
+|항목|프록시 OFF|프록시 ON|
+|---|---|---|
+|DNS 응답|EC2 실제 IP|Cloudflare IP|
+|트래픽 경로|브라우저 → EC2 직접|브라우저 → Cloudflare → EC2|
+|SSL|EC2에서 직접 처리|Cloudflare가 처리|
+|부가 기능|없음|DDoS 방어, 캐싱|
