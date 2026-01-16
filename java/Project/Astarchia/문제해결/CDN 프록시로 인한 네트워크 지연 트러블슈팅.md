@@ -26,7 +26,7 @@ DB
 | api.example.com | ON  | Cloudflare SSL |
 ![[Pasted image 20251224154912.png]]
 ### Cloudflare 프록시 ON을 선택한 이유
-
+![[Pasted image 20251224162727.png]]
 - EC2에서 SSL 인증서 발급/갱신 관리 불필요
 - Cloudflare가 무료로 SSL 처리
 - 백엔드 IP 숨김 및 DDoS 방어
@@ -34,20 +34,17 @@ DB
 ---
 
 ## 2. 문제 상황
-![[Pasted image 20251224154912.png]]
-[[CDN 프록시로 인한 네트워크 지연 트러블슈팅]]
-
+![[Pasted image 20251224162727.png]]
 API 응답 시간이 **521ms**로 비정상적으로 느림
-
-```bash
-curl -I https://api.example.com
-# CF-RAY: xxxxx-HKG ← 홍콩 서버로 라우팅됨
-```
 
 ---
 
 ## 3. 원인 분석
 
+```bash
+curl -I https://api.example.com
+# CF-RAY: xxxxx-HKG ← 홍콩 서버로 라우팅됨
+```
 ### 예상 vs 실제
 
 ```
@@ -94,14 +91,14 @@ Cloudflare(홍콩)
 
 ### 해결 방안 비교
 
-|방안|장점|단점|
-|---|---|---|
-|프록시 OFF + EC2 자체 SSL|빠름, 무료|IP 노출, DDoS 방어 없음|
-|Argo Smart Routing|최적 경로, 프록시 유지|유료 (월 $5+)|
-|AWS CloudFront|서울 엣지 보장|설정 복잡, 비용 발생|
-|현 상태 유지|무료, IP 숨김, DDoS 방어|~500ms 지연|
+| 방안                   | 장점                 | 단점                |
+| -------------------- | ------------------ | ----------------- |
+| 프록시 OFF + EC2 자체 SSL | 빠름, 무료             | IP 노출, DDoS 방어 없음 |
+| Argo Smart Routing   | 최적 경로, 프록시 유지      | 유료 (월 $5+)        |
+| AWS CloudFront       | 서울 엣지 보장           | 설정 복잡, 비용 발생      |
+| 현 상태 유지              | 무료, IP 숨김, DDoS 방어 | ~500ms 지연         |
 
-### 적용 결과
+### 프록시 OFF + EC2 자체 SSL 적용 결과
 
 **프록시 OFF 설정**: 521ms → **~70ms** 개선
 
@@ -135,20 +132,18 @@ Cloudflare(홍콩)
 ### 일반적인 SSL 구성 방법
 
 **소규모 서비스**
-
 - Certbot + Nginx로 Let's Encrypt 무료 인증서 자동 갱신
 
 **대규모 서비스**
-
 - AWS: ALB/ELB + ACM으로 로드밸런서에서 SSL 종료
 - Cloudflare Enterprise + Full (Strict) 모드
 - Kubernetes: Ingress + cert-manager
 
 ### Cloudflare 프록시 ON vs OFF
 
-|항목|프록시 OFF|프록시 ON|
-|---|---|---|
-|DNS 응답|EC2 실제 IP|Cloudflare IP|
-|트래픽 경로|브라우저 → EC2 직접|브라우저 → Cloudflare → EC2|
-|SSL|EC2에서 직접 처리|Cloudflare가 처리|
-|부가 기능|없음|DDoS 방어, 캐싱|
+| 항목     | 프록시 OFF       | 프록시 ON                  |
+| ------ | ------------- | ----------------------- |
+| DNS 응답 | EC2 실제 IP     | Cloudflare IP           |
+| 트래픽 경로 | 브라우저 → EC2 직접 | 브라우저 → Cloudflare → EC2 |
+| SSL    | EC2에서 직접 처리   | Cloudflare가 처리          |
+| 부가 기능  | 없음            | DDoS 방어, 캐싱             |

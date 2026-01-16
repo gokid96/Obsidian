@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Java/Project/Astarchia/문제해결/CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
+                "file": "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CDN 프록시로 인한 네트워크 지연 트러블슈팅"
+              "title": "읽기,쓰기 성능 최적화"
             }
           }
         ]
@@ -184,9 +184,11 @@
   },
   "active": "e045b1797d7aec94",
   "lastOpenFiles": [
+    "Java/Project/Astarchia/문제해결/CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
+    "Java/Project/Astarchia/문제해결/폴더 이동 시 순환 참조 방지.md",
+    "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224153232.png",
     "Java/Project/Astarchia/문제해결/images/Pasted image 20251224154912.png",
-    "Java/Project/Astarchia/문제해결/CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
     "Java/동시성 제어.md",
     "Java/Spring/문제해결기록/Spring/0. 트러블슈팅 작성요령.md",
     "Java/Spring/문제해결기록/Spring/무제.md",
@@ -225,7 +227,6 @@
     "Pasted image 20251224170502.png",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
-    "Java/Project/Astarchia/문제해결/images/Pasted image 20251224162727.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224114844.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224114003.png",
     "Pasted image 20251223172305.png"
