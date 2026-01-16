@@ -199,8 +199,9 @@
   },
   "active": "0dbc213334d4f312",
   "lastOpenFiles": [
-    "업무/Eborder/API/monitoring/ES 연동.md",
+    "시스템 설계/성능 최적화/쓰기 성능 최적화.md",
     "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
+    "업무/Eborder/API/monitoring/ES 연동.md",
     "시스템 설계/성능 최적화/쓰기 성능",
     "시스템 설계/캐싱 전략",
     "시스템 설계/확장성",
@@ -235,7 +236,6 @@
     "Java/Project/Astarchia/01.ERD.md",
     "Java/Project/Pasted image 20251106154530.png",
     "Java/Project/모의투자/0. 서비스 플로우.md",
-    "Java/Project/만드는용/한국투자증권 API.md",
     "Pasted image 20251224170502.png",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
     "Java/Project/Astarchia/images/Pasted image 20251106154231.png",
