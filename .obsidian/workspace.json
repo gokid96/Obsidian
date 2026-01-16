@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "시스템 설계/캐싱 전략/캐시 무효화.md",
+                "file": "시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "캐시 무효화"
+              "title": "이벤트 드리븐 아키텍처 (EDA)"
             }
           }
         ]
@@ -184,8 +184,9 @@
   },
   "active": "e045b1797d7aec94",
   "lastOpenFiles": [
-    "시스템 설계/데이터베이스 설계/CQRS패턴.md",
     "시스템 설계/캐싱 전략/캐시 무효화.md",
+    "시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
+    "시스템 설계/데이터베이스 설계/CQRS패턴.md",
     "시스템 설계/성능 최적화/병목 찾는 법.md",
     "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
     "시스템 설계/성능 최적화/읽기,쓰기 비율에 따른 전략.md",
@@ -220,7 +221,6 @@
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "Monitoring/EFK.md",
     "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
-    "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
     "무제 1.base",
     "무제.base",
     "Java/Project/Pasted image 20251106154530.png",
