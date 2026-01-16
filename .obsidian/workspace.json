@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "시스템 설계/데이터베이스 설계/CQRS패턴.md",
+                "file": "시스템 설계/캐싱 전략/캐시 무효화.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "CQRS패턴"
+              "title": "캐시 무효화"
             }
           }
         ]
@@ -184,8 +184,9 @@
   },
   "active": "e045b1797d7aec94",
   "lastOpenFiles": [
-    "시스템 설계/성능 최적화/병목 찾는 법.md",
     "시스템 설계/데이터베이스 설계/CQRS패턴.md",
+    "시스템 설계/캐싱 전략/캐시 무효화.md",
+    "시스템 설계/성능 최적화/병목 찾는 법.md",
     "시스템 설계/성능 최적화/읽기,쓰기 성능 최적화.md",
     "시스템 설계/성능 최적화/읽기,쓰기 비율에 따른 전략.md",
     "Java/Project/Astarchia/문제해결/CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
@@ -222,7 +223,6 @@
     "업무/e-border-monitoring-web 프로젝트 분석 요약.md",
     "무제 1.base",
     "무제.base",
-    "Devops/Ansible/Ansible.md",
     "Java/Project/Pasted image 20251106154530.png",
     "Pasted image 20251224170502.png",
     "Java/Project/Astarchia/docs/astarchiaERD.png",
