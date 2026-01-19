@@ -48,44 +48,53 @@
 
 **"무슨 일이 일어났다"**를 나타내는 메시지
 
-```typescript
+```java
 // 이벤트 예시
-{
-  eventType: "OrderCreated",
-  timestamp: "2024-01-15T10:30:00Z",
-  data: {
-    orderId: "order-123",
-    userId: "user-456",
-    items: [...],
-    totalAmount: 50000
-  }
+@Getter
+@Builder
+public class OrderCreatedEvent {
+    private String eventType = "OrderCreated";
+    private LocalDateTime timestamp;
+    private String orderId;
+    private String userId;
+    private List<OrderItem> items;
+    private BigDecimal totalAmount;
 }
 ```
 
 **이벤트 네이밍**: 과거형 사용
 
-- ✅ OrderCreated, PaymentCompleted, UserRegistered
-- ❌ CreateOrder, CompletePayment
+- OrderCreated, PaymentCompleted, UserRegistered (O)
+- CreateOrder, CompletePayment (X)
 
 ### 2. 프로듀서 (Producer)
 
 이벤트를 발행하는 주체
 
-```typescript
+```java
 // 주문 서비스 (프로듀서)
-async function createOrder(orderData) {
-  // 1. 주문 저장
-  const order = await orderRepository.save(orderData);
-  
-  // 2. 이벤트 발행
-  await eventBus.publish('OrderCreated', {
-    orderId: order.id,
-    userId: order.userId,
-    items: order.items,
-    totalAmount: order.totalAmount
-  });
-  
-  return order;
+@Service
+@RequiredArgsConstructor
+public class OrderService {
+    private final OrderRepository orderRepository;
+    private final ApplicationEventPublisher eventPublisher;
+    
+    @Transactional
+    public Order createOrder(OrderRequest request) {
+        // 1. 주문 저장
+        Order order = orderRepository.save(Order.from(request));
+        
+        // 2. 이벤트 발행
+        eventPublisher.publishEvent(OrderCreatedEvent.builder()
+            .orderId(order.getId())
+            .userId(order.getUserId())
+            .items(order.getItems())
+            .totalAmount(order.getTotalAmount())
+            .timestamp(LocalDateTime.now())
+            .build());
+        
+        return order;
+    }
 }
 ```
 
@@ -93,23 +102,44 @@ async function createOrder(orderData) {
 
 이벤트를 구독하고 처리하는 주체
 
-```typescript
+```java
 // 재고 서비스 (컨슈머)
-eventBus.subscribe('OrderCreated', async (event) => {
-  for (const item of event.data.items) {
-    await inventoryService.decrease(item.productId, item.quantity);
-  }
-});
+@Component
+@RequiredArgsConstructor
+public class InventoryEventHandler {
+    private final InventoryService inventoryService;
+    
+    @EventListener
+    public void handleOrderCreated(OrderCreatedEvent event) {
+        for (OrderItem item : event.getItems()) {
+            inventoryService.decrease(item.getProductId(), item.getQuantity());
+        }
+    }
+}
 
 // 알림 서비스 (컨슈머)
-eventBus.subscribe('OrderCreated', async (event) => {
-  await notificationService.send(event.data.userId, '주문이 완료되었습니다');
-});
+@Component
+@RequiredArgsConstructor
+public class NotificationEventHandler {
+    private final NotificationService notificationService;
+    
+    @EventListener
+    public void handleOrderCreated(OrderCreatedEvent event) {
+        notificationService.send(event.getUserId(), "주문이 완료되었습니다");
+    }
+}
 
 // 정산 서비스 (컨슈머)
-eventBus.subscribe('OrderCreated', async (event) => {
-  await settlementService.record(event.data);
-});
+@Component
+@RequiredArgsConstructor
+public class SettlementEventHandler {
+    private final SettlementService settlementService;
+    
+    @EventListener
+    public void handleOrderCreated(OrderCreatedEvent event) {
+        settlementService.record(event);
+    }
+}
 ```
 
 ### 4. 메시지 브로커 (Message Broker)
@@ -138,14 +168,36 @@ eventBus.subscribe('OrderCreated', async (event) => {
 - 1:N 브로드캐스트
 - 구독자가 각자 처리
 
-```typescript
-// 발행
-await kafka.publish('order-events', { type: 'OrderCreated', data: order });
+```java
+// Kafka 발행
+@Service
+@RequiredArgsConstructor
+public class OrderEventProducer {
+    private final KafkaTemplate<String, OrderCreatedEvent> kafkaTemplate;
+    
+    public void publish(OrderCreatedEvent event) {
+        kafkaTemplate.send("order-events", event.getOrderId(), event);
+    }
+}
 
-// 구독 (여러 서비스)
-kafka.subscribe('order-events', handleOrderEvent);  // 재고
-kafka.subscribe('order-events', handleOrderEvent);  // 알림
-kafka.subscribe('order-events', handleOrderEvent);  // 정산
+// Kafka 구독 (여러 서비스)
+@Component
+public class InventoryEventConsumer {
+    
+    @KafkaListener(topics = "order-events", groupId = "inventory-group")
+    public void consume(OrderCreatedEvent event) {
+        // 재고 처리
+    }
+}
+
+@Component
+public class NotificationEventConsumer {
+    
+    @KafkaListener(topics = "order-events", groupId = "notification-group")
+    public void consume(OrderCreatedEvent event) {
+        // 알림 처리
+    }
+}
 ```
 
 ### 2. Event Sourcing
@@ -214,35 +266,63 @@ kafka.subscribe('order-events', handleOrderEvent);  // 정산
 
 ### 예시 2: 회원가입 플로우
 
-```typescript
+```java
 // 회원 서비스
-async function registerUser(userData) {
-  const user = await userRepository.save(userData);
-  
-  await eventBus.publish('UserRegistered', {
-    userId: user.id,
-    email: user.email,
-    name: user.name
-  });
-  
-  return user;
+@Service
+@RequiredArgsConstructor
+public class UserService {
+    private final UserRepository userRepository;
+    private final ApplicationEventPublisher eventPublisher;
+    
+    @Transactional
+    public User registerUser(UserRequest request) {
+        User user = userRepository.save(User.from(request));
+        
+        eventPublisher.publishEvent(UserRegisteredEvent.builder()
+            .userId(user.getId())
+            .email(user.getEmail())
+            .name(user.getName())
+            .build());
+        
+        return user;
+    }
 }
 
-// 각 서비스가 구독
-// 이메일 서비스
-eventBus.subscribe('UserRegistered', async (event) => {
-  await sendWelcomeEmail(event.data.email);
-});
+// 이메일 서비스 (컨슈머)
+@Component
+@RequiredArgsConstructor
+public class EmailEventHandler {
+    private final EmailService emailService;
+    
+    @EventListener
+    public void handleUserRegistered(UserRegisteredEvent event) {
+        emailService.sendWelcomeEmail(event.getEmail());
+    }
+}
 
-// 쿠폰 서비스
-eventBus.subscribe('UserRegistered', async (event) => {
-  await createWelcomeCoupon(event.data.userId);
-});
+// 쿠폰 서비스 (컨슈머)
+@Component
+@RequiredArgsConstructor
+public class CouponEventHandler {
+    private final CouponService couponService;
+    
+    @EventListener
+    public void handleUserRegistered(UserRegisteredEvent event) {
+        couponService.createWelcomeCoupon(event.getUserId());
+    }
+}
 
-// 분석 서비스
-eventBus.subscribe('UserRegistered', async (event) => {
-  await analytics.trackSignup(event.data);
-});
+// 분석 서비스 (컨슈머)
+@Component
+@RequiredArgsConstructor
+public class AnalyticsEventHandler {
+    private final AnalyticsService analyticsService;
+    
+    @EventListener
+    public void handleUserRegistered(UserRegisteredEvent event) {
+        analyticsService.trackSignup(event);
+    }
+}
 ```
 
 ---
@@ -292,20 +372,30 @@ EDA = "이벤트로 시스템을 설계한다" (아키텍처)
 
 같은 이벤트가 여러 번 와도 결과가 같아야 함
 
-```typescript
-// ❌ 멱등하지 않음
-eventBus.subscribe('OrderCreated', async (event) => {
-  await inventory.decrease(event.productId, 1);  // 중복 처리 시 계속 차감
-});
+```java
+// 멱등하지 않음
+@EventListener
+public void handleOrderCreated(OrderCreatedEvent event) {
+    inventoryService.decrease(event.getProductId(), 1);  // 중복 처리 시 계속 차감
+}
 
-// ✅ 멱등함
-eventBus.subscribe('OrderCreated', async (event) => {
-  const processed = await checkProcessed(event.eventId);
-  if (processed) return;  // 이미 처리됨
-  
-  await inventory.decrease(event.productId, 1);
-  await markProcessed(event.eventId);
-});
+// 멱등함
+@Component
+@RequiredArgsConstructor
+public class IdempotentInventoryHandler {
+    private final ProcessedEventRepository processedEventRepository;
+    private final InventoryService inventoryService;
+    
+    @EventListener
+    public void handleOrderCreated(OrderCreatedEvent event) {
+        if (processedEventRepository.existsById(event.getEventId())) {
+            return;  // 이미 처리됨
+        }
+        
+        inventoryService.decrease(event.getProductId(), 1);
+        processedEventRepository.save(new ProcessedEvent(event.getEventId()));
+    }
+}
 ```
 
 ### 2. 이벤트 순서
@@ -324,16 +414,24 @@ OrderCancelled → OrderCreated  (문제!)
 
 ### 3. 실패 처리
 
-```typescript
+```java
 // Dead Letter Queue (DLQ) 사용
-eventBus.subscribe('OrderCreated', async (event) => {
-  try {
-    await processOrder(event);
-  } catch (error) {
-    // 재시도 후에도 실패하면 DLQ로
-    await dlq.send(event);
-  }
-});
+@Component
+@RequiredArgsConstructor
+public class OrderEventConsumer {
+    private final OrderProcessor orderProcessor;
+    private final KafkaTemplate<String, OrderCreatedEvent> kafkaTemplate;
+    
+    @KafkaListener(topics = "order-events")
+    public void consume(OrderCreatedEvent event) {
+        try {
+            orderProcessor.process(event);
+        } catch (Exception e) {
+            // 재시도 후에도 실패하면 DLQ로
+            kafkaTemplate.send("order-events-dlq", event);
+        }
+    }
+}
 ```
 
 ### 4. 모니터링
