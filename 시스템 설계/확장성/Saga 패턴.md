@@ -340,6 +340,77 @@ async function withRetry(fn, maxRetries = 3) {
 
 ---
 
+## 보상 트랜잭션 실패 처리
+
+### 문제 상황
+
+```
+주문 생성 → 재고 차감 → 결제 실패!
+                         ↓
+              재고 복구 실패!  ← 보상도 실패하면?
+```
+
+### 해결 방법
+
+**1. 재시도 큐**
+
+```typescript
+async function compensateWithRetry(
+  fn: () => Promise<void>,
+  maxRetries: number = 5
+) {
+  for (let i = 0; i < maxRetries; i++) {
+    try {
+      await fn();
+      return;
+    } catch (error) {
+      if (i === maxRetries - 1) {
+        await deadLetterQueue.add({
+          type: 'COMPENSATION_FAILED',
+          payload: { fn: fn.toString(), error }
+        });
+      }
+      await sleep(Math.pow(2, i) * 1000);  // 지수 백오프
+    }
+  }
+}
+```
+
+**2. Dead Letter Queue (DLQ)**
+
+보상 실패 건을 별도 큐에 저장 후 수동/자동 처리
+
+```typescript
+// DLQ 처리자 (정기 실행)
+async function processDLQ() {
+  const failedItems = await dlq.getAll();
+  
+  for (const item of failedItems) {
+    try {
+      await retryCompensation(item);
+      await dlq.remove(item.id);
+    } catch (error) {
+      // 알림 발송 후 수동 처리 필요
+      await alertOps(item);
+    }
+  }
+}
+```
+
+**3. 수동 복구 대시보드**
+
+자동 복구 불가 시 운영자가 직접 처리
+
+```
+[Saga Dashboard]
+- 실패한 Saga 목록
+- 각 단계 상태 확인
+- 수동 보상 실행 버튼
+- 강제 완료 처리
+```
+
+---
+
 ## Saga vs 2PC
 
 |항목|Saga|2PC (Two-Phase Commit)|
