@@ -85,45 +85,76 @@ C = Compensation (보상, 역방향)
 
 **코드 예시**
 
-```typescript
+```java
 // 주문 서비스
-async function createOrder(data) {
-  const order = await orderRepo.save({ ...data, status: 'PENDING' });
-  await eventBus.publish('OrderCreated', { orderId: order.id, items: data.items });
-  return order;
+@Service
+@RequiredArgsConstructor
+public class OrderService {
+    private final OrderRepository orderRepository;
+    private final ApplicationEventPublisher eventPublisher;
+    
+    @Transactional
+    public Order createOrder(OrderRequest request) {
+        Order order = Order.builder()
+            .items(request.getItems())
+            .status(OrderStatus.PENDING)
+            .build();
+        orderRepository.save(order);
+        
+        eventPublisher.publishEvent(new OrderCreatedEvent(order.getId(), request.getItems()));
+        return order;
+    }
+    
+    // 주문 취소 (보상)
+    @EventListener
+    public void handleInventoryReserveFailed(InventoryReserveFailedEvent event) {
+        orderRepository.updateStatus(event.getOrderId(), OrderStatus.CANCELLED);
+        eventPublisher.publishEvent(new OrderCancelledEvent(event.getOrderId()));
+    }
 }
 
-// 주문 취소 (보상)
-eventBus.subscribe('InventoryReserveFailed', async (event) => {
-  await orderRepo.updateStatus(event.orderId, 'CANCELLED');
-  await eventBus.publish('OrderCancelled', { orderId: event.orderId });
-});
-
 // 재고 서비스
-eventBus.subscribe('OrderCreated', async (event) => {
-  try {
-    await inventoryService.reserve(event.items);
-    await eventBus.publish('InventoryReserved', { orderId: event.orderId });
-  } catch (error) {
-    await eventBus.publish('InventoryReserveFailed', { orderId: event.orderId });
-  }
-});
-
-// 재고 복구 (보상)
-eventBus.subscribe('PaymentFailed', async (event) => {
-  await inventoryService.release(event.items);
-  await eventBus.publish('InventoryReserveFailed', { orderId: event.orderId });
-});
+@Service
+@RequiredArgsConstructor
+public class InventoryService {
+    private final InventoryRepository inventoryRepository;
+    private final ApplicationEventPublisher eventPublisher;
+    
+    @EventListener
+    public void handleOrderCreated(OrderCreatedEvent event) {
+        try {
+            reserve(event.getItems());
+            eventPublisher.publishEvent(new InventoryReservedEvent(event.getOrderId()));
+        } catch (Exception e) {
+            eventPublisher.publishEvent(new InventoryReserveFailedEvent(event.getOrderId()));
+        }
+    }
+    
+    // 재고 복구 (보상)
+    @EventListener
+    public void handlePaymentFailed(PaymentFailedEvent event) {
+        release(event.getItems());
+        eventPublisher.publishEvent(new InventoryReserveFailedEvent(event.getOrderId()));
+    }
+}
 
 // 결제 서비스
-eventBus.subscribe('InventoryReserved', async (event) => {
-  try {
-    await paymentService.charge(event.amount);
-    await eventBus.publish('PaymentCompleted', { orderId: event.orderId });
-  } catch (error) {
-    await eventBus.publish('PaymentFailed', { orderId: event.orderId });
-  }
-});
+@Service
+@RequiredArgsConstructor
+public class PaymentService {
+    private final PaymentGateway paymentGateway;
+    private final ApplicationEventPublisher eventPublisher;
+    
+    @EventListener
+    public void handleInventoryReserved(InventoryReservedEvent event) {
+        try {
+            paymentGateway.charge(event.getAmount());
+            eventPublisher.publishEvent(new PaymentCompletedEvent(event.getOrderId()));
+        } catch (Exception e) {
+            eventPublisher.publishEvent(new PaymentFailedEvent(event.getOrderId()));
+        }
+    }
+}
 ```
 
 |장점|단점|
@@ -152,58 +183,67 @@ eventBus.subscribe('InventoryReserved', async (event) => {
 
 **코드 예시**
 
-```typescript
-class OrderSagaOrchestrator {
-  async execute(orderData) {
-    const sagaLog = await this.createSagaLog();
+```java
+@Service
+@RequiredArgsConstructor
+public class OrderSagaOrchestrator {
+    private final OrderService orderService;
+    private final InventoryService inventoryService;
+    private final PaymentService paymentService;
+    private final ShippingService shippingService;
+    private final SagaLogRepository sagaLogRepository;
     
-    try {
-      // Step 1: 주문 생성
-      const order = await this.orderService.create(orderData);
-      await this.logStep(sagaLog, 'ORDER_CREATED', order.id);
-      
-      // Step 2: 재고 차감
-      await this.inventoryService.reserve(order.items);
-      await this.logStep(sagaLog, 'INVENTORY_RESERVED');
-      
-      // Step 3: 결제
-      await this.paymentService.charge(order.totalAmount);
-      await this.logStep(sagaLog, 'PAYMENT_COMPLETED');
-      
-      // Step 4: 배송 준비
-      await this.shippingService.prepare(order.id);
-      await this.logStep(sagaLog, 'SHIPPING_PREPARED');
-      
-      await this.completeSaga(sagaLog);
-      return order;
-      
-    } catch (error) {
-      await this.compensate(sagaLog);
-      throw error;
+    public Order execute(OrderRequest orderData) {
+        SagaLog sagaLog = sagaLogRepository.save(new SagaLog());
+        
+        try {
+            // Step 1: 주문 생성
+            Order order = orderService.create(orderData);
+            logStep(sagaLog, StepType.ORDER_CREATED, order.getId());
+            
+            // Step 2: 재고 차감
+            inventoryService.reserve(order.getItems());
+            logStep(sagaLog, StepType.INVENTORY_RESERVED, order.getId());
+            
+            // Step 3: 결제
+            paymentService.charge(order.getTotalAmount());
+            logStep(sagaLog, StepType.PAYMENT_COMPLETED, order.getId());
+            
+            // Step 4: 배송 준비
+            shippingService.prepare(order.getId());
+            logStep(sagaLog, StepType.SHIPPING_PREPARED, order.getId());
+            
+            completeSaga(sagaLog);
+            return order;
+            
+        } catch (Exception e) {
+            compensate(sagaLog);
+            throw e;
+        }
     }
-  }
-  
-  async compensate(sagaLog) {
-    // 역순으로 보상 트랜잭션 실행
-    const steps = await this.getCompletedSteps(sagaLog);
     
-    for (const step of steps.reverse()) {
-      switch (step.type) {
-        case 'SHIPPING_PREPARED':
-          await this.shippingService.cancel(step.orderId);
-          break;
-        case 'PAYMENT_COMPLETED':
-          await this.paymentService.refund(step.paymentId);
-          break;
-        case 'INVENTORY_RESERVED':
-          await this.inventoryService.release(step.items);
-          break;
-        case 'ORDER_CREATED':
-          await this.orderService.cancel(step.orderId);
-          break;
-      }
+    private void compensate(SagaLog sagaLog) {
+        // 역순으로 보상 트랜잭션 실행
+        List<SagaStep> steps = sagaLog.getCompletedSteps();
+        Collections.reverse(steps);
+        
+        for (SagaStep step : steps) {
+            switch (step.getType()) {
+                case SHIPPING_PREPARED:
+                    shippingService.cancel(step.getOrderId());
+                    break;
+                case PAYMENT_COMPLETED:
+                    paymentService.refund(step.getPaymentId());
+                    break;
+                case INVENTORY_RESERVED:
+                    inventoryService.release(step.getItems());
+                    break;
+                case ORDER_CREATED:
+                    orderService.cancel(step.getOrderId());
+                    break;
+            }
+        }
     }
-  }
 }
 ```
 
@@ -252,24 +292,6 @@ CANCELLED    INVENTORY_FAILED     PAYMENT_FAILED
 |결제|결제 승인|환불|
 |배송 준비|배송 요청|배송 취소|
 
-### 전체 코드 흐름
-
-```typescript
-// 1. 주문 생성
-order = { id: 'order-123', status: 'PENDING', items: [...] }
-
-// 2. 재고 예약 성공
-inventory.reserve('product-1', 2)  // 재고 10 → 8
-order.status = 'INVENTORY_RESERVED'
-
-// 3. 결제 실패!
-payment.charge(50000)  // ❌ 카드 한도 초과
-
-// 4. 보상 트랜잭션 시작
-inventory.release('product-1', 2)  // 재고 8 → 10 (복구)
-order.status = 'CANCELLED'
-```
-
 ---
 
 ## 고려 사항
@@ -278,45 +300,49 @@ order.status = 'CANCELLED'
 
 보상 트랜잭션이 여러 번 실행되어도 안전해야 함
 
-```typescript
-// ❌ 멱등하지 않음
-async function refund(paymentId) {
-  await payment.refund(paymentId);  // 중복 환불 위험
+```java
+// 멱등하지 않음
+public void refund(String paymentId) {
+    paymentGateway.refund(paymentId);  // 중복 환불 위험
 }
 
-// ✅ 멱등함
-async function refund(paymentId) {
-  const payment = await paymentRepo.find(paymentId);
-  if (payment.status === 'REFUNDED') return;  // 이미 처리됨
-  
-  await payment.refund(paymentId);
-  await paymentRepo.updateStatus(paymentId, 'REFUNDED');
+// 멱등함
+public void refund(String paymentId) {
+    Payment payment = paymentRepository.findById(paymentId).orElseThrow();
+    if (payment.getStatus() == PaymentStatus.REFUNDED) {
+        return;  // 이미 처리됨
+    }
+    
+    paymentGateway.refund(paymentId);
+    payment.setStatus(PaymentStatus.REFUNDED);
+    paymentRepository.save(payment);
 }
 ```
 
 ### 2. 타임아웃
 
-```typescript
+```java
 // 각 단계에 타임아웃 설정
-const result = await Promise.race([
-  inventoryService.reserve(items),
-  timeout(5000)  // 5초 초과 시 실패 처리
-]);
+public void reserveWithTimeout(List<Item> items) {
+    CompletableFuture<Void> future = CompletableFuture.runAsync(() -> 
+        inventoryService.reserve(items)
+    );
+    
+    try {
+        future.get(5, TimeUnit.SECONDS);  // 5초 초과 시 실패
+    } catch (TimeoutException e) {
+        throw new SagaStepTimeoutException("Inventory reservation timeout");
+    }
+}
 ```
 
 ### 3. 재시도
 
-```typescript
+```java
 // 일시적 오류는 재시도
-async function withRetry(fn, maxRetries = 3) {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      return await fn();
-    } catch (error) {
-      if (i === maxRetries - 1) throw error;
-      await sleep(1000 * (i + 1));  // 점점 늘어나는 대기
-    }
-  }
+@Retryable(value = TransientException.class, maxAttempts = 3, backoff = @Backoff(delay = 1000, multiplier = 2))
+public void reserveWithRetry(List<Item> items) {
+    inventoryService.reserve(items);
 }
 ```
 
@@ -324,17 +350,33 @@ async function withRetry(fn, maxRetries = 3) {
 
 실패 시 어디까지 진행됐는지 알기 위해 로그 저장
 
-```typescript
-// Saga 로그 테이블
-{
-  sagaId: 'saga-123',
-  orderId: 'order-456',
-  steps: [
-    { type: 'ORDER_CREATED', status: 'COMPLETED', timestamp: '...' },
-    { type: 'INVENTORY_RESERVED', status: 'COMPLETED', timestamp: '...' },
-    { type: 'PAYMENT', status: 'FAILED', error: '카드 한도 초과', timestamp: '...' }
-  ],
-  status: 'COMPENSATING'  // PENDING, COMPLETED, COMPENSATING, FAILED
+```java
+@Entity
+public class SagaLog {
+    @Id
+    private String sagaId;
+    private String orderId;
+    
+    @OneToMany(cascade = CascadeType.ALL)
+    private List<SagaStep> steps;
+    
+    @Enumerated(EnumType.STRING)
+    private SagaStatus status;  // PENDING, COMPLETED, COMPENSATING, FAILED
+}
+
+@Entity
+public class SagaStep {
+    @Id
+    private Long id;
+    
+    @Enumerated(EnumType.STRING)
+    private StepType type;
+    
+    @Enumerated(EnumType.STRING)
+    private StepStatus status;
+    
+    private String errorMessage;
+    private LocalDateTime timestamp;
 }
 ```
 
@@ -354,25 +396,31 @@ async function withRetry(fn, maxRetries = 3) {
 
 **1. 재시도 큐**
 
-```typescript
-async function compensateWithRetry(
-  fn: () => Promise<void>,
-  maxRetries: number = 5
-) {
-  for (let i = 0; i < maxRetries; i++) {
-    try {
-      await fn();
-      return;
-    } catch (error) {
-      if (i === maxRetries - 1) {
-        await deadLetterQueue.add({
-          type: 'COMPENSATION_FAILED',
-          payload: { fn: fn.toString(), error }
-        });
-      }
-      await sleep(Math.pow(2, i) * 1000);  // 지수 백오프
+```java
+@Service
+@RequiredArgsConstructor
+public class CompensationService {
+    private final RabbitTemplate rabbitTemplate;
+    
+    public void compensateWithRetry(Runnable compensation, int maxRetries) {
+        for (int i = 0; i < maxRetries; i++) {
+            try {
+                compensation.run();
+                return;
+            } catch (Exception e) {
+                if (i == maxRetries - 1) {
+                    // DLQ로 전송
+                    rabbitTemplate.convertAndSend("dead-letter-queue", 
+                        new FailedCompensation(compensation.toString(), e.getMessage()));
+                }
+                try {
+                    Thread.sleep((long) Math.pow(2, i) * 1000);  // 지수 백오프
+                } catch (InterruptedException ie) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
     }
-  }
 }
 ```
 
@@ -380,20 +428,27 @@ async function compensateWithRetry(
 
 보상 실패 건을 별도 큐에 저장 후 수동/자동 처리
 
-```typescript
-// DLQ 처리자 (정기 실행)
-async function processDLQ() {
-  const failedItems = await dlq.getAll();
-  
-  for (const item of failedItems) {
-    try {
-      await retryCompensation(item);
-      await dlq.remove(item.id);
-    } catch (error) {
-      // 알림 발송 후 수동 처리 필요
-      await alertOps(item);
+```java
+@Component
+@RequiredArgsConstructor
+public class DlqProcessor {
+    private final FailedCompensationRepository repository;
+    private final AlertService alertService;
+    
+    @Scheduled(fixedRate = 60000)  // 1분마다 실행
+    public void processDLQ() {
+        List<FailedCompensation> failedItems = repository.findAll();
+        
+        for (FailedCompensation item : failedItems) {
+            try {
+                retryCompensation(item);
+                repository.delete(item);
+            } catch (Exception e) {
+                // 알림 발송 후 수동 처리 필요
+                alertService.notifyOps(item);
+            }
+        }
     }
-  }
 }
 ```
 
@@ -419,7 +474,7 @@ async function processDLQ() {
 |가용성|높음|낮음 (락 필요)|
 |성능|좋음|느림|
 |복잡도|보상 로직 필요|코디네이터 필요|
-|MSA 적합성|✅ 적합|❌ 부적합|
+|MSA 적합성|적합|부적합|
 
 **MSA에서는 Saga가 표준**
 

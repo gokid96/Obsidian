@@ -69,31 +69,43 @@
 
 ```
 📁 src
-   ├── 📁 commands
-   │      ├── CreateOrderCommand.ts
-   │      └── UpdateOrderCommand.ts
-   └── 📁 queries
-          ├── GetOrderQuery.ts
-          └── ListOrdersQuery.ts
+   ├── 📁 command
+   │      ├── CreateOrderCommand.java
+   │      └── UpdateOrderCommand.java
+   └── 📁 query
+          ├── GetOrderQuery.java
+          └── ListOrdersQuery.java
 ```
 
-```typescript
+```java
 // Command (쓰기)
-class CreateOrderCommand {
-  execute(data: OrderInput) {
-    // 검증, 비즈니스 로직
-    // 정규화된 테이블에 저장
-    await this.orderRepository.save(order);
-    await this.orderItemRepository.saveMany(items);
-  }
+@Service
+@RequiredArgsConstructor
+public class CreateOrderCommand {
+    private final OrderRepository orderRepository;
+    private final OrderItemRepository orderItemRepository;
+    
+    @Transactional
+    public void execute(OrderInput data) {
+        // 검증, 비즈니스 로직
+        // 정규화된 테이블에 저장
+        Order order = Order.from(data);
+        orderRepository.save(order);
+        orderItemRepository.saveAll(order.getItems());
+    }
 }
 
 // Query (읽기)
-class GetOrderQuery {
-  execute(orderId: string) {
-    // 조인된 뷰 또는 비정규화 테이블에서 조회
-    return await this.orderReadRepository.findById(orderId);
-  }
+@Service
+@RequiredArgsConstructor
+public class GetOrderQuery {
+    private final OrderReadRepository orderReadRepository;
+    
+    public OrderDto execute(String orderId) {
+        // 조인된 뷰 또는 비정규화 테이블에서 조회
+        return orderReadRepository.findById(orderId)
+            .orElseThrow(() -> new OrderNotFoundException(orderId));
+    }
 }
 ```
 
@@ -113,23 +125,34 @@ Write DB → Read DB 동기화
 [Query] ← [Read DB (MySQL Replica)]
 ```
 
-```typescript
+```java
 // 쓰기는 Master로
-@Injectable()
-class OrderCommandService {
-  constructor(
-    @InjectRepository(Order, 'master')
-    private orderRepo: Repository<Order>
-  ) {}
+@Service
+@RequiredArgsConstructor
+public class OrderCommandService {
+    
+    @PersistenceContext(unitName = "master")
+    private EntityManager masterEntityManager;
+    
+    @Transactional
+    public void createOrder(OrderInput input) {
+        Order order = Order.from(input);
+        masterEntityManager.persist(order);
+    }
 }
 
 // 읽기는 Replica로
-@Injectable()
-class OrderQueryService {
-  constructor(
-    @InjectRepository(Order, 'replica')
-    private orderRepo: Repository<Order>
-  ) {}
+@Service
+@RequiredArgsConstructor
+public class OrderQueryService {
+    
+    @PersistenceContext(unitName = "replica")
+    private EntityManager replicaEntityManager;
+    
+    @Transactional(readOnly = true)
+    public OrderDto findById(String orderId) {
+        return replicaEntityManager.find(Order.class, orderId);
+    }
 }
 ```
 
@@ -152,41 +175,60 @@ Write DB와 Read DB가 완전히 다른 종류
 [Query] ← [Read DB (Elasticsearch, Redis)]
 ```
 
-```typescript
+```java
 // 쓰기: 이벤트 발행
-class CreateOrderCommand {
-  async execute(data: OrderInput) {
-    const order = await this.orderRepo.save(data);
+@Service
+@RequiredArgsConstructor
+public class CreateOrderCommand {
+    private final OrderRepository orderRepository;
+    private final ApplicationEventPublisher eventPublisher;
     
-    // 이벤트 발행
-    await this.eventBus.publish(new OrderCreatedEvent(order));
-  }
+    @Transactional
+    public void execute(OrderInput data) {
+        Order order = orderRepository.save(Order.from(data));
+        
+        // 이벤트 발행
+        eventPublisher.publishEvent(new OrderCreatedEvent(order));
+    }
 }
 
 // 이벤트 핸들러: Read DB 갱신
-class OrderCreatedHandler {
-  async handle(event: OrderCreatedEvent) {
-    // Elasticsearch에 비정규화된 형태로 저장
-    await this.elasticSearch.index({
-      index: 'orders',
-      body: {
-        orderId: event.order.id,
-        customerName: event.order.customer.name,  // 조인 없이 바로 조회 가능
-        items: event.order.items,
-        totalAmount: event.order.totalAmount,
-      }
-    });
-  }
+@Component
+@RequiredArgsConstructor
+public class OrderCreatedHandler {
+    private final ElasticsearchOperations elasticsearchOperations;
+    
+    @EventListener
+    @Async
+    public void handle(OrderCreatedEvent event) {
+        // Elasticsearch에 비정규화된 형태로 저장
+        OrderDocument doc = OrderDocument.builder()
+            .orderId(event.getOrder().getId())
+            .customerName(event.getOrder().getCustomer().getName())
+            .items(event.getOrder().getItems())
+            .totalAmount(event.getOrder().getTotalAmount())
+            .build();
+            
+        elasticsearchOperations.save(doc);
+    }
 }
 
 // 읽기: Elasticsearch에서 빠르게 조회
-class SearchOrdersQuery {
-  async execute(keyword: string) {
-    return await this.elasticSearch.search({
-      index: 'orders',
-      query: { match: { customerName: keyword } }
-    });
-  }
+@Service
+@RequiredArgsConstructor
+public class SearchOrdersQuery {
+    private final ElasticsearchOperations elasticsearchOperations;
+    
+    public List<OrderDocument> execute(String keyword) {
+        Query query = NativeQuery.builder()
+            .withQuery(q -> q.match(m -> m.field("customerName").query(keyword)))
+            .build();
+            
+        return elasticsearchOperations.search(query, OrderDocument.class)
+            .stream()
+            .map(SearchHit::getContent)
+            .collect(Collectors.toList());
+    }
 }
 ```
 
