@@ -16,8 +16,8 @@
 
 ```
 악의적 사용자 → 초당 10,000 요청 → [Rate Limiter] → 100개만 통과
-                                                      ↓
-                                                  9,900개 거부 (429)
+                                              ↓
+                                          9,900개 거부 (429)
 ```
 
 **효과**
@@ -43,28 +43,33 @@
 
 **구현**
 
-```typescript
-class FixedWindowLimiter {
-  private counts = new Map<string, { count: number; windowStart: number }>();
-  
-  isAllowed(key: string, limit: number, windowMs: number): boolean {
-    const now = Date.now();
-    const windowStart = Math.floor(now / windowMs) * windowMs;
+```java
+@Component
+public class FixedWindowLimiter {
+    private final Map<String, WindowRecord> counts = new ConcurrentHashMap<>();
     
-    const record = this.counts.get(key);
-    
-    if (!record || record.windowStart !== windowStart) {
-      this.counts.set(key, { count: 1, windowStart });
-      return true;
+    public boolean isAllowed(String key, int limit, long windowMs) {
+        long now = System.currentTimeMillis();
+        long windowStart = (now / windowMs) * windowMs;
+        
+        WindowRecord record = counts.compute(key, (k, v) -> {
+            if (v == null || v.windowStart != windowStart) {
+                return new WindowRecord(1, windowStart);
+            }
+            if (v.count < limit) {
+                return new WindowRecord(v.count + 1, windowStart);
+            }
+            return v;
+        });
+        
+        return record.count <= limit;
     }
     
-    if (record.count < limit) {
-      record.count++;
-      return true;
+    @AllArgsConstructor
+    private static class WindowRecord {
+        int count;
+        long windowStart;
     }
-    
-    return false;
-  }
 }
 ```
 
@@ -104,28 +109,27 @@ class FixedWindowLimiter {
 
 **구현**
 
-```typescript
-class SlidingWindowLogLimiter {
-  private logs = new Map<string, number[]>();
-  
-  isAllowed(key: string, limit: number, windowMs: number): boolean {
-    const now = Date.now();
-    const windowStart = now - windowMs;
+```java
+@Component
+public class SlidingWindowLogLimiter {
+    private final Map<String, List<Long>> logs = new ConcurrentHashMap<>();
     
-    let timestamps = this.logs.get(key) || [];
-    
-    // 윈도우 밖 타임스탬프 제거
-    timestamps = timestamps.filter(t => t > windowStart);
-    
-    if (timestamps.length < limit) {
-      timestamps.push(now);
-      this.logs.set(key, timestamps);
-      return true;
+    public synchronized boolean isAllowed(String key, int limit, long windowMs) {
+        long now = System.currentTimeMillis();
+        long windowStart = now - windowMs;
+        
+        List<Long> timestamps = logs.computeIfAbsent(key, k -> new ArrayList<>());
+        
+        // 윈도우 밖 타임스탬프 제거
+        timestamps.removeIf(t -> t <= windowStart);
+        
+        if (timestamps.size() < limit) {
+            timestamps.add(now);
+            return true;
+        }
+        
+        return false;
     }
-    
-    this.logs.set(key, timestamps);
-    return false;
-  }
 }
 ```
 
@@ -153,33 +157,42 @@ Fixed Window + 이전 윈도우 비율 계산 (근사치)
 
 **구현**
 
-```typescript
-class SlidingWindowCounterLimiter {
-  private windows = new Map<string, { prev: number; curr: number; windowStart: number }>();
-  
-  isAllowed(key: string, limit: number, windowMs: number): boolean {
-    const now = Date.now();
-    const windowStart = Math.floor(now / windowMs) * windowMs;
-    const windowProgress = (now - windowStart) / windowMs;
+```java
+@Component
+public class SlidingWindowCounterLimiter {
+    private final Map<String, WindowCounterRecord> windows = new ConcurrentHashMap<>();
     
-    let record = this.windows.get(key);
-    
-    if (!record || record.windowStart < windowStart - windowMs) {
-      record = { prev: 0, curr: 0, windowStart };
-    } else if (record.windowStart < windowStart) {
-      record = { prev: record.curr, curr: 0, windowStart };
+    public boolean isAllowed(String key, int limit, long windowMs) {
+        long now = System.currentTimeMillis();
+        long windowStart = (now / windowMs) * windowMs;
+        double windowProgress = (double) (now - windowStart) / windowMs;
+        
+        WindowCounterRecord record = windows.compute(key, (k, v) -> {
+            if (v == null || v.windowStart < windowStart - windowMs) {
+                return new WindowCounterRecord(0, 0, windowStart);
+            } else if (v.windowStart < windowStart) {
+                return new WindowCounterRecord(v.curr, 0, windowStart);
+            }
+            return v;
+        });
+        
+        double estimatedCount = record.prev * (1 - windowProgress) + record.curr;
+        
+        if (estimatedCount < limit) {
+            record.curr++;
+            return true;
+        }
+        
+        return false;
     }
     
-    const estimatedCount = record.prev * (1 - windowProgress) + record.curr;
-    
-    if (estimatedCount < limit) {
-      record.curr++;
-      this.windows.set(key, record);
-      return true;
+    @Data
+    @AllArgsConstructor
+    private static class WindowCounterRecord {
+        int prev;
+        int curr;
+        long windowStart;
     }
-    
-    return false;
-  }
 }
 ```
 
@@ -215,36 +228,39 @@ class SlidingWindowCounterLimiter {
 
 **구현**
 
-```typescript
-class TokenBucketLimiter {
-  private buckets = new Map<string, { tokens: number; lastRefill: number }>();
-  
-  isAllowed(
-    key: string, 
-    bucketSize: number, 
-    refillRate: number  // 초당 토큰 수
-  ): boolean {
-    const now = Date.now();
-    let bucket = this.buckets.get(key);
+```java
+@Component
+public class TokenBucketLimiter {
+    private final Map<String, Bucket> buckets = new ConcurrentHashMap<>();
     
-    if (!bucket) {
-      bucket = { tokens: bucketSize, lastRefill: now };
+    public boolean isAllowed(String key, int bucketSize, double refillRate) {
+        long now = System.currentTimeMillis();
+        
+        Bucket bucket = buckets.compute(key, (k, v) -> {
+            if (v == null) {
+                return new Bucket(bucketSize, now);
+            }
+            
+            // 토큰 충전
+            double elapsed = (now - v.lastRefill) / 1000.0;
+            double newTokens = Math.min(bucketSize, v.tokens + elapsed * refillRate);
+            return new Bucket(newTokens, now);
+        });
+        
+        if (bucket.tokens >= 1) {
+            bucket.tokens -= 1;
+            return true;
+        }
+        
+        return false;
     }
     
-    // 토큰 충전
-    const elapsed = (now - bucket.lastRefill) / 1000;
-    bucket.tokens = Math.min(bucketSize, bucket.tokens + elapsed * refillRate);
-    bucket.lastRefill = now;
-    
-    if (bucket.tokens >= 1) {
-      bucket.tokens -= 1;
-      this.buckets.set(key, bucket);
-      return true;
+    @Data
+    @AllArgsConstructor
+    private static class Bucket {
+        double tokens;
+        long lastRefill;
     }
-    
-    this.buckets.set(key, bucket);
-    return false;
-  }
 }
 ```
 
@@ -315,22 +331,24 @@ class TokenBucketLimiter {
 
 **Redis 구현 예시**
 
-```typescript
-class DistributedRateLimiter {
-  constructor(private redis: Redis) {}
-  
-  async isAllowed(key: string, limit: number, windowMs: number): Promise<boolean> {
-    const windowKey = `ratelimit:${key}:${Math.floor(Date.now() / windowMs)}`;
+```java
+@Component
+@RequiredArgsConstructor
+public class DistributedRateLimiter {
+    private final RedisTemplate<String, String> redisTemplate;
     
-    const multi = this.redis.multi();
-    multi.incr(windowKey);
-    multi.pexpire(windowKey, windowMs);
-    
-    const results = await multi.exec();
-    const count = results[0][1] as number;
-    
-    return count <= limit;
-  }
+    public boolean isAllowed(String key, int limit, long windowMs) {
+        long windowStart = System.currentTimeMillis() / windowMs;
+        String windowKey = "ratelimit:" + key + ":" + windowStart;
+        
+        Long count = redisTemplate.opsForValue().increment(windowKey);
+        
+        if (count == 1) {
+            redisTemplate.expire(windowKey, windowMs, TimeUnit.MILLISECONDS);
+        }
+        
+        return count != null && count <= limit;
+    }
 }
 ```
 
@@ -352,6 +370,32 @@ if current > limit then
 end
 
 return 1
+```
+
+```java
+@Component
+@RequiredArgsConstructor
+public class RedisLuaRateLimiter {
+    private final RedisTemplate<String, String> redisTemplate;
+    
+    private static final String SCRIPT = 
+        "local key = KEYS[1] " +
+        "local limit = tonumber(ARGV[1]) " +
+        "local window = tonumber(ARGV[2]) " +
+        "local current = redis.call('INCR', key) " +
+        "if current == 1 then redis.call('PEXPIRE', key, window) end " +
+        "if current > limit then return 0 end " +
+        "return 1";
+    
+    public boolean isAllowed(String key, int limit, long windowMs) {
+        DefaultRedisScript<Long> script = new DefaultRedisScript<>(SCRIPT, Long.class);
+        Long result = redisTemplate.execute(script, 
+            Collections.singletonList(key), 
+            String.valueOf(limit), 
+            String.valueOf(windowMs));
+        return result != null && result == 1;
+    }
+}
 ```
 
 ---
@@ -414,48 +458,78 @@ Retry-After: 60
 
 ---
 
-## 실전 적용
+## 실전 적용 (Spring)
 
-### Express 미들웨어
+### 인터셉터 방식
 
-```typescript
-import rateLimit from 'express-rate-limit';
-import RedisStore from 'rate-limit-redis';
-
-const limiter = rateLimit({
-  store: new RedisStore({
-    client: redisClient,
-  }),
-  windowMs: 60 * 1000,  // 1분
-  max: 100,              // 최대 100개
-  standardHeaders: true,
-  legacyHeaders: false,
-  handler: (req, res) => {
-    res.status(429).json({
-      error: 'rate_limit_exceeded',
-      retry_after: Math.ceil(req.rateLimit.resetTime / 1000)
-    });
-  }
-});
-
-app.use('/api/', limiter);
+```java
+@Component
+@RequiredArgsConstructor
+public class RateLimitInterceptor implements HandlerInterceptor {
+    private final DistributedRateLimiter rateLimiter;
+    
+    @Override
+    public boolean preHandle(HttpServletRequest request, 
+                            HttpServletResponse response, 
+                            Object handler) throws Exception {
+        String clientIp = request.getRemoteAddr();
+        String key = "ip:" + clientIp;
+        
+        if (!rateLimiter.isAllowed(key, 100, 60000)) {
+            response.setStatus(429);
+            response.setHeader("Retry-After", "60");
+            response.setContentType("application/json");
+            response.getWriter().write(
+                "{\"error\":\"rate_limit_exceeded\",\"retry_after\":60}");
+            return false;
+        }
+        
+        return true;
+    }
+}
 ```
 
-### API별 다른 제한
+### AOP 방식
 
-```typescript
-const searchLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 10,  // 검색은 더 적게
-});
+```java
+@Target(ElementType.METHOD)
+@Retention(RetentionPolicy.RUNTIME)
+public @interface RateLimit {
+    int limit() default 100;
+    long windowMs() default 60000;
+}
 
-const generalLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  max: 100,
-});
+@Aspect
+@Component
+@RequiredArgsConstructor
+public class RateLimitAspect {
+    private final DistributedRateLimiter rateLimiter;
+    
+    @Around("@annotation(rateLimit)")
+    public Object around(ProceedingJoinPoint joinPoint, RateLimit rateLimit) throws Throwable {
+        HttpServletRequest request = ((ServletRequestAttributes) 
+            RequestContextHolder.currentRequestAttributes()).getRequest();
+        
+        String key = "user:" + getCurrentUserId();
+        
+        if (!rateLimiter.isAllowed(key, rateLimit.limit(), rateLimit.windowMs())) {
+            throw new RateLimitExceededException("Too many requests");
+        }
+        
+        return joinPoint.proceed();
+    }
+}
 
-app.use('/api/search', searchLimiter);
-app.use('/api/', generalLimiter);
+// 사용
+@RestController
+public class ApiController {
+    
+    @RateLimit(limit = 10, windowMs = 60000)
+    @GetMapping("/api/search")
+    public ResponseEntity<?> search() {
+        // ...
+    }
+}
 ```
 
 ---
@@ -479,5 +553,3 @@ app.use('/api/', generalLimiter);
 3. **분산 환경**: Redis 등 중앙 저장소 사용
 4. **응답**: 429 상태 코드 + RateLimit 헤더
 5. **키 설계**: IP, 사용자 ID, API 키 등 상황에 맞게
-
----
