@@ -155,6 +155,8 @@ Handler > Logs → "edifactParser" 또는 "Error" 검색
 |Frontend|`Logs.vue` → `handlerLogAPI`|
 
 
+ES 정책생성밑 원하는 인덱스에 정책 적용
+
 
 
 
