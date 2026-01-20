@@ -79,6 +79,8 @@ SELECT * FROM team WHERE id = 10;
 
 Lazy Loading 시 JPA가 만드는 **가짜 객체**
 
+
+
 ```java
 Member member = memberRepository.findById(1L);
 
@@ -124,11 +126,17 @@ public String getMemberName(Long id) {
 ---
 
 ### 8. Lazy의 함정 → N+1 문제
+
+```java
+@ManyToOne(fetch = FetchType.LAZY)
+private Team team;
+```
+
 ```java
 List<Member> members = memberRepository.findAll();  // 1번 쿼리
 
 for (Member member : members) {
-    member.getTeam().getName();  // N번 쿼리 발생!
+    member.getTeam().getName();  // team 필드는 프록시 객체로 N번 쿼리 조회 발생!
 }
 ```
 
@@ -138,11 +146,11 @@ for (Member member : members) {
 
 ### 9. 정리
 
-|구분|Eager|Lazy|
-|---|---|---|
-|조회 시점|즉시|접근할 때|
-|장점|한 번에 가져옴|필요한 것만 가져옴|
-|단점|불필요한 조회|N+1 문제 가능|
-|실무|거의 안 씀|**권장**|
+| 구분    | Eager    | Lazy       |
+| ----- | -------- | ---------- |
+| 조회 시점 | 즉시       | 접근할 때      |
+| 장점    | 한 번에 가져옴 | 필요한 것만 가져옴 |
+| 단점    | 불필요한 조회  | N+1 문제 가능  |
+| 실무    | 거의 안 씀   | **권장**     |
 
 **결론**: Lazy 사용 + Fetch Join으로 N+1 해결
