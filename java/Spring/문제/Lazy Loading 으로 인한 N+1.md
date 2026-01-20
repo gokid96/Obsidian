@@ -27,11 +27,11 @@ for (Member member : members) {
 
 ### 왜 문제인가?
 
-| 상황           | 쿼리 수             | DB 왕복 |
-| ------------ | ---------------- | ----- |
-| Member 10명   | 1 + 10 = 11번     | 11번   |
-| Member 100명  | 1 + 100 = 101번   | 101번  |
-| Member 1000명 | 1 + 1000 = 1001번 | 1001번 |
+|상황|쿼리 수|DB 왕복|
+|---|---|---|
+|Member 10명|1 + 10 = 11번|11번|
+|Member 100명|1 + 100 = 101번|101번|
+|Member 1000명|1 + 1000 = 1001번|1001번|
 - 쿼리 1번에 0.01초라면, 1001번 = **10초 이상**
 - 동시 접속자 100명이면 → **10만 번 쿼리**
 - DB 과부하 → 서비스 장애
@@ -103,12 +103,12 @@ SELECT * FROM team WHERE id IN (1, 2, 3, ... 100);
 
 ### 실무 권장 조합
 
-| 상황               | 추천 방법                    |
-| ---------------- | ------------------------ |
-| 1:1, N:1 관계      | Fetch Join               |
-| 1:N 컬렉션 + 페이징 필요 | Batch Size               |
-| 간단한 조회           | @EntityGraph             |
-| 글로벌 기본 설정        | default_batch_fetch_size |
+|상황|추천 방법|
+|---|---|
+|1:1, N:1 관계|Fetch Join|
+|1:N 컬렉션 + 페이징 필요|Batch Size|
+|간단한 조회|@EntityGraph|
+|글로벌 기본 설정|default_batch_fetch_size|
 
 ---
 
@@ -122,6 +122,9 @@ SELECT * FROM team WHERE id IN (1, 2, 3, ... 100);
 3. **카테시안 곱 발생**
     - 중복 데이터 발생 가능
     - 해결: `distinct` 사용
+
+java
+
 ```java
 @Query("SELECT DISTINCT m FROM Member m JOIN FETCH m.orders")
 List<Member> findAllWithOrders();
@@ -132,6 +135,9 @@ List<Member> findAllWithOrders();
 ### 예시 코드
 
 **Before (N+1 발생)**:
+
+java
+
 ```java
 public List<WorkspaceResponse> getMyWorkspaces(Long userId) {
     List<WorkspaceMember> members = memberRepository.findAllByUser(user);
@@ -148,6 +154,9 @@ public List<WorkspaceResponse> getMyWorkspaces(Long userId) {
 ```
 
 **After (Fetch Join)**:
+
+java
+
 ```java
 // Repository
 @Query("SELECT m FROM WorkspaceMember m " +
@@ -171,6 +180,9 @@ public List<WorkspaceResponse> getMyWorkspaces(Long userId) {
 ---
 
 ### 확인 방법
+
+yaml
+
 ```yaml
 # application.yml
 spring:
@@ -181,4 +193,4 @@ spring:
         format_sql: true
 ```
 
-콘솔에서 실제 쿼리 횟수 확인
+콘솔에서 실제 쿼리 횟수 확인!
