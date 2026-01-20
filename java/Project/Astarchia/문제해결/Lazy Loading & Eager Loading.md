@@ -7,6 +7,7 @@
 #### Lazy Loading (지연 로딩)
 
 > 엔티티 조회 시 **연관된 엔티티는 실제 사용할 때** 조회하는 방식
+> **프록시 객체(빈 껍데기)**로 가져와서 **가볍게** 조회하기 위함
 
 ---
 ### 3. 상황 설정
@@ -38,7 +39,7 @@ private Team team;
 
 ```java
 Member member = memberRepository.findById(1L);
-// Member + Team 둘 다 조회 완료
+// 항상 Member + Team 둘 다 조회
 ```
 
 
@@ -87,10 +88,10 @@ System.out.println(member.getTeam().getClass());
 member.getTeam().getName();  // 이 순간 진짜 Team 조회
 ```
 
-|시점|team 상태|
-|---|---|
-|findById 직후|프록시 객체 (빈 껍데기)|
-|getName() 호출|실제 DB 조회 → 진짜 Team|
+| 시점           | team 상태            |
+| ------------ | ------------------ |
+| findById 직후  | 프록시 객체 (빈 껍데기)     |
+| getName() 호출 | 실제 DB 조회 → 진짜 Team |
 
 ---
 
