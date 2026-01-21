@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/문제해결/04.워크스페이스 조회 N+1.md",
+                "file": "무제/무제 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04.워크스페이스 조회 N+1"
+              "title": "무제 1"
             }
           }
         ]
@@ -182,8 +182,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "bb5b07cfcbb65381",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "무제/무제.md",
+    "무제/무제 1.md",
+    "Project/untitles/문제해결/04.워크스페이스 조회 N+1.md",
+    "무제/456465",
+    "무제",
     "Project/untitles/문제해결/03.루트 폴더에서 자식폴더 N+1.md",
     "Project/untitles/문제해결/02.폴더 이동 시 순환 참조 방지.md",
     "Project/untitles/문제해결/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
@@ -193,7 +198,6 @@
     "Java/Spring/Spring/기본/02. JPQL.md",
     "Java/Spring/Spring/JPA/무제",
     "Java/Spring/Spring/JPA",
-    "Project/untitles/문제해결/04.워크스페이스 조회 N+1.md",
     "Java/Spring/문제/Lazy Loading 으로 인한 N+1.md",
     "Java/Spring/문제/Lazy Loading & Eager Loading.md",
     "Java/동시성 제어.md",
@@ -210,8 +214,6 @@
     "시스템 설계/네트워크/Circuit Breaker.md",
     "시스템 설계/네트워크/로드 밸런싱.md",
     "업무/Eborder/API/monitoring/ES 연동.md",
-    "시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
-    "Monitoring/EFK.md",
     "시스템 설계/네트워크",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
     "Project/untitles/문제해결/images/Pasted image 20251224153232.png",
@@ -221,8 +223,6 @@
     "시스템 설계/확장성",
     "시스템 설계/데이터베이스 설계",
     "시스템 설계/성능 최적화/읽기 성능",
-    "시스템 설계/성능 최적화",
-    "시스템 설계",
     "Project/Pasted image 20251106154530.png",
     "Pasted image 20251224170502.png",
     "Project/untitles/docs/astarchiaERD.png",
