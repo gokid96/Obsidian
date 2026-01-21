@@ -94,9 +94,9 @@ src/main/java/com/astarchia/
 
 | 문서 | 내용 |
 |------|------|
-| [ARCHITECTURE.md](./ARCHITECTURE.md) | 인프라 구성, 기술 선택 근거, 확장 계획 |
-| [FEATURES.md](./FEATURES.md) | 핵심 기능의 설계 의도와 트레이드오프 |
-| [TROUBLESHOOTING.md](./TROUBLESHOOTING.md) | 문제 해결 사례 |
+| [ARCHITECTURE.md](ARCHITECTURE.md) | 인프라 구성, 기술 선택 근거, 확장 계획 |
+| [FEATURES.md](FEATURES.md) | 핵심 기능의 설계 의도와 트레이드오프 |
+| [TROUBLESHOOTING.md](TROUBLESHOOTING.md) | 문제 해결 사례 |
 
 ## 향후 계획
 

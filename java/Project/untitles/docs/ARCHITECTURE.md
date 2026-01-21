@@ -81,7 +81,7 @@
 
 초기에는 프록시 ON으로 SSL 관리 편의성을 얻으려 했으나, 한국에서 홍콩 PoP로 라우팅되어 ~500ms 지연 발생. 속도 우선으로 프록시 OFF + 자체 SSL 선택.
 
-→ 상세 내용: [TROUBLESHOOTING.md](./TROUBLESHOOTING.md#1-api-응답-속도-지연-cloudflare-프록시)
+→ 상세 내용: [TROUBLESHOOTING.md](TROUBLESHOOTING.md#1-api-응답-속도-지연-cloudflare-프록시)
 
 ---
 
