@@ -4,19 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "c511151faede5ad2",
+        "id": "516544c795102fb0",
         "type": "tabs",
         "children": [
           {
-            "id": "3f9cca8119dc7c00",
+            "id": "adbda43b7b810b21",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.11.5"
+                "file": "Project/untitles/문제해결/게시글 락.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.11.5"
+              "icon": "lucide-file",
+              "title": "게시글 락"
             }
           }
         ]
@@ -179,8 +181,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "adbda43b7b810b21",
   "lastOpenFiles": [
+    "Project/untitles/문제해결/게시글 락.md",
     "무제 1/무제",
     "무제 1/무제.md",
     "무제 1/무제 1.md",
@@ -219,7 +222,6 @@
     "시스템 설계/성능 최적화/쓰기 성능",
     "시스템 설계/캐싱 전략",
     "시스템 설계/확장성",
-    "시스템 설계/데이터베이스 설계",
     "Project/Pasted image 20251106154530.png",
     "Pasted image 20251224170502.png",
     "Project/untitles/docs/astarchiaERD.png",
