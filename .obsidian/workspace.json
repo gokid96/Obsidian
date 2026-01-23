@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "시스템 설계/대규모설계/선착순 예매 시스템 아키텍쳐.md",
+                "file": "Project/untitles/시스템 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "선착순 예매 시스템 아키텍쳐"
+              "title": "시스템 아키텍쳐"
             }
           }
         ],
@@ -198,8 +198,9 @@
   },
   "active": "4f1624446613a405",
   "lastOpenFiles": [
-    "시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "시스템 설계/대규모설계/선착순 예매 시스템 아키텍쳐.md",
+    "Project/untitles/시스템 아키텍쳐.md",
+    "시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "Project/untitles/워스페이스 삭제 방식에 대한 고민.md",
     "시스템 설계/대규모설계",
     "Project/untitles/우선순위 정리.md",
@@ -235,7 +236,6 @@
     "Java/Spring/Spring/JPA",
     "Java/Spring/문제/Lazy Loading 으로 인한 N+1.md",
     "Java/Spring/문제/Lazy Loading & Eager Loading.md",
-    "Java/동시성 제어.md",
     "시스템 설계/네트워크",
     "시스템 설계/성능 최적화/쓰기 성능",
     "시스템 설계/캐싱 전략",
