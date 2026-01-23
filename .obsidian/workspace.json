@@ -182,8 +182,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "f745889c1091eaf0",
   "lastOpenFiles": [
+    "Project/untitles/우선순위 정리.md",
+    "Project/untitles/시스템 아키텍쳐.md",
+    "Project/untitles/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
+    "Project/untitles/이미지업로드 저장소 S3 VS R2.md",
+    "Project/untitles/워스페이스 삭제 방식에 대한 고민.md",
     "conflict-files-obsidian-git.md",
     "java/Spring/문제/Lazy Loading 으로 인한 N+1.md",
     "java/Spring/문제/Lazy Loading & Eager Loading.md",
@@ -207,9 +212,6 @@
     "java/Spring/Spring/JPA 영속성 컨텍스트/2. 엔티티 생명주기.md",
     "java/Spring/Spring/JPA 영속성 컨텍스트/1. 영속성 컨텍스트 개념.md",
     "java/Spring/Spring/JPA/Fetch Join.md",
-    "java/Spring/Spring/Dirty Checking/3. Dirty Checking 주의사항.md",
-    "java/Spring/Spring/Dirty Checking/2. Dirty Checking 사용 예시.md",
-    "java/Spring/Spring/Dirty Checking/1. Dirty Checking 개념.md",
     "java/Spring/Spring/디자인패턴",
     "java/Spring/Spring/동시성",
     "java/Spring/Spring/기본",
@@ -219,8 +221,6 @@
     "java/Spring/Spring/JPA",
     "java/Spring/Spring/Dirty Checking",
     "java/Spring/Spring",
-    "시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
-    "시스템 설계/확장성/Saga 패턴.md",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
     "Project/untitles/문제해결/images/Pasted image 20251224154912.png",
     "Project/untitles/문제해결/images/Pasted image 20251224153232.png",
