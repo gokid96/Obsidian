@@ -166,7 +166,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 504.5
+    "width": 200,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -181,7 +182,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "f745889c1091eaf0",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
     "conflict-files-obsidian-git.md",
     "java/Spring/문제/Lazy Loading 으로 인한 N+1.md",
