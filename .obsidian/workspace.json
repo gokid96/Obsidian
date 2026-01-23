@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/시스템 아키텍쳐.md",
+                "file": "Project/untitles/세션 JWT 트레이드오프.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "시스템 아키텍쳐"
+              "title": "세션 JWT 트레이드오프"
             }
           }
         ]
@@ -184,6 +184,8 @@
   },
   "active": "f745889c1091eaf0",
   "lastOpenFiles": [
+    "Project/untitles/시스템 아키텍쳐.md",
+    "Project/untitles/세션 JWT 트레이드오프.md",
     "Project/untitles/우선순위 정리.md",
     "Project/untitles/이미지업로드 저장소 S3 VS R2.md",
     "Project/untitles/워스페이스 삭제 방식에 대한 고민.md",
@@ -193,7 +195,6 @@
     "Project/untitles/문제해결/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
     "Project/untitles/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/제한 항목.md",
-    "Project/untitles/시스템 아키텍쳐.md",
     "conflict-files-obsidian-git.md",
     "java/Spring/문제/Lazy Loading 으로 인한 N+1.md",
     "java/Spring/문제/Lazy Loading & Eager Loading.md",
@@ -210,7 +211,6 @@
     "java/Spring/Spring/Transaction/1. 트랜잭션 기본 개념.md",
     "java/Spring/Spring/ORM/3. JPA 기본 어노테이션.md",
     "java/Spring/Spring/ORM/2. JPA vs JDBC.md",
-    "java/Spring/Spring/ORM/1. ORM (Object-Relational Mapping) 기본 개념.md",
     "java/Spring/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "java/Spring/Spring/디자인패턴",
     "java/Spring/Spring/동시성",
