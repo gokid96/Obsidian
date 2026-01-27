@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/Database/06인덱스.md",
+                "file": "CS/Database/04.정규화.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "06인덱스"
+              "title": "04.정규화"
             }
           }
         ]
@@ -184,14 +184,15 @@
   },
   "active": "f779b02c57769674",
   "lastOpenFiles": [
-    "CS/Database/05.트랜잭션.md",
-    "CS/Database/04.정규화.md",
     "CS/Database/03.JOIN.md",
-    "CS/Database/06인덱스.md",
-    "무제 1.base",
-    "무제.base",
     "CS/Database/02.SQL 문법.md",
     "CS/Database/01.DB Key.md",
+    "CS/Database/04.정규화.md",
+    "CS/시스템 설계/데이터베이스 설계/분산 락.md",
+    "CS/Database/06인덱스.md",
+    "CS/Database/05.트랜잭션.md",
+    "무제 1.base",
+    "무제.base",
     "Project/untitles/워스페이스 삭제 방식에 대한 고민.md",
     "CS/Algorithm/01_자료구조/스택/README.md.md",
     "CS/Algorithm/01_자료구조/큐/README.md.md",
@@ -216,7 +217,6 @@
     "CS/시스템 설계/대규모설계",
     "CS/시스템 설계/네트워크/Circuit Breaker.md",
     "Project/Pasted image 20251106154530.png",
-    "Project/untitles/03.인프라 아키텍쳐.md",
     "Project/untitles/images/Pasted image 20251106154231.png",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
     "Project/untitles/문제해결/images/Pasted image 20251224154912.png",
