@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/JPA/01.영속성 컨텍스트.md",
+                "file": "CS/JPA/N+1 문제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01.영속성 컨텍스트"
+              "title": "N+1 문제"
             }
           }
         ]
@@ -184,8 +184,9 @@
   },
   "active": "f779b02c57769674",
   "lastOpenFiles": [
-    "CS/Database/05.트랜잭션.md",
     "CS/JPA/01.영속성 컨텍스트.md",
+    "CS/JPA/N+1 문제.md",
+    "CS/Database/05.트랜잭션.md",
     "CS/시스템 설계/데이터베이스 설계/분산 락.md",
     "CS/무제.md",
     "CS/JPA",
@@ -215,7 +216,6 @@
     "Project/untitles/세션 JWT 트레이드오프.md",
     "Project/untitles/문제해결/R2 이미지 교체.md",
     "Project/untitles/문제해결/게시글 락.md",
-    "Project/untitles/문제해결/04.워크스페이스 조회 N+1.md",
     "CS/시스템 설계/대규모설계",
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png",
