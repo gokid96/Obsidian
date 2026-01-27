@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
+                "file": "Java/동시성 제어.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제"
+              "title": "동시성 제어"
             }
           }
         ],
@@ -212,6 +212,7 @@
   },
   "active": "87265526de1acdf8",
   "lastOpenFiles": [
+    "Project/untitles/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/워스페이스 삭제 방식에 대한 고민.md",
     "Project/untitles/제한 항목.md",
     "Project/untitles/이미지업로드 저장소 S3 VS R2.md",
@@ -224,7 +225,6 @@
     "Project/untitles/문제해결/03.루트 폴더에서 자식폴더 N+1.md",
     "Project/untitles/문제해결/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
     "Project/untitles/문제해결/02.폴더 이동 시 순환 참조 방지.md",
-    "Project/untitles/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "시스템 설계/대규모설계/선착순 예매 시스템 아키텍쳐.md",
     "시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "시스템 설계/대규모설계",
