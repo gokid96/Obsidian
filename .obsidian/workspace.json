@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/Database/04.정규화.md",
+                "file": "CS/Database/06인덱스.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04.정규화"
+              "title": "06인덱스"
             }
           }
         ]
@@ -184,9 +184,9 @@
   },
   "active": "f779b02c57769674",
   "lastOpenFiles": [
-    "CS/Database/03.JOIN.md",
-    "CS/Database/04.정규화.md",
     "CS/Database/05.트랜잭션.md",
+    "CS/Database/04.정규화.md",
+    "CS/Database/03.JOIN.md",
     "CS/Database/06인덱스.md",
     "무제 1.base",
     "무제.base",
