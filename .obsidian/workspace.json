@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/Database/04.정규화.md",
+                "file": "CS/Database/05.트랜잭션.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04.정규화"
+              "title": "05.트랜잭션"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 279.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -184,13 +184,19 @@
   },
   "active": "f779b02c57769674",
   "lastOpenFiles": [
+    "CS/시스템 설계/데이터베이스 설계/분산 락.md",
+    "CS/무제.md",
+    "CS/JPA",
+    "Java/Spring/문제/Lazy Loading 으로 인한 N+1.md",
+    "Java/Spring/문제/Lazy Loading & Eager Loading.md",
+    "Java/Spring/JPA/JPA설명/4. 연관관계.md",
+    "Java/Spring/JPA/JPA문법.md",
+    "CS/Database/05.트랜잭션.md",
+    "CS/Database/04.정규화.md",
     "CS/Database/03.JOIN.md",
     "CS/Database/02.SQL 문법.md",
     "CS/Database/01.DB Key.md",
-    "CS/Database/04.정규화.md",
-    "CS/시스템 설계/데이터베이스 설계/분산 락.md",
     "CS/Database/06인덱스.md",
-    "CS/Database/05.트랜잭션.md",
     "무제 1.base",
     "무제.base",
     "Project/untitles/워스페이스 삭제 방식에 대한 고민.md",
@@ -209,13 +215,7 @@
     "Project/untitles/문제해결/R2 이미지 교체.md",
     "Project/untitles/문제해결/게시글 락.md",
     "Project/untitles/문제해결/04.워크스페이스 조회 N+1.md",
-    "Project/untitles/문제해결/03.루트 폴더에서 자식폴더 N+1.md",
-    "Project/untitles/문제해결/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
-    "Project/untitles/문제해결/02.폴더 이동 시 순환 참조 방지.md",
-    "CS/시스템 설계/대규모설계/선착순 예매 시스템 아키텍쳐.md",
-    "CS/시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "CS/시스템 설계/대규모설계",
-    "CS/시스템 설계/네트워크/Circuit Breaker.md",
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
@@ -224,7 +224,6 @@
     "무제 1/무제",
     "무제 1",
     "무제/456465",
-    "Java/Spring/Spring/JPA/무제",
     "Pasted image 20251224170502.png",
     "Project/untitles/docs/astarchiaERD.png",
     "Java/Project/Astarchia/문제해결/Pasted image 20251224114844.png",
