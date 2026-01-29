@@ -242,9 +242,6 @@ stack.isEmpty()       // 비었는지
 ```
 ---
 ## 수학
-
-  
-
 ```java
 
 Math.max(a, b)       // 큰 값
@@ -264,17 +261,8 @@ Math.floor(3.8)      // 내림 (3.0)
 Math.round(3.5)      // 반올림 (4)
 
 ```
-
-  
-
 ---
-
-  
-
 ## StringBuilder
-
-  
-
 ```java
 
 StringBuilder sb = new StringBuilder();
