@@ -1,5 +1,5 @@
 
-API Gateway는 **모든 클라이언트 요청의 단일 진입점
+API Gateway는 **모든 클라이언트 요청의 단일 진입점**이다.
 
 ---
 
@@ -13,7 +13,25 @@ Client → payment-service (8082)
 Client → delivery-service (8083)
 ```
 
-클라이언트가 각 서비스 주소를 다 알아야 함. 서비스 추가될 때마다 클라이언트 수정.
+- 클라이언트가 각 서비스 주소를 다 알아야 함
+- 서비스 추가될 때마다 클라이언트 수정
+- 각 서비스마다 JWT 검증 로직 중복
+
+```java
+// order-service
+@Component
+public class JwtFilter { /* JWT 검증 */ }
+
+// payment-service
+@Component
+public class JwtFilter { /* JWT 검증 (중복) */ }
+
+// delivery-service
+@Component
+public class JwtFilter { /* JWT 검증 (중복) */ }
+```
+
+JWT 로직 수정하면? 모든 서비스 다 수정하고 전부 배포해야 함.
 
 ### API Gateway 있으면
 
@@ -23,7 +41,26 @@ Client → API Gateway (80) → order-service
                          → delivery-service
 ```
 
-클라이언트는 Gateway 주소만 알면 됨.
+- 클라이언트는 Gateway 주소만 알면 됨
+- JWT 검증은 Gateway에서 한 번만
+- 각 서비스는 비즈니스 로직에만 집중
+
+```java
+// Gateway에서만 JWT 검증
+@Component
+public class AuthFilter implements GlobalFilter {
+    public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
+        // JWT 검증
+        // 유저 정보를 헤더에 담아서 서비스로 전달
+        exchange.getRequest().mutate()
+            .header("X-User-Id", userId)
+            .build();
+        return chain.filter(exchange);
+    }
+}
+```
+
+각 서비스는 헤더에서 유저 정보만 꺼내 씀. 인증 로직 몰라도 됨.
 
 ---
 
@@ -38,10 +75,10 @@ Client → API Gateway (80) → order-service
 ┌──────────────────────────────────────────────────────────────┐
 │                     API Gateway                              │
 │                                                              │
-│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐             │
-│  │  인증    │ │ 라우팅   │ │ 로드    │ │ 로깅/   │              │
-│  │         │ │         │ │ 밸런싱   │ │ 모니터링 │             │  
-│  └─────────┘ └─────────┘ └─────────┘ └─────────┘             │
+│  ┌─────────┐ ┌─────────┐ ┌─────────┐ ┌─────────┐            │
+│  │  인증   │ │ 라우팅  │ │ 로드    │ │ 로깅/   │            │
+│  │        │ │         │ │ 밸런싱  │ │ 모니터링│            │
+│  └─────────┘ └─────────┘ └─────────┘ └─────────┘            │
 └─────────────────────────┬────────────────────────────────────┘
                           │
        ┌──────────────────┼──────────────────┐
@@ -94,23 +131,68 @@ POST /payments      → payment-service:8082/payments
 
 ## 주요 도구
 
-| 도구                   | 설명                |
-| -------------------- | ----------------- |
-| Spring Cloud Gateway | Spring 기반, Java   |
-| Kong                 | 오픈소스, 플러그인 풍부     |
-| AWS API Gateway      | AWS 관리형           |
-| Nginx                | 가볍고 빠름            |
-| Caddy                | 리버스 프록시, HTTPS 자동 |
+|도구|설명|
+|---|---|
+|Spring Cloud Gateway|Spring 기반, Java|
+|Kong|오픈소스, 플러그인 풍부|
+|AWS API Gateway|AWS 관리형|
+|Nginx|가볍고 빠름|
+|Caddy|리버스 프록시, HTTPS 자동|
+
+---
+
 ## 실무 조합
 
+### 소규모: Nginx만
+
 ```
-Client → Nginx/Caddy (앞단) → API Gateway (뒷단) → Services
-              │                      │
-         SSL 처리              인증, 라우팅
-         로드밸런싱            비즈니스 로직
+Client → Nginx → Services
+           │
+      라우팅, SSL, 로드밸런싱
 ```
 
-소규모면 **Nginx만**으로도 충분하고, MSA 규모가 커지면 **뒤에 API Gateway** 붙이는 식
+단순 라우팅만 필요하면 Nginx로 충분.
+
+```nginx
+location /orders {
+    proxy_pass http://order-service:8081;
+}
+location /payments {
+    proxy_pass http://payment-service:8082;
+}
+```
+
+### 대규모: Nginx + API Gateway
+
+```
+Client → Nginx (앞단) → API Gateway (뒷단) → Services
+            │                   │
+       SSL 처리            JWT 검증
+       로드밸런싱           라우팅 로직
+       정적 파일            필터, 변환
+```
+
+**왜 나누는가?**
+
+|역할|Nginx|API Gateway|
+|---|---|---|
+|SSL 인증서|✅ 처리 잘함|굳이 여기서 안 해도 됨|
+|정적 파일|✅ 빠름|❌ 못함|
+|로드밸런싱|✅ 가벼움|가능하지만 무거움|
+|JWT 검증|❌ 복잡함|✅ Java로 쉽게|
+|복잡한 필터|❌ 설정 한계|✅ 코드로 자유롭게|
+
+각자 잘하는 걸 맡기는 것.
+
+### 클라우드: AWS API Gateway
+
+```
+Client → AWS API Gateway → Lambda / ECS / EC2
+                │
+          관리형 (서버 없음)
+          자동 스케일링
+          AWS 연동 쉬움
+```
 
 ---
 
@@ -127,21 +209,21 @@ Client → Nginx/Caddy (앞단) → API Gateway (뒷단) → Services
 ## SPOF 해결
 
 ```
-				┌─────────┐
-				│  Client │
-				└────┬────┘
-				     │
-				     ▼
-				┌─────────────┐
-				│Load Balancer│
-				└──────┬──────┘
-				       │
-				  ┌────┴────┐
-				  ▼         ▼
-			┌─────────┐ ┌─────────┐
-			│ Gateway │ │ Gateway │   ← 이중화
-			│   #1    │ │   #2    │
-			└─────────┘ └─────────┘
+┌─────────┐
+│  Client │
+└────┬────┘
+     │
+     ▼
+┌─────────────┐
+│Load Balancer│
+└──────┬──────┘
+       │
+  ┌────┴────┐
+  ▼         ▼
+┌─────────┐ ┌─────────┐
+│ Gateway │ │ Gateway │   ← 이중화
+│   #1    │ │   #2    │
+└─────────┘ └─────────┘
 ```
 
 ---
