@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/event-driven/Event-Driven Architecture.md",
+                "file": "Architecture/MessageQueue/Kafka.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Event-Driven Architecture"
+              "title": "Kafka"
             }
           }
         ],
@@ -199,8 +199,10 @@
   },
   "active": "8973f134e3438027",
   "lastOpenFiles": [
-    "Architecture/event-driven/Saga Pattern.md",
+    "Architecture/MSA/Microservices Architecture (MSA).md",
     "Architecture/event-driven/Event-Driven Architecture.md",
+    "Architecture/MSA",
+    "Architecture/event-driven/Saga Pattern.md",
     "CS/시스템 설계/확장성/Saga 패턴.md",
     "Architecture/event-driven/study/01. docker-compose.yml.md",
     "CS/시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
@@ -231,11 +233,9 @@
     "Project/untitles/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "CS/Database/05.트랜잭션.md",
     "CS/Database/01.DB Key.md",
-    "CS/Database/02.SQL 문법.md",
     "CS/JPA",
     "무제 1.base",
     "무제.base",
-    "CS/OS",
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
