@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/MessageQueue/Kafka.md",
+                "file": "Architecture/MSA/Microservices Architecture (MSA).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Kafka"
+              "title": "Microservices Architecture (MSA)"
             }
           }
         ],
@@ -199,6 +199,7 @@
   },
   "active": "8973f134e3438027",
   "lastOpenFiles": [
+    "Architecture/MessageQueue/Kafka.md",
     "Architecture/MSA/Microservices Architecture (MSA).md",
     "Architecture/event-driven/Event-Driven Architecture.md",
     "Architecture/MSA",
@@ -211,7 +212,6 @@
     "Architecture/event-driven/study/00. Event-Driven Study Architecture.md",
     "Pasted image 20260203145540.png",
     "Architecture/event-driven/study",
-    "Architecture/MessageQueue/Kafka.md",
     "Architecture/MessageQueue/Redis.md",
     "Event-Driven Architecture.md",
     "Architecture/MessageQueue",
