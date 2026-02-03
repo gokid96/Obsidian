@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/추가할 내용.md",
+                "file": "Architecture/MSA/API Gateway.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "추가할 내용"
+              "title": "API Gateway"
             }
           }
         ]
@@ -184,8 +184,9 @@
   },
   "active": "52dec622ebb789fc",
   "lastOpenFiles": [
-    "Architecture/MSA/Microservices Architecture (MSA).md",
     "Architecture/추가할 내용.md",
+    "Architecture/MSA/API Gateway.md",
+    "Architecture/MSA/Microservices Architecture (MSA).md",
     "Architecture/event-driven/Event-Driven Architecture.md",
     "Architecture/event-driven/Outbox Pattern.md",
     "Architecture/event-driven/Saga Pattern.md",
@@ -218,7 +219,6 @@
     "CS/java",
     "CS/무제.md",
     "Project/untitles/우선순위 정리.md",
-    "Project/untitles/제한 항목.md",
     "CS/JPA",
     "무제 1.base",
     "Project/Pasted image 20251106154530.png",
