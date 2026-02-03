@@ -69,21 +69,21 @@ order-service → "주문 생성됨" 이벤트 발행 → 끝
 
 ## 언제 Event-Driven을 써야 하는가
 
-|동기 방식 (REST/gRPC)|비동기 방식 (Event-Driven)|
-|---|---|
-|즉시 응답이 필요함|응답 안 기다려도 됨|
-|단순한 요청-응답|한 이벤트에 여러 서비스가 반응|
-|트랜잭션 보장 중요|느슨한 결합이 중요|
-|호출 대상이 명확함|누가 구독할지 몰라도 됨|
+| 동기 방식 (REST/gRPC) | 비동기 방식 (Event-Driven) |
+| ----------------- | --------------------- |
+| 즉시 응답이 필요함        | 응답 안 기다려도 됨           |
+| 단순한 요청-응답         | 한 이벤트에 여러 서비스가 반응     |
+| 트랜잭션 보장 중요        | 느슨한 결합이 중요            |
+| 호출 대상이 명확함        | 누가 구독할지 몰라도 됨         |
 
 ### 예시
 
-|상황|방식|이유|
-|---|---|---|
-|주문 조회|REST|즉시 응답 필요|
-|주문 생성 → 알림/재고/통계|Event-Driven|여러 서비스가 반응, 응답 안 기다려도 됨|
-|결제 요청|REST|결과 즉시 확인 필요|
-|결제 완료 → 포인트 적립|Event-Driven|비동기로 처리해도 됨|
+| 상황               | 방식           | 이유                      |
+| ---------------- | ------------ | ----------------------- |
+| 주문 조회            | REST         | 즉시 응답 필요                |
+| 주문 생성 → 알림/재고/통계 | Event-Driven | 여러 서비스가 반응, 응답 안 기다려도 됨 |
+| 결제 요청            | REST         | 결과 즉시 확인 필요             |
+| 결제 완료 → 포인트 적립   | Event-Driven | 비동기로 처리해도 됨             |
 
 ### 실무에서는 섞어서 사용
 
@@ -104,7 +104,6 @@ Client → API Gateway → order-service (REST)
 ## 모놀리식에서 Event-Driven을 쓰는 이유
 
 ### 직접 호출 방식
-
 ```java
 public void createOrder(Order order) {
     orderRepository.save(order);
@@ -115,25 +114,22 @@ public void createOrder(Order order) {
 ```
 
 OrderService가 모든 서비스를 알아야 함. 기능 추가할 때마다 여기 수정 필요.
-
 ### 이벤트 방식
-
 ```java
 public void createOrder(Order order) {
     orderRepository.save(order);
     eventPublisher.publish(new OrderCreatedEvent(order));  // 끝
 }
 ```
-
 OrderService는 이벤트만 발행하고 끝. 결합도 낮아짐.
 
 ### 장점
 
-|장점|설명|
-|---|---|
-|결합도 낮춤|OrderService가 다른 서비스 몰라도 됨|
-|확장 쉬움|새 Handler 추가해도 OrderService 수정 없음|
-|MSA 전환 쉬움|나중에 `eventPublisher` → `kafkaTemplate`으로 바꾸면 끝|
+| 장점        | 설명                                             |
+| --------- | ---------------------------------------------- |
+| 결합도 낮춤    | OrderService가 다른 서비스 몰라도 됨                     |
+| 확장 쉬움     | 새 Handler 추가해도 OrderService 수정 없음              |
+| MSA 전환 쉬움 | 나중에 `eventPublisher` → `kafkaTemplate`으로 바꾸면 끝 |
 
 ---
 
@@ -151,7 +147,7 @@ OrderService는 이벤트만 발행하고 끝. 결합도 낮아짐.
 └─────────────────────────────────────────┘
 ```
 
-||MSA|Event-Driven|
+| |MSA|Event-Driven|
 |---|---|---|
 |관심사|서비스 분리|서비스 간 통신|
 |필수 관계|❌|❌|
@@ -168,7 +164,3 @@ MSA가 아니어도 Event-Driven 쓸 수 있고, MSA여도 REST로 통신할 수
 - [[Redis]]
 
 ---
-
-## Tags
-
-#EventDriven #Architecture #MSA #비동기
