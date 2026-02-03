@@ -1,5 +1,5 @@
 
-Apache Kafka는 LinkedIn에서 개발한 **분산 이벤트 스트리밍 플랫폼**이다.
+Apache Kafka는 LinkedIn에서 개발한 **분산 이벤트 스트리밍 플랫폼**
 
 ---
 
@@ -75,7 +75,7 @@ Apache Kafka는 LinkedIn에서 개발한 **분산 이벤트 스트리밍 플랫�
 
 ---
 
-## 코드 예시 (Java)
+## 코드 예시 (Spring 없이 Kafka 라이브러리만 사용)
 
 ### Producer
 ```java
@@ -112,8 +112,10 @@ while (true) {
 ```java
 // Producer— 메시지를 보내는 쪽
 kafkaTemplate.send("order-topic", orderEvent);
+```
 
-// Consumer 받을때
+```java
+// Consumer — 메시지를 받는 쪽
 @KafkaListener(topics = "order-topic")
 public void handleOrder(OrderEvent event) {
     // 처리 로직
@@ -123,7 +125,3 @@ public void handleOrder(OrderEvent event) {
 ---
 
 ## 관련 개념
-
-- [[Event-Driven Architecture]]
-- [[Saga Pattern]]
-- [[MSA]]
