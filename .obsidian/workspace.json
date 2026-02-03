@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "daff05d393b41830",
+        "id": "a0f9b36060f05501",
         "type": "tabs",
         "children": [
           {
-            "id": "f779b02c57769674",
+            "id": "52dec622ebb789fc",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -20,23 +20,8 @@
               "icon": "lucide-file",
               "title": "Event-Driven Architecture"
             }
-          },
-          {
-            "id": "8973f134e3438027",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "Architecture/MSA/Microservices Architecture (MSA).md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "Microservices Architecture (MSA)"
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -197,19 +182,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8973f134e3438027",
+  "active": "52dec622ebb789fc",
   "lastOpenFiles": [
-    "Architecture/MessageQueue/Kafka.md",
     "Architecture/MSA/Microservices Architecture (MSA).md",
     "Architecture/event-driven/Event-Driven Architecture.md",
-    "Architecture/MSA",
-    "Architecture/event-driven/Saga Pattern.md",
-    "CS/시스템 설계/확장성/Saga 패턴.md",
+    "Architecture/event-driven/study/00. Event-Driven Study Architecture.md",
     "Architecture/event-driven/study/01. docker-compose.yml.md",
+    "Architecture/event-driven/Saga Pattern.md",
+    "Architecture/MessageQueue/Kafka.md",
+    "Architecture/MSA",
+    "CS/시스템 설계/확장성/Saga 패턴.md",
     "CS/시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
     "CS/시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "CS/시스템 설계/대규모설계/선착순 예매 시스템 아키텍쳐.md",
-    "Architecture/event-driven/study/00. Event-Driven Study Architecture.md",
     "Pasted image 20260203145540.png",
     "Architecture/event-driven/study",
     "Architecture/MessageQueue/Redis.md",
