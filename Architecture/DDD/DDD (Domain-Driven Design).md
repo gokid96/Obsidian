@@ -172,9 +172,9 @@ MSA 아니어도 DDD 쓸 수 있음.
 
 ## 관련 개념
 
-- [[Microservices Architecture (MSA)]]
-- [[Event-Driven Architecture]]
-- [[Saga Pattern]]
+- [[01. Microservices Architecture (기본 개념)]]
+- [[01. Event-Driven Architecture (기본 개념)]]
+- [[01. Saga Pattern (분산 트랜잭션 기본)]]
 
 ---
 

@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/04. Event-Driven/Transactional Messaging.md",
+                "file": "Architecture/04. Event-Driven (이벤트 기반)/CDC.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Transactional Messaging"
+              "title": "CDC"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 350.5
+    "width": 400.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -184,33 +184,34 @@
   },
   "active": "52dec622ebb789fc",
   "lastOpenFiles": [
-    "Architecture/05. Event-Driven+Microservices/CQRS.md",
-    "Architecture/04. Event-Driven/Transactional Messaging.md",
-    "Architecture/05. Event-Driven+Microservices/Saga Pattern.md",
-    "Architecture/MessageQueue/Redis.md",
-    "Architecture/MessageQueue/Kafka.md",
-    "Architecture/04. Event-Driven/Event-Driven Architecture.md",
-    "Architecture/03. MSA/API Gateway.md",
-    "Architecture/03. MSA/Strangler Fig Pattern.md",
-    "Architecture/05. Event-Driven+Microservices/Event Sourcing.md",
-    "Architecture/03. MSA/Microservices Architecture (MSA).md",
-    "Architecture/04. Event-Driven/Outbox Pattern.md",
-    "Architecture/05. Event-Driven+Microservices",
-    "Architecture/02. Service-Based",
-    "Architecture/01. Modular Monolithic",
-    "Architecture/00. Monolithic",
+    "Architecture/03. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
+    "Architecture/04. Event-Driven (이벤트 기반)/CDC.md",
+    "Architecture/03. MSA (마이크로서비스)/02. API Gateway (진입점 관리).md",
+    "Architecture/03. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
+    "Architecture/MessageQueue/02. Redis.md",
+    "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)/03. Event Sourcing (이력 저장).md",
+    "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)/02. CQRS (읽기,쓰기 분리).md",
+    "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)/01. Saga Pattern (분산 트랜잭션 기본).md",
+    "Architecture/04. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
+    "Architecture/04. Event-Driven (이벤트 기반)/02. Transactional Messaging (문제 정의).md",
+    "Architecture/04. Event-Driven (이벤트 기반)/01. Event-Driven Architecture (기본 개념).md",
+    "Architecture/MessageQueue/01. Kafka.md",
+    "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)",
+    "Architecture/02. Service-Based (서비스 분리)",
+    "Architecture/01. Modular Monolithic (모듈 분리)",
+    "Architecture/00. Monolithic (단일 애플리케이션)",
     "Architecture/추가할 내용.md",
     "Architecture/DDD/DDD (Domain-Driven Design).md",
     "Architecture/DDD",
-    "Architecture/04. Event-Driven/study/00. Event-Driven Study Architecture.md",
-    "Architecture/04. Event-Driven/study/01. docker-compose.yml.md",
-    "Architecture/03. MSA",
+    "Architecture/04. Event-Driven (이벤트 기반)/study/00. Event-Driven Study Architecture.md",
+    "Architecture/04. Event-Driven (이벤트 기반)/study/01. docker-compose.yml.md",
+    "Architecture/03. MSA (마이크로서비스)",
     "CS/시스템 설계/확장성/Saga 패턴.md",
     "CS/시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
     "CS/시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "CS/시스템 설계/대규모설계/선착순 예매 시스템 아키텍쳐.md",
     "Pasted image 20260203145540.png",
-    "Architecture/04. Event-Driven/study",
+    "Architecture/04. Event-Driven (이벤트 기반)/study",
     "Event-Driven Architecture.md",
     "Architecture/MessageQueue",
     "CS/시스템 설계/캐싱 전략/캐시 무효화.md",
@@ -218,8 +219,7 @@
     "Architecture/event-driven/analytics-service.md",
     "Architecture/event-driven/notification-service.md",
     "Architecture/event-driven/stock-service.md",
-    "CS/java/Java  메서드.md",
-    "Architecture/04. Event-Driven",
+    "Architecture/04. Event-Driven (이벤트 기반)",
     "Architecture",
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png",

@@ -1,0 +1,133 @@
+
+CDC(Change Data Capture)는 **데이터베이스 변경 사항을 실시간으로 감지해서 다른 시스템에 전달하는 방법**이다.
+
+DB에서 INSERT, UPDATE, DELETE가 일어나면 자동으로 캡처해서 Kafka 등으로 보낸다.
+
+---
+
+## 문제 상황
+
+DB 변경을 다른 시스템에 알려주려면?
+```java
+@Transactional
+public void createOrder(Order order) {
+    orderRepository.save(order);
+    kafkaTemplate.send(orderEvent);  // 직접 발행 → 누락 가능
+}
+```
+
+코드에서 직접 발행하면 실수로 빠뜨리거나, 트랜잭션 불일치 문제가 생긴다.
+
+---
+
+## 해결: DB 로그를 직접 읽는다
+
+CDC는 애플리케이션 코드가 아니라 **DB의 트랜잭션 로그**를 읽어서 변경을 감지한다.
+```
+┌─────────────┐      ┌───────────┐      ┌─────────┐
+│  Database   │ ──▶  │    CDC    │ ──▶  │  Kafka  │
+│ (binlog 등) │      │ (Debezium)│      │         │
+└─────────────┘      └───────────┘      └─────────┘
+````
+
+- MySQL: binlog
+- PostgreSQL: WAL (Write-Ahead Log)
+- MongoDB: oplog
+
+---
+
+## Debezium 예시
+
+가장 많이 쓰는 CDC 도구.
+
+
+```json
+// Debezium 커넥터 설정
+{
+  "name": "order-connector",
+  "config": {
+    "connector.class": "io.debezium.connector.mysql.MySqlConnector",
+    "database.hostname": "localhost",
+    "database.port": "3306",
+    "database.user": "debezium",
+    "database.password": "password",
+    "database.server.id": "1",
+    "database.include.list": "order_db",
+    "table.include.list": "order_db.orders",
+    "topic.prefix": "order"
+  }
+}
+```
+
+orders 테이블에 변경이 생기면 자동으로 `order.order_db.orders` 토픽에 이벤트 발행.
+
+---
+
+## 발행되는 이벤트 형태
+
+````json
+{
+  "before": null,
+  "after": {
+    "id": 1,
+    "customer_id": "C001",
+    "amount": 10000,
+    "status": "CREATED"
+  },
+  "op": "c",  // c: create, u: update, d: delete
+  "ts_ms": 1704067200000
+}
+```
+
+---
+
+## 활용 사례
+
+### 1. Outbox 패턴과 조합
+```
+애플리케이션 → Outbox 테이블 저장 → CDC가 감지 → Kafka 발행
+```
+
+스케줄러 없이 실시간 발행 가능.
+
+### 2. 데이터 동기화
+```
+메인 DB → CDC → Elasticsearch (검색용)
+                  → Redis (캐시용)
+                  → Data Warehouse (분석용)
+```
+
+### 3. CQRS Read DB 동기화
+```
+Write DB → CDC → Read DB 업데이트
+````
+
+---
+
+## 직접 발행 vs CDC
+
+| |직접 발행|CDC|
+|---|---|---|
+|구현|코드에서 직접|인프라 설정|
+|누락 가능성|개발자 실수 가능|자동이라 누락 없음|
+|트랜잭션 일관성|별도 처리 필요|DB 커밋 기준 보장|
+|레거시 적용|코드 수정 필요|코드 수정 없이 가능|
+
+---
+
+## 대표 도구
+
+|도구|특징|
+|---|---|
+|Debezium|오픈소스, Kafka Connect 기반, 가장 많이 사용|
+|AWS DMS|AWS 관리형 서비스|
+|Maxwell|MySQL 전용, 가볍고 단순|
+|Canal|Alibaba, MySQL 전용|
+
+---
+
+## 관련 개념
+
+- [[Transactional Messaging]]
+- [[Outbox Pattern]]
+- [[Event-Driven Architecture]]
