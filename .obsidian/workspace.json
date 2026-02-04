@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/세션 JWT 트레이드오프.md",
+                "file": "Architecture/02. Event-Driven (이벤트 기반)/06. Idempotency (멱등성).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "세션 JWT 트레이드오프"
+              "title": "06. Idempotency (멱등성)"
             }
           }
         ]
@@ -182,8 +182,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "f745889c1091eaf0",
   "lastOpenFiles": [
+    "Project/untitles/세션 JWT 트레이드오프.md",
     "CS/Algorithm/codingtest/baekjoon/2869.md",
     "CS/Algorithm/codingtest/baekjoon/2775.md",
     "CS/Algorithm/01_자료구조/큐/README.md.md",
@@ -209,7 +210,6 @@
     "CS/NetWork/07.IP와 서브넷/03.CIDR 표기법.md",
     "CS/NetWork/07.IP와 서브넷/02.서브넷 마스크 계산.md",
     "CS/NetWork/07.IP와 서브넷/01.IP 주소 구조 (IPv4, IPv6).md",
-    "CS/NetWork/05.주요 프로토콜/03.DNS 동작 원리.md",
     "CS/Algorithm/codingtest/baekjoon",
     "CS/Algorithm/01_자료구조/큐",
     "CS/Algorithm/01_자료구조/스택",
