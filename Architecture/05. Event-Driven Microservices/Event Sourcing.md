@@ -146,7 +146,7 @@ Event Sourcing만 쓰면 조회할 때마다 이벤트 재생해야 해서 느�
 Event Sourcing (Write) + CQRS (Read)
 
 쓰기: 이벤트 저장
-       ↓ 이벤트 발행
+          ↓ (이벤트 발행)
 읽기: Read DB에 현재 상태 저장 → 빠른 조회
 ```
 ```
