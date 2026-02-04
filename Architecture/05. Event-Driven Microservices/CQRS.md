@@ -2,12 +2,31 @@ CQRS는 **명령(Command)과 조회(Query)를 분리하는 패턴**으로,
 읽기가 많고 조회 성능 최적화가 필요할 때 사용한다.
 
 ---
+**CQRS 구현 단계**
+```
+1단계: 코드만 분리 (서비스 레이어 분리)
+- 같은 DB, 같은 테이블
+- CommandService / QueryService만 분리
+
+2단계: 테이블 분리
+- 같은 DB 안에서
+- orders 테이블 (쓰기용)
+- order_summaries 테이블 (읽기용)
+
+3단계: DB 분리
+- Write DB (MySQL)
+- Read DB (Redis, Elasticsearch 등)
+```
+
+단계가 올라갈수록 복잡도는 높아지지만 성능 최적화는 커짐 상황에 맞게 선택, 셋 다 CQRS
+
+
 ## 문제 상황
 
 일반적인 CRUD에서는 같은 모델로 읽기/쓰기를 다 처리한다.
 ```java
 // 같은 Entity, 같은 Repository
-Order order = orderRepository.findById(id);  // 조회
+Order order = orderRepository.findById(id);   // 조회
 orderRepository.save(order);                  // 저장
 ```
 
@@ -38,6 +57,8 @@ orderRepository.save(order);                  // 저장
      │ (정규화)│                 │(비정규화)│
      └─────────┘                 └─────────┘
 ````
+**일반 방식**: 조회 요청 → 그때서야 여러 테이블 조인 → 느림 
+**CQRS** : 쓰기 시점에 미리 조인해서 Read DB에 저장 → 조회는 그냥 가져오기만 → 빠름
 
 ---
 
