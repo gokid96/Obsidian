@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/04. Event-Driven (이벤트 기반)/04. CDC (Change Data Capture) (다른 해결책).md",
+                "file": "Architecture/04. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "04. CDC (Change Data Capture) (다른 해결책)"
+              "title": "03. Outbox Pattern (해결책)"
             }
           }
         ]
@@ -184,9 +184,10 @@
   },
   "active": "52dec622ebb789fc",
   "lastOpenFiles": [
+    "Architecture/04. Event-Driven (이벤트 기반)/04. CDC (Change Data Capture) (다른 해결책).md",
+    "Architecture/04. Event-Driven (이벤트 기반)/05. Outbox + CDC.md",
     "Architecture/04. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
     "Architecture/04. Event-Driven (이벤트 기반)/02. Transactional Messaging (문제 정의).md",
-    "Architecture/04. Event-Driven (이벤트 기반)/04. CDC (Change Data Capture) (다른 해결책).md",
     "Architecture/03. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
     "Architecture/03. MSA (마이크로서비스)/02. API Gateway (진입점 관리).md",
     "Architecture/03. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
@@ -218,7 +219,6 @@
     "Architecture/event-driven/order-service.md",
     "Architecture/event-driven/analytics-service.md",
     "Architecture/event-driven/notification-service.md",
-    "Architecture/event-driven/stock-service.md",
     "Architecture/04. Event-Driven (이벤트 기반)",
     "Architecture",
     "Project/Pasted image 20251106154530.png",
