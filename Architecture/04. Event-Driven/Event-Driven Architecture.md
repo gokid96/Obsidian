@@ -85,7 +85,7 @@ order-service → "주문 생성됨" 이벤트 발행 → 끝
 | 결제 요청            | REST         | 결과 즉시 확인 필요             |
 | 결제 완료 → 포인트 적립   | Event-Driven | 비동기로 처리해도 됨             |
 
-### 실무에서는 섞어서 사용
+### 실무에서는 섞어서 사용 (이벤트 드리븐 + MSA)
 
 ```
 Client → API Gateway → order-service (REST)
@@ -101,7 +101,7 @@ Client → API Gateway → order-service (REST)
 
 ---
 
-## 모놀리식에서 Event-Driven을 쓰는 이유
+## 모놀리식 안에서 Event-Driven을 쓰는 이유
 
 ### 직접 호출 방식
 ```java
