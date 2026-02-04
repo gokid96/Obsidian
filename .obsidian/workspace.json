@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/05. Event-Driven Microservices/Event Sourcing.md",
+                "file": "Architecture/04. Event-Driven/Transactional Messaging.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Event Sourcing"
+              "title": "Transactional Messaging"
             }
           }
         ]
@@ -184,25 +184,26 @@
   },
   "active": "52dec622ebb789fc",
   "lastOpenFiles": [
-    "Architecture/05. Event-Driven Microservices/CQRS.md",
-    "Architecture/05. Event-Driven Microservices/Event Sourcing.md",
-    "Architecture/03. MSA/Strangler Fig Pattern.md",
-    "Architecture/03. MSA/Microservices Architecture (MSA).md",
-    "Architecture/03. MSA/API Gateway.md",
+    "Architecture/05. Event-Driven+Microservices/CQRS.md",
+    "Architecture/04. Event-Driven/Transactional Messaging.md",
+    "Architecture/05. Event-Driven+Microservices/Saga Pattern.md",
+    "Architecture/MessageQueue/Redis.md",
+    "Architecture/MessageQueue/Kafka.md",
     "Architecture/04. Event-Driven/Event-Driven Architecture.md",
-    "Architecture/05. Event-Driven Microservices/Saga Pattern.md",
-    "Architecture/05. Event-Driven Microservices/Outbox Pattern.md",
-    "Architecture/05. Event-Driven Microservices",
+    "Architecture/03. MSA/API Gateway.md",
+    "Architecture/03. MSA/Strangler Fig Pattern.md",
+    "Architecture/05. Event-Driven+Microservices/Event Sourcing.md",
+    "Architecture/03. MSA/Microservices Architecture (MSA).md",
+    "Architecture/04. Event-Driven/Outbox Pattern.md",
+    "Architecture/05. Event-Driven+Microservices",
     "Architecture/02. Service-Based",
     "Architecture/01. Modular Monolithic",
     "Architecture/00. Monolithic",
     "Architecture/추가할 내용.md",
     "Architecture/DDD/DDD (Domain-Driven Design).md",
     "Architecture/DDD",
-    "Architecture/MessageQueue/Redis.md",
     "Architecture/04. Event-Driven/study/00. Event-Driven Study Architecture.md",
     "Architecture/04. Event-Driven/study/01. docker-compose.yml.md",
-    "Architecture/MessageQueue/Kafka.md",
     "Architecture/03. MSA",
     "CS/시스템 설계/확장성/Saga 패턴.md",
     "CS/시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
@@ -220,7 +221,6 @@
     "CS/java/Java  메서드.md",
     "Architecture/04. Event-Driven",
     "Architecture",
-    "Project/untitles/시스템 아키텍쳐.md",
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
