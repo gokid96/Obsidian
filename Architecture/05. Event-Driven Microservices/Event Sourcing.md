@@ -143,6 +143,13 @@ public Account getAccount(String accountId) {
 
 Event Sourcing만 쓰면 조회할 때마다 이벤트 재생해야 해서 느리다.
 ```
+Event Sourcing만 쓰면: 조회 요청 → 이벤트 1000개 재생 → 현재 상태 계산 → 느림 Event
+
+Sourcing + CQRS: 쓰기: 이벤트 저장 → 이벤트 발행 읽기: Read DB에서 바로 조회 → 빠름
+```
+
+해결
+```
 Event Sourcing (Write) + CQRS (Read)
 
 쓰기: 이벤트 저장
