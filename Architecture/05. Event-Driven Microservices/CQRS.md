@@ -4,18 +4,35 @@ CQRS는 **명령(Command)과 조회(Query)를 분리하는 패턴**으로,
 ---
 **CQRS 구현 단계**
 ```
-1단계: 코드만 분리 (서비스 레이어 분리 확장을 위한 준비)
+1단계: 코드만 분리
+- CommandService / QueryService 분리
 - 같은 DB, 같은 테이블
-- CommandService / QueryService만 분리
+- 성능 최적화는 없고, 구조 정리 + 확장 준비
 
 2단계: 테이블 분리
 - 같은 DB 안에서
 - orders 테이블 (쓰기용)
 - order_summaries 테이블 (읽기용)
+- 쓰기용 테이블 (정규화)
+- 읽기용 테이블 (비정규화)
+- 여기서부터 조회 성능 최적화 시작
+- 동기화는 트랜잭션이나 스프링 이벤트로 가능
 
 3단계: DB 분리
 - Write DB (MySQL)
 - Read DB (Redis, Elasticsearch 등)
+  
+  
+
+
+**2단계: 테이블 분리**
+
+
+**3단계: DB 분리**
+
+- Write DB (MySQL 등)
+- Read DB (Redis, Elasticsearch 등)
+- 실시간 동기화 필요하면 Kafka가 사실상 표준
 ```
 
 단계가 올라갈수록 복잡도는 높아지지만 성능 최적화는 커짐 상황에 맞게 선택
