@@ -22,6 +22,20 @@
             }
           },
           {
+            "id": "e1affb7aeaf33ca4",
+            "type": "leaf",
+            "state": {
+              "type": "split-diff-view",
+              "state": {
+                "aFile": ".obsidian/workspace.json",
+                "bFile": ".obsidian/workspace.json",
+                "aRef": ""
+              },
+              "icon": "diff",
+              "title": "Diff: workspace.json"
+            }
+          },
+          {
             "id": "a87836c6741bc0b0",
             "type": "leaf",
             "state": {
@@ -49,7 +63,8 @@
               "title": "06. Idempotency (멱등성)"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -194,8 +209,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,10 +224,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "52dec622ebb789fc",
+  "active": "e1affb7aeaf33ca4",
   "lastOpenFiles": [
-    "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
+    "conflict-files-obsidian-git.md",
     "Architecture/01. MSA (마이크로서비스)/09. Distributed Tracing (분산 추적).md",
+    "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
     "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
     "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
     "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
@@ -245,7 +260,6 @@
     "Architecture/추가할 내용.md",
     "Architecture/04. DDD",
     "Architecture/01. MSA (마이크로서비스)",
-    "CS/시스템 설계/확장성/Saga 패턴.md",
     "Pasted image 20260203145540.png",
     "Architecture/02. Event-Driven (이벤트 기반)/study",
     "Architecture/MessageQueue",
