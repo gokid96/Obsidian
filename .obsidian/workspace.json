@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/구현트레이드오프/세션 JWT 트레이드오프.md",
+                "file": "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
                 "mode": "source",
                 "source": false
               },
@@ -41,7 +41,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/구현트레이드오프/시스템 아키텍쳐.md",
+                "file": "Project/untitles/트레이드오프/시스템 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
+                "file": "Project/untitles/트레이드오프/EC2+RDS.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Stress 테스트 (200명) — 병목 발견"
+              "title": "EC2+RDS"
             }
           }
         ],
@@ -226,17 +226,18 @@
   },
   "active": "7625f16532e975f1",
   "lastOpenFiles": [
-    "Project/untitles/구현트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
+    "Project/untitles/트레이드오프/EC2+RDS.md",
+    "Project/untitles/트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/k6 load-testing",
     "Project/untitles/기능",
-    "Project/untitles/구현트레이드오프/제한 항목.md",
-    "Project/untitles/구현트레이드오프/이미지업로드 저장소 S3 VS R2.md",
-    "Project/untitles/구현트레이드오프/워스페이스 삭제 방식에 대한 고민.md",
-    "Project/untitles/구현트레이드오프/우선순위 정리.md",
-    "Project/untitles/구현트레이드오프/시스템 아키텍쳐.md",
-    "Project/untitles/구현트레이드오프/세션 JWT 트레이드오프.md",
-    "Project/untitles/구현트레이드오프",
+    "Project/untitles/트레이드오프/제한 항목.md",
+    "Project/untitles/트레이드오프/이미지업로드 저장소 S3 VS R2.md",
+    "Project/untitles/트레이드오프/워스페이스 삭제 방식에 대한 고민.md",
+    "Project/untitles/트레이드오프/우선순위 정리.md",
+    "Project/untitles/트레이드오프/시스템 아키텍쳐.md",
+    "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
+    "Project/untitles/트레이드오프",
     "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
     "Project/untitles/문제해결/방지 또는 사전구현/R2 이미지 교체.md",
     "Project/untitles/문제해결/방지 또는 사전구현/게시글 락.md",
@@ -256,7 +257,6 @@
     "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
     "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
     "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
-    "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
     "Architecture/03. 분산 트랜잭션 패턴",
     "Architecture/01. MSA (마이크로서비스)/데이터 관리 패턴",
     "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)",
