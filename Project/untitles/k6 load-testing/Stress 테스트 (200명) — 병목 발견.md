@@ -1,4 +1,3 @@
-# 부하 테스트 — getMemberOrThrow 쿼리 최적화
 
 ## 테스트 환경
 
