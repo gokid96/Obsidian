@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
+                "file": "Architecture/01. MSA (마이크로서비스)/09. Distributed Tracing (분산 추적).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "08. Service Mesh (서비스 메시)"
+              "title": "09. Distributed Tracing (분산 추적)"
             }
           },
           {
@@ -212,8 +212,10 @@
   },
   "active": "52dec622ebb789fc",
   "lastOpenFiles": [
-    "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
     "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
+    "Architecture/01. MSA (마이크로서비스)/09. Distributed Tracing (분산 추적).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
+    "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
     "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
     "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
@@ -244,8 +246,6 @@
     "Architecture/04. DDD",
     "Architecture/01. MSA (마이크로서비스)",
     "CS/시스템 설계/확장성/Saga 패턴.md",
-    "CS/시스템 설계/확장성/이벤트 드리븐 아키텍처 (EDA).md",
-    "CS/시스템 설계/대규모설계/선착순 예매 시스템 흐름.md",
     "Pasted image 20260203145540.png",
     "Architecture/02. Event-Driven (이벤트 기반)/study",
     "Architecture/MessageQueue",
