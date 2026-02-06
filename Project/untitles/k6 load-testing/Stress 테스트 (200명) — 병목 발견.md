@@ -165,8 +165,7 @@ RDS(db.t4g.micro) max_connections 40 확인 후 풀 사이즈 10 → 20으로 �
 
 
 
-커넥션풀 10 시작전
-
+#### 커넥션풀 10 시작전
 ![[Pasted image 20260206132934.png]]
 
 종료후
@@ -233,7 +232,7 @@ eborder@DESKTOP-49BM4V1:~/untitles-api$ k6 run -e BASE_URL=http://172.29.96.1:80
 
 ```
 
-**Before (쿼리 3개)** — `FolderService.getRootFolders`에서 자격 확인 쿼리에서 3개 날리는 
+**Before (쿼리 3개)** — `FolderService.getRootFolders`에서 자격 확인 쿼리에서 3개 날리는 쿼리 확인 후 
 ```
 select ... from workspace where workspace_id=?     ← getMemberOrThrow 쿼리 1
 select ... from users where user_id=?               ← getMemberOrThrow 쿼리 2
@@ -242,17 +241,17 @@ select distinct ... from folder left join post ...   ← 비즈니스 쿼리
 select ... from post where folder_id is null         ← 비즈니스 쿼리
 ```
 → 총 149ms
+
 **After (단일 쿼리로 수정)** — 같은 API에서:
 ```
 select ... from workspace_member left join workspace left join users where workspace_id=? and user_id=?  ← getMemberOrThrow 단일 쿼리
 select distinct ... from folder left join post ...   ← 비즈니스 쿼리
 select ... from post where folder_id is null         ← 비즈니스 쿼리
-→ 총 46ms
 ```
+→ 총 46ms
 
-수정 후 다시 테스트 
+#### 수정 후 다시 테스트한 결과 
 ![[Pasted image 20260206135949.png]]
-
 
 | 지표              | 1차-Before (쿼리3+풀10) | 1차-After (쿼리1+풀10) | 변화     |
 | --------------- | ------------------- | ------------------ | ------ |
@@ -264,8 +263,9 @@ select ... from post where folder_id is null         ← 비즈니스 쿼리
 쿼리 최적화만으로 응답시간은 개선됐지만, Pending threads가 여전히 189인 게 핵심 커넥션 점유 시간이 줄어서 회전은 빨라짐,
 쿼리 최적화만으로는 부족, 커넥션 풀 조정 필요
 
-커넥션 풀 20 으로 수정
+#### 커넥션 풀 20 으로 수정
 
+```
 
 eborder@DESKTOP-49BM4V1:~/untitles-api$ k6 run -e BASE_URL=http://172.29.96.1:8070 -e SESSION_ID=6742252BB8F8EA70D7A221FA3AC25E9D -e WORKSPACE_ID=2 load-test/stressreal.js
 
@@ -339,3 +339,4 @@ WARN[0254] Request Failed                                error="Get \"http://172
 running (7m07.5s), 000/600 VUs, 22935 complete and 0 interrupted iterations
 readers ✓ [======================================] 000/300 VUs  7m0s
 writers ✓ [======================================] 000/300 VUs  7m0s
+```
