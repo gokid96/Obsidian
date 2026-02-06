@@ -227,6 +227,7 @@
   "active": "7625f16532e975f1",
   "lastOpenFiles": [
     "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
+    "업무/Eborder/API/monitoring/무제.md",
     "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "Project/untitles/트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/k6 load-testing",
@@ -256,7 +257,6 @@
     "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
     "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
     "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
-    "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
     "Architecture/03. 분산 트랜잭션 패턴",
     "Architecture/01. MSA (마이크로서비스)/데이터 관리 패턴",
     "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)",
