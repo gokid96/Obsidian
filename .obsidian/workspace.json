@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/2026.02.06 회의.md",
+                "file": "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2026.02.06 회의"
+              "title": "02. CQRS (읽기,쓰기 분리)"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 290.5
+    "width": 391.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -183,6 +183,9 @@
   },
   "active": "fd063782224ce6ca",
   "lastOpenFiles": [
+    "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
+    "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
+    "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "업무/2026.02.06 회의.md",
     "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
     "Pasted image 20260206153746.png",
@@ -215,11 +218,8 @@
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
     "Architecture/01. MSA (마이크로서비스)/05. Circuit Breaker Pattern (회로 차단기).md",
     "Project/untitles/문제해결/방지 또는 사전구현",
-    "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "Architecture/01. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
     "Architecture/01. MSA (마이크로서비스)/02. API Gateway (진입점 관리).md",
-    "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
-    "conflict-files-obsidian-git.md",
     "Architecture/03. 분산 트랜잭션 패턴",
     "Architecture/01. MSA (마이크로서비스)/데이터 관리 패턴",
     "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)",
