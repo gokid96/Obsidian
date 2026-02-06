@@ -170,3 +170,98 @@ RDS(db.t4g.micro) max_connections 40 확인 후 풀 사이즈 10 → 20으로 �
 ![[Pasted image 20260206132934.png]]
 
 종료후
+```
+
+eborder@DESKTOP-49BM4V1:~/untitles-api$ k6 run -e BASE_URL=http://172.29.96.1:8070 -e SESSION_ID=FFB52020590D5E295C8E9A41FD575E92 -e WORKSPACE_ID=2 load-test/stressreal.js
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+     execution: local
+        script: load-test/stressreal.js
+        output: -
+
+     scenarios: (100.00%) 2 scenarios, 600 max VUs, 7m30s max duration (incl. graceful stop):
+              * readers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: readScenario, gracefulStop: 30s)
+              * writers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: writeScenario, gracefulStop: 30s)
+
+
+
+  █ THRESHOLDS
+
+    checks
+    ✓ 'rate>0.6' rate=100.00%
+
+    http_req_duration
+    ✗ 'p(95)<5000' p(95)=5.64s
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 33724   78.437909/s
+    checks_succeeded...: 100.00% 33724 out of 33724
+    checks_failed......: 0.00%   0 out of 33724
+
+    ✓ detail: status 200
+    ✓ tree: status 200
+    ✓ edit: 200 or 409
+
+    CUSTOM
+    detail_duration................: avg=3.29s  min=104.25ms med=2.4s   max=8.15s  p(90)=5.57s  p(95)=5.63s
+    edit_conflict..................: 91.90% 13774 out of 14988
+    edit_duration..................: avg=3.18s  min=103.29ms med=2.14s  max=8s     p(90)=5.57s  p(95)=5.63s
+    tree_duration..................: avg=3.33s  min=113.87ms med=2.59s  max=7.89s  p(90)=5.58s  p(95)=5.65s
+
+    HTTP
+    http_req_duration..............: avg=3.25s  min=103.29ms med=2.22s  max=8.15s  p(90)=5.57s  p(95)=5.64s
+      { expected_response:true }...: avg=3.24s  min=104.25ms med=2.2s   max=8.15s  p(90)=5.57s  p(95)=5.64s
+    http_req_failed................: 40.84% 13774 out of 33724
+    http_reqs......................: 33724  78.437909/s
+
+    EXECUTION
+    iteration_duration.............: avg=14.72s min=2.78s    med=13.61s max=50.54s p(90)=27.78s p(95)=38.92s
+    iterations.....................: 11029  25.652108/s
+    vus............................: 1      min=1              max=600
+    vus_max........................: 600    min=600            max=600
+
+    NETWORK
+    data_received..................: 30 MB  69 kB/s
+    data_sent......................: 8.0 MB 19 kB/s
+
+```
+
+**Before (쿼리 3개)** — `FolderService.getRootFolders`에서 자격 확인 쿼리에서 3개 날리는 
+```
+select ... from workspace where workspace_id=?     ← getMemberOrThrow 쿼리 1
+select ... from users where user_id=?               ← getMemberOrThrow 쿼리 2
+select ... from workspace_member where ...           ← getMemberOrThrow 쿼리 3
+select distinct ... from folder left join post ...   ← 비즈니스 쿼리
+select ... from post where folder_id is null         ← 비즈니스 쿼리
+```
+→ 총 149ms
+**After (단일 쿼리로 수정)** — 같은 API에서:
+```
+select ... from workspace_member left join workspace left join users where workspace_id=? and user_id=?  ← getMemberOrThrow 단일 쿼리
+select distinct ... from folder left join post ...   ← 비즈니스 쿼리
+select ... from post where folder_id is null         ← 비즈니스 쿼리
+→ 총 46ms
+```
+
+수정 후 다시 테스트 
+![[Pasted image 20260206135949.png]]
+
+
+| 지표              | 1차-Before (쿼리3+풀10) | 1차-After (쿼리1+풀10) | 변화     |
+| --------------- | ------------------- | ------------------ | ------ |
+| p(95)           | 5.64s               | **4.36s**          | 23% 감소 |
+| 평균              | 3.25s               | **2.45s**          | 25% 감소 |
+| 처리량             | 78.4/s              | **94.1/s**         | 20% 향상 |
+| Pending threads | 189                 | **189**            | 동일     |
+
+쿼리 최적화만으로 응답시간은 개선됐지만, Pending threads가 여전히 189인 게 핵심 커넥션 점유 시간이 줄어서 회전은 빨라짐,
+쿼리 최적화만으로는 부족, 커넥션 풀 조정 필요
+
+

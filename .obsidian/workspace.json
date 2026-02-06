@@ -67,12 +67,14 @@
             "id": "cf7106cf2bbd00bd",
             "type": "leaf",
             "state": {
-              "type": "image",
+              "type": "markdown",
               "state": {
-                "file": "Pasted image 20260206133818.png"
+                "file": "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260206133818"
+              "icon": "lucide-file",
+              "title": "Stress 테스트 (200명) — 병목 발견"
             }
           }
         ],
@@ -238,16 +240,17 @@
   },
   "active": "cf7106cf2bbd00bd",
   "lastOpenFiles": [
+    "Pasted image 20260206135949.png",
+    "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
+    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
+    "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
+    "Pasted image 20260206133818.png",
     "Pasted image 20260206132934.png",
     "Pasted image 20260206132934 1.png",
     "Pasted image 20260206132426.png",
-    "Pasted image 20260206133818.png",
-    "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
     "업무/service_monitor_alert-notifier/alertmanager설정.md",
-    "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
-    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "업무/Eborder/API/monitoring/무제.md",
     "Project/untitles/트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/k6 load-testing",
@@ -282,7 +285,6 @@
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png",
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224162727.png",
-    "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224154912.png",
-    "Pasted image 20251224170502.png"
+    "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224154912.png"
   ]
 }
