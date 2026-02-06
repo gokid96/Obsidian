@@ -162,3 +162,9 @@ Active 10(풀 전부 사용), Pending 55(대기 스레드),
 Acquire time 386ms(커넥션 대기) → 
 쿼리 실행 122ms인데 커넥션 대기가 386ms로 응답시간의 75%를 차지 → 
 RDS(db.t4g.micro) max_connections 40 확인 후 풀 사이즈 10 → 20으로 조정
+
+
+
+커넥션풀 10 시작전
+
+![[Pasted image 20260206132934.png]]

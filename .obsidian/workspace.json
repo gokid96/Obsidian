@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
+                "file": "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "테스트 할때 메세지 생성방법"
+              "title": "Stress 테스트 (200명) — 병목 발견"
             }
           }
         ],
@@ -226,6 +226,9 @@
   },
   "active": "7625f16532e975f1",
   "lastOpenFiles": [
+    "Pasted image 20260206132934.png",
+    "Pasted image 20260206132426.png",
+    "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
     "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
     "업무/service_monitor_alert-notifier/alertmanager설정.md",
     "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
@@ -255,8 +258,6 @@
     "Architecture/01. MSA (마이크로서비스)/02. API Gateway (진입점 관리).md",
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "conflict-files-obsidian-git.md",
-    "Architecture/01. MSA (마이크로서비스)/09. Distributed Tracing (분산 추적).md",
-    "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
     "Architecture/03. 분산 트랜잭션 패턴",
     "Architecture/01. MSA (마이크로서비스)/데이터 관리 패턴",
     "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)",
@@ -270,7 +271,6 @@
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224154912.png",
     "Pasted image 20251224170502.png",
     "Project/untitles/docs/astarchiaERD.png",
-    "Java/Project/Astarchia/문제해결/Pasted image 20251224114844.png",
-    "Java/Project/Astarchia/문제해결/Pasted image 20251224114003.png"
+    "Java/Project/Astarchia/문제해결/Pasted image 20251224114844.png"
   ]
 }
