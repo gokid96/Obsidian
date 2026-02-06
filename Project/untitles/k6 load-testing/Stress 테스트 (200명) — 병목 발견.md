@@ -265,9 +265,84 @@ select ... from post where folder_id is null         ← 비즈니스 쿼리
 
 #### 커넥션 풀 20 으로 수정
 
-
+![[Pasted image 20260206153746.png]]
 
 
 
 ```
+ k6 run -e BASE_URL=http://172.29.96.1:8070 -e SESSION_ID=9015001C27A7DAF3135E7F6005172A6F -e WORKSPACE_ID=2 load-test/stressreal.js
+
+         /\      Grafana   /‾‾/
+    /\  /  \     |\  __   /  /
+   /  \/    \    | |/ /  /   ‾‾\
+  /          \   |   (  |  (‾)  |
+ / __________ \  |_|\_\  \_____/
+
+     execution: local
+        script: load-test/stressreal.js
+        output: -
+
+     scenarios: (100.00%) 2 scenarios, 600 max VUs, 7m30s max duration (incl. graceful stop):
+              * readers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: readScenario, gracefulStop: 30s)
+              * writers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: writeScenario, gracefulStop: 30s)
+
+WARN[0283] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
+WARN[0283] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
+WARN[0299] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/posts/8\": dial: i/o timeout"
+WARN[0337] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
+WARN[0337] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
+WARN[0339] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
+WARN[0342] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
+
+
+  █ THRESHOLDS
+
+    checks
+    ✓ 'rate>0.6' rate=99.99%
+
+    http_req_duration
+    ✓ 'p(95)<5000' p(95)=1.46s
+
+
+  █ TOTAL RESULTS
+
+    checks_total.......: 70591  164.910451/s
+    checks_succeeded...: 99.99% 70584 out of 70591
+    checks_failed......: 0.00%  7 out of 70591
+
+    ✗ tree: status 200
+      ↳  99% — ✓ 15358 / ✗ 6
+    ✗ detail: status 200
+      ↳  99% — ✓ 22637 / ✗ 1
+    ✓ edit: 200 or 409
+
+    CUSTOM
+    detail_duration................: avg=734.6ms  min=0s       med=612.01ms max=3.39s p(90)=1.41s  p(95)=1.46s
+    edit_conflict..................: 92.61% 30183 out of 32589
+    edit_duration..................: avg=715.8ms  min=106.03ms med=510.28ms max=3.65s p(90)=1.41s  p(95)=1.46s
+    error_count....................: 7      0.016353/s
+    tree_duration..................: avg=662.18ms min=0s       med=575.1ms  max=3.01s p(90)=1.32s  p(95)=1.38s
+
+    HTTP
+    http_req_duration..............: avg=710.16ms min=0s       med=541.78ms max=3.65s p(90)=1.4s   p(95)=1.46s
+      { expected_response:true }...: avg=694.92ms min=27.51ms  med=532.1ms  max=3.39s p(90)=1.39s  p(95)=1.45s
+    http_req_failed................: 42.76% 30190 out of 70591
+    http_reqs......................: 70591  164.910451/s
+
+    EXECUTION
+    iteration_duration.............: avg=7.05s    min=2.67s    med=6.05s    max=31s   p(90)=12.76s p(95)=15.91s
+    iterations.....................: 22644  52.899552/s
+    vus............................: 1      min=1              max=600
+    vus_max........................: 600    min=600            max=600
+
+    NETWORK
+    data_received..................: 61 MB  142 kB/s
+    data_sent......................: 17 MB  40 kB/s
+
+
+
+
+running (7m08.1s), 000/600 VUs, 22644 complete and 0 interrupted iterations
+readers ✓ [======================================] 000/300 VUs  7m0s
+writers ✓ [======================================] 000/300 VUs  7m0s
 ```
