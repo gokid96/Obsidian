@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
+                "file": "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "서버 사양 트레이드오프"
+              "title": "세션 JWT 트레이드오프"
             }
           }
         ],
@@ -226,9 +226,9 @@
   },
   "active": "7625f16532e975f1",
   "lastOpenFiles": [
+    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "Project/untitles/k6 load-testing/Stress 테스트 (200명) — 병목 발견.md",
     "업무/Eborder/API/monitoring/무제.md",
-    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "Project/untitles/트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/k6 load-testing",
     "Project/untitles/기능",
