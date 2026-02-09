@@ -20,8 +20,21 @@
               "icon": "lucide-file",
               "title": "02. CQRS (읽기,쓰기 분리)"
             }
+          },
+          {
+            "id": "f645909d5ce61f19",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.11.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.11.7"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -181,9 +194,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "fd063782224ce6ca",
+  "active": "f645909d5ce61f19",
   "lastOpenFiles": [
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
+    "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
+    "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
     "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
     "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "업무/2026.02.06 회의.md",
@@ -218,8 +233,6 @@
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
     "Architecture/01. MSA (마이크로서비스)/05. Circuit Breaker Pattern (회로 차단기).md",
     "Project/untitles/문제해결/방지 또는 사전구현",
-    "Architecture/01. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
-    "Architecture/01. MSA (마이크로서비스)/02. API Gateway (진입점 관리).md",
     "Architecture/03. 분산 트랜잭션 패턴",
     "Architecture/01. MSA (마이크로서비스)/데이터 관리 패턴",
     "Architecture/05. Event-Driven+Microservices  (이벤트 기반 MSA)",
