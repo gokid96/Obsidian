@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
+                "file": "Architecture/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07. Config Server (설정 중앙화)"
+              "title": "무제"
             }
           }
         ]
@@ -183,20 +183,25 @@
   },
   "active": "f645909d5ce61f19",
   "lastOpenFiles": [
-    "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/06. Idempotency (멱등성).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/04. CDC (Change Data Capture) (다른 해결책).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
     "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "Architecture/01. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
+    "Architecture/01. MSA (마이크로서비스)/02. API Gateway (진입점 관리).md",
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/02. Transactional Messaging (문제 정의).md",
+    "Architecture/01. MSA (마이크로서비스)/08. Service Mesh (서비스 메시).md",
+    "Architecture/01. MSA (마이크로서비스)/05. Circuit Breaker Pattern (회로 차단기).md",
+    "Architecture/01. MSA (마이크로서비스)/09. Distributed Tracing (분산 추적).md",
+    "Architecture/01. MSA (마이크로서비스)/07. Config Server (설정 중앙화).md",
+    "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
     "Architecture/무제.md",
-    "Architecture/02. Event-Driven (이벤트 기반)/06. Idempotency (멱등성).md",
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
     "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
     "Architecture/MessageQueue/01. Kafka.md",
     "Architecture/04. DDD/DDD (Domain-Driven Design).md",
-    "Architecture/02. Event-Driven (이벤트 기반)/04. CDC (Change Data Capture) (다른 해결책).md",
     "Architecture/02. Event-Driven (이벤트 기반)/05. Outbox + CDC.md",
-    "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
-    "Architecture/02. Event-Driven (이벤트 기반)/02. Transactional Messaging (문제 정의).md",
     "Architecture/02. Event-Driven (이벤트 기반)/01. Event-Driven Architecture (기본 개념).md",
     "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
     "업무/2026.02.06 회의.md",
@@ -210,13 +215,8 @@
     "Pasted image 20260206132934 1.png",
     "Pasted image 20260206132426.png",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
-    "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
-    "업무/service_monitor_alert-notifier/alertmanager설정.md",
-    "업무/Eborder/API/monitoring/무제.md",
-    "Project/untitles/트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
     "Project/untitles/k6 load-testing",
     "Project/untitles/기능",
-    "Project/untitles/트레이드오프/제한 항목.md",
     "Project/untitles/트레이드오프",
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
     "Project/untitles/문제해결/방지 또는 사전구현",
