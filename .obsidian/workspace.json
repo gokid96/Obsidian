@@ -25,12 +25,14 @@
             "id": "f645909d5ce61f19",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.11.7"
+                "file": "Architecture/MessageQueue/01. Kafka.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.11.7"
+              "icon": "lucide-file",
+              "title": "01. Kafka"
             }
           }
         ],
@@ -196,7 +198,13 @@
   },
   "active": "f645909d5ce61f19",
   "lastOpenFiles": [
+    "Architecture/04. DDD/DDD (Domain-Driven Design).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/04. CDC (Change Data Capture) (다른 해결책).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/05. Outbox + CDC.md",
+    "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/02. Transactional Messaging (문제 정의).md",
+    "Architecture/02. Event-Driven (이벤트 기반)/01. Event-Driven Architecture (기본 개념).md",
     "Architecture/03. 분산 트랜잭션 패턴/03. Event Sourcing (이력 저장).md",
     "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
     "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
@@ -225,13 +233,7 @@
     "Project/untitles/트레이드오프/시스템 아키텍쳐.md",
     "Project/untitles/트레이드오프",
     "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
-    "Project/untitles/문제해결/방지 또는 사전구현/R2 이미지 교체.md",
-    "Project/untitles/문제해결/방지 또는 사전구현/게시글 락.md",
-    "Project/untitles/문제해결/방지 또는 사전구현/04.워크스페이스 조회 N+1.md",
-    "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
-    "Project/untitles/문제해결/방지 또는 사전구현/02.폴더 이동 시 순환 참조 방지.md",
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
-    "Architecture/01. MSA (마이크로서비스)/05. Circuit Breaker Pattern (회로 차단기).md",
     "Project/untitles/문제해결/방지 또는 사전구현",
     "Architecture/03. 분산 트랜잭션 패턴",
     "Architecture/01. MSA (마이크로서비스)/데이터 관리 패턴",
