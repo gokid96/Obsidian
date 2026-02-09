@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/추가할 내용.md",
+                "file": "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "추가할 내용"
+              "title": "06. Database per Service (서비스별 DB)"
             }
           }
         ]
@@ -183,10 +183,10 @@
   },
   "active": "f645909d5ce61f19",
   "lastOpenFiles": [
+    "Architecture/추가할 내용.md",
     "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
     "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "Architecture/01. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
-    "Architecture/추가할 내용.md",
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
