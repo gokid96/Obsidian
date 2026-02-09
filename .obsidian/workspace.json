@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/Caching/01. Cache-Aside (Lazy Loading).md",
+                "file": "Architecture/Caching/02. Read-Through Cache.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01. Cache-Aside (Lazy Loading)"
+              "title": "02. Read-Through Cache"
             }
           }
         ]
@@ -183,6 +183,8 @@
   },
   "active": "f645909d5ce61f19",
   "lastOpenFiles": [
+    "Architecture/Caching/01. Cache-Aside (Lazy Loading).md",
+    "Architecture/Caching/02. Read-Through Cache.md",
     "Architecture/Caching/Caching (캐싱).md",
     "Architecture/Caching/09. Cache Warming (캐시 워밍).md",
     "Architecture/Caching/08. Multi-Layer Cache (다계층 캐시).md",
@@ -191,8 +193,6 @@
     "Architecture/Caching/05. Write-Around.md",
     "Architecture/Caching/04. Write-Behind (Write-Back).md",
     "Architecture/Caching/03. Write-Through.md",
-    "Architecture/Caching/02. Read-Through Cache.md",
-    "Architecture/Caching/01. Cache-Aside (Lazy Loading).md",
     "Architecture/무제.md",
     "Architecture/Caching",
     "Architecture/02. Event-Driven (이벤트 기반)/06. Idempotency (멱등성).md",
