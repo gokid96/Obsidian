@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/01. MSA (마이크로서비스)/00. 핵심 설계 원칙.md",
+                "file": "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00. 핵심 설계 원칙"
+              "title": "00. MSA  설계 원칙"
             }
           }
         ]
@@ -184,7 +184,7 @@
   "active": "2f896ffc47b21943",
   "lastOpenFiles": [
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
-    "Architecture/01. MSA (마이크로서비스)/00. 핵심 설계 원칙.md",
+    "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
     "Architecture/엣지케이스/01.MSA/01_API_Gateway.md",
     "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
     "Architecture/엣지케이스/04.공통/01_네트워크_파티션.md",
