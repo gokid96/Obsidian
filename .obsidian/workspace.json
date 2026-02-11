@@ -4,37 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "7c4912c179726676",
+        "id": "49f40398bbb9bcbf",
         "type": "tabs",
         "children": [
           {
-            "id": "f645909d5ce61f19",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "Project/untitles/Pasted image 20260206132934.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260206132934"
-            }
-          },
-          {
-            "id": "d213f9f690b2ffdf",
+            "id": "2f896ffc47b21943",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/무제.md",
+                "file": "Architecture/엣지케이스/01.MSA/01_API_Gateway.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "01_API_Gateway"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -194,26 +181,28 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "2f896ffc47b21943",
   "lastOpenFiles": [
+    "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
+    "Architecture/엣지케이스/04.공통/01_네트워크_파티션.md",
+    "Architecture/엣지케이스/02.Event-Driven/01_Outbox_Pattern.md",
+    "Architecture/엣지케이스/01.MSA/01_API_Gateway.md",
+    "Architecture/엣지케이스/01.MSA/03_Service_Discovery.md",
+    "Architecture/무제.md",
+    "Architecture/엣지케이스/04.공통",
     "Architecture/엣지케이스/03.분산트랜잭션",
     "Architecture/엣지케이스/02.Event-Driven",
     "Architecture/엣지케이스/01.MSA",
-    "Architecture/엣지케이스/04_모니터링_관측성.md",
-    "Architecture/엣지케이스/03_타임아웃_재시도.md",
-    "Architecture/엣지케이스/02_순서_보장.md",
-    "Architecture/엣지케이스/01_네트워크_파티션.md",
-    "Architecture/엣지케이스/04_Distributed_Tracing.md",
-    "Architecture/엣지케이스/04_Dead_Letter_Queue.md",
-    "Architecture/엣지케이스/03_Service_Discovery.md",
-    "Architecture/엣지케이스/03_Idempotency.md",
-    "Architecture/엣지케이스/03_Event_Sourcing.md",
-    "Architecture/엣지케이스/02_CQRS.md",
-    "Architecture/엣지케이스/02_Circuit_Breaker.md",
-    "Architecture/엣지케이스/02_CDC.md",
-    "Architecture/엣지케이스/01_Saga_Pattern.md",
-    "Architecture/엣지케이스/01_Outbox_Pattern.md",
-    "Architecture/엣지케이스/01_API_Gateway.md",
+    "Architecture/엣지케이스/04.공통/04_모니터링_관측성.md",
+    "Architecture/엣지케이스/04.공통/03_타임아웃_재시도.md",
+    "Architecture/엣지케이스/04.공통/02_순서_보장.md",
+    "Architecture/엣지케이스/01.MSA/04_Distributed_Tracing.md",
+    "Architecture/엣지케이스/02.Event-Driven/04_Dead_Letter_Queue.md",
+    "Architecture/엣지케이스/02.Event-Driven/03_Idempotency.md",
+    "Architecture/엣지케이스/03.분산트랜잭션/03_Event_Sourcing.md",
+    "Architecture/엣지케이스/03.분산트랜잭션/02_CQRS.md",
+    "Architecture/엣지케이스/01.MSA/02_Circuit_Breaker.md",
+    "Architecture/엣지케이스/02.Event-Driven/02_CDC.md",
     "Architecture/Caching/Caching (캐싱).md",
     "Architecture/Caching/09. Cache Warming (캐시 워밍).md",
     "Architecture/Caching/08. Multi-Layer Cache (다계층 캐시).md",
@@ -237,8 +226,6 @@
     "Project/untitles/기능",
     "Project/untitles/트레이드오프",
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
-    "Project/untitles/문제해결/방지 또는 사전구현",
-    "Architecture/03. 분산 트랜잭션 패턴",
     "Pasted image 20260203145540.png",
     "Project/Pasted image 20251106154530.png",
     "Project/untitles/images/Pasted image 20251106154231.png"
