@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Architecture/엣지케이스/03.분산트랜잭션/02_CQRS.md",
+                "file": "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02_CQRS"
+              "title": "01_Saga_Pattern"
             }
           }
         ]
@@ -181,8 +181,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "2f896ffc47b21943",
   "lastOpenFiles": [
+    "Architecture/엣지케이스/03.분산트랜잭션/02_CQRS.md",
     "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
     "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
@@ -207,7 +208,6 @@
     "Architecture/엣지케이스/01.MSA/04_Distributed_Tracing.md",
     "Architecture/엣지케이스/02.Event-Driven/04_Dead_Letter_Queue.md",
     "Architecture/엣지케이스/03.분산트랜잭션/03_Event_Sourcing.md",
-    "Architecture/엣지케이스/03.분산트랜잭션/02_CQRS.md",
     "Architecture/엣지케이스/01.MSA/02_Circuit_Breaker.md",
     "Architecture/Caching/Caching (캐싱).md",
     "Architecture/Caching/09. Cache Warming (캐시 워밍).md",
