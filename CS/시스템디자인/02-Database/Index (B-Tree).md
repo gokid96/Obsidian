@@ -17,7 +17,6 @@ SELECT * FROM users WHERE email = 'hong@example.com';
 ```
 
 인덱스가 없으면 DB는 users 테이블의 **모든 행을 처음부터 끝까지** 확인해야 한다.
-
 - 100만 행 → 100만 번 비교
 - 1000만 행 → 1000만 번 비교
 - 데이터가 늘어날수록 선형적으로 느려진다: **O(N)**
@@ -25,7 +24,6 @@ SELECT * FROM users WHERE email = 'hong@example.com';
 ### 인덱스가 있으면
 
 email 컬럼에 인덱스가 있으면 **O(log N)**으로 찾는다.
-
 - 100만 행 → 약 20번 비교
 - 1000만 행 → 약 23번 비교
 
