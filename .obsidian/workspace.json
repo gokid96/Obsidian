@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/시스템디자인/02-Database/Index (B-Tree).md",
+                "file": "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Index (B-Tree)"
+              "title": "2. 정규화 & 비정규화"
             }
           }
         ]
@@ -184,8 +184,9 @@
   },
   "active": "2f896ffc47b21943",
   "lastOpenFiles": [
+    "CS/시스템디자인/02-Database/1. Index (B-Tree).md",
+    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "CS/시스템디자인/01-Web & Network/4. Client-Server Architecture.md",
-    "CS/시스템디자인/02-Database/Index (B-Tree).md",
     "CS/시스템디자인/01-Web & Network/3. TCP-IP.md",
     "CS/시스템디자인/무제.md",
     "CS/시스템디자인/01-Web & Network/1. HTTP.md",
@@ -219,7 +220,6 @@
     "Architecture/엣지케이스/04.공통",
     "Architecture/엣지케이스/03.분산트랜잭션",
     "Architecture/엣지케이스/02.Event-Driven",
-    "Architecture/엣지케이스/04.공통/04_모니터링_관측성.md",
     "Project/untitles/Pasted image 20260206132934.png",
     "Project/untitles/Pasted image 20260206133818.png",
     "Project/untitles/Pasted image 20260206135949.png",
