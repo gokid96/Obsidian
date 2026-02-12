@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 426.5
+    "width": 246.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -182,7 +182,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f896ffc47b21943",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
     "CS/시스템디자인/02-Database/1. Index (B-Tree).md",
     "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
