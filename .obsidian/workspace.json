@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/시스템디자인/01-Web & Network/HTTP (HyperText Transfer protocol).md",
+                "file": "CS/시스템디자인/01-Web & Network/1. HTTP (HyperText Transfer protocol).md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "HTTP (HyperText Transfer protocol)"
+              "title": "1. HTTP (HyperText Transfer protocol)"
             }
           }
         ]
@@ -185,7 +185,7 @@
   "active": "2f896ffc47b21943",
   "lastOpenFiles": [
     "Architecture/시스템 설계 프레임워크.md",
-    "CS/시스템디자인/01-Web & Network/HTTP (HyperText Transfer protocol).md",
+    "CS/시스템디자인/01-Web & Network/1. HTTP (HyperText Transfer protocol).md",
     "CS/시스템디자인/05-System Design Practice",
     "CS/시스템디자인/04-Distributed Systems",
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue",
