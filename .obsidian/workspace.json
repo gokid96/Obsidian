@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/시스템디자인/02-Database/5. SQL vs NoSQL.md",
+                "file": "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "5. SQL vs NoSQL"
+              "title": "4. Replication & Sharding"
             }
           }
         ]
@@ -184,8 +184,8 @@
   },
   "active": "2f896ffc47b21943",
   "lastOpenFiles": [
-    "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "CS/시스템디자인/02-Database/5. SQL vs NoSQL.md",
+    "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
     "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
     "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
