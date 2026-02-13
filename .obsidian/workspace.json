@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/k6 load-testing/Stress 테스트  — 병목.md",
+                "file": "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "Stress 테스트  — 병목"
+              "title": "서버 사양 트레이드오프"
             }
           }
         ],
@@ -198,8 +198,8 @@
   },
   "active": "66e7c8f42a2ee3bb",
   "lastOpenFiles": [
-    "Project/untitles/Pasted image 20260206133818.png",
     "Project/untitles/Pasted image 20260206132934.png",
+    "Project/untitles/Pasted image 20260206133818.png",
     "Project/untitles/k6 load-testing/Stress 테스트  — 병목.md",
     "Project/untitles/k6 load-testing/Pasted image 20260206132934.png",
     "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
@@ -242,7 +242,6 @@
     "java/Spring/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
     "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
     "Project/untitles/문제해결/images/Pasted image 20251224154912.png",
-    "Project/untitles/문제해결/images/Pasted image 20251224153232.png",
-    "업무/Eborder/PNR/Pasted image 20251215114222.png"
+    "Project/untitles/문제해결/images/Pasted image 20251224153232.png"
   ]
 }
