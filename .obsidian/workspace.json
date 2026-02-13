@@ -182,15 +182,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "2f896ffc47b21943",
   "lastOpenFiles": [
     "CS/시스템디자인/02-Database/1. Index (B-Tree).md",
-    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "CS/시스템디자인/01-Web & Network/4. Client-Server Architecture.md",
     "CS/시스템디자인/01-Web & Network/3. TCP-IP.md",
-    "CS/시스템디자인/무제.md",
-    "CS/시스템디자인/01-Web & Network/1. HTTP.md",
     "CS/시스템디자인/01-Web & Network/2. DNS.md",
+    "CS/시스템디자인/01-Web & Network/1. HTTP.md",
+    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
+    "CS/시스템디자인/무제.md",
     "CS/시스템디자인/01-Web & Network/무제",
     "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "Architecture/시스템 설계 프레임워크.md",
