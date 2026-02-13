@@ -1,11 +1,8 @@
 
 ## 테스트 환경
-
-- **서버**: Spring Boot 3.5.7, Java 21
 - **DB**: MySQL (HikariCP 기본값, 커넥션 풀 10개)
 - **부하 도구**: k6
 - **모니터링**: Prometheus + Grafana (JVM 대시보드 4701, HikariCP 대시보드 6083)
-- **Rate Limiter**: 테스트를 위해 비활성화 (서버 순수 성능 측정 목적)
 
 ---
 
@@ -43,13 +40,13 @@ VU 1명으로 API 흐름이 정상 동작하는지 확인.
 
 50명 → 100명 유지 → 200명 유지 → 0명, 총 7분.
 
-| 지표          | 결과          |     |
-| ----------- | ----------- | --- |
-| p(95) 응답시간  | **1,210ms** |     |
-| 평균 응답시간     | 572ms       |     |
-| i/o timeout | 5건          |     |
-| check 통과율   | 99.98%      |     |
-| 초당 요청       | 69.3/s      |     |
+| 지표          | 결과          |
+| ----------- | ----------- |
+| p(95) 응답시간  | **1,210ms** |
+| 평균 응답시간     | 572ms       |
+| i/o timeout | 5건          |
+| check 통과율   | 99.98%      |
+| 초당 요청       | 69.3/s      |
 
 **200명 구간에서 응답시간이 급격히 증가.** timeout 발생 시작.
 
@@ -60,7 +57,7 @@ VU 1명으로 API 흐름이 정상 동작하는지 확인.
 ### 원인: `getMemberOrThrow` — 매 요청마다 쿼리 3개
 
 "이 사용자가 이 워크스페이스의 멤버인가?"를 확인하는 권한 체크 메서드
-PostService, FolderService의 **모든 API가 호출**한다.
+PostService, FolderService의 **모든 API가 호출**.
 
 ```java
 // Before: 쿼리 3개
@@ -115,8 +112,6 @@ private WorkspaceMember getMemberOrThrow(Long userId, Long workspaceId) {
 
 ## 6. Stress 테스트 — Before vs After 비교 (VU 200명)
 
-
-
 | 지표          | Before  | After      | 변화         |
 | ----------- | ------- | ---------- | ---------- |
 | p(95) 응답시간  | 1,210ms | **538ms**  | **55% 감소** |
@@ -164,15 +159,8 @@ Acquire time 386ms(커넥션 대기) →
 RDS(db.t4g.micro) max_connections 40 확인 후 풀 사이즈 10 → 20으로 조정
 
 
-
-#### 커넥션풀 10 시작전
-![[Pasted image 20260206132934.png]]
-
-종료후
+#### 커넥션풀 10
 ```
-
-eborder@DESKTOP-49BM4V1:~/untitles-api$ k6 run -e BASE_URL=http://172.29.96.1:8070 -e SESSION_ID=FFB52020590D5E295C8E9A41FD575E92 -e WORKSPACE_ID=2 load-test/stressreal.js
-
          /\      Grafana   /‾‾/
     /\  /  \     |\  __   /  /
    /  \/    \    | |/ /  /   ‾‾\
@@ -270,8 +258,6 @@ select ... from post where folder_id is null         ← 비즈니스 쿼리
 
 
 ```
- k6 run -e BASE_URL=http://172.29.96.1:8070 -e SESSION_ID=9015001C27A7DAF3135E7F6005172A6F -e WORKSPACE_ID=2 load-test/stressreal.js
-
          /\      Grafana   /‾‾/
     /\  /  \     |\  __   /  /
    /  \/    \    | |/ /  /   ‾‾\
