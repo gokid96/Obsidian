@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "49f40398bbb9bcbf",
+        "id": "3eb3cb7e1f450938",
         "type": "tabs",
         "children": [
           {
-            "id": "2f896ffc47b21943",
+            "id": "f745889c1091eaf0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
+                "file": "Project/untitles/문제해결/방지 또는 사전구현/04.워크스페이스 조회 N+1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. Cache Strategy"
+              "title": "04.워크스페이스 조회 N+1"
             }
           }
         ]
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 349.5
+    "width": 288.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -113,12 +113,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
+                "file": "환영합니다!.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "스레드 기초 (Thread) 의 나가는 링크"
+              "title": "환영합니다! 의 나가는 링크"
             }
           },
           {
@@ -166,69 +166,68 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 780.5
   },
   "left-ribbon": {
     "hiddenItems": {
       "bases:새 베이스 생성하기": false,
-      "remotely-save:Remotely Save": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 일일 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
+      "remotely-save:Remotely Save": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "2f896ffc47b21943",
+  "active": "f745889c1091eaf0",
   "lastOpenFiles": [
-    "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/02.폴더 이동 시 순환 참조 방지.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
+    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
+    "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
+    "Project/untitles/트레이드오프/시스템 아키텍쳐.md",
+    "Project/untitles/트레이드오프/우선순위 정리.md",
+    "Project/untitles/트레이드오프/이미지업로드 저장소 S3 VS R2.md",
+    "Project/untitles/트레이드오프/워스페이스 삭제 방식에 대한 고민.md",
+    "Project/untitles/트레이드오프/팀 워크스페이스 사이드바 파일폴더 생성후 다른사용자에게안보여지는 문제.md",
+    "Project/untitles/트레이드오프/제한 항목.md",
+    "Architecture/02. Event-Driven (이벤트 기반)/06. Idempotency (멱등성).md",
+    "Project/untitles/트레이드오프",
+    "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224162727.png",
+    "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224154912.png",
+    "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
+    "Project/untitles/문제해결/방지 또는 사전구현/게시글 락.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/R2 이미지 교체.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/images",
+    "Project/untitles/문제해결/방지 또는 사전구현/04.워크스페이스 조회 N+1.md",
+    "Project/untitles/문제해결/방지 또는 사전구현",
+    "Project/untitles/k6 load-testing/Stress 테스트  — 병목.md",
+    "Project/untitles/k6 load-testing",
+    "Project/untitles/Pasted image 20260206132934.png",
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
     "CS/시스템디자인/02-Database/5. SQL vs NoSQL.md",
-    "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
-    "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
+    "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
     "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
-    "Concurrency (Lock, Race Condition).md",
     "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "CS/시스템디자인/02-Database/1. Index (B-Tree).md",
     "CS/시스템디자인/01-Web & Network/4. Client-Server Architecture.md",
     "CS/시스템디자인/01-Web & Network/3. TCP-IP.md",
     "CS/시스템디자인/01-Web & Network/2. DNS.md",
     "CS/시스템디자인/01-Web & Network/1. HTTP.md",
-    "CS/시스템디자인/무제.md",
-    "CS/시스템디자인/01-Web & Network/무제",
-    "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
-    "Architecture/시스템 설계 프레임워크.md",
-    "CS/시스템디자인/05-System Design Practice",
-    "CS/시스템디자인/04-Distributed Systems",
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue",
     "CS/시스템디자인/02-Database",
     "CS/시스템디자인/01-Web & Network",
     "CS/시스템디자인",
-    "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
-    "Architecture/엣지케이스/02.Event-Driven/02_CDC.md",
-    "Architecture/엣지케이스/02.Event-Driven/03_Idempotency.md",
-    "Architecture/엣지케이스/02.Event-Driven/04_Dead_Letter_Queue.md",
-    "Architecture/엣지케이스/MSA에서 DB 분리 시 정합성 문제.md",
-    "Architecture/무제.md",
-    "Architecture/엣지케이스/03.분산트랜잭션/02_CQRS.md",
-    "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
-    "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
-    "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
     "Architecture/엣지케이스/04.공통",
     "Architecture/엣지케이스/03.분산트랜잭션",
-    "Architecture/엣지케이스/02.Event-Driven",
-    "Project/untitles/Pasted image 20260206132934.png",
-    "Project/untitles/Pasted image 20260206133818.png",
-    "Project/untitles/Pasted image 20260206135949.png",
-    "Project/untitles/Pasted image 20260206153746.png",
-    "Pasted image 20260206132934 1.png",
-    "Pasted image 20260206132426.png",
-    "Project/untitles/문제해결/방지 또는 사전구현/images/Pasted image 20251224153232.png",
-    "Pasted image 20260203145540.png",
-    "Project/Pasted image 20251106154530.png",
-    "Project/untitles/images/Pasted image 20251106154231.png"
+    "java/Spring/Spring/JPA 영속성 컨텍스트/Pasted image 20251110163746.png",
+    "Project/untitles/문제해결/images/Pasted image 20251224162727.png",
+    "Project/untitles/문제해결/images/Pasted image 20251224154912.png",
+    "Project/untitles/문제해결/images/Pasted image 20251224153232.png",
+    "업무/Eborder/PNR/Pasted image 20251215114222.png",
+    "업무/Eborder/PNR/Pasted image 20251215114031.png"
   ]
 }
