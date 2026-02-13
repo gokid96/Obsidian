@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
+                "file": "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "4. Replication & Sharding"
+              "title": "1. Cache Strategy"
             }
           }
         ]
@@ -184,10 +184,11 @@
   },
   "active": "2f896ffc47b21943",
   "lastOpenFiles": [
+    "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
+    "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
     "CS/시스템디자인/02-Database/5. SQL vs NoSQL.md",
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
-    "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
     "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
     "Concurrency (Lock, Race Condition).md",
     "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
@@ -216,7 +217,6 @@
     "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
     "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
     "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
-    "Architecture/02. Event-Driven (이벤트 기반)/06. Idempotency (멱등성).md",
     "Architecture/엣지케이스/04.공통",
     "Architecture/엣지케이스/03.분산트랜잭션",
     "Architecture/엣지케이스/02.Event-Driven",
