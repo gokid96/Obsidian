@@ -35,8 +35,7 @@
               "title": "서버 사양 트레이드오프"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -196,8 +195,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "66e7c8f42a2ee3bb",
+  "active": "f745889c1091eaf0",
   "lastOpenFiles": [
+    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "Project/untitles/Pasted image 20260206132934.png",
     "Project/untitles/Pasted image 20260206133818.png",
     "Project/untitles/k6 load-testing/Stress 테스트  — 병목.md",
@@ -210,7 +210,6 @@
     "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
     "Project/untitles/문제해결/방지 또는 사전구현/02.폴더 이동 시 순환 참조 방지.md",
     "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
-    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
     "Project/untitles/트레이드오프/시스템 아키텍쳐.md",
     "Project/untitles/트레이드오프/우선순위 정리.md",

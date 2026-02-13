@@ -1,6 +1,6 @@
-
 ## 테스트 환경
-- **DB**: MySQL (HikariCP 기본값, 커넥션 풀 10개)
+
+- **DB**: MySQL on RDS (db.t4g.micro — 2 vCPU, 1GB RAM, max_connections 40)
 - **부하 도구**: k6
 - **모니터링**: Prometheus + Grafana (JVM 대시보드 4701, HikariCP 대시보드 6083)
 
@@ -10,13 +10,13 @@
 
 VU 1명으로 API 흐름이 정상 동작하는지 확인.
 
-| 항목                      | 결과                   |
-| ----------------------- | -------------------- |
-| 트리 조회 `GET /folders`    | ✅ 200                |
-| 상세 조회 `GET /posts/{id}` | ✅ 200, version 정상 반환 |
-| 수정 `PUT /posts/{id}`    | ✅ 200                |
-| check 통과율               | 100% (5/5)           |
-| 평균 응답시간                 | 175ms                |
+|항목|결과|
+|---|---|
+|트리 조회 `GET /folders`|✅ 200|
+|상세 조회 `GET /posts/{id}`|✅ 200, version 정상 반환|
+|수정 `PUT /posts/{id}`|✅ 200|
+|check 통과율|100% (5/5)|
+|평균 응답시간|175ms|
 
 ---
 
@@ -40,13 +40,13 @@ VU 1명으로 API 흐름이 정상 동작하는지 확인.
 
 50명 → 100명 유지 → 200명 유지 → 0명, 총 7분.
 
-| 지표          | 결과          |
-| ----------- | ----------- |
-| p(95) 응답시간  | **1,210ms** |
-| 평균 응답시간     | 572ms       |
-| i/o timeout | 5건          |
-| check 통과율   | 99.98%      |
-| 초당 요청       | 69.3/s      |
+|지표|결과|
+|---|---|
+|p(95) 응답시간|**1,210ms**|
+|평균 응답시간|572ms|
+|i/o timeout|5건|
+|check 통과율|99.98%|
+|초당 요청|69.3/s|
 
 **200명 구간에서 응답시간이 급격히 증가.** timeout 발생 시작.
 
@@ -56,8 +56,7 @@ VU 1명으로 API 흐름이 정상 동작하는지 확인.
 
 ### 원인: `getMemberOrThrow` — 매 요청마다 쿼리 3개
 
-"이 사용자가 이 워크스페이스의 멤버인가?"를 확인하는 권한 체크 메서드
-PostService, FolderService의 **모든 API가 호출**.
+"이 사용자가 이 워크스페이스의 멤버인가?"를 확인하는 권한 체크 메서드. PostService, FolderService의 **모든 API가 호출**.
 
 ```java
 // Before: 쿼리 3개
@@ -112,115 +111,58 @@ private WorkspaceMember getMemberOrThrow(Long userId, Long workspaceId) {
 
 ## 6. Stress 테스트 — Before vs After 비교 (VU 200명)
 
-| 지표          | Before  | After      | 변화         |
-| ----------- | ------- | ---------- | ---------- |
-| p(95) 응답시간  | 1,210ms | **538ms**  | **55% 감소** |
-| 평균 응답시간     | 572ms   | **256ms**  | **55% 감소** |
-| i/o timeout | 5건      | **0건**     | 해소         |
-| check 통과율   | 99.98%  | **100%**   | 에러 제거      |
-| 총 반복 수      | 9,802   | **11,867** | **21% 증가** |
-| 초당 요청       | 69.3/s  | **83.9/s** | **21% 향상** |
-"Stress 테스트에서 p(95) 1,210ms가 나왔고, 
-서버 로그에서 매 요청마다 동일한 SELECT 3개가 반복되는 것을 확인. g
-etMemberOrThrow를 단일 쿼리로 최적화하여 p(95) 538ms로 55% 개선."
+|지표|Before|After|변화|
+|---|---|---|---|
+|p(95) 응답시간|1,210ms|**538ms**|**55% 감소**|
+|평균 응답시간|572ms|**256ms**|**55% 감소**|
+|i/o timeout|5건|**0건**|해소|
+|check 통과율|99.98%|**100%**|에러 제거|
+|총 반복 수|9,802|**11,867**|**21% 증가**|
+|초당 요청|69.3/s|**83.9/s**|**21% 향상**|
+
+Stress 테스트에서 p(95) 1,210ms가 나왔고, 서버 로그에서 매 요청마다 동일한 
+SELECT 3개가 반복되는 것을 확인. 
+getMemberOrThrow를 단일 쿼리로 최적화하여 p(95) 538ms로 55% 개선.
 
 ---
 
-## 7. HikariCP 커넥션 풀 분석 (추가 확인 필요)
+## 7. HikariCP 커넥션 풀 분석
 
-Grafana HikariCP 대시보드에서 확인한 수치 (Stress Before 기준)
+Grafana HikariCP 대시보드에서 확인한 수치 (VU 200 Stress Before 기준)
 
-| 지표                      | 값     | 의미           |
-| ----------------------- | ----- | ------------ |
-| Max connections         | 10    | HikariCP 기본값 |
-| Active connections (최대) | 10    | 전부 사용 중      |
-| Pending threads (최대)    | 61    | 커넥션 대기 스레드   |
-| Acquire time (최대)       | 386ms | 커넥션 획득 대기시간  |
-| Usage time (최대)         | 122ms | 실제 쿼리 실행시간   |
+|지표|값|의미|
+|---|---|---|
+|Max connections|10|HikariCP 기본값|
+|Active connections (최대)|10|전부 사용 중|
+|Pending threads (최대)|61|커넥션 대기 스레드|
+|Acquire time (최대)|386ms|커넥션 획득 대기시간|
+|Usage time (최대)|122ms|실제 쿼리 실행시간|
+
 쿼리 실행은 122ms인데 커넥션 획득 대기가 386ms — **응답시간의 75%가 커넥션 대기**.
 
-> ⚠️ 이 수치는 getMemberOrThrow 최적화 전 데이터. 쿼리 최적화로 커넥션 점유 시간이 줄었으므로, 현재 상태에서 다시 측정 필요. 결과에 따라 커넥션 풀 사이즈 조정 여부 판단 예정.
+**병목 1 발견 과정:** Stress 테스트(200명)에서 p(95) 1,210ms 발생 
+→ 서버 로그에서 매 요청마다 동일한 SELECT 3개가 반복되는 것을 확인 
+→ 모든 API가 이걸 호출하므로 반복 1회에 불필요한 쿼리 9개 발생 
+→ 단일 쿼리로 최적화 (응답시간 55% 감소)
 
+**병목 2 발견 과정:** 쿼리 최적화 후에도 p(95) 538ms 
+→ Grafana JVM 대시보드에서 timed-waiting 스레드 109개 확인
+→ HikariCP 대시보드 추가하여 확인 
+→ Active 10(풀 전부 사용), Pending 55(대기 스레드), Acquire time 386ms(커넥션 대기) 
+→ 쿼리 실행 122ms인데 커넥션 대기가 386ms로 응답시간의 75%를 차지 
+→ RDS(db.t4g.micro) max_connections 40 확인 후 풀 사이즈 10 → 20으로 조정 예정
 
-**병목 1 발견 과정:** 
-Stress 테스트(200명)에서 p(95) 1,210ms 발생 → 
-서버 로그에서 매 요청마다 `[SLOW QUERY]` 50~60ms짜리가 반복되는 것을 확인 → 
-서버 로그에서 매 요청마다 동일한 SELECT 3개가 반복되는 것을 확인 하고 있었음 → 
-모든 API가 이걸 호출하므로 반복 1회에 불필요한 쿼리 9개 발생 → 
-단일 쿼리로 최적화 (응답시간 55% 감소)
+---
 
-**병목 2 발견 과정:** 
-쿼리 최적화 후에도 p(95) 538ms → 
-Grafana JVM 대시보드에서 timed-waiting 스레드 109개 확인 →
-HikariCP 대시보드 추가하여 확인 → 
-Active 10(풀 전부 사용), Pending 55(대기 스레드), 
-Acquire time 386ms(커넥션 대기) → 
-쿼리 실행 122ms인데 커넥션 대기가 386ms로 응답시간의 75%를 차지 → 
-RDS(db.t4g.micro) max_connections 40 확인 후 풀 사이즈 10 → 20으로 조정
+## 8. VU 600 Stress 테스트 — 커넥션 풀 튜닝
 
+VU 200에서 쿼리 최적화로 p(95) 538ms까지 개선했으나, 커넥션 풀 병목이 여전히 있음. 더 높은 부하에서 커넥션 풀 조정 효과를 확인하기 위해 VU 600(readers 300 + writers 300)으로 추가 Stress 테스트를 진행
 
-#### 커넥션풀 10
-```
-         /\      Grafana   /‾‾/
-    /\  /  \     |\  __   /  /
-   /  \/    \    | |/ /  /   ‾‾\
-  /          \   |   (  |  (‾)  |
- / __________ \  |_|\_\  \_____/
+>  이하 결과는 VU 600 기준이며, 앞선 VU 200 결과와 직접 비교할 수 없음
 
-     execution: local
-        script: load-test/stressreal.js
-        output: -
+### 8-1. 쿼리 최적화 효과 확인 (풀 10 유지)
 
-     scenarios: (100.00%) 2 scenarios, 600 max VUs, 7m30s max duration (incl. graceful stop):
-              * readers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: readScenario, gracefulStop: 30s)
-              * writers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: writeScenario, gracefulStop: 30s)
-
-
-
-  █ THRESHOLDS
-
-    checks
-    ✓ 'rate>0.6' rate=100.00%
-
-    http_req_duration
-    ✗ 'p(95)<5000' p(95)=5.64s
-
-
-  █ TOTAL RESULTS
-
-    checks_total.......: 33724   78.437909/s
-    checks_succeeded...: 100.00% 33724 out of 33724
-    checks_failed......: 0.00%   0 out of 33724
-
-    ✓ detail: status 200
-    ✓ tree: status 200
-    ✓ edit: 200 or 409
-
-    CUSTOM
-    detail_duration................: avg=3.29s  min=104.25ms med=2.4s   max=8.15s  p(90)=5.57s  p(95)=5.63s
-    edit_conflict..................: 91.90% 13774 out of 14988
-    edit_duration..................: avg=3.18s  min=103.29ms med=2.14s  max=8s     p(90)=5.57s  p(95)=5.63s
-    tree_duration..................: avg=3.33s  min=113.87ms med=2.59s  max=7.89s  p(90)=5.58s  p(95)=5.65s
-
-    HTTP
-    http_req_duration..............: avg=3.25s  min=103.29ms med=2.22s  max=8.15s  p(90)=5.57s  p(95)=5.64s
-      { expected_response:true }...: avg=3.24s  min=104.25ms med=2.2s   max=8.15s  p(90)=5.57s  p(95)=5.64s
-    http_req_failed................: 40.84% 13774 out of 33724
-    http_reqs......................: 33724  78.437909/s
-
-    EXECUTION
-    iteration_duration.............: avg=14.72s min=2.78s    med=13.61s max=50.54s p(90)=27.78s p(95)=38.92s
-    iterations.....................: 11029  25.652108/s
-    vus............................: 1      min=1              max=600
-    vus_max........................: 600    min=600            max=600
-
-    NETWORK
-    data_received..................: 30 MB  69 kB/s
-    data_sent......................: 8.0 MB 19 kB/s
-
-```
-
-**Before (쿼리 3개)** — `FolderService.getRootFolders`에서 자격 확인 쿼리에서 3개 날리는 쿼리 확인 후 
+**Before (쿼리 3개)** — `FolderService.getRootFolders` 기준:
 ```
 select ... from workspace where workspace_id=?     ← getMemberOrThrow 쿼리 1
 select ... from users where user_id=?               ← getMemberOrThrow 쿼리 2
@@ -228,107 +170,114 @@ select ... from workspace_member where ...           ← getMemberOrThrow 쿼리
 select distinct ... from folder left join post ...   ← 비즈니스 쿼리
 select ... from post where folder_id is null         ← 비즈니스 쿼리
 ```
+
 → 총 149ms
 
-**After (단일 쿼리로 수정)** — 같은 API에서:
+**After (단일 쿼리)** — 같은 API:
 ```
-select ... from workspace_member left join workspace left join users where workspace_id=? and user_id=?  ← getMemberOrThrow 단일 쿼리
+select ... from workspace_member left join workspace left join users where workspace_id=? and user_id=?  ← 단일 쿼리
 select distinct ... from folder left join post ...   ← 비즈니스 쿼리
 select ... from post where folder_id is null         ← 비즈니스 쿼리
 ```
+
 → 총 46ms
 
-#### 수정 후 다시 테스트한 결과 
+|지표|쿼리3 + 풀10|쿼리1 + 풀10|변화|
+|---|---|---|---|
+|p(95)|5.64s|**4.36s**|23% 감소|
+|평균|3.25s|**2.45s**|25% 감소|
+|처리량|78.4/s|**94.1/s**|20% 향상|
+|Pending threads|189|**189**|동일|
+
+쿼리 최적화만으로 응답시간은 개선됐지만, Pending threads가 여전히 189로 동일. 커넥션 점유 시간이 줄어서 회전은 빨라졌으나, 풀 자체가 부족한 상태. 커넥션 풀 조정이 필요하다는 것을 확인.
+
+**Grafana — 쿼리3 + 풀10:**
+
+![[Pasted image 20260206133818.png]]
+
+Active 10(풀 전부 사용), Pending 189, Acquire time 최대 2초. 커넥션 풀이 완전히 포화된 상태.
+
+**Grafana — 쿼리1 + 풀10:**
+
 ![[Pasted image 20260206135949.png]]
 
-| 지표              | 1차-Before (쿼리3+풀10) | 1차-After (쿼리1+풀10) | 변화     |
-| --------------- | ------------------- | ------------------ | ------ |
-| p(95)           | 5.64s               | **4.36s**          | 23% 감소 |
-| 평균              | 3.25s               | **2.45s**          | 25% 감소 |
-| 처리량             | 78.4/s              | **94.1/s**         | 20% 향상 |
-| Pending threads | 189                 | **189**            | 동일     |
+쿼리 최적화 후에도 Active 10, Pending 189로 동일. 다만 Acquire time이 2초 → 1초로 감소. 커넥션 점유 시간이 줄어 회전이 빨라졌지만, 풀 크기 자체가 부족하여 대기 스레드 수는 변하지 않음 
 
-쿼리 최적화만으로 응답시간은 개선됐지만, Pending threads가 여전히 189인 게 핵심 커넥션 점유 시간이 줄어서 회전은 빨라짐,
-쿼리 최적화만으로는 부족, 커넥션 풀 조정 필요
+### 8-2. 커넥션 풀 10 → 20 조정
 
-#### 커넥션 풀 20 으로 수정
+RDS(db.t4g.micro) max_connections 40을 확인하고, 풀 사이즈를 10 → 20으로 변경.
+
+|지표|쿼리1 + 풀10|쿼리1 + 풀20|변화|
+|---|---|---|---|
+|p(95)|4.36s|**1.46s**|**67% 감소**|
+|평균|2.45s|**710ms**|**71% 감소**|
+|처리량|94.1/s|**164.9/s**|**75% 향상**|
+|총 반복 수|—|**22,644**|—|
+|i/o timeout|0건|**7건**|발생|
+|check 통과율|100%|**99.99%**|미세 하락|
+
+커넥션 풀 확장으로 대폭 개선. 다만 i/o timeout 7건이 새로 발생했으며, 
+`min=0s`인 요청이 있는 것으로 보아 TCP 레벨에서 연결 자체가 안 된 케이스로 
+네트워크 일시 중단 원인 가능성 있으나, 재현되지 않음
+
+> 참고: `http_req_failed: 42.76%`는 대부분 409 Conflict(낙관적 락 충돌)이며, edit_conflict 92.61%로 의도된 동작
+
+**Grafana — 쿼리1 + 풀20:**
 
 ![[Pasted image 20260206153746.png]]
 
+Active 20(풀 전부 사용), Pending **179**, Acquire time 최대 946ms. 풀을 2배로 늘렸지만 
+Pending이 189 → 179로 거의 줄지 않았다
+이는 애플리케이션 쪽 커넥션 대기는 해소되었으나,
+RDS(db.t4g.micro, 2 vCPU, 1GB RAM)의 처리 능력이 한계에 도달했기 때문
+커넥션 20개가 동시에 쿼리를 보내도 vCPU 2개로는 병렬 처리에 한계가 있어, 
+병목이 애플리케이션 커넥션 풀 →DB 서버 처리 능력"으로 이동한 것으로 판단
 
+|지표|쿼리3 + 풀10|쿼리1 + 풀10|쿼리1 + 풀20|
+|---|---|---|---|
+|Pending threads|189|189|**179**|
+|Acquire time (최대)|2s|1s|**946ms**|
+|Usage time (최대)|154ms|114ms|**135ms**|
+
+Acquire time은 단계마다 줄었지만, Usage time(실제 쿼리 실행 시간)은 비슷하게 유지. DB 자체의 처리 속도는 변하지 않았음을 확인.
+
+### 8-3. VU 600 전체 비교 (3단계)
+
+| 지표    | 쿼리3 + 풀10 | 쿼리1 + 풀10 | 쿼리1 + 풀20   |
+| ----- | --------- | --------- | ----------- |
+| p(95) | 5.64s     | 4.36s     | **1.46s**   |
+| 평균    | 3.25s     | 2.45s     | **710ms**   |
+| 처리량   | 78.4/s    | 94.1/s    | **164.9/s** |
+
+
+---
+
+## 9. 종합 정리
+
+### 개선 
+
+|단계|내용|핵심 효과|
+|---|---|---|
+|병목 1|getMemberOrThrow 쿼리 3개 → 1개|반복당 쿼리 43% 감소|
+|병목 2|HikariCP 풀 10 → 20|커넥션 대기 해소|
+
+### 결과
+
+|기준|Before (최초)|After (최종)|변화|
+|---|---|---|---|
+|VU 200 p(95)|1,210ms|538ms|**55% 감소**|
+|VU 600 p(95)|5.64s|1.46s|**74% 감소**|
+|VU 600 처리량|78.4/s|164.9/s|**110% 향상**|
+
+### 병목 이동 경로
 
 ```
-         /\      Grafana   /‾‾/
-    /\  /  \     |\  __   /  /
-   /  \/    \    | |/ /  /   ‾‾\
-  /          \   |   (  |  (‾)  |
- / __________ \  |_|\_\  \_____/
-
-     execution: local
-        script: load-test/stressreal.js
-        output: -
-
-     scenarios: (100.00%) 2 scenarios, 600 max VUs, 7m30s max duration (incl. graceful stop):
-              * readers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: readScenario, gracefulStop: 30s)
-              * writers: Up to 300 looping VUs for 7m0s over 6 stages (gracefulRampDown: 30s, exec: writeScenario, gracefulStop: 30s)
-
-WARN[0283] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
-WARN[0283] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
-WARN[0299] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/posts/8\": dial: i/o timeout"
-WARN[0337] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
-WARN[0337] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
-WARN[0339] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
-WARN[0342] Request Failed                                error="Get \"http://172.29.96.1:8070/api/v1/workspaces/2/folders\": dial: i/o timeout"
-
-
-  █ THRESHOLDS
-
-    checks
-    ✓ 'rate>0.6' rate=99.99%
-
-    http_req_duration
-    ✓ 'p(95)<5000' p(95)=1.46s
-
-
-  █ TOTAL RESULTS
-
-    checks_total.......: 70591  164.910451/s
-    checks_succeeded...: 99.99% 70584 out of 70591
-    checks_failed......: 0.00%  7 out of 70591
-
-    ✗ tree: status 200
-      ↳  99% — ✓ 15358 / ✗ 6
-    ✗ detail: status 200
-      ↳  99% — ✓ 22637 / ✗ 1
-    ✓ edit: 200 or 409
-
-    CUSTOM
-    detail_duration................: avg=734.6ms  min=0s       med=612.01ms max=3.39s p(90)=1.41s  p(95)=1.46s
-    edit_conflict..................: 92.61% 30183 out of 32589
-    edit_duration..................: avg=715.8ms  min=106.03ms med=510.28ms max=3.65s p(90)=1.41s  p(95)=1.46s
-    error_count....................: 7      0.016353/s
-    tree_duration..................: avg=662.18ms min=0s       med=575.1ms  max=3.01s p(90)=1.32s  p(95)=1.38s
-
-    HTTP
-    http_req_duration..............: avg=710.16ms min=0s       med=541.78ms max=3.65s p(90)=1.4s   p(95)=1.46s
-      { expected_response:true }...: avg=694.92ms min=27.51ms  med=532.1ms  max=3.39s p(90)=1.39s  p(95)=1.45s
-    http_req_failed................: 42.76% 30190 out of 70591
-    http_reqs......................: 70591  164.910451/s
-
-    EXECUTION
-    iteration_duration.............: avg=7.05s    min=2.67s    med=6.05s    max=31s   p(90)=12.76s p(95)=15.91s
-    iterations.....................: 22644  52.899552/s
-    vus............................: 1      min=1              max=600
-    vus_max........................: 600    min=600            max=600
-
-    NETWORK
-    data_received..................: 61 MB  142 kB/s
-    data_sent......................: 17 MB  40 kB/s
-
-
-
-
-running (7m08.1s), 000/600 VUs, 22644 complete and 0 interrupted iterations
-readers ✓ [======================================] 000/300 VUs  7m0s
-writers ✓ [======================================] 000/300 VUs  7m0s
+쿼리 과다 (getMemberOrThrow 3개)
+  → 쿼리 최적화로 해소
+    → 커넥션 풀 부족 (풀 10, Pending 189)
+      → 풀 확장으로 해소
+        → RDS 처리 능력 한계 (db.t4g.micro, 2 vCPU)  ← 현재 병목
 ```
+
+- RDS 인스턴스 스펙 업그레이드 검토 (db.t4g.micro → db.t4g.small 이상)
+- 또는 읽기 전용 쿼리에 대한 캐싱 도입 검토 (getMemberOrThrow 결과 등)
