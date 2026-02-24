@@ -34,24 +34,9 @@
               "icon": "lucide-file",
               "title": "RAG 파이프 라인 구축 과정"
             }
-          },
-          {
-            "id": "cbc2bc8e9d82c81f",
-            "type": "leaf",
-            "state": {
-              "type": "split-diff-view",
-              "state": {
-                "aFile": "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
-                "bFile": "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
-                "aRef": "HEAD",
-                "bRef": ""
-              },
-              "icon": "diff",
-              "title": "Diff: 01.CDN 프록시로 인한 네트워크 지연 트러블슈팅"
-            }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -211,7 +196,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "cbc2bc8e9d82c81f",
+  "active": "5c64bdfbe518a28f",
   "lastOpenFiles": [
     "conflict-files-obsidian-git.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
