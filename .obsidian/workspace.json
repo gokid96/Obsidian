@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -223,7 +223,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 770.5
+    "width": 200
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -238,7 +238,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "3c5682e3eac7c12b",
+  "active": "5c6a5cc894c4c3bd",
   "lastOpenFiles": [
     "conflict-files-obsidian-git.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
