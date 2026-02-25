@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/무제/AS 내역 챗봇 아키텍처.md",
+                "file": "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AS 내역 챗봇 아키텍처"
+              "title": "2. 정규화 & 비정규화"
             }
           },
           {
@@ -240,8 +240,8 @@
   },
   "active": "5c6a5cc894c4c3bd",
   "lastOpenFiles": [
-    "conflict-files-obsidian-git.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
+    "conflict-files-obsidian-git.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/무제 1",
