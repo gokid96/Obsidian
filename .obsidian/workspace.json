@@ -55,12 +55,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
+                "file": "Project/untitles/트레이드오프/모놀리스 MSA.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2. 정규화 & 비정규화"
+              "title": "모놀리스 MSA"
             }
           },
           {
@@ -240,6 +240,9 @@
   },
   "active": "5c6a5cc894c4c3bd",
   "lastOpenFiles": [
+    "Project/untitles/트레이드오프/스케일아웃 직접 구성 vs AWS 관리형.md",
+    "Project/untitles/트레이드오프/모놀리스 MSA.md",
+    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
     "conflict-files-obsidian-git.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
@@ -249,7 +252,6 @@
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
     "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
     "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
-    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "CS/시스템디자인/02-Database/5. SQL vs NoSQL.md",
     "CS/시스템디자인/01-Web & Network/1. HTTP.md",
     "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
@@ -272,8 +274,6 @@
     "CS/시스템디자인",
     "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
     "Architecture/엣지케이스/02.Event-Driven/02_CDC.md",
-    "Architecture/엣지케이스/02.Event-Driven/03_Idempotency.md",
-    "Architecture/엣지케이스/02.Event-Driven/04_Dead_Letter_Queue.md",
     "Architecture/엣지케이스/04.공통",
     "Architecture/엣지케이스/03.분산트랜잭션",
     "Project/untitles/Pasted image 20260206132934.png",
