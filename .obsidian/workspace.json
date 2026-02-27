@@ -41,12 +41,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/무제/RAG 파이프 라인 구축 과정.md",
+                "file": "업무/무제/AS 내역 챗봇 아키텍처.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RAG 파이프 라인 구축 과정"
+              "title": "AS 내역 챗봇 아키텍처"
             }
           },
           {
@@ -78,7 +78,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -238,12 +238,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5c6a5cc894c4c3bd",
+  "active": "0a819289c9f7db6b",
   "lastOpenFiles": [
+    "업무/Eborder/API/00.서비스 아키텍쳐.md",
+    "업무/무제/RAG 파이프 라인 구축 과정.md",
     "업무/Eborder/API/01.IAPI 개요.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
-    "업무/무제/RAG 파이프 라인 구축 과정.md",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "Project/untitles/트레이드오프/모놀리스 MSA.md",
     "Project/untitles/트레이드오프/스케일아웃 직접 구성 vs AWS 관리형.md",
     "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
