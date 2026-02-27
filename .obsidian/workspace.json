@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/무제/RAG 파이프 라인 구축 과정.md",
+                "file": "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RAG 파이프 라인 구축 과정"
+              "title": "데이터 추가시 중복 데이터 삭제 필수"
             }
           },
           {
@@ -254,8 +254,8 @@
   "active": "c59c8a84f66cb06e",
   "lastOpenFiles": [
     "업무/무제/AS 내역 챗봇 아키텍처.md",
-    "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
+    "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/API/01.IAPI 개요.md",
     "Project/untitles/트레이드오프/모놀리스 MSA.md",
