@@ -50,6 +50,20 @@
             }
           },
           {
+            "id": "107ca91f46cc64a8",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "데이터 추가시 중복 데이터 삭제 필수"
+            }
+          },
+          {
             "id": "5c6a5cc894c4c3bd",
             "type": "leaf",
             "state": {
@@ -78,7 +92,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -238,10 +252,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "0a819289c9f7db6b",
+  "active": "107ca91f46cc64a8",
   "lastOpenFiles": [
-    "업무/무제/AS 내역 챗봇 아키텍처.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
+    "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
+    "업무/무제/AS 내역 챗봇 아키텍처.md",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/API/01.IAPI 개요.md",
     "Project/untitles/트레이드오프/모놀리스 MSA.md",
@@ -273,7 +288,6 @@
     "CS/시스템디자인/02-Database",
     "CS/시스템디자인/01-Web & Network",
     "CS/시스템디자인",
-    "Architecture/엣지케이스/03.분산트랜잭션/01_Saga_Pattern.md",
     "Architecture/엣지케이스/04.공통",
     "Architecture/엣지케이스/03.분산트랜잭션",
     "Project/untitles/Pasted image 20260206132934.png",
