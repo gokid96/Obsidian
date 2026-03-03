@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/트레이드오프/최적화.md",
+                "file": "CS/시스템디자인/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "최적화"
+              "title": "무제"
             }
           },
           {
@@ -253,8 +253,12 @@
   },
   "active": "c59c8a84f66cb06e",
   "lastOpenFiles": [
-    "Project/untitles/트레이드오프/우선순위 정리.md",
+    "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
+    "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
+    "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
+    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "Project/untitles/트레이드오프/최적화.md",
+    "Project/untitles/트레이드오프/우선순위 정리.md",
     "업무/무제/무제.md",
     "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
     "업무/무제/RAG 파이프라인 최적화.md",
@@ -264,16 +268,12 @@
     "업무/Eborder/API/01.IAPI 개요.md",
     "Project/untitles/트레이드오프/모놀리스 MSA.md",
     "Project/untitles/트레이드오프/스케일아웃 직접 구성 vs AWS 관리형.md",
-    "CS/시스템디자인/02-Database/2. 정규화 & 비정규화.md",
     "conflict-files-obsidian-git.md",
     "업무/무제 1",
     "업무/Eborder/E-border 시스템.md",
-    "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
     "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
-    "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
     "CS/시스템디자인/02-Database/5. SQL vs NoSQL.md",
     "CS/시스템디자인/01-Web & Network/1. HTTP.md",
-    "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
     "Concurrency (Lock, Race Condition).md",
