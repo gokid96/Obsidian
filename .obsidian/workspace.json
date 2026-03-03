@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/동시성 제어/00. 동시성 제어 개념.md",
+                "file": "CS/00. 순서.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "00. 동시성 제어 개념"
+              "title": "00. 순서"
             }
           },
           {
@@ -148,7 +148,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 252.5
+    "width": 401.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -253,15 +253,15 @@
   },
   "active": "c59c8a84f66cb06e",
   "lastOpenFiles": [
+    "CS/동시성 제어/01. 분산환경에서 동시성 제어.md",
+    "CS/00. 순서.md",
+    "CS/동시성 제어/00. 동시성 제어 개념.md",
     "CS/동시성 제어/04. 데드락 (Deadlock).md",
     "CS/동시성 제어/02. 격리수준과 트랜잭션.md",
-    "CS/동시성 제어/01. 분산환경에서 동시성 제어.md",
-    "CS/동시성 제어/00. 동시성 제어 개념.md",
     "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
     "CS/시스템디자인/스케일아웃 시 DB 확장 전략.md",
     "CS/동시성 제어",
     "CS/java/Java  메서드.md",
-    "CS/무제.md",
     "CS/시스템디자인/무제.md",
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue/1. Cache Strategy.md",
     "CS/시스템디자인/02-Database/4. Replication & Sharding.md",
