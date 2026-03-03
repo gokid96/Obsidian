@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/무제/RAG 파이프라인 최적화.md",
+                "file": "업무/무제/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "RAG 파이프라인 최적화"
+              "title": "무제"
             }
           },
           {
@@ -254,6 +254,7 @@
   "active": "c59c8a84f66cb06e",
   "lastOpenFiles": [
     "업무/무제/데이터 추가시 중복 데이터 삭제 필수.md",
+    "업무/무제/무제.md",
     "업무/무제/RAG 파이프라인 최적화.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
@@ -280,7 +281,6 @@
     "CS/시스템디자인/01-Web & Network/2. DNS.md",
     "CS/시스템디자인/무제.md",
     "CS/시스템디자인/01-Web & Network/무제",
-    "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
     "CS/시스템디자인/05-System Design Practice",
     "CS/시스템디자인/04-Distributed Systems",
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue",
