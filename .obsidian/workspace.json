@@ -25,14 +25,14 @@
             "id": "75f67ccb7e983956",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "split-diff-view",
               "state": {
-                "file": "Project/개선/01..md",
-                "mode": "source",
-                "source": false
+                "aFile": "Project/개선/01..md",
+                "bFile": "Project/개선/01..md",
+                "aRef": ""
               },
-              "icon": "lucide-file",
-              "title": "01."
+              "icon": "diff",
+              "title": "Diff: 01."
             }
           }
         ],
@@ -181,7 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200.5
+    "width": 632.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,8 +198,8 @@
   },
   "active": "75f67ccb7e983956",
   "lastOpenFiles": [
-    "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
     "Project/개선/01..md",
+    "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
     "Project/개선/무제.md",
     "Pasted image 20260305140242.png",
     "Pasted image 20260305140452.png",
