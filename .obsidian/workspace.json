@@ -181,8 +181,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e782840762b9fffd",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "Project/개선",
     "Project/untitles/무제/무제 1.md",
     "Project/untitles/무제/무제.md",
     "Project/untitles/무제/최적화/01. JPA N+1 문제 발견 및 쿼리 최적화.md",
@@ -212,7 +213,6 @@
     "업무/무제/RAG 파이프라인 최적화.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/무제 1",
     "CS/시스템디자인/01-Web & Network/무제",
     "CS/시스템디자인/05-System Design Practice",
