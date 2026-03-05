@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/untitles/무제/무제.md",
+                "file": "Project/개선/무제.md",
                 "mode": "source",
                 "source": false
               },
@@ -181,11 +181,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "e782840762b9fffd",
   "lastOpenFiles": [
+    "Project/untitles/무제/무제.md",
+    "Project/개선/무제.md",
     "Project/개선",
     "Project/untitles/무제/무제 1.md",
-    "Project/untitles/무제/무제.md",
     "Project/untitles/무제/최적화/01. JPA N+1 문제 발견 및 쿼리 최적화.md",
     "Project/untitles/무제/최적화/EXPLAIN.md",
     "Project/untitles/무제/무제",
@@ -218,7 +219,6 @@
     "CS/시스템디자인/05-System Design Practice",
     "CS/시스템디자인/04-Distributed Systems",
     "CS/시스템디자인/03-Caching & Concurrency & MessageQueue",
-    "CS/시스템디자인/02-Database",
     "Project/untitles/Pasted image 20260206132934.png",
     "Project/untitles/Pasted image 20260206133818.png",
     "Project/untitles/Pasted image 20260206135949.png",
