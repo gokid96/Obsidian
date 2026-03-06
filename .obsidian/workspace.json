@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/01..md",
+                "file": "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "01."
+              "title": "00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등"
             }
           }
         ],
@@ -198,8 +198,9 @@
   },
   "active": "75f67ccb7e983956",
   "lastOpenFiles": [
-    "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
+    "Pasted image 20260306135505.png",
     "Project/개선/01..md",
+    "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
     "Project/개선/무제.md",
     "Pasted image 20260305140242.png",
     "Pasted image 20260305140452.png",
