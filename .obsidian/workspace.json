@@ -23,12 +23,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/03..md",
+                "file": "Project/개선/02. N+1 개선 — @BatchSize.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "03."
+              "title": "02. N+1 개선 — @BatchSize"
             }
           }
         ],
@@ -194,10 +194,10 @@
   },
   "active": "d33dd1ebeca2570f",
   "lastOpenFiles": [
+    "Project/개선/03..md",
     "Pasted image 20260309103446.png",
     "Pasted image 20260309102142.png",
     "Project/개선/무제.md",
-    "Project/개선/03..md",
     "Project/개선/02. N+1 개선 — @BatchSize.md",
     "Project/개선/01.무제 1.md",
     "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
@@ -216,7 +216,6 @@
     "Pasted image 20260306135733.png",
     "Pasted image 20260306135714.png",
     "Pasted image 20260306135505.png",
-    "Pasted image 20260305140242.png",
     "Project/개선",
     "Project/untitles/무제/무제",
     "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
