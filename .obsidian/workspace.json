@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/무제.md",
+                "file": "Project/개선/04.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "04"
             }
           },
           {
@@ -197,11 +197,13 @@
   },
   "active": "24926efe3224248c",
   "lastOpenFiles": [
+    "Project/개선/03..md",
+    "CS/동시성 제어/04. 데드락 (Deadlock).md",
+    "CS/동시성 제어/00. 동시성 제어 개념.md",
+    "Project/개선/04.md",
+    "Project/개선/무제.md",
     "Project/개선/01.무제 1.md",
     "Project/개선/02. N+1 개선 — @BatchSize.md",
-    "Project/개선/03..md",
-    "Project/개선/무제.md",
-    "CS/동시성 제어/00. 동시성 제어 개념.md",
     "Pasted image 20260309113606.png",
     "Pasted image 20260309113435.png",
     "Pasted image 20260309113230.png",
@@ -228,7 +230,6 @@
     "CS/00. 순서.md",
     "Project/untitles/무제",
     "CS/동시성 제어/01. 분산환경에서 동시성 제어.md",
-    "CS/동시성 제어/04. 데드락 (Deadlock).md",
     "CS/동시성 제어/02. 격리수준과 트랜잭션.md",
     "CS/시스템디자인/02-Database/3. Transaction & ACID.md",
     "CS/시스템디자인/스케일아웃 시 DB 확장 전략.md",
