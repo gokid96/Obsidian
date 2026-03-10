@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "CS/동시성 제어/05. 벌크연산.md",
+                "file": "업무/Eborder/API/00.서비스 아키텍쳐.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05. 벌크연산"
+              "title": "00.서비스 아키텍쳐"
             }
           },
           {
@@ -197,8 +197,9 @@
   },
   "active": "24926efe3224248c",
   "lastOpenFiles": [
-    "Project/개선/무제.md",
+    "업무/Eborder/E-border 시스템.md",
     "CS/동시성 제어/05. 벌크연산.md",
+    "Project/개선/무제.md",
     "Project/개선/04.md",
     "Project/개선/02. N+1 개선 — @BatchSize.md",
     "Project/개선/03..md",
@@ -237,7 +238,6 @@
     "CS/시스템디자인/스케일아웃 시 DB 확장 전략.md",
     "CS/동시성 제어",
     "CS/java/Java  메서드.md",
-    "CS/시스템디자인/무제.md",
     "업무/무제 1",
     "CS/시스템디자인/01-Web & Network/무제",
     "CS/시스템디자인/05-System Design Practice",
