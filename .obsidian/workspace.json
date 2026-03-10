@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/05. 벌크연산.md",
+                "file": "Project/개선/05. DELETE N+1 - 벌크연산.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "05. 벌크연산"
+              "title": "05. DELETE N+1 - 벌크연산"
             }
           }
         ]
@@ -184,7 +184,7 @@
   "active": "066a13e25c5f2a18",
   "lastOpenFiles": [
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
-    "Project/개선/05. 벌크연산.md",
+    "Project/개선/05. DELETE N+1 - 벌크연산.md",
     "Project/untitles/무제/최적화/EXPLAIN.md",
     "Project/untitles/무제/최적화/01. JPA N+1 문제 발견 및 쿼리 최적화.md",
     "Project/untitles/무제/무제 1.md",
