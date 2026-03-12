@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/무제/AS 내역 챗봇 아키텍처.md",
+                "file": "Project/개선/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "AS 내역 챗봇 아키텍처"
+              "title": "무제"
             }
           },
           {
@@ -197,6 +197,8 @@
   },
   "active": "56b9714a990f4fb3",
   "lastOpenFiles": [
+    "Project/개선/01.무제 1.md",
+    "업무/무제/AS 내역 챗봇 아키텍처.md",
     "업무/무제/무제.md",
     "Project/개선/06.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
@@ -204,7 +206,6 @@
     "업무/무제/RAG 파이프라인 최적화.md",
     "Project/개선/04.md",
     "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
-    "Project/개선/01.무제 1.md",
     "Project/개선/03..md",
     "Project/개선/05. 벌크연산 — 삭제 N+1 문제.md",
     "Project/개선/02. N+1 개선 — @BatchSize.md",
@@ -227,7 +228,6 @@
     "Pasted image 20260306164800.png",
     "Pasted image 20260306164617.png",
     "Pasted image 20260306163721.png",
-    "업무/무제/AS 내역 챗봇 아키텍처.md",
     "Project/개선",
     "Project/untitles/무제/무제",
     "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
