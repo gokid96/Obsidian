@@ -181,8 +181,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5,
-    "collapsed": true
+    "width": 303.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -199,12 +198,12 @@
   },
   "active": "b497df3734e89e22",
   "lastOpenFiles": [
+    "Project/개선/무제.md",
+    "Project/개선/06 동기블로킹.md",
     "Pasted image 20260313155529.png",
     "Pasted image 20260313155456.png",
     "업무/2026-03-13 회의.md",
-    "Project/개선/06 동기블로킹.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
-    "Project/개선/무제.md",
     "Project/개선/01.무제 1.md",
     "Project/개선/04.md",
     "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
@@ -233,7 +232,6 @@
     "Pasted image 20260309102142.png",
     "Pasted image 20260306174616.png",
     "Pasted image 20260306164800.png",
-    "Pasted image 20260306164617.png",
     "Project/개선",
     "Project/untitles/무제/무제",
     "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
