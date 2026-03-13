@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/06.md",
+                "file": "업무/2026-03-13 회의.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "06"
+              "title": "2026-03-13 회의"
             }
           }
         ],
@@ -181,7 +181,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5
+    "width": 303.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -198,11 +199,12 @@
   },
   "active": "b497df3734e89e22",
   "lastOpenFiles": [
+    "Project/개선/06.md",
+    "업무/2026-03-13 회의.md",
     "업무/무제/RAG 파이프 라인 구축 과정.md",
     "Project/개선/무제.md",
     "Project/개선/01.무제 1.md",
     "Project/개선/04.md",
-    "Project/개선/06.md",
     "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
     "Project/개선/02. N+1 개선 — @BatchSize.md",
     "업무/무제/AS 내역 챗봇 아키텍처.md",
@@ -236,7 +238,6 @@
     "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
     "Project/untitles/무제/최적화",
     "Project/untitles/문제해결/방지 또는 사전구현/04.워크스페이스 조회 N+1.md",
-    "CS/00. 순서.md",
     "Project/untitles/무제",
     "CS/동시성 제어",
     "업무/무제 1",
