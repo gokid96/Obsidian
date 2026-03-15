@@ -4,39 +4,38 @@
     "type": "split",
     "children": [
       {
-        "id": "fa079f0206b9a6bc",
+        "id": "3eb3cb7e1f450938",
         "type": "tabs",
         "children": [
           {
-            "id": "56b9714a990f4fb3",
+            "id": "f745889c1091eaf0",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/무제.md",
+                "file": "Project/untitles/k6 load-testing/Stress 테스트  — 병목.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
+              "title": "Stress 테스트  — 병목"
             }
           },
           {
-            "id": "b497df3734e89e22",
+            "id": "66e7c8f42a2ee3bb",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Project/개선/06 동기블로킹.md",
+                "file": "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "06 동기블로킹"
+              "title": "서버 사양 트레이드오프"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,7 +92,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 336.5
+    "width": 200
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -128,12 +127,12 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Java/기본/06-동시성/01.스레드기초/스레드 기초 (Thread).md",
+                "file": "환영합니다!.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "스레드 기초 (Thread) 의 나가는 링크"
+              "title": "환영합니다! 의 나가는 링크"
             }
           },
           {
@@ -181,68 +180,68 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5
+    "width": 358.5
   },
   "left-ribbon": {
     "hiddenItems": {
       "bases:새 베이스 생성하기": false,
-      "remotely-save:Remotely Save": false,
       "switcher:빠른 전환기 열기": false,
       "graph:그래프 뷰 열기": false,
       "canvas:새 캔버스 만들기": false,
       "daily-notes:오늘의 일일 노트 열기": false,
       "templates:템플릿 삽입": false,
       "command-palette:명령어 팔레트 열기": false,
+      "remotely-save:Remotely Save": false,
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b497df3734e89e22",
+  "active": "f745889c1091eaf0",
   "lastOpenFiles": [
-    "Pasted image 20260313174401.png",
-    "Pasted image 20260313174351.png",
-    "Project/개선/무제.md",
-    "Project/개선/06 동기블로킹.md",
-    "Pasted image 20260313155529.png",
-    "Pasted image 20260313155456.png",
-    "업무/2026-03-13 회의.md",
-    "업무/무제/RAG 파이프 라인 구축 과정.md",
-    "Project/개선/01.무제 1.md",
-    "Project/개선/04.md",
-    "Project/개선/00. 읽기 성능 측정 — HikariCP 커넥션 풀 포화와 RDS CPU 급등.md",
-    "Project/개선/02. N+1 개선 — @BatchSize.md",
-    "업무/무제/AS 내역 챗봇 아키텍처.md",
-    "업무/무제/RAG 파이프라인 최적화.md",
-    "업무/service_monitor_alert-notifier/alertmanager설정.md",
-    "업무/2026.02.06 회의.md",
-    "업무/무제/무제.md",
-    "Project/개선/03..md",
-    "Project/개선/05. 벌크연산 — 삭제 N+1 문제.md",
-    "Pasted image 20260310142408.png",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
+    "Project/개선",
+    "Project/untitles/트레이드오프/최적화.md",
+    "Project/untitles/트레이드오프/스케일아웃 직접 구성 vs AWS 관리형.md",
+    "Project/untitles/트레이드오프/모놀리스 MSA.md",
     "Project/untitles/무제/최적화/EXPLAIN.md",
     "Project/untitles/무제/최적화/01. JPA N+1 문제 발견 및 쿼리 최적화.md",
-    "Project/untitles/무제/무제 1.md",
+    "Project/untitles/무제/최적화",
     "Project/untitles/무제/무제.md",
-    "업무/Eborder/E-border 시스템.md",
-    "CS/동시성 제어/05. 벌크연산.md",
-    "CS/동시성 제어/00. 동시성 제어 개념.md",
-    "CS/동시성 제어/04. 데드락 (Deadlock).md",
+    "Project/untitles/무제/무제 1.md",
+    "Project/untitles/무제",
+    "Pasted image 20260313174401.png",
+    "Pasted image 20260313174351.png",
+    "Pasted image 20260313155529.png",
+    "Pasted image 20260313155456.png",
+    "Pasted image 20260310142408.png",
     "Pasted image 20260309113606.png",
     "Pasted image 20260309113435.png",
     "Pasted image 20260309113230.png",
     "Pasted image 20260309103446.png",
     "Pasted image 20260309102142.png",
-    "Pasted image 20260306174616.png",
-    "Project/개선",
-    "Project/untitles/무제/무제",
-    "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
-    "Project/untitles/무제/최적화",
-    "Project/untitles/무제",
+    "CS/시스템디자인/스케일아웃 시 DB 확장 전략.md",
+    "CS/동시성 제어/05. 벌크연산.md",
+    "CS/동시성 제어/04. 데드락 (Deadlock).md",
+    "CS/동시성 제어/02. 격리수준과 트랜잭션.md",
+    "CS/동시성 제어/01. 분산환경에서 동시성 제어.md",
+    "CS/동시성 제어/00. 동시성 제어 개념.md",
     "CS/동시성 제어",
-    "업무/무제 1",
-    "CS/시스템디자인/01-Web & Network/무제",
-    "CS/시스템디자인/05-System Design Practice",
-    "CS/시스템디자인/04-Distributed Systems",
-    "CS/시스템디자인/03-Caching & Concurrency & MessageQueue"
+    "CS/00. 순서.md",
+    "Project/untitles/트레이드오프/서버 사양 트레이드오프.md",
+    "Project/untitles/k6 load-testing/Stress 테스트  — 병목.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/게시글 락.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/04.워크스페이스 조회 N+1.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/03.루트 폴더에서 자식폴더 N+1.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/02.폴더 이동 시 순환 참조 방지.md",
+    "Project/untitles/문제해결/방지 또는 사전구현/01.CDN 프록시로 인한 네트워크 지연 트러블슈팅.md",
+    "Project/untitles/트레이드오프/세션 JWT 트레이드오프.md",
+    "Project/untitles/트레이드오프/시스템 아키텍쳐.md",
+    "Project/untitles/트레이드오프/우선순위 정리.md",
+    "Project/untitles/트레이드오프/이미지업로드 저장소 S3 VS R2.md",
+    "Project/untitles/트레이드오프",
+    "Project/untitles/문제해결/방지 또는 사전구현/images",
+    "Project/untitles/문제해결/방지 또는 사전구현",
+    "Project/untitles/k6 load-testing",
+    "CS/시스템디자인/03-Caching & Concurrency & MessageQueue",
+    "CS/시스템디자인/02-Database",
+    "CS/시스템디자인/01-Web & Network"
   ]
 }
