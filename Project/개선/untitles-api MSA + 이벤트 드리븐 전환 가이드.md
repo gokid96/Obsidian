@@ -661,6 +661,169 @@ EKS 갈 때 자동 해결되는 것
 
 ---
 
+## 추가 고민사항: 트랜잭셔널 아웃박스 패턴
+
+### 문제: DB 커밋과 Kafka 발행의 원자성
+
+이벤트 드리븐에서 가장 놓치기 쉬운 문제다.
+
+```java
+// AuthService signup() - 현재 모놀리스 코드
+@Transactional
+public LoginResponse signup(...) {
+    Users savedUser = userRepository.save(user);          // 1. DB 저장 성공
+    workspaceRepository.save(personalWorkspace);           // 2. DB 저장 성공
+    emailService.deleteVerification(request.getEmail());   // 3. 동기 호출 성공
+}
+```
+
+MSA + Kafka 전환 후:
+
+```java
+// AuthService signup() - MSA 전환 후
+@Transactional
+public LoginResponse signup(...) {
+    Users savedUser = userRepository.save(user);          // 1. DB 저장 성공
+    workspaceRepository.save(personalWorkspace);           // 2. DB 저장 성공 → 트랜잭션 커밋
+    
+    kafkaProducer.send("user-registered", event);         // 3. Kafka 발행 실패하면?
+    // → DB는 이미 커밋됐는데 이벤트는 발행 안 된 상태
+    // → notification-service는 이메일 인증 데이터를 영원히 못 지움
+}
+```
+
+**발생 가능한 시나리오:**
+
+```
+1. DB 저장 성공 → Kafka 서버 일시 다운 → 이벤트 유실
+2. DB 저장 성공 → 애플리케이션 강제 종료 → 이벤트 유실
+3. DB 저장 성공 → 네트워크 순단 → 이벤트 유실
+```
+
+---
+
+### 해결책: Transactional Outbox 패턴
+
+이벤트를 Kafka에 직접 보내는 대신, **같은 DB 트랜잭션 안에 outbox 테이블에 저장**한다. 별도 스케줄러가 outbox를 읽어서 Kafka에 발행한다.
+
+```
+[auth-service]
+
+@Transactional
+signup() {
+    userRepository.save(user)                    ─┐
+    workspaceRepository.save(workspace)            ├─ 같은 트랜잭션
+    outboxRepository.save(UserRegisteredEvent)    ─┘  → 원자적으로 커밋
+}
+
+[Outbox Scheduler] (별도 스케줄러)
+    outbox 테이블에서 sent=false 조회
+    → Kafka 발행
+    → sent=true 업데이트
+```
+
+---
+
+### 구현 예시
+
+**Outbox 테이블:**
+
+```sql
+CREATE TABLE outbox_events (
+    id          VARCHAR(36) PRIMARY KEY,
+    event_type  VARCHAR(100) NOT NULL,   -- 'UserRegisteredEvent'
+    payload     TEXT NOT NULL,           -- JSON 직렬화된 이벤트
+    sent        BOOLEAN DEFAULT FALSE,
+    created_at  DATETIME DEFAULT NOW()
+);
+```
+
+**Outbox Entity:**
+
+```java
+@Entity
+@Table(name = "outbox_events")
+public class OutboxEvent {
+    @Id
+    private String id;           // UUID
+    private String eventType;
+    private String payload;      // JSON
+    private boolean sent;
+    private LocalDateTime createdAt;
+}
+```
+
+**signup() 변경:**
+
+```java
+// AuthService.java
+@Transactional
+public LoginResponse signup(UserCreateRequestDTO request) {
+    Users savedUser = userRepository.save(user);
+    workspaceRepository.save(personalWorkspace);
+
+    // Kafka 직접 발행 대신 outbox에 저장 (같은 트랜잭션)
+    OutboxEvent outbox = OutboxEvent.builder()
+        .id(UUID.randomUUID().toString())
+        .eventType("UserRegisteredEvent")
+        .payload(objectMapper.writeValueAsString(
+            new UserRegisteredEvent(savedUser.getUserId(), request.getEmail())
+        ))
+        .sent(false)
+        .build();
+    outboxRepository.save(outbox);  // DB 트랜잭션 안에서 저장
+
+    return LoginResponse.of(...);
+}
+```
+
+**Outbox Scheduler:**
+
+```java
+@Component
+@RequiredArgsConstructor
+public class OutboxScheduler {
+
+    private final OutboxRepository outboxRepository;
+    private final KafkaProducer kafkaProducer;
+
+    @Scheduled(fixedDelay = 1000) // 1초마다 실행
+    @Transactional
+    public void publishPendingEvents() {
+        List<OutboxEvent> pendingEvents = outboxRepository.findBySentFalse();
+
+        for (OutboxEvent event : pendingEvents) {
+            kafkaProducer.send(event.getEventType(), event.getPayload());
+            event.markAsSent();
+            outboxRepository.save(event);
+        }
+    }
+}
+```
+
+---
+
+### 트레이드오프
+
+|장점|단점|
+|---|---|
+|DB 커밋과 이벤트 발행의 원자성 보장|outbox 테이블 관리 비용|
+|Kafka 장애 시에도 이벤트 유실 없음|이벤트 발행에 최대 1초 지연 (스케줄러 주기)|
+|서버 강제 종료 시에도 안전|sent=false 쌓이면 스케줄러 부하 가능성|
+|재처리 가능 (sent=false로 되돌리면 됨)|Consumer 중복 처리 방어 여전히 필요|
+
+---
+
+### 이 프로젝트에서 아웃박스가 필요한 곳
+
+|이벤트|이유|
+|---|---|
+|`UserRegisteredEvent`|회원가입 DB 커밋 후 이메일 인증 삭제 이벤트 유실 방지|
+|`MemberInvitedEvent`|멤버 초대 DB 커밋 후 초대 메일 발송 이벤트 유실 방지|
+|`WorkspaceDeletedEvent`|워크스페이스 삭제 후 content-service 정리 이벤트 유실 방지|
+
+---
+
 ## 전환 순서 요약
 
 ```
