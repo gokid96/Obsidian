@@ -1,5 +1,3 @@
-# 
-
 ## 전체 구조
 
 ```
@@ -140,10 +138,10 @@ EC2-1 Caffeine Cache          EC2-2 Caffeine Cache
 
 ## 현재 이슈 및 개선 계획
 
-|구분|내용|상태|
-|---|---|---|
-|캐시 불일치|Caffeine 로컬 캐시로 서버 간 캐시 불일치 발생|❌ 미해결|
-|Redis 도입|분산 캐시로 캐시 불일치 해결|🔜 예정|
-|RDS 퍼블릭 액세스|RDS에 불필요한 탄력적 IP 연결|🔜 정리 예정|
-|prod SQL 로그|application-prod.yml에 DEBUG 레벨 SQL 로그|🔜 정리 예정|
-|RateLimit|RateLimitFilter @Component 주석 처리 상태|🔜 활성화 예정|
+| 구분          | 내용                                    | 상태        |
+| ----------- | ------------------------------------- | --------- |
+| 캐시 불일치      | Caffeine 로컬 캐시로 서버 간 캐시 불일치 발생        | ❌ 미해결     |
+| Redis 도입    | 분산 캐시로 캐시 불일치 해결                      | 🔜 예정     |
+| RDS 퍼블릭 액세스 | RDS에 불필요한 탄력적 IP 연결                   | 🔜 정리 예정  |
+| prod SQL 로그 | application-prod.yml에 DEBUG 레벨 SQL 로그 | 🔜 정리 예정  |
+| RateLimit   | RateLimitFilter @Component 주석 처리 상태   | 🔜 활성화 예정 |
