@@ -25,18 +25,16 @@
             "id": "c8950927b08b7d7a",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "bases",
               "state": {
-                "file": "무제 3.md",
-                "mode": "source",
-                "source": false
+                "file": "무제 2.base",
+                "viewName": "표"
               },
-              "icon": "lucide-file",
-              "title": "무제 3"
+              "icon": "lucide-table",
+              "title": "무제 2"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -93,8 +91,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 336.5,
-    "collapsed": true
+    "width": 336.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -198,8 +195,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "c8950927b08b7d7a",
+  "active": "6e9fd29198a4e090",
   "lastOpenFiles": [
+    "무제 2.base",
+    "무제 1.base",
     "무제 3.md",
     "무제 2.md",
     "Project/개선/무제.md",
@@ -228,7 +227,6 @@
     "업무/Eborder/API/monitoring/Nomad 클러스터링 구조.md",
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/API/monitoring/성능개선.md",
-    "conflict-files-obsidian-git.md",
     "Pasted image 20260313174401.png",
     "Pasted image 20260313174351.png",
     "Pasted image 20260313155529.png",
@@ -244,7 +242,6 @@
     "Project/untitles/무제/최적화",
     "Project/untitles/무제",
     "CS/동시성 제어",
-    "업무/무제 1",
-    "CS/시스템디자인/01-Web & Network/무제"
+    "업무/무제 1"
   ]
 }
