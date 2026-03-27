@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "무제 2"
             }
+          },
+          {
+            "id": "c8950927b08b7d7a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "무제 3.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "무제 3"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -183,10 +198,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6e9fd29198a4e090",
+  "active": "c8950927b08b7d7a",
   "lastOpenFiles": [
-    "Project/개선/무제.md",
+    "무제 3.md",
     "무제 2.md",
+    "Project/개선/무제.md",
     "Project/개선/무제 4.md",
     "Project/개선/04.md",
     "Project/개선/03..md",
@@ -213,7 +229,6 @@
     "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/API/monitoring/성능개선.md",
     "conflict-files-obsidian-git.md",
-    "Project/untitles/트레이드오프/모놀리스 MSA.md",
     "Pasted image 20260313174401.png",
     "Pasted image 20260313174351.png",
     "Pasted image 20260313155529.png",
