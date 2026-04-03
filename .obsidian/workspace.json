@@ -50,6 +50,20 @@
             }
           },
           {
+            "id": "d12abf4232ad9c29",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "무제 6.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "무제 6"
+            }
+          },
+          {
             "id": "c8950927b08b7d7a",
             "type": "leaf",
             "state": {
@@ -63,7 +77,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -224,10 +238,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4a9b6fc3689d8270",
+  "active": "d12abf4232ad9c29",
   "lastOpenFiles": [
-    "무제 4.md",
     "무제 5.md",
+    "무제 6.md",
+    "무제 4.md",
     "업무/무역 문서 추출 (iDocu)/무역 문서 정보 추출 시스템 아키텍처.md",
     "무제 2.md",
     "무제 2.base",
@@ -256,7 +271,6 @@
     "업무/Eborder/API/monitoring/모니터링 프론트 명세.md",
     "업무/Eborder/API/monitoring/모니터링 시스템 아키텍쳐.md",
     "업무/Eborder/API/monitoring/Nomad 클러스터링 구조.md",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "Pasted image 20260313174401.png",
     "Pasted image 20260313174351.png",
     "Pasted image 20260313155529.png",
