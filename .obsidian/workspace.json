@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/문서파싱API/개선 포인트들.md",
+                "file": "학습/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "개선 포인트들"
+              "title": "무제"
             }
           }
         ],
@@ -199,8 +199,8 @@
   },
   "active": "36c03d77920ae7f2",
   "lastOpenFiles": [
-    "무제 8.md",
     "업무/문서파싱API/개선 포인트들.md",
+    "무제 8.md",
     "업무/문서파싱API",
     "무제 7.md",
     "images/Pasted image 20260310142408.png",
