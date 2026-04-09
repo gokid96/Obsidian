@@ -35,8 +35,7 @@
               "title": "무제"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -197,10 +196,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "36c03d77920ae7f2",
+  "active": "52f0293acdb26138",
   "lastOpenFiles": [
-    "학습/무제.md",
     "업무/문서파싱API/무제.md",
+    "학습/무제.md",
     "업무/문서파싱API/개선 포인트들.md",
     "무제 8.md",
     "업무/문서파싱API",
