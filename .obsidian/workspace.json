@@ -198,6 +198,7 @@
   },
   "active": "52f0293acdb26138",
   "lastOpenFiles": [
+    "Pasted image 20260410180053.png",
     "무제 7.md",
     "업무/문서파싱API/무제.md",
     "학습/무제.md",
@@ -235,7 +236,6 @@
     "Architecture/02. Event-Driven (이벤트 기반)/03. Outbox Pattern (해결책).md",
     "Architecture/02. Event-Driven (이벤트 기반)/07. Dead Letter Queue (실패 메시지 처리).md",
     "Architecture/03. 분산 트랜잭션 패턴/02. CQRS (읽기,쓰기 분리).md",
-    "Architecture/03. 분산 트랜잭션 패턴/01. Saga Pattern (분산 트랜잭션 기본).md",
     "무제 2.base",
     "무제 1.base",
     "무제.base",
