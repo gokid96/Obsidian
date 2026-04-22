@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/aws/aws gen ai.md",
+                "file": "업무/무역 문서 추출 (iDocu)/무역 문서 정보 추출 시스템 아키텍처.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "aws gen ai"
+              "title": "무역 문서 정보 추출 시스템 아키텍처"
             }
           }
         ]
@@ -184,8 +184,8 @@
   },
   "active": "8820527465777977",
   "lastOpenFiles": [
-    "업무/무제 1.md",
     "업무/aws/aws gen ai.md",
+    "업무/무제 1.md",
     "업무/aws",
     "업무/무제/Always Encrypted + Vault로 DB 암호화 마이그레이션.md",
     "업무/무제/Always Encrypted + Vault 구축 가이드.md",
