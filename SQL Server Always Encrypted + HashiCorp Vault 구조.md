@@ -93,6 +93,7 @@
 | 1   | **CEK 내부 캐시**    | 없음                         | Provider 내부에 TTL 기반 캐시 구현                                      | 커스텀 Provider는 SqlClient 자동 캐시가 **비활성화**되어 매 쿼리마다 Vault 호출 발생 가능 |
 | 2   | **Key Path 검증**  | `transit/keys/` 프리픽스 검증 없음 | 화이트리스트 기반 strict 검증                                            | DBA가 `KEY_PATH`를 조작해 공격자 Vault로 우회 가능                           |
 | 3   | **메타데이터 서명키 분리** | 소스코드에 HMAC 키 하드코딩          | Vault Transit의 `sign/verify` API 사용 (MS 표준 패턴) Windows 인증서 저장소 | 하드코딩 키는 DLL 디컴파일로 즉시 노출, 서명이 사실상 무의미                            |
+|     |                  |                            |                                                                |                                                                 |
 
 #### 🟡 권장 개선 (안정성/호환성)
 
