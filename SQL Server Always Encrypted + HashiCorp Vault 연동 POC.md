@@ -91,3 +91,7 @@
 | "같음/다름"만 | =, IN, DISTINCT, GROUP BY, JOIN     | ✅   |
 | "크다/작다"  | >, <, BETWEEN, ORDER BY, MAX, MIN   | ❌   |
 | "패턴/내용"  | LIKE, SUBSTRING, LEN, UPPER, CONCAT | ❌   |
+
+
+
+
