@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/aws/1. aws gen ai.md",
+                "file": "무제 1.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1. aws gen ai"
+              "title": "무제 1"
             }
           }
         ]
@@ -184,8 +184,9 @@
   },
   "active": "8820527465777977",
   "lastOpenFiles": [
-    "업무/aws/2..md",
+    "무제 1.base",
     "업무/aws/1. aws gen ai.md",
+    "업무/aws/2..md",
     "업무/무역 문서 추출 (iDocu)/1. 무역 문서 정보 추출 시스템 아키텍처.md",
     "업무/무제 1.md",
     "업무/aws",
@@ -223,9 +224,7 @@
     "Architecture/01. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
     "Architecture/01. MSA (마이크로서비스)/05. Circuit Breaker Pattern (회로 차단기).md",
     "Architecture/01. MSA (마이크로서비스)/04. Service Discovery (서비스 디스커버리).md",
-    "Architecture/01. MSA (마이크로서비스)/06. Database per Service (서비스별 DB).md",
     "무제 2.base",
-    "무제 1.base",
     "무제.base",
     "학습",
     "업무/무역 문서 추출 (iDocu)",
