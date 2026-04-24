@@ -20,8 +20,46 @@
               "icon": "lucide-file",
               "title": "무제"
             }
+          },
+          {
+            "id": "b11722216cc89acd",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "dd/Pasted image 20260424164717.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260424164717"
+            }
+          },
+          {
+            "id": "57c120230d5f51b9",
+            "type": "leaf",
+            "state": {
+              "type": "image",
+              "state": {
+                "file": "dd/Pasted image 20260424164650.png"
+              },
+              "icon": "lucide-image",
+              "title": "Pasted image 20260424164650"
+            }
+          },
+          {
+            "id": "c169d38cb666b910",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "무제 3.base",
+                "viewName": "표"
+              },
+              "icon": "lucide-table",
+              "title": "무제 3"
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -182,13 +220,20 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8820527465777977",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
+    "dd/Pasted image 20260424164622.png",
+    "무제 3.base",
+    "dd",
+    "dd/Pasted image 20260424164717.png",
+    "dd/Pasted image 20260424164632.png",
+    "dd/Pasted image 20260424164650.png",
+    "Pasted image 20260410180053.png",
+    "무제.md",
     "무제.base",
     "무제 7.md",
     "SQL Server Always Encrypted + HashiCorp Vault 구조.md",
     "SQL Server Always Encrypted + HashiCorp Vault 연동 POC.md",
-    "Pasted image 20260410180053.png",
     "무제 1.base",
     "업무/aws/1. aws gen ai.md",
     "업무/aws/2..md",
@@ -210,10 +255,6 @@
     "images/Pasted image 20260313174401.png",
     "images/Pasted image 20260313174351.png",
     "images/Pasted image 20260309113606.png",
-    "images/Pasted image 20260306164617.png",
-    "images/Pasted image 20260305140148.png",
-    "images/Pasted image 20260305140452.png",
-    "images/Pasted image 20260305140242.png",
     "Architecture/MessageQueue/02. Redis.md",
     "images",
     "Architecture/MessageQueue/01. Kafka.md",
@@ -224,10 +265,7 @@
     "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
     "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
     "Architecture/01. MSA (마이크로서비스)/03. Strangler Fig Pattern (점진적 전환).md",
-    "Architecture/01. MSA (마이크로서비스)/05. Circuit Breaker Pattern (회로 차단기).md",
     "무제 2.base",
-    "학습",
-    "업무/무역 문서 추출 (iDocu)",
-    "Project/개선"
+    "학습"
   ]
 }
