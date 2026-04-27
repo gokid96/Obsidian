@@ -49,13 +49,14 @@
             "id": "c169d38cb666b910",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "무제 3.base",
-                "viewName": "표"
+                "file": "무제 6.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "무제 3"
+              "icon": "lucide-file",
+              "title": "무제 6"
             }
           }
         ],
@@ -220,10 +221,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "c169d38cb666b910",
   "lastOpenFiles": [
-    "dd/Pasted image 20260424164622.png",
     "무제 3.base",
+    "dd/Pasted image 20260424164622.png",
     "dd",
     "dd/Pasted image 20260424164717.png",
     "dd/Pasted image 20260424164632.png",
