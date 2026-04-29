@@ -1,7 +1,7 @@
 # 📘 mini-commerce 진행 가이드 (v2)
 
 > 레퍼런스 레포(discphy/e-commerce, 274 커밋)의 **시간순 분석 + 학습 자료(WIL 4편 + Study 2편 + 보고서 7편) 통합 정리** v1과의 차이: STEP별 가이드에 더해 **레퍼런스가 학습한 핵심 개념과 결정 근거**를 모두 통합
-
+- 참고 레포: __[https://github.com/discphy/e-commerce__](https://github.com/discphy/e-commerce__)
 ---
 
 ## 📌 이 문서의 목적
