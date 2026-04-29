@@ -4,77 +4,24 @@
     "type": "split",
     "children": [
       {
-        "id": "9ffdb91b7cff72fc",
+        "id": "31294ae624c088c8",
         "type": "tabs",
         "children": [
           {
-            "id": "8820527465777977",
+            "id": "b88d452cf92476b7",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "무제.md",
+                "file": "학습/mini-commerce 진행 가이드.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제"
-            }
-          },
-          {
-            "id": "b11722216cc89acd",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "dd/Pasted image 20260424164717.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260424164717"
-            }
-          },
-          {
-            "id": "57c120230d5f51b9",
-            "type": "leaf",
-            "state": {
-              "type": "image",
-              "state": {
-                "file": "dd/Pasted image 20260424164650.png"
-              },
-              "icon": "lucide-image",
-              "title": "Pasted image 20260424164650"
-            }
-          },
-          {
-            "id": "c169d38cb666b910",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "무제 6.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "무제 6"
-            }
-          },
-          {
-            "id": "59b3bcb634cb0043",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "업무/무제/무제 1 1.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "무제 1 1"
+              "title": "mini-commerce 진행 가이드"
             }
           }
-        ],
-        "currentTab": 4
+        ]
       }
     ],
     "direction": "vertical"
@@ -131,8 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 271.5,
-    "collapsed": true
+    "width": 271.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -236,10 +182,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "59b3bcb634cb0043",
+  "active": "b88d452cf92476b7",
   "lastOpenFiles": [
-    "무제 6.md",
+    "업무/무제/디아모 레퍼런스.md",
+    "학습/mini-commerce 진행 가이드.md",
+    "업무/qhdks",
+    "무제 5.base",
+    "무제 4.base",
     "업무/무제/무제 1 1.md",
+    "무제 6.md",
     "무제 3.base",
     "dd/Pasted image 20260424164622.png",
     "dd",
@@ -274,15 +225,10 @@
     "images/Pasted image 20260313174351.png",
     "images/Pasted image 20260309113606.png",
     "Architecture/MessageQueue/02. Redis.md",
-    "images",
     "Architecture/MessageQueue/01. Kafka.md",
     "Architecture/Caching/05. Write-Around.md",
     "Architecture/Caching/07. Cache Stampede 방지.md",
     "Architecture/엣지케이스/04.공통/01_네트워크_파티션.md",
-    "Architecture/04. DDD/DDD (Domain-Driven Design).md",
-    "Architecture/01. MSA (마이크로서비스)/00. MSA  설계 원칙.md",
-    "Architecture/01. MSA (마이크로서비스)/01. Microservices Architecture (기본 개념).md",
-    "무제 2.base",
-    "학습"
+    "Architecture/04. DDD/DDD (Domain-Driven Design).md"
   ]
 }
