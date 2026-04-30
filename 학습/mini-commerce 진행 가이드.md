@@ -1,7 +1,7 @@
-# 📘 mini-commerce 진행 가이드 (v2)
+# 📘 mini-commerce 진행 가이드 (v3)
 
-> 레퍼런스 레포(discphy/e-commerce, 274 커밋)의 **시간순 분석 + 학습 자료(WIL 4편 + Study 2편 + 보고서 7편) 통합 정리** v1과의 차이: STEP별 가이드에 더해 **레퍼런스가 학습한 핵심 개념과 결정 근거**를 모두 통합
-- 참고 레포: __[https://github.com/discphy/e-commerce__](https://github.com/discphy/e-commerce__)
+> v2 → v3 변경: 본인 프로젝트 실제 상태 검토 후 STEP03 현황을 정확히 반영. "결정 사항" → "이미 결정됨"으로 정리. 참고 레포: https://github.com/discphy/e-commerce
+
 ---
 
 ## 📌 이 문서의 목적
@@ -41,9 +41,7 @@
 
 ---
 
-## 🏛️ 레퍼런스가 채택한 아키텍처 (WIL 3주차 기반)
-
-### 클린 레이어드 아키텍처
+## 🏛️ 채택된 아키텍처 — 클린 레이어드 + DIP
 
 레이어형 구조 + DIP(의존성 역전 원칙)를 결합한 구조. **도메인 레이어가 외부 어떤 레이어도 알지 않는다**는 점이 핵심.
 
@@ -85,22 +83,23 @@
 |Domain|`domain`|`XxxService`|`XxxCommand`|`XxxInfo`|
 |Infrastructure|`infrastructure`|`XxxRepositoryImpl`|-|-|
 
-### 본인 패키지 구조와 비교
-
-본인 현재 구조:
+### ✅ 본인 프로젝트 현재 패키지 구조 (검토 결과)
 
 ```
-balance/
-├── controller/   ← 레퍼런스의 interfaces
-├── dto/          ← request, response
-├── service/      ← 레퍼런스의 application + domain 혼재 (현재 비어있음)
-├── domain/       ← 비어있음
-└── infrastructure/ ← 비어있음
+com.github.gokid96.e_commerce
+├── balance/
+│   ├── interfaces/    ✅ Controller, Request, Response
+│   ├── application/   ⚠️ 비어있음 — Service/Facade 작성 필요
+│   ├── domain/        ✅ Balance, BalanceTransaction, Repository 인터페이스, TransactionType
+│   └── infrastructure/✅ CoreRepository(impl), JpaRepository
+├── coupon/            ⚠️ interfaces만 존재, 나머지 모두 비어있음
+├── order/             ⚠️ interfaces만 존재, 나머지 모두 비어있음
+├── product/           ⚠️ interfaces만 존재 (rank 하위 패키지만 비어있음 상태)
+├── common/            ✅ ApiResponse, ApiControllerAdvice
+└── ECommerceApplication.java
 ```
 
-**STEP03 진입 시 결정 사항**: 본인 현재 구조를 유지할지, 레퍼런스의 4-Layer로 전환할지.
-
-> 추천: 4-Layer로 전환. 이유는 레퍼런스 학습의 목적이 클린 아키텍처 체득이고, STEP07에서 **"파사드 클래스 제거"** 가 핵심 이벤트인데, 파사드가 없는 구조에서는 이 학습이 안 됨.
+> **결론**: 4-Layer 구조는 **이미 도입 완료**. v2에서 적었던 "STEP03 진입 시 결정 사항" 항목은 사라짐. 이제는 비어있는 application/domain/infrastructure 패키지를 도메인별로 채워나가는 단계.
 
 ---
 
@@ -151,11 +150,15 @@ class Order { private Order(Coupon coupon) { ... } }
 
 여러 도메인 서비스를 조합해야 할 때만 사용. 단일 서비스만 쓰면 굳이 만들 필요 없음. 도메인 서비스 간 의존성 제거를 위한 **중간 조율자**.
 
+> 잔액/쿠폰/상품처럼 **단일 도메인** 유즈케이스는 `BalanceService`만 두고 Facade 생략 가능. STEP04에서 주문/결제처럼 **여러 도메인 협력**이 필요해질 때 `OrderFacade` 도입.
+
 **고민 4: 검증 로직은 어디에?**
 
 > 도메인 객체 내부에 두는 것을 선호.
 
 이유: Command에 두면 모든 DTO마다 중복 + 도메인 객체에 이중 검증 필요.
+
+> 본인 코드에서 `Balance.charge()`가 이미 `MAX_BALANCE_AMOUNT` 검증을 캡슐화한 좋은 예시.
 
 **고민 5: 도메인 클래스 vs JPA 엔티티 분리**
 
@@ -166,7 +169,7 @@ class Order { private Order(Coupon coupon) { ... } }
 3. 도메인이 인프라에 의존하게 됨 (DIP 위반)
 4. 도메인 관심사가 분리되지 않음
 
-**현실적 절충**: 이번 과제에선 분리하지 않고 진행 (어설픈 분리는 오히려 독).
+**현실적 절충**: 이번 과제에선 분리하지 않고 진행 (어설픈 분리는 오히려 독). 본인도 동일하게 `Balance` 엔티티에 `@Entity` + 비즈니스 메서드 같이 두는 방식.
 
 ### WIL 4주차 — 트랜잭션 + 인덱스
 
@@ -367,84 +370,139 @@ WHERE product_id = 1 AND ordered_at > '2024-01-01' AND status = 'PAID'
 
 ### STEP01 - 설계 기본 ✅ 본인 완료
 
-**레퍼런스 흐름** (2025-03-31 ~ 04-01)
-
-```
-[DOCS] 요구사항 분석 → 마일스톤 → 시퀀스 다이어그램 → ERD → API 명세
-```
-
 **산출물**: docs/architecture/ 5종 (요구사항/마일스톤/시퀀스/ERD/API)
 
-**WIL 작성**: 2주차 회고에 "최소 스펙 vs 확장성" 같은 본인의 설계 결정 근거 기록.
-
----
-
 ### STEP02 - 설계 심화 ✅ 본인 완료
-
-**레퍼런스 흐름** (2025-04-02 ~ 04-03)
-
-```
-[FEAT] Mock API 작성
-[DOCS] Spring REST Docs
-[DOCS] 상태 다이어그램
-[DOCS] http 테스트 추가
-[DOCS] ERD 상태/타입 정의 + 설계 의도
-```
 
 **산출물**: docs/architecture/03-2.StateDiagram.md, REST Docs 자동 문서화
 
 ---
 
-### STEP03 - 도메인 구현 (잔액/쿠폰/상품) 🎯 **다음 작업**
+### STEP03 - 도메인 구현 (잔액/쿠폰/상품) 🎯 **현재 진행 중 (Balance 부분 완료)**
 
-**레퍼런스 흐름** (2025-04-10 ~ 04-12)
+#### 📊 현재 본인 프로젝트 진척도
 
-```
-[FEAT] Mock 테스트 지원 클래스 추가
-[FEAT] 잔액 충전 어플리케이션 구현              ← Service 레이어 (락 없음!)
-[FEAT] 잔액 조회/상품 조회/쿠폰 발급/주문결제 어플리케이션
-[REFACTOR] JPA 구현체 추가                       ← 인프라 레이어
-[REFACTOR] 정적 팩토리 메서드 추가
-[FEAT] 도메인 클래스 검증 추가                   ← 엔티티에 비즈니스 규칙
-[REFACTOR] 주문 도메인 리팩토링
-```
+**Balance 도메인** — 절반 정도 진행됨:
 
-**🚫 절대 하지 말 것**
+|항목|상태|비고|
+|---|---|---|
+|4-Layer 패키지 구조 (`interfaces/application/domain/infrastructure`)|✅|이미 적용됨|
+|`Balance` 엔티티 + `charge/use` 비즈니스 메서드|✅|`MAX_BALANCE_AMOUNT` 검증 캡슐화 OK|
+|`Balance.create()` 정적 팩토리|✅||
+|`BalanceTransaction` 엔티티 + `TransactionType` enum|✅||
+|`BalanceTransaction.ofCharge() / ofUse()` 정적 팩토리|✅||
+|`BalanceRepository` 인터페이스(`domain/`)|✅||
+|`BalanceCoreRepository` 구현체(`infrastructure/`)|✅|JPA 위임 OK|
+|`BalanceTransactionRepository` 인터페이스 + 구현체|✅||
+|**`Balance.refund()` 비즈니스 메서드**|❌|enum에 `REFUND`는 있는데 메서드 없음|
+|**`BalanceTransaction.ofRefund()` 정적 팩토리**|❌||
+|**`BalanceService` (application 레이어)**|❌|**application/ 패키지 비어있음**|
+|**`BalanceCommand`, `BalanceInfo` 도메인 DTO**|❌||
+|**`BalanceController`에서 mock 응답 제거 → Service 호출**|❌|여전히 `1000000L` 하드코딩|
+|**`Balance` 단위 테스트** (`balance/domain/`)|❌|디렉터리 비어있음|
+|**`BalanceService` 단위 테스트 (Mockito)**|❌||
+|**`BalanceIntegrationTest` (Testcontainers)**|❌||
+|**`ApiControllerAdvice`에 `IllegalArgumentException` 핸들러**|❌|현재 `BindException`만 처리|
+
+**Coupon / Order / Product 도메인** — `interfaces/`만 작성됨 (Mock 컨트롤러 수준):
+
+|항목|상태|
+|---|---|
+|Coupon: domain/application/infrastructure 구현|❌ 모두 비어있음|
+|Order: domain/application/infrastructure 구현|❌ 모두 비어있음|
+|Product: domain/application/infrastructure 구현|❌ rank 하위 패키지만 비어있음|
+
+#### 🚫 절대 하지 말 것
 
 - `@Version` 낙관적 락 (STEP05)
 - `@Lock(PESSIMISTIC_WRITE)` 비관적 락 (STEP05)
 - `@Cacheable` 캐시 (STEP06)
 - `ApplicationEventPublisher` (STEP07)
 - Redis, Kafka 의존성 (STEP06/08)
+- **`OrderFacade` 같은 파사드 클래스 도입** (STEP04)
 
-**✅ 반드시 할 것**
+#### ✅ STEP03에서 남은 작업 (이슈 #20, #21, #22 기준)
 
-- 4-Layer 클린 아키텍처 도입 (`interfaces / application / domain / infrastructure`)
-- 엔티티에 **비즈니스 메서드** (`balance.charge()`, `balance.use()`)
-- 엔티티 메서드 안에서 **검증 로직 캡슐화** (`MAX_BALANCE_AMOUNT` 등)
-- Repository 인터페이스(`domain/`) + 구현체(`infrastructure/`) 분리
-- 정적 팩토리 메서드 (`Balance.create(userId)`, `BalanceTransaction.ofCharge(...)`)
-- 단위 테스트 → 구현 → 통합 테스트 순서
-- `BalanceCommand`, `BalanceInfo` 같은 도메인 전용 DTO
+##### 1) Balance 마무리 — 이슈 #20 (`feat/step03-balance-service`)
 
-**본인 첫 PR — `feat/step03-balance-domain`**
+**도메인 보강**:
 
-체크리스트:
+- [ ] `Balance.refund(long amount)` 메서드 추가 (검증 + 잔액 회복)
+- [ ] `BalanceTransaction.ofRefund()` 정적 팩토리 추가
 
-- [ ] 패키지 4-Layer 구조로 정리
-- [ ] `Balance` 엔티티 + `charge/use/refund` 비즈니스 메서드
-- [ ] `BalanceTransaction` 엔티티 + `transaction_type` enum
-- [ ] `BalanceRepository` 인터페이스 (`domain/`)
-- [ ] `BalanceCoreRepository` 구현체 (`infrastructure/`, JPA 위임)
-- [ ] `BalanceJpaRepository`, `BalanceTransactionJpaRepository`
-- [ ] `BalanceService` (chargeBalance, useBalance, getBalance)
-- [ ] `BalanceCommand`, `BalanceInfo` (도메인 입출력)
-- [ ] `BalanceController`에서 mock 응답 제거 → Service 호출
-- [ ] `Balance` 단위 테스트 (충전 한도, 차감 부족 등)
-- [ ] `BalanceService` 단위 테스트 (Mockito)
-- [ ] `BalanceIntegrationTest` (`@SpringBootTest` + Testcontainers MySQL)
-- [ ] `ApiControllerAdvice`에 `IllegalArgumentException` 핸들러
-- [ ] `BalanceControllerDocsTest` 갱신 (실제 Service 동작)
+**Application 레이어 작성**:
+
+- [ ] `application/BalanceService.java`
+    - `chargeBalance(BalanceCommand.Charge)` → `BalanceInfo`
+    - `useBalance(BalanceCommand.Use)` → `BalanceInfo`
+    - `getBalance(Long userId)` → `BalanceInfo`
+- [ ] `domain/BalanceCommand.java` (record 또는 정적 내부 클래스 — 레퍼런스 스타일은 sealed/record 활용)
+- [ ] `domain/BalanceInfo.java`
+
+> 단일 도메인이므로 **Facade 없이 Service만으로 충분**. Facade는 STEP04 주문/결제에서 도입.
+
+**Interfaces 레이어 정리**:
+
+- [ ] `BalanceController.getBalance` → `balanceService.getBalance(userId)` 호출 후 `BalanceResponse.from(info)`
+- [ ] `BalanceController.chargeBalance` → 동일하게 Service 호출
+- [ ] `BalanceResponse.from(BalanceInfo)` 매핑 메서드 추가
+
+**예외 처리**:
+
+- [ ] `ApiControllerAdvice`에 `@ExceptionHandler(IllegalArgumentException.class)` 추가 (`HttpStatus.BAD_REQUEST` + 메시지 그대로 반환)
+- [ ] (선택) `CoreException` + `ErrorCode` 도입 — 레퍼런스 스타일. 부담되면 STEP05 "예외 처리 추가" 단계까지 미뤄도 됨
+
+**테스트**:
+
+- [ ] `balance/domain/BalanceTest.java`
+    - 충전 한도 초과 시 예외
+    - 음수/0 충전 시 예외
+    - 정상 충전 후 amount 반영
+    - 잔액 부족 사용 시 예외
+    - 정상 사용 후 amount 차감
+    - 환불 시 amount 회복
+- [ ] `balance/service/BalanceServiceTest.java` (Mockito, `@ExtendWith(MockitoExtension.class)`)
+- [ ] `balance/controller/BalanceControllerTest.java` 갱신 (Service mock 주입, mock 응답 의존 제거)
+
+> 통합 테스트(Testcontainers)는 **STEP04 #19 "기능별 통합테스트 작성"** 단계로 미루는 것이 레퍼런스 흐름과 일치.
+
+##### 2) Coupon — 이슈 #21 (`feat/step03-coupon-domain`)
+
+레퍼런스 패턴 그대로:
+
+- [ ] `domain/Coupon.java` (정책 정보: discount type, amount, total qty, issued qty, period)
+- [ ] `domain/UserCoupon.java` (사용자별 발급/사용 상태)
+- [ ] `domain/CouponStatus.java`, `domain/DiscountType.java` enum
+- [ ] `Coupon.issue()` — 재고 차감 + 기간 검증 (이 시점에는 락 없이 단순 차감만)
+- [ ] `UserCoupon.use()` — 상태 전이 + 중복 사용 방지
+- [ ] `CouponRepository`, `UserCouponRepository` 인터페이스 + 구현체
+- [ ] `application/CouponService` — `issue`, `use`, `getUserCoupons`
+- [ ] `domain/CouponCommand`, `domain/CouponInfo`
+- [ ] Controller mock 제거 → Service 호출
+- [ ] `Coupon`, `UserCoupon` 단위 테스트
+- [ ] `CouponService` 단위 테스트
+
+> 선착순 동시성 제어는 **STEP05**, 분산 락은 **STEP06**. 여기서는 절대 손대지 않음.
+
+##### 3) Product — 이슈 #22 (`feat/step03-product-domain`)
+
+- [ ] `domain/Product.java` (id, name, price, …)
+- [ ] `domain/Stock.java` (productId, quantity) — 재고를 별도 엔티티로 분리하는 게 레퍼런스 방식
+- [ ] `Product`/`Stock` 비즈니스 메서드 (`Stock.decrease()`, `Stock.restore()`)
+- [ ] `ProductRepository`, `StockRepository` 인터페이스 + 구현체
+- [ ] `application/ProductService` — `getProducts`, `getProduct`
+- [ ] **인기 상품 조회는 STEP06까지 단순 DB 집계로 두고, 도메인 분리 X** (STEP06에서 `Rank` 도메인 분리)
+- [ ] `domain/ProductCommand`, `domain/ProductInfo`
+- [ ] Controller mock 제거 → Service 호출
+- [ ] `Product`, `Stock` 단위 테스트
+- [ ] `ProductService` 단위 테스트
+
+#### 📝 STEP03 작업 순서 권장
+
+1. **Balance 마무리** (Service 작성 + Controller 연결 + 단위 테스트) — 이슈 #20
+2. **Coupon 도메인 구현** — 이슈 #21
+3. **Product 도메인 구현** — 이슈 #22
+4. STEP03 완료 후 **WIL 3주차 작성** — 클린 아키텍처 적용 회고 (위 "고민 1~5" 본인 결정 기록)
 
 ---
 
@@ -462,7 +520,7 @@ WHERE product_id = 1 AND ordered_at > '2024-01-01' AND status = 'PAID'
 [REFACTOR] 엔티티 클래스 인덱스 적용              ← 보고서 결과 반영
 ```
 
-**🎯 핵심 학습 포인트**
+#### 🎯 핵심 학습 포인트
 
 **파사드 패턴 도입** (WIL 3주차 학습 그대로):
 
@@ -492,7 +550,11 @@ public class OrderFacade {
 
 **STEP07에서 제거할 것이므로 일부러 단순하게 작성** — 직접 호출 방식.
 
-**DB 성능 보고서 작성 가이드** (레퍼런스 01.DBPerformanceOptimizationReport.md 참고):
+**Testcontainers 도입 시점**: STEP04. 이슈 #19 "기능별 통합테스트 작성" 단계에서 `@SpringBootTest` + Testcontainers MySQL 셋업.
+
+> ⚠️ 본인 `application.yaml`에 `DataSourceAutoConfiguration` exclude 되어 있음. 통합 테스트 시작할 때 이 설정 검토 필요 (실 DB 연결 또는 Testcontainers profile 분리).
+
+**DB 성능 보고서 작성 가이드** (레퍼런스 `01.DBPerformanceOptimizationReport.md` 참고):
 
 - 10만 건 더미 데이터로 측정
 - `EXPLAIN ANALYZE` 명령어로 인덱스 적용 전후 비교
@@ -523,7 +585,7 @@ public class OrderFacade {
 [DOCS] 동시성 이슈 분석 및 해결 보고서 작성       ← 핵심 산출물
 ```
 
-**🎯 락 전략 (검증 완료)**
+#### 🎯 락 전략 (검증 완료)
 
 |자원|전략|이유|
 |---|---|---|
@@ -531,7 +593,7 @@ public class OrderFacade {
 |쿠폰|**비관적 락** (`@Lock(PESSIMISTIC_WRITE)`)|선착순은 모두 처리되어야 함. 충돌 잦음|
 |재고|**비관적 락**|동시 차감 시 음수 방지. 정확성 최우선|
 
-**작업 순서**
+#### 작업 순서
 
 1. **실패하는 동시성 테스트** (`ExecutorService` + `CompletableFuture`)
 2. 테스트 실패 확인 (의도된 실패)
@@ -576,13 +638,13 @@ public class OrderFacade {
 [FEAT] 인기상품 - Redis에서 40일 이후 DB 영속화
 ```
 
-**🎯 캐시 전략 (Study 02 + 보고서 03 기반)**
+#### 🎯 캐시 전략 (Study 02 + 보고서 03 기반)
 
 - 읽기: **Read-Through** (`@Cacheable`)
 - 쓰기: **Write-Through** (`@CachePut` + 매일 00:05 스케줄러)
 - TTL: **49시간** (24시간이면 배치 시각과 만료 겹침 + hotfix 여유)
 
-**🎯 분산 락 + 트랜잭션 순서 (WIL 5주차)**
+#### 🎯 분산 락 + 트랜잭션 순서 (WIL 5주차)
 
 ```
 1. 분산 락 획득 (트랜잭션 밖)
@@ -621,7 +683,7 @@ public class OrderFacade {
 [DOCS] MSA 기반 이벤트 아키텍처 설계 보고서
 ```
 
-**🎯 이벤트 패턴 (검증 완료)**
+#### 🎯 이벤트 패턴 (검증 완료)
 
 ```java
 @Async
@@ -631,7 +693,7 @@ public void handle(OrderEvent.Created event) {
 }
 ```
 
-**작업 순서**
+#### 작업 순서
 
 1. 가장 단순한 케이스 먼저 (외부 데이터 플랫폼 전송)
 2. 도메인별 이벤트 객체 정의
@@ -639,7 +701,9 @@ public void handle(OrderEvent.Created event) {
 4. 파사드 클래스를 도메인별로 하나씩 제거
 5. 보상 트랜잭션 메서드 추가 (refund, cancel, restore)
 
-**🎯 보상 트랜잭션 (Saga 패턴)**: 결제 실패 시 잔액 환불, 재고 복구.
+#### 🎯 보상 트랜잭션 (Saga 패턴)
+
+결제 실패 시 잔액 환불, 재고 복구.
 
 ---
 
@@ -661,7 +725,7 @@ public void handle(OrderEvent.Created event) {
 [DOCS] 쿠폰 발급 카프카 기반 설계 문서
 ```
 
-**🎯 핵심 학습 포인트 (Study 01)**
+#### 🎯 핵심 학습 포인트 (Study 01)
 
 - ApplicationEvent → Kafka로 발행처만 교체 (리스너 거의 그대로)
 - **Outbox 패턴**: 트랜잭션 + 메시지 발행 정합성
@@ -693,7 +757,7 @@ public void handle(OrderEvent.Created event) {
 [DOCS] 부하 테스트 성능 지표 + 병목 + 개선
 ```
 
-**🎯 부하 테스트 시나리오**
+#### 🎯 부하 테스트 시나리오
 
 - **주문/결제** (현실적 트래픽 분포)
     1. 인기상품 조회
@@ -731,7 +795,9 @@ public void handle(OrderEvent.Created event) {
 
 ```
 docs/step01-requirements
-feat/step03-balance-domain
+feat/step03-balance-service        ← 본인 다음 브랜치
+feat/step03-coupon-domain
+feat/step03-product-domain
 test/step05-concurrency
 refactor/step07-order-event
 ```
@@ -741,7 +807,7 @@ refactor/step07-order-event
 |태그|사용처|예시|
 |---|---|---|
 |`[DOCS]`|문서|`[DOCS] 동시성 이슈 분석 및 해결 보고서 작성`|
-|`[FEAT]`|새 기능|`[FEAT] Balance 도메인 비즈니스 메서드 구현`|
+|`[FEAT]`|새 기능|`[FEAT] Balance Service 및 Command/Info 작성`|
 |`[TEST]`|테스트|`[TEST] BalanceService 단위 테스트 작성`|
 |`[REFACTOR]`|개선|`[REFACTOR] 잔액 낙관적 락 동시성 제어 구현`|
 |`[FIX]`|버그|`[FIX] 분산락, 트랜잭션 해제 순서 보장 문제 수정`|
@@ -784,141 +850,7 @@ refactor/step07-order-event
 🟢 = 가능 / 🔴 = 금지
 
 ---
-- 테이블 뷰 (View 4): 상위 이슈 + sub-issue 계층 구조
 
-### 마일스톤 및 이슈 구조
-```
-
-STEP01 - 설계 기본 (#1) - 완료
-  ├── 요구사항 분석 문서 작성 (#10) - 완료
-  ├── 마일스톤 문서화 및 GitHub 연동 (#11) - 완료
-  ├── 시퀀스 다이어그램 작성 (#12) - 완료
-  ├── ERD 설계 및 작성 (#13) - 완료
-  └── API 명세 작성 (#14) - 완료
-
-STEP02 - 설계 심화 (#2) - 완료
-  ├── Mock API 구현 (#15) - 완료
-  ├── Spring REST Docs 문서화 (#16) - 완료
-  ├── E2E 테스트 작성 (#17) - 완료
-  ├── API Request http 파일 작성 (#18) - 완료
-  └── 상태 다이어그램 작성 (#19) - 완료
-
-STEP03 - 도메인 구현 잔액/쿠폰/상품 (#3)
-  ├── 잔액 비즈니스 로직 구현 및 단위 테스트 (#20)
-  ├── 쿠폰 비즈니스 로직 구현 및 단위 테스트 (#21)
-  └── 상품 비즈니스 로직 구현 및 단위 테스트 (#22)
-
-STEP04 - 도메인 구현 주문/결제 (#4)
-  ├── 주문/결제 비즈니스 로직 구현 및 단위 테스트 (#23)
-  ├── 인프라 레이어 구현체 작성 (#24)
-  ├── 기능별 통합 테스트 작성 (#25)
-  ├── 주요 기능별 동시성 실패 테스트 작성 (#26)
-  └── 병목 예상 쿼리 분석 및 최적화 보고서 작성 (#27)
-
-STEP05 - 동시성 (#5)
-  ├── 주요 기능별 동시성 테스트 작성 (#28)
-  ├── 주요 기능 동시성 이슈 식별 및 해결 (#29)
-  ├── 동시성 이슈 분석 및 해결 보고서 작성 (#30)
-  ├── Filter/Interceptor/Scheduler 부가 로직 구현 (#31)
-  └── 모든 API 정상 작동 및 가용성 확보 (#32)
-
-STEP06 - DB 성능 + 캐시 (#6)
-  ├── Redis 기반 분산락 구현 및 적용 (#33)
-  ├── Redis 분산락 동시성 보고서 추가 (#34)
-  ├── Redis 기반 캐싱 전략 설정 및 적용 (#35)
-  ├── 캐싱 전략 및 성능 개선 보고서 작성 (#36)
-  ├── 인기상품 Redis 기반 설계 및 구현 (#37)
-  ├── 선착순 쿠폰발급 Redis 기반 설계 및 구현 (#38)
-  └── Redis 디자인 설계 보고서 작성 (#39)
-
-STEP07 - EDA (#7)
-  ├── 주문/결제 완료 시 이벤트 기반 외부 데이터 플랫폼 전송 (#43)
-  ├── 파사드 클래스 제거 및 이벤트 기반 도메인 서비스 구현 (#44)
-  └── MSA 기반 이벤트 아키텍처 설계 문서 작성 (#45)
-
-STEP08 - Kafka (#8)
-  ├── 카프카 기초 및 핵심 개념 문서 작성 (#46)
-  ├── 주문 완료 시 데이터 플랫폼으로 카프카 메시지 발행 (#47)
-  ├── 대용량 트래픽 프로세스 카프카 활용 구현 (#48)
-  ├── Outbox 패턴 적용 (#49)
-  └── 카프카 기반 설계 문서 작성 (#50)
-
-STEP09 - 부하테스트 (#9)
-  ├── 부하테스트 대상 선정 및 시나리오 계획 문서 작성 (#51)
-  ├── 부하테스트 스크립트 작성 (#52)
-  ├── 부하테스트 결과 기반 병목 탐색 및 개선 (#53)
-  └── 성능 테스트 및 장애대응 보고서 작성 (#54)
-
-```
-
-### discphy e-commerce 전체 이슈 목록
-
-```
-[2주차] 서버 구축에 필요한 설계 문서 작성
-  ├── 요구사항 분석 문서 작성                              #1  - 완료
-  ├── 마일스톤 문서화 및 Github 이슈 및 프로젝트 연동      #2  - 완료
-  ├── 시퀀스 다이어그램 작성                               #3  - 완료
-  ├── ERD 설계 및 작성                                    #4  - 완료
-  ├── API 명세 작성                                       #5  - 완료
-  ├── Spring REST Docs 문서화                             #6  - 완료
-  ├── API 명세 기반 Mock API 구현                          #7  - 완료
-  ├── Mock API 기반 E2E 테스트 작성                        #8  - 완료
-  ├── [STEP03] 서버구축-설계 기본과제 (PR)                 #9  - 완료
-  ├── [STEP04] 서버구축-설계 심화과제 (PR)                 #10 - 완료
-  ├── API Request http 파일 작성                          #11 - 완료
-  └── 상태 다이어그램 작성                                 #12 - 완료
-
-[3주차] 클린 아키텍처 기반 비즈니스 로직 구현 및 단위테스트
-  ├── 잔액 조회 및 충전 비즈니스 로직 구현 및 단위테스트   #13 - 완료
-  ├── 보유 쿠폰 목록 조회 및 선착순 쿠폰 발급 비즈니스 로직 #14 - 완료
-  ├── 상품 조회 및 상위 상품 조회 비즈니스 로직            #15 - 완료
-  ├── 주문/결제 비즈니스 로직 구현 및 단위테스트           #16 - 완료
-  └── [STEP05/06] 비즈니스 로직 개발 및 단위 테스트 (PR)  #17 - 완료
-
-[4주차] 인프라 레이어 구현 / 통합테스트 / DB 성능 / 동시성
-  ├── Infrastructure Layer 구현체 작성                   #18 - 완료
-  ├── 기능별 통합테스트 작성                              #19 - 완료
-  ├── 병목 예상 쿼리 분석 및 최적화 보고서 작성            #20 - 완료
-  ├── 주요 기능별 동시성 테스트 작성                      #21 - 완료
-  └── [STEP07/08] (PR)                                  #22 - 완료
-
-[5주차] 동시성 이슈 해결 및 API 가용성 확보
-  ├── 주요 기능 동시성 이슈 식별 및 해결                  #23 - 완료
-  ├── 동시성 이슈 분석 및 해결 보고서 작성                #24 - 완료
-  ├── Filter/Interceptor/Scheduler 부가 로직 구현        #25 - 완료
-  └── 모든 API 정상 작동 및 가용성 확보                  #26 - 완료
-
-[6주차] Redis 분산락 및 캐싱 처리
-  ├── Redis 기반 분산락 구현 및 적용                     #29 - 완료
-  ├── Redis 분산락 동시성 보고서 추가                    #30 - 완료
-  ├── Redis 기반 캐싱 전략 설정 및 적용                  #31 - 완료
-  └── 캐싱 전략 및 성능 개선 보고서 작성                  #32 - 완료
-
-[7주차] Redis 자료구조 디자인 설계 및 구현
-  ├── 인기상품 Redis 기반 설계 및 구현                   #36 - 완료
-  ├── 선착순 쿠폰발급 기능 Redis 기반 설계 및 구현        #37 - 완료
-  ├── 로깅 필터 수정 및 단위/통합테스트 리팩토링           #35 - 완료
-  └── Redis 디자인 설계 보고서 작성                      #40 - 완료
-
-[8주차] MSA 기반 이벤트 아키텍처 설계 및 구현
-  ├── 주문/결제 완료 시 이벤트 기반 외부 데이터 플랫폼 전송 #41 - 완료
-  ├── 파사드 클래스 제거 및 이벤트 기반 도메인 서비스 구현  #42 - 완료
-  └── MSA 기반 이벤트 아키텍처 설계 문서 작성             #43 - 완료
-
-[9주차] 카프카 활용 및 비즈니스 고가용성 확보
-  ├── 카프카 기초 및 핵심 개념 문서 작성                  #48 - 완료
-  ├── 카프카 기반 설계 문서 작성                          #49 - 완료
-  ├── 주문 완료 시 데이터 플랫폼으로 카프카 메시지 발행    #46 - 완료
-  └── 대용량 트래픽 프로세스 카프카 활용 구현              #47 - 완료
-
-[10주차] 장애대응
-  ├── 부하테스트 대상 선정 및 목적, 시나리오 계획 문서 작성 #52 - 완료
-  ├── 부하테스트 성능 지표 분석 문서 작성                  #53 - 완료
-  ├── 부하 테스트 스크립트 작성                           #54 - 완료
-  ├── 부하테스트 결과 기반 병목 탐색 및 개선               #55 - 완료
-  ├── [STEP19] 부하테스트 계획 수립 및 문서, 스크립트 작성  #56 - 완료
-  └── [STEP20] 부하테스트 성능 지표 분석 및 개선           #57 - 완료
-```
 ## 📝 산출물 체크리스트
 
 ### docs/architecture (STEP01~02 완료 ✅)
@@ -945,12 +877,35 @@ STEP09 - 부하테스트 (#9)
 - [ ] 01.Kafka.md (STEP08 시작 시)
 - [ ] 02.Cache.md (STEP06 시작 시)
 
-### docs/WIL (주차별 회고)
+### docs/devlog 또는 docs/WIL (주차별 회고)
 
 - [x] 2주차 (devlog/이커머스 아키텍처 설계.md)
-- [ ] 3주차: 클린 아키텍처 적용 회고 (STEP03~04 진행 중)
+- [ ] **3주차: 클린 아키텍처 적용 회고** ← STEP03 끝나고 작성
 - [ ] 4주차: 트랜잭션 + 인덱스 학습 (STEP04 끝)
 - [ ] 5주차: 동시성 + 분산락 학습 (STEP05~06 끝)
+
+### 코드 진척 — Balance 도메인 상세 (현재 진행 중)
+
+|파일|상태|
+|---|---|
+|`balance/domain/Balance.java`|✅ 작성됨 (refund 메서드만 추가하면 완료)|
+|`balance/domain/BalanceTransaction.java`|✅ 작성됨 (ofRefund 추가 필요)|
+|`balance/domain/TransactionType.java`|✅ 작성됨|
+|`balance/domain/BalanceRepository.java`|✅ 작성됨|
+|`balance/domain/BalanceTransactionRepository.java`|✅ 작성됨|
+|`balance/infrastructure/BalanceCoreRepository.java`|✅ 작성됨|
+|`balance/infrastructure/BalanceJpaRepository.java`|✅ 작성됨|
+|`balance/infrastructure/BalanceTransactionCoreRepository.java`|✅ 작성됨|
+|`balance/infrastructure/BalanceTransactionJpaRepository.java`|✅ 작성됨|
+|`balance/interfaces/BalanceController.java`|⚠️ Mock 응답 — Service 호출로 교체 필요|
+|`balance/interfaces/BalanceRequest.java`|✅ 작성됨|
+|`balance/interfaces/BalanceResponse.java`|⚠️ `from(BalanceInfo)` 매핑 필요|
+|`balance/application/BalanceService.java`|❌ 미작성|
+|`balance/domain/BalanceCommand.java`|❌ 미작성|
+|`balance/domain/BalanceInfo.java`|❌ 미작성|
+|`common/ApiControllerAdvice.java`|⚠️ `IllegalArgumentException` 핸들러 추가 필요|
+|`test/.../balance/domain/BalanceTest.java`|❌ 미작성 (디렉터리만 존재)|
+|`test/.../balance/service/BalanceServiceTest.java`|❌ 미작성|
 
 ---
 
@@ -976,16 +931,25 @@ STEP09 - 부하테스트 (#9)
 
 ## ✅ 사용법
 
-1. STEP 시작 전 → 해당 STEP 섹션 정독  (사용자에게 뭐 해야하는지 뭐할건지 알려주기)
+1. STEP 시작 전 → 해당 STEP 섹션 정독 (너가 직접 수정하지말고 나에게 알려주기 +왜 이런작업을 하는지 간략히 설명)
 2. "절대 하지 말 것" 체크 → 미래 도구 안 쓰기
 3. 작업 중 → 신호등 표 확인
-4. STEP 완료 → 산출물 체크리스트 갱신 (체크리스트 어디를 갱신해야하는지 알려주기)
-5. 막히면 → 레퍼런스 동일 시점 커밋 확인
+4. STEP 완료 → 산출물 체크리스트 갱신 
+5. 막히면 → 레퍼런스 동일 시점 커밋 확인 
 
+### 🔥 다음 액션 (지금 당장)
 
+1. **이슈 #20 — Balance 마무리** 브랜치 생성: `feat/step03-balance-service`
+2. `Balance.refund()` + `BalanceTransaction.ofRefund()` 추가
+3. `BalanceCommand`, `BalanceInfo` 작성
+4. `BalanceService` 작성 (`chargeBalance`, `useBalance`, `getBalance`)
+5. `BalanceController` mock 제거 → Service 호출
+6. `ApiControllerAdvice`에 `IllegalArgumentException` 핸들러 추가
+7. `BalanceTest`, `BalanceServiceTest` 작성
+8. PR → 머지
+
+그 다음 이슈 #21 (Coupon), #22 (Product) 순서로 진행.
 
 ---
 
-> 📌 살아있는 문서. STEP 진행 중 발견하는 것들 추가 갱신할 것.
-
-
+> 📌 살아있는 문서. STEP 진행 중 발견하는 것들 추가 갱신할 것. 본 v3는 2026-04-30 기준 본인 프로젝트 실제 상태 검토 결과 반영.
