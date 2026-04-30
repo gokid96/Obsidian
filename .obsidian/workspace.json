@@ -166,8 +166,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5,
-    "collapsed": true
+    "width": 303.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -182,7 +181,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b88d452cf92476b7",
+  "active": "577d816a622916d7",
   "lastOpenFiles": [
     "업무/무제/디아모 레퍼런스.md",
     "학습/mini-commerce 진행 가이드.md",
