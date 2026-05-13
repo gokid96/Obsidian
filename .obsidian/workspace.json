@@ -13,7 +13,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/무역 문서 추출 (iDocu)/무제.md",
+                "file": "학습/무제.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200
+    "width": 271.5
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -166,7 +166,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 303.5
+    "width": 303.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -184,7 +185,6 @@
   "active": "b88d452cf92476b7",
   "lastOpenFiles": [
     "학습/mini-commerce 진행 가이드.md",
-    "업무/무역 문서 추출 (iDocu)/무제.md",
     "업무/무제/디아모 레퍼런스.md",
     "업무/qhdks",
     "무제 5.base",
@@ -228,6 +228,7 @@
     "Architecture/MessageQueue/01. Kafka.md",
     "Architecture/Caching/05. Write-Around.md",
     "Architecture/Caching/07. Cache Stampede 방지.md",
-    "Architecture/엣지케이스/04.공통/01_네트워크_파티션.md"
+    "Architecture/엣지케이스/04.공통/01_네트워크_파티션.md",
+    "Architecture/04. DDD/DDD (Domain-Driven Design).md"
   ]
 }
