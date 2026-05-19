@@ -8,17 +8,17 @@
 
 ## 📌 v6 → v7 변경 핵심
 
-|#|항목|v6|v7|
-|---|---|---|---|
-|1|**아키텍처 명칭**|"클린 레이어드 + DIP"|✅ **라이트 DDD (Persistence-aware Domain Model)** 명확화|
-|2|**GitHub 이슈 매핑**|없음|✅ 39개 이슈를 STEP별로 매핑|
-|3|**STEP05 Filter/Interceptor**|누락|✅ 이슈 #31에서 발견 — 추가 작업 명시|
-|4|**STEP06 보고서 수**|2개 (03, 04)|✅ **3개**로 정정 — 이슈 #34 "Redis 분산락 동시성 보고서 추가"|
-|5|**STEP07 refund/BalanceClient**|별도 명시|⚠️ 이슈 #44에 묻혀있음 → sub-task로 쪼개 추적 권장|
-|6|**STEP08 인기상품 실시간 이벤트**|별도 명시|⚠️ 별도 이슈 없음, #47/#48 안에 묻힘|
-|7|**User 도메인**|"사전작업 권장"|✅ **완료** — `feat/step03-user-domain` 머지됨|
-|8|**user/infrastructure/jpa/ 구조**|미언급|✅ 레퍼런스 확인 — JPA Repository는 `infrastructure/jpa/` 서브폴더에|
-|9|**Balance Step 1 도메인 코드**|큰 그림|✅ 실제 코드 예시 추가|
+| #   | 항목                              | v6              | v7                                                      |
+| --- | ------------------------------- | --------------- | ------------------------------------------------------- |
+| 1   | **아키텍처 명칭**                     | "클린 레이어드 + DIP" | ✅ **라이트 DDD (Persistence-aware Domain Model)** 명확화      |
+| 2   | **GitHub 이슈 매핑**                | 없음              | ✅ 39개 이슈를 STEP별로 매핑                                     |
+| 3   | **STEP05 Filter/Interceptor**   | 누락              | ✅ 이슈 #31에서 발견 — 추가 작업 명시                                |
+| 4   | **STEP06 보고서 수**                | 2개 (03, 04)     | ✅ **3개**로 정정 — 이슈 #34 "Redis 분산락 동시성 보고서 추가"            |
+| 5   | **STEP07 refund/BalanceClient** | 별도 명시           | ⚠️ 이슈 #44에 묻혀있음 → sub-task로 쪼개 추적 권장                    |
+| 6   | **STEP08 인기상품 실시간 이벤트**         | 별도 명시           | ⚠️ 별도 이슈 없음, #47/#48 안에 묻힘                              |
+| 7   | **User 도메인**                    | "사전작업 권장"       | ✅ **완료** — `feat/step03-user-domain` 머지됨                |
+| 8   | **user/infrastructure/jpa/ 구조** | 미언급             | ✅ 레퍼런스 확인 — JPA Repository는 `infrastructure/jpa/` 서브폴더에 |
+| 9   | **Balance Step 1 도메인 코드**       | 큰 그림            | ✅ 실제 코드 예시 추가                                           |
 
 ---
 
