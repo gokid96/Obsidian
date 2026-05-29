@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "무제 6.md",
+                "file": "학습/무제.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "무제 6"
+              "title": "무제"
             }
           }
         ]
@@ -184,12 +184,15 @@
   },
   "active": "b88d452cf92476b7",
   "lastOpenFiles": [
+    "학습/mini-commerce 진행 가이드.md",
+    "학습/무제.md",
+    "무제.md",
+    "무제 6.md",
     "업무/업그레이드 가이드.md",
     "업무/AS챗봇/AS 내역 챗봇 아키텍처.md",
     "업무/AS챗봇/무제.md",
     "업무/AS챗봇/데이터 추가시 중복 데이터 삭제 필수.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
-    "학습/mini-commerce 진행 가이드.md",
     "업무/무역 문서 추출 (iDocu)/무제.md",
     "업무/무역 문서 추출 (iDocu)/1. 무역 문서 정보 추출 시스템 아키텍처.md",
     "업무/무제/디아모 레퍼런스.md",
@@ -204,13 +207,10 @@
     "업무/무제 1.md",
     "업무/문서파싱API/무제.md",
     "업무/문서파싱API/개선 포인트들.md",
-    "무제.md",
     "Pasted image 20260410180053.png",
     "무제 7.md",
-    "무제 6.md",
     "무제 5.md",
     "무제 4.md",
-    "무제 3.md",
     "무제.base",
     "무제 2.base",
     "무제 1.base",
