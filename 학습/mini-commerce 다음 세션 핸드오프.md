@@ -560,6 +560,76 @@ Get-ChildItem -Recurse "C:\Users\eborder\sungmin\git\e-commerce\src\main\java\co
 | `docs/study/01.Kafka.md` | STEP08 진행 중 동시 | #46 |
 | `docs/study/02.Cache.md` | 멀티모듈 분리 시점 (선택) | - |
 
+
+## 10-B. 문서/산출물 작성 타이밍 (레퍼런스 README 기준)
+
+> 원리: 레퍼런스는 **"기능 구현 → 그 기능 문서/보고서 즉시 작성"**.
+> README에 걸린 문서 링크 순서 = 작성 순서. 측정값·스크린샷이 휘발하기 전에 그 STEP 끝에 바로 씀.
+
+### 설계 문서 (docs/architecture) — STEP02에 전부 완료 (이미 됨)
+
+| 문서 | 작성 트리거 | 상태 |
+|---|---|---|
+| 01.Requirements.md | 요구사항 분석 단계 시작 시 | Done |
+| 02.Milestones.md | 요구사항 정리 후 일정 계획 시 | Done |
+| 03-1.SequenceDiagram.md | 요구사항 → 흐름 설계 시 | Done |
+| 03-2.StateDiagram.md | 주문/결제/쿠폰 상태 전이 설계 시 | Done |
+| 04.ERD.md | 시퀀스/요구사항 기반 테이블 설계 시 | Done |
+| 05.ApiDocument.md | ERD 후 API 명세 작성 시 | Done |
+| 06.SpringRestDocs.md | REST Docs 배포 후 (선택) | 미작성(선택) |
+
+### 기술 보고서 (docs/report) — 해당 기술 적용 STEP을 "끝낸 직후"
+
+| 문서 | 작성 트리거 (이 작업을 끝내면 쓴다) | STEP/이슈 |
+|---|---|---|
+| 01.DBPerformanceOptimizationReport.md | 인덱스 적용 + EXPLAIN ANALYZE 측정 완료 후 | STEP04 #27 |
+| 02.ConcurrencyReport.md | 낙관/비관/분산락으로 동시성 이슈 해결 + 동시성 테스트 통과 후 | STEP05 #30 |
+| (분산락 보고서, #34) | Redisson 분산락 구현 + 동시성 테스트 후 | STEP06 P1 #34 |
+| 03.CacheStrategyArchitectureReport.md | @Cacheable 캐싱 적용 + K6로 캐시 전후 성능 측정 후 | STEP06 P2 #36 |
+| 04.RedisDesignArchitectureReport.md | Redis ZSET 인기상품/선착순쿠폰 재설계 구현 후 | STEP06 P3 #39 |
+| 05.MsaEventDrivenArchitectureReport.md | Facade 제거 + 이벤트 기반 전환 + Saga 보상 구현 후 | STEP07 #45 |
+| 06.KafkaDesignArchitectureReport.md | Kafka 발행/소비 + Outbox 구현 후 | STEP08 #50 |
+| 07.LoadTestReport.md | K6 부하테스트 + 병목 개선(전후 비교)까지 끝낸 후 | STEP09 #51·#54 |
+
+### 스터디 (docs/study) — 그 개념을 코드로 처음 도입할 때 "동시에"
+
+| 문서 | 작성 트리거 | STEP/이슈 |
+|---|---|---|
+| 01.Kafka.md | Kafka 도입 시작 시 (개념 이해 깊을 때 같이 정리) | STEP08 #46 |
+| (02.Cache.md, 선택) | 캐시 개념 여러 STEP 겪은 후 종합 정리 | 멀티모듈 분리 시점 |
+
+### WIL (회고) — 핵심 메모는 그 시점, 정식 작성은 몰아서
+
+| 문서 | 다루는 범위 | 메모 시점 | 정식 작성 |
+|---|---|---|---|
+| WIL week2 | STEP02 설계 회고 | 설계 끝낼 때 단문 메모 | STEP09 후 |
+| WIL week3 | STEP03 아키텍처 회고 | 도메인 구현 끝낼 때 메모 | STEP05 끝 또는 STEP09 후 |
+| WIL week4 | STEP04 트랜잭션/인덱스 | STEP04 끝낼 때 메모 | STEP09 후 |
+| WIL week5 | STEP05~06 동시성/분산락 | STEP05~06 끝낼 때 메모 | STEP09 후 |
+
+### 한눈에 보는 작성 순서 (가이드대로 쭉 갔을 때)
+
+```
+STEP02 (완료): 01~05 설계문서 5종 작성 → REST Docs 배포 → (06 선택)
+STEP03 (지금): 문서 산출물 없음. 도메인 구현 + Docs 테스트만.
+              └ WIL week3 핵심 메모만 남김
+STEP04 끝:    01.DBPerformanceOptimizationReport (#27)
+              └ WIL week4 핵심 메모
+STEP05 끝:    02.ConcurrencyReport (#30)
+              └ WIL week3 정식 작성 가능 / week5 메모
+STEP06 P1 끝: 분산락 보고서 (#34)
+STEP06 P2 끝: 03.CacheStrategyArchitectureReport (#36)
+STEP06 P3 끝: 04.RedisDesignArchitectureReport (#39)
+STEP07 끝:    05.MsaEventDrivenArchitectureReport (#45)
+STEP08 중/끝: 01.Kafka.md 스터디 (#46) + 06.KafkaDesignArchitectureReport (#50)
+STEP09 끝:    07.LoadTestReport (#51·#54)
+              └ WIL week2,3,4,5 정식 회고 몰아서 작성
+```
+
+> 보고서 공통 구조 (레퍼런스 따라): **배경 → 대상 선정 → 문제 분석(AS-IS) → 해결방안 → 측정/테스트(TO-BE) → 한계 → 결론**.
+> 측정 보고서(01,03,07)는 **수치·스크린샷이 핵심**이라 그 STEP 끝나자마자 작성 필수 (나중엔 재현 번거로움).
+
+
 ---
 
 ## 11. STEP04~09 핵심 미리보기
