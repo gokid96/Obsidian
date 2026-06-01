@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
+                "file": "학습/mini-commerce 프로젝트 진행 가이드.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "G1Chat-AI 아키텍처 정리"
+              "title": "mini-commerce 프로젝트 진행 가이드"
             }
           }
         ]
@@ -184,14 +184,14 @@
   },
   "active": "b88d452cf92476b7",
   "lastOpenFiles": [
-    "업무/AS챗봇/데이터 추가시 중복 데이터 삭제 필수.md",
+    "무제.md",
     "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
+    "업무/AS챗봇/데이터 추가시 중복 데이터 삭제 필수.md",
     "업무/AS챗봇/RAG 파이프라인 최적화.md",
     "업무/AS챗봇/RAG 파이프 라인 구축 과정.md",
     "업무/AS챗봇/AS 내역 챗봇 아키텍처.md",
-    "학습/mini-commerce 다음 세션 핸드오프.md",
+    "학습/mini-commerce 프로젝트 진행 가이드.md",
     "학습/무제.md",
-    "무제.md",
     "무제 6.md",
     "업무/업그레이드 가이드.md",
     "업무/메시지 테스트/테스트 할때 메세지 생성방법.md",
