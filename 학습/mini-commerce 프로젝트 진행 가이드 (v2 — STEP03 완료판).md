@@ -104,9 +104,11 @@ STEP09: 부하테스트(K6) + 병목 개선
 
 ### 다음 작업: 이슈 #23 — 주문/결제 (STEP04 시작)
 
-상세는 9번 섹션(STEP04 미리보기). 진입 전 `git checkout main && git pull && git checkout -b feat/step04-order-payment`.
+상세는 **8번 섹션(STEP04 상세)**. 설계 전부 합의됨 (주문/결제 분리, 한 API 동기 처리, Long ID+스냅샷, OrderStatus CREATED/PAID, PaymentMethod BALANCE, 엔티티 결정표). 레퍼런스 원본은 커밋 `4755dfb`.
 
-> ⚠️ STEP05 진입 시 1순위 처리: **Balance 큰 리팩토링** (`@Column(name=balance_id)` 누락 + `@OneToMany` 제거 + `@Version` + `Balance.create(userId)` 등). 가이드 12번 추적표. Balance는 STEP03 초반 코드라 아직 안 다듬어짐 — STEP05 #29에서 한 방에. EOF echo "1부 완료"
+현재 브랜치 `feat/step04-order-payment` 이미 생성됨 (main에서 분기). devlog 초안은 삭제함(STEP04 후 작성하기로). ERD 보정(created_at/updated_at 삭제 + productName 추가)은 미반영 — 코드 먼저 가고 ERD는 나중에.
+
+> ⚠️ STEP05 진입 시 1순위 처리: **Balance 큰 리팩토링** (`@Column(name=balance_id)` 누락 + `@OneToMany` 제거 + `@Version` + `Balance.create(userId)` 등). 가이드 12번 추적표. Balance는 STEP03 초반 코드라 아직 안 다듬어짐 — STEP05 #29에서 한 방에.
 
 ---
 
@@ -345,29 +347,76 @@ STEP03에서 하지 말 것이었던 것들 (다음 STEP들에서 순차 도입)
 
 ---
 
-## 8. STEP04 상세 — 이슈 #23~27 (✅ report 01 + SequenceDiagram + WIL week4)
+## 8. STEP04 상세 — 이슈 #23~27 (✅ 본인 ERD/시퀀스 + 레퍼런스 커밋 4755dfb 확인)
 
-> ⚠️ STEP04 진입 시 정독: **01.DBPerformanceOptimizationReport** + **WIL week4** + **03-1.SequenceDiagram(주문결제 30단계)**.
+> ⚠️ STEP04 진입 시 정독: **01.DBPerformanceOptimizationReport** + **WIL week4** + **03.SequenceDiagram(주문/결제)**. 레퍼런스 STEP04 원본 = 커밋 `4755dfb` ([FEAT] 주문 및 결제 어플리케이션 구현). `git show 4755dfb:경로`로 그 시점 코드 확인 가능 (단일 모듈 시절이라 `src/main/java/kr/hhplus/be/ecommerce/domain/...` 경로).
 
 ### 작업 순서 (이슈 흐름)
 
-1. **#23 주문/결제 도메인** — Order/Payment 도메인 모델 + 단위테스트
-2. **#24 인프라 구현체** — JPA Repository 채우기, Repository 인터페이스 `@Repository`/`@Component`
+1. **#23 주문/결제 도메인 + Facade + 단위테스트** ← 다음 작업
+2. **#24 인프라 구현체** — Order/Payment CoreRepository + Jpa
 3. **#25 통합테스트** — Testcontainers(`@SpringBootTest` + MySQL 컨테이너)
 4. **#26 동시성 실패 테스트** — 락 없는 상태에서 깨지는 것 먼저 작성 (STEP05 준비)
 5. **#27 DB 최적화 보고서** — 인덱스 + EXPLAIN ANALYZE, **보고서 먼저 → 코드** 순서
 
-### 주문/결제 핵심 (✅ SequenceDiagram, WIL week2)
+### 📌 STEP04 설계 확정 (이번 세션 합의)
 
-- 📌 **주문/결제 도메인 통합** 결정 (WIL week2 — 분리는 오버엔지니어링 판단). 단 차후 분리 가능성 열어둠.
-- 주문 상태: CREATED → PAID (StateDiagram). 결제: READY/COMPLETED/FAILED.
-- 주문 흐름: 잔액 확인 → 쿠폰 적용 → 재고 차감 → 주문 생성 → 결제 → 완료. (시퀀스 30단계가 청사진)
-- **OrderFacade가 여러 도메인(Balance/Coupon/Product/Stock) 조합** → Facade 필수 (단일 아님).
-- 📌 **`@Transactional`은 OrderFacade에** (Service 아님 — STEP04 신호등). Service @Transactional은 STEP05.
-- Stock에 `deduct()`/`restore()` 추가 (주문이 재고 차감). 단 비관적 락은 STEP05.
-- 모든 enum `@Enumerated(EnumType.STRING)`.
+- **주문/결제 = 별도 테이블 분리** (본인 ERD: `ORDERS ||--|| PAYMENT`). 통합 아님. Order / OrderProduct / Payment 3개 엔티티.
+- **결제 흐름 = 한 API에서 동기 처리** (본인 시퀀스 "주문 및 결제 완료"). `POST /api/v1/orders` 하나에서 주문생성→결제완료까지.
+- **OrderFacade가 @Transactional로 여러 도메인 조합** (Balance/Coupon/Stock/Product/Payment). Service에 @Transactional 아님(STEP05). **OrderClient/이벤트는 STEP07이라 제외** — Facade가 각 Service 직접 주입.
+- **도메인 참조 = Long ID + 스냅샷** (길 A). Order는 userId/userCouponId(Long), OrderProduct는 productId(Long) + **productName/unitPrice 복사 저장**. OrderProduct→Order만 `@ManyToOne`(같은 애그리거트 내부라 허용).
 
-### ✅ report 01 인덱스 교훈 (그대로 베끼지 말 것 — 측정은 본인 환경에서)
+### 📌 엔티티 최종 결정표 (본인 ERD 기준 + 레퍼런스 코드 보정 2개)
+
+|항목|STEP04 결정|근거|
+|---|---|---|
+|OrderStatus|**CREATED, PAID**|레퍼런스 STEP04 (CANCELED는 STEP07 취소/환불)|
+|PaymentStatus|**READY, COMPLETED, FAILED, CANCELED**|본인 ERD (WAITING은 STEP07이라 제외)|
+|PaymentMethod|**BALANCE, KAKAO_PAY, TOSS_PAY, NAVER_PAY**|본인 ERD (잔액결제라 BALANCE가 적합. 레퍼런스 UNKNOWN보다 정확)|
+|OrderProduct 단가|**unitPrice**|양쪽 코드 일치 (ERD의 unit_price/unit_amount 혼선 무시)|
+|OrderProduct.productName|**추가**|레퍼런스 코드 (주문 시점 상품명 스냅샷)|
+|Payment.userId|**빼기**|본인 ERD (orderId로 충분)|
+|created_at/updated_at|**빼기**|레퍼런스 코드에 없음 (ERD도 보정 필요)|
+
+> ⚠️ ERD 보정 사항 (코드와 맞추기, 미반영 상태): ① 모든 테이블 created_at/updated_at 삭제 ② ORDER_PRODUCT에 productName 추가. 나머지는 본인 ERD가 STEP04에 더 맞음(WAITING 제외, BALANCE 사용) — 레퍼런스 ERD로 후퇴 금지.
+
+### 📌 핵심 도메인 동작 (레퍼런스 4755dfb 기준)
+
+- `Order.create(userId, userCouponId, discountRate, orderProducts)` — 생성자에서 totalPrice/discountPrice 계산. 쿠폰 객체 안 받고 **discountRate(double)** 만 받음. 초기 상태 CREATED.
+- `Order.paid()` — 상태 PAID로.
+- `OrderProduct.getPrice()` = unitPrice × quantity.
+- `Payment.create(orderId, amount)` — READY + BALANCE로 생성(본인은 BALANCE, 레퍼런스는 UNKNOWN). `Payment.pay()` → COMPLETED + paidAt.
+- `OrderStatus.cannotPayable()`, `PaymentStatus.cannotPayable()` — cannotXxx IN-list 헬퍼 (STEP03과 동일 패턴).
+
+### 📌 OrderFacade 의존 도메인 현황 (확인 완료)
+
+|시퀀스 단계|메서드|상태|
+|---|---|---|
+|잔고 차감|`BalanceService.useBalance(Command.Use)`|✅ 있음 (Balance.use에 잔액부족 검증)|
+|쿠폰 사용|`CouponService.useCoupon(Command.Use)`|✅ 있음 (본인쿠폰 검증)|
+|재고 차감|`StockService.deduct(...)`|❌ **없음 — STEP04에서 추가 필요** (Stock.deduct + 재고부족 검증, StockCommand)|
+|상품 조회|주문용 상품 조회 (findByIdIn 등)|⚠️ `getSellingProducts()`(목록)만 있음. 주문할 상품 ID들로 조회하는 메서드 필요할 수 있음|
+
+> ⚠️ Balance엔 아직 `@Column(name=balance_id)` 없고 `@OneToMany` cascade 있음 — STEP05 #29 리팩토링 대상. STEP04에선 안 건드림.
+
+### #23 작업 목록 (두 덩어리, 커밋 잘게, PR은 #23 하나)
+
+```
+[1덩어리: order/payment 도메인 + 단위테스트]
+  order: Order, OrderProduct, OrderStatus, OrderCommand, OrderInfo, OrderRepository(I/F), OrderService
+  payment: Payment, PaymentStatus, PaymentMethod, PaymentCommand, PaymentRepository(I/F), PaymentService
+  product/stock 수정: Stock.deduct() + StockCommand + StockService.deduct()
+  테스트: OrderTest, OrderProductTest, OrderServiceTest, PaymentTest, PaymentServiceTest
+[2덩어리: Facade 조합 + interfaces]
+  application/order: OrderCriteria, OrderResult, OrderFacade(@Transactional)
+  interfaces: OrderController(정식), OrderRequest(기존 활용), OrderResponse
+  테스트: OrderFacadeTest, OrderControllerTest(재작성), OrderControllerDocsTest
+[#24로 미룸] OrderCoreRepository, PaymentCoreRepository + Jpa
+```
+
+> 레퍼런스 4755dfb는 도메인+Facade+인프라+테스트를 한 PR에 다 넣었으나, 본인 이슈 분할(#23 도메인+Facade / #24 인프라)을 따름. #23 단위테스트는 Facade가 의존 Service를 Mock으로.
+
+### ✅ report 01 인덱스 교훈 (#27, 그대로 베끼지 말 것 — 측정은 본인 환경)
 
 - 잔액/재고/쿠폰: 단일·복합 인덱스로 99%+ 개선 — `user_id`, `product_id`, `(user_id,used_status)`, `(user_id,coupon_id)`
 - **상품 조회는 인덱스 역효과** — `sell_status='SELLING'`이 90% → 카디널리티 낮아 풀스캔이 빠름 → **커서 페이징**(`product_id > cursor`)으로 0.14ms
@@ -644,18 +693,23 @@ Get-ChildItem -Recurse "...e-commerce\src\main\java\...\{도메인}" | Select-Ob
 ```
 mini-commerce 프로젝트 진행할거야.
 
-STEP03 전부 끝나서 main에 머지됐고(User/Balance/Coupon/Product),
-지금은 STEP04 이슈 #23 (주문/결제) 차례야.
-git checkout main && git pull 후 feat/step04-order-payment 브랜치 생성.
+STEP03 전부 끝나서 main에 머지됨(User/Balance/Coupon/Product).
+지금은 STEP04 이슈 #23 (주문/결제) 차례. 브랜치 feat/step04-order-payment 이미 있음.
 
-가이드 8번 섹션(STEP04 상세)에 작업순서/주문결제 핵심/인덱스 교훈 있어.
-STEP04 진입이니 먼저 정독: 01.DBPerformanceReport + WIL week4 + 03-1.SequenceDiagram(주문결제 30단계).
+설계는 지난 세션에 전부 합의됨 (가이드 8번 섹션에 결정표 있음):
+- 주문/결제 = 별도 테이블 분리 (Order/OrderProduct/Payment)
+- 한 API(POST /api/v1/orders)에서 주문→결제 동기 처리, OrderFacade @Transactional 조합
+- 도메인 참조 = Long ID + 스냅샷 (productName/unitPrice 복사)
+- OrderStatus: CREATED/PAID, PaymentStatus: READY/COMPLETED/FAILED/CANCELED,
+  PaymentMethod: BALANCE/KAKAO_PAY/TOSS_PAY/NAVER_PAY
+- Stock.deduct() 추가 필요, OrderClient/이벤트는 STEP07이라 제외
+- 레퍼런스 STEP04 원본 = 커밋 4755dfb (git show 4755dfb:경로로 확인)
 
-정석 흐름(Docs 테스트 함께, Always Green, 커밋 쪼개기) + 경로+코드+설명 방식.
-(Claude는 코드 직접 수정 X, 타이핑은 내가. 커밋 전 git status 확인.)
+#23 = order/payment 도메인 + Facade + 단위테스트 (인프라는 #24).
+정석 흐름(Docs 테스트 함께, Always Green, 커밋 쪼개기) + 경로+코드+설명.
+(Claude 코드 직접수정 X, 타이핑은 내가. 커밋 전 git status 확인.)
 
-⚠️ Order/Payment 도메인 구조 + OrderFacade @Transactional 위치부터 합의하고 시작하자.
-먼저 레퍼런스 order 구조랑 본인 현재 order mock 상태 확인부터.
+바로 OrderStatus + Order 엔티티(커밋 1)부터 시작하자.
 ```
 
 > 이 문서는 살아있는 문서. STEP 진행하며 발견하는 것 추가/갱신. 검증 표기(✅/⚠️/📌) 유지.
