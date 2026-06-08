@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "31294ae624c088c8",
+        "id": "720ad955f76d62ca",
         "type": "tabs",
         "children": [
           {
-            "id": "b88d452cf92476b7",
+            "id": "55fca1ba38c3a264",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "업무/Eborder/E-border 시스템.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "E-border 시스템"
+              "title": "새 탭"
             }
           }
         ]
@@ -182,10 +178,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b88d452cf92476b7",
+  "active": "80442b0eaf06afb1",
   "lastOpenFiles": [
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/E-border 시스템.md",
+    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/service_monitor_alert-notifier/alertmanager설정.md",
     "학습/mini-commerce 프로젝트 진행 가이드 (v2 — STEP03 완료판).md",
     "무제.md",
