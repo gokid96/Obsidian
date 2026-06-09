@@ -6,14 +6,14 @@
 
 ## 0. 프로젝트 기본 정보
 
-|항목|값|
-|---|---|
-|본인 레포|https://github.com/gokid96/e-commerce|
-|로컬 경로|`C:\Users\eborder\sungmin\git\e-commerce`|
-|레퍼런스|https://github.com/discphy/e-commerce (STEP09까지 완료된 멀티모듈 최종본)|
-|레퍼런스 로컬|`C:\Users\eborder\sungmin\git\e-commerce-reference`|
-|패키지 루트|`com.github.gokid96.e_commerce`|
-|스택|Spring Boot 4.0.5, Java 21, H2(test), JPA/Hibernate|
+| 항목      | 값                                                             |
+| ------- | ------------------------------------------------------------- |
+| 본인 레포   | https://github.com/gokid96/e-commerce                         |
+| 로컬 경로   | `C:\Users\eborder\sungmin\git\e-commerce`                     |
+| 레퍼런스    | https://github.com/discphy/e-commerce (STEP09까지 완료된 멀티모듈 최종본) |
+| 레퍼런스 로컬 | `C:\Users\eborder\sungmin\git\e-commerce-reference`           |
+| 패키지 루트  | `com.github.gokid96.e_commerce`                               |
+| 스택      | Spring Boot 4.0.5, Java 21, H2(test), JPA/Hibernate           |
 
 ### Boot 4 주의 (Boot 3과 다른 점)
 
