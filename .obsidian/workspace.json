@@ -93,7 +93,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 347.5
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -197,7 +198,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "80442b0eaf06afb1",
+  "active": "9bb29a6ab2b7f518",
   "lastOpenFiles": [
     "무제 3.md",
     "Project/e-commerce/마일스톤.md",
