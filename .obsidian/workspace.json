@@ -34,9 +34,22 @@
               "icon": "lucide-file",
               "title": "마일스톤"
             }
+          },
+          {
+            "id": "8b1ce7a8c566a588",
+            "type": "leaf",
+            "state": {
+              "type": "bases",
+              "state": {
+                "file": "무제 1.base",
+                "viewName": "표"
+              },
+              "icon": "lucide-table",
+              "title": "무제 1"
+            }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -56,7 +69,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "파일 탐색기"
@@ -93,8 +108,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 200,
-    "collapsed": true
+    "width": 200
   },
   "right": {
     "id": "7df7618046bb5f34",
@@ -198,8 +212,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "9bb29a6ab2b7f518",
+  "active": "8b1ce7a8c566a588",
   "lastOpenFiles": [
+    "무제.base",
+    "무제 1.base",
     "무제 3.md",
     "Project/e-commerce/마일스톤.md",
     "학습/무제 1.md",
@@ -226,11 +242,8 @@
     "업무/aws/2..md",
     "업무/aws/1. aws gen ai.md",
     "업무/2026-03-13 회의.md",
-    "업무/2026.02.06 회의.md",
     "Pasted image 20260410180053.png",
-    "무제.base",
     "무제 2.base",
-    "무제 1.base",
     "무제 5.base",
     "무제 4.base",
     "업무/qhdks",
