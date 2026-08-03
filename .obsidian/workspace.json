@@ -39,13 +39,14 @@
             "id": "8b1ce7a8c566a588",
             "type": "leaf",
             "state": {
-              "type": "bases",
+              "type": "markdown",
               "state": {
-                "file": "무제 1.base",
-                "viewName": "표"
+                "file": "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-table",
-              "title": "무제 1"
+              "icon": "lucide-file",
+              "title": "G1Chat-AI 아키텍처 정리"
             }
           }
         ],
@@ -214,8 +215,8 @@
   },
   "active": "8b1ce7a8c566a588",
   "lastOpenFiles": [
-    "무제.base",
     "무제 1.base",
+    "무제.base",
     "무제 3.md",
     "Project/e-commerce/마일스톤.md",
     "학습/무제 1.md",
