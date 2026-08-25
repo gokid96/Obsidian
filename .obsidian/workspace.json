@@ -22,6 +22,18 @@
             }
           },
           {
+            "id": "6898f5a9bb6960a1",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.6"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.13.6"
+            }
+          },
+          {
             "id": "9bb29a6ab2b7f518",
             "type": "leaf",
             "state": {
@@ -49,7 +61,8 @@
               "title": "마일스톤"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -212,7 +225,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "55fca1ba38c3a264",
+  "active": "6898f5a9bb6960a1",
   "lastOpenFiles": [
     "무제.base",
     "무제 1.md",
