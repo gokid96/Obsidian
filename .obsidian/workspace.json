@@ -25,12 +25,14 @@
             "id": "6898f5a9bb6960a1",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.13.6"
+                "file": "Project/e-commerce/# e-commerce 작업 가이드 (재구성 + 리뷰 대응).md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.13.6"
+              "icon": "lucide-file",
+              "title": "# e-commerce 작업 가이드 (재구성 + 리뷰 대응)"
             }
           },
           {
@@ -227,6 +229,7 @@
   },
   "active": "6898f5a9bb6960a1",
   "lastOpenFiles": [
+    "Project/e-commerce/# e-commerce 작업 가이드 (재구성 + 리뷰 대응).md",
     "무제.base",
     "무제 1.md",
     "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
