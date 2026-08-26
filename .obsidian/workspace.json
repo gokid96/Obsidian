@@ -36,6 +36,18 @@
             }
           },
           {
+            "id": "8d57e0eac7f4b396",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.13.7"
+              },
+              "icon": "lucide-book-up",
+              "title": "릴리즈 노트 1.13.7"
+            }
+          },
+          {
             "id": "9bb29a6ab2b7f518",
             "type": "leaf",
             "state": {
@@ -64,7 +76,7 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -227,7 +239,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6898f5a9bb6960a1",
+  "active": "8d57e0eac7f4b396",
   "lastOpenFiles": [
     "Project/e-commerce/# e-commerce 작업 가이드 (재구성 + 리뷰 대응).md",
     "무제.base",
