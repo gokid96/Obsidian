@@ -39,12 +39,14 @@
             "id": "8d57e0eac7f4b396",
             "type": "leaf",
             "state": {
-              "type": "release-notes",
+              "type": "markdown",
               "state": {
-                "currentVersion": "1.13.7"
+                "file": "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
+                "mode": "source",
+                "source": false
               },
-              "icon": "lucide-book-up",
-              "title": "릴리즈 노트 1.13.7"
+              "icon": "lucide-file",
+              "title": "G1Chat-AI 아키텍처 정리"
             }
           },
           {
@@ -241,11 +243,11 @@
   },
   "active": "8d57e0eac7f4b396",
   "lastOpenFiles": [
+    "업무/AS챗봇/# G1 챗봇 vs 보편적 RAG 챗봇 — 아키텍처 비교 분석.md",
     "Project/e-commerce/# e-commerce 작업 가이드 (재구성 + 리뷰 대응).md",
     "무제.base",
     "무제 1.md",
     "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
-    "업무/AS챗봇/# G1 챗봇 vs 보편적 RAG 챗봇 — 아키텍처 비교 분석.md",
     "학습/mini-commerce 프로젝트 진행 가이드 (v2 — STEP03 완료판).md",
     "Project/e-commerce/마일스톤.md",
     "무제.md",
