@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
+                "file": "업무/Eborder/E-border 시스템.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "G1Chat-AI 아키텍처 정리"
+              "title": "E-border 시스템"
             }
           }
         ],
@@ -201,28 +201,28 @@
   },
   "active": "d5553697fa12c97a",
   "lastOpenFiles": [
-    "업무/무역 문서 추출 (iDocu)/무제.md",
-    "업무/Eborder/API/00.서비스 아키텍쳐.md",
     "업무/Eborder/API/03.메시지 타입.md",
+    "업무/Eborder/API/02.AirlineMessageHandler.md",
+    "업무/Eborder/API/01.IAPI 개요.md",
+    "업무/Eborder/API/00.서비스 아키텍쳐.md",
+    "업무/Eborder/API/MATIP,MQ/MQ (Message Queue).md",
+    "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
+    "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
+    "업무/AS챗봇/# G1 챗봇 vs 보편적 RAG 챗봇 — 아키텍처 비교 분석.md",
+    "업무/무역 문서 추출 (iDocu)/무제.md",
     "무제 8.md",
     "Project/e-commerce/무제 1.md",
     "무제 7.md",
     "Project/e-commerce/마일스톤.md",
-    "업무/Eborder/API/01.IAPI 개요.md",
     "무제 6.md",
     "무제.md",
     "Project/e-commerce/무제.md",
     "Project/e-commerce/# e-commerce 작업 가이드 (재구성 + 리뷰 대응).md",
-    "업무/Eborder/API/MATIP,MQ/MATIP (Mapping of Airline Traffic over IP).md",
-    "업무/Eborder/API/MATIP,MQ/MQ (Message Queue).md",
     "업무/Eborder/API/monitoring/모니터링 백엔드 명세.md",
-    "업무/Eborder/API/02.AirlineMessageHandler.md",
     "업무/2026-03-13 회의.md",
     "업무/2026.02.06 회의.md",
     "업무/업그레이드 가이드.md",
     "업무/EDIFACT PAXLST 세그먼트 상세 형식.md",
-    "업무/AS챗봇/G1Chat-AI 아키텍처 정리.md",
-    "업무/AS챗봇/# G1 챗봇 vs 보편적 RAG 챗봇 — 아키텍처 비교 분석.md",
     "학습/ㅇㄹ.md",
     "학습/무제 2.md",
     "무제.base",
