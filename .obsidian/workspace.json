@@ -27,12 +27,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "업무/Eborder/E-border 시스템.md",
+                "file": "업무/AS챗봇/BookStack 위키 RAG 챗봇 — 질의 흐름 쉽게 이해하기.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "E-border 시스템"
+              "title": "BookStack 위키 RAG 챗봇 — 질의 흐름 쉽게 이해하기"
             }
           }
         ],
@@ -201,6 +201,8 @@
   },
   "active": "d5553697fa12c97a",
   "lastOpenFiles": [
+    "업무/Eborder/E-border 시스템.md",
+    "업무/AS챗봇/BookStack 위키 RAG 챗봇 — 질의 흐름 쉽게 이해하기.md",
     "업무/Eborder/API/03.메시지 타입.md",
     "업무/Eborder/API/02.AirlineMessageHandler.md",
     "업무/Eborder/API/01.IAPI 개요.md",
@@ -226,8 +228,6 @@
     "학습/ㅇㄹ.md",
     "학습/무제 2.md",
     "무제.base",
-    "무제 1.md",
-    "학습/mini-commerce 프로젝트 진행 가이드 (v2 — STEP03 완료판).md",
     "무제 1.base",
     "Project/e-commerce",
     "Pasted image 20260410180053.png",
